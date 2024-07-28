@@ -53,6 +53,8 @@ Ce fichier a pour objectif d'expliquer comment travailler efficacement avec Git 
 
 ## Utilisation de Git
 
+![branchement git](./illusatrion/git_branch_ilustration.png)
+
 Pour une collaboration efficace, voici comment nous utilisons les branches et les fusions (merge) dans Git.
 
 ### Création et Utilisation des Branches
