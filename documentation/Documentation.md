@@ -6,7 +6,6 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 - [Documentation](#documentation)
 	- [Table of Contents / Sommaire](#table-of-contents--sommaire)
 	- [C'est quoi un Serveur](#cest-quoi-un-serveur)
-	- [C'est quoi un Serveur](#cest-quoi-un-serveur-1)
 		- [différent type de serveur](#différent-type-de-serveur)
 		- [Détails supplémentaires](#détails-supplémentaires)
 	- [Serveur IRC](#serveur-irc)
@@ -20,13 +19,7 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 
 ## C'est quoi un Serveur
 
-![dessin de à quoi ressemble un serveur](./illustration/representationServeur.png)
-
-Un serveur est un ordinateur ou un système informatique qui fournit des ressources, des données, des services ou des programmes à d'autres ordinateurs, appelés clients, sur un réseau. Les serveurs jouent un rôle crucial dans les réseaux informatiques, qu'ils soient locaux (LAN) ou à grande échelle (WAN), y compris l'internet.
-
-## C'est quoi un Serveur
-
-![dessin de à quoi ressemble un serveur](./illustration/representationServeur.png)
+![dessin de à quoi ressemble un serveur](./illusatrion/representationServeur.png)
 
 Un serveur est un ordinateur ou un système informatique qui fournit des ressources, des données, des services ou des programmes à d'autres ordinateurs, appelés clients, sur un réseau. Les serveurs jouent un rôle crucial dans les réseaux informatiques, qu'ils soient locaux (LAN) ou à grande échelle (WAN), y compris l'internet.
 

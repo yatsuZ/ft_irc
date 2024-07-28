@@ -2,6 +2,9 @@
 
 Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equipe !!
 
+
+> Internet Relay Chat (traduction littérale, discussion relayée par Internet), un protocole de communication textuelle sur Internet.
+
 ## À faire
 
 | Tâche | Statut |
