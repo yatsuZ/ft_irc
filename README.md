@@ -9,9 +9,17 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 
 | Tâche | Statut |
 |-------|--------|
-| Ajouter mes mate a ce repos | ❌ |
+| Ajouter mes mate a ce repos | ✔️ |
 | Connaître toutes les fonctions autorisées pour ce projet et comprendre ce qu'est un serveur IRC | ✔️ |
-| Faire un cahier decharge avec mon equipe | ❌ |
+| Faire un cahier decharge avec mon equipe | ✔️ |
+| Savoir qui fais quoi | ❌ |
+
+
+|                       | Yassine                   | Samira                    | Come                       |
+|-----------------------|---------------------------|---------------------------|---------------------------|
+| **Fait**              | La documentation          |                           |                           |
+| **En train de faire** | Rien                      | rien                      | rien                      |
+| **À faire**           | En discuter avec l'équipe | en discuter avec l'équipe | En discuter avec l'équipe |
 
 ## Autres Documents
 
