@@ -33,14 +33,17 @@ Le projet vise à développer un serveur IRC en C++98. Le serveur permettra aux 
 
 ### Règle 1 : **Commentaires et Lisibilité**
 - **Commenter le code** : Chaque membre de l'équipe doit commenter son code de manière exhaustive. Chaque fonction, méthode, et classe doit être documentée pour expliquer clairement son objectif, ses paramètres et sa logique.
+
 - **Lisibilité du code** : La priorité absolue est de garantir un code clair et compréhensible pour tous les membres de l'équipe. Le code doit être structuré de manière à faciliter sa maintenance et son évolution.
 
 ### Règle 2 : **Organisation des Fichiers**
 - **Organisation par classe** : Chaque classe doit être rangée dans son propre dossier. Ce dossier contiendra le fichier header (.h ou .hpp) ainsi que le fichier d'implémentation (.cpp, .ipp, ou .tpp) correspondant.
+
 - **Structure des dossiers** : Les dossiers doivent être nommés de manière claire et cohérente pour refléter la fonction ou le domaine d'application des classes qu'ils contiennent.
 
 ### Règle 3 : **Méthodes et Communication**
 - **Création de méthodes et de classes** : Les méthodes et les classes doivent être conçues de manière simple et compréhensible, avec des noms explicites qui reflètent leur fonction. Le découpage du code en méthodes et classes doit respecter le principe de responsabilité unique pour faciliter la réutilisation et le débogage.
+
 - **Communication** : Chaque membre de l'équipe doit informer les autres dès qu'il effectue un changement significatif dans le code ou ajoute une nouvelle fonctionnalité. Une communication constante est essentielle pour assurer la cohésion du projet et éviter les doublons ou les conflits.
 
 ## 3. **Étapes de Développement**
