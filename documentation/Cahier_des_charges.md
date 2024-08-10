@@ -29,7 +29,7 @@ Le projet vise à développer un serveur IRC en C++98. Le serveur permettra aux 
 
 ## 2. **Règles d'Équipe**
 
-![Team work gif](https://tenor.com/bApNR.gif)
+![Team work gif](./illusatrion/teamwork-go-team.gif)
 
 ### Règle 1 : **Commentaires et Lisibilité**
 - **Commenter le code** : Chaque membre de l'équipe doit commenter son code de manière exhaustive. Chaque fonction, méthode, et classe doit être documentée pour expliquer clairement son objectif, ses paramètres et sa logique.
