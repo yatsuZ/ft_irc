@@ -58,7 +58,7 @@ Un serveur est un ordinateur ou un système informatique qui fournit des ressour
 - **Serveur LDAP** : Gère les informations d'annuaire pour les utilisateurs et les ressources réseau.
 - **Serveur de Streaming** : Diffuse du contenu multimédia en temps réel.
 - **Serveur de Sauvegarde** : Assure la protection des données en effectuant des sauvegardes régulières.
-- **Serveur IRC** : Permet d'héberger et de gérer des discussions en temps réel, couramment utilisé pour les discussions en groupe ou les communautés en ligne.## Serveur HTTP
+- **Serveur IRC** : Permet d'héberger et de gérer des discussions en temps réel, couramment utilisé pour les discussions en groupe ou les communautés en ligne.
 
 ## Serveur IRC
 

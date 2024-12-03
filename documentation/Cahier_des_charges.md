@@ -1,27 +1,25 @@
 # Cahier des charges
 
-Samira Come travailleir pouilleux d'esclave xD
-
-JE rigole ce fichier permet de faire le cahier des charges et dire ce qu'il faut faire.
+Ce fichier permet de faire le cahier des charges et dire ce qu'il faut faire.
 
 ## Table of Contents / Sommaire
 - [Cahier des charges](#cahier-des-charges)
-	- [Table of Contents / Sommaire](#table-of-contents--sommaire)
-	- [1. **Contexte et Objectif**](#1-contexte-et-objectif)
-	- [2. **Règles d'Équipe**](#2-règles-déquipe)
-		- [Règle 1 : **Commentaires et Lisibilité**](#règle-1--commentaires-et-lisibilité)
-		- [Règle 2 : **Organisation des Fichiers**](#règle-2--organisation-des-fichiers)
-		- [Règle 3 : **Méthodes et Communication**](#règle-3--méthodes-et-communication)
-	- [3. **Étapes de Développement**](#3-étapes-de-développement)
-		- [3.1. **Étape 1 : Parsing des Arguments**](#31-étape-1--parsing-des-arguments)
-		- [3.2. **Étape 2 : Initialisation du Serveur**](#32-étape-2--initialisation-du-serveur)
-		- [3.3. **Étape 3 : Gestion des Connexions Client**](#33-étape-3--gestion-des-connexions-client)
-		- [3.4. **Étape 4 : Gestion des Canaux IRC**](#34-étape-4--gestion-des-canaux-irc)
-		- [3.5. **Étape 5 : Communication Client-Serveur**](#35-étape-5--communication-client-serveur)
-		- [3.6. **Étape 6 : Gestion des Erreurs et Sécurité**](#36-étape-6--gestion-des-erreurs-et-sécurité)
-		- [3.7. **Étape 7 : Tests et Validation**](#37-étape-7--tests-et-validation)
-		- [3.8. **Étape 8 : Documentation et Rendu**](#38-étape-8--documentation-et-rendu)
-	- [4. **Partie Bonus (Optionnelle)**](#4-partie-bonus-optionnelle)
+  - [Table of Contents / Sommaire](#table-of-contents--sommaire)
+  - [1. **Contexte et Objectif**](#1-contexte-et-objectif)
+  - [2. **Règles d'Équipe**](#2-règles-déquipe)
+    - [Règle 1 : **Commentaires et Lisibilité**](#règle-1--commentaires-et-lisibilité)
+    - [Règle 2 : **Organisation des Fichiers**](#règle-2--organisation-des-fichiers)
+    - [Règle 3 : **Méthodes et Communication**](#règle-3--méthodes-et-communication)
+  - [3. **Étapes de Développement**](#3-étapes-de-développement)
+    - [3.1. **Étape 1 : Parsing des Arguments**](#31-étape-1--parsing-des-arguments)
+    - [3.2. **Étape 2 : Initialisation du Serveur**](#32-étape-2--initialisation-du-serveur)
+    - [3.3. **Étape 3 : Gestion des Connexions Client**](#33-étape-3--gestion-des-connexions-client)
+    - [3.4. **Étape 4 : Gestion des Canaux IRC**](#34-étape-4--gestion-des-canaux-irc)
+    - [3.5. **Étape 5 : Communication Client-Serveur**](#35-étape-5--communication-client-serveur)
+    - [3.6. **Étape 6 : Gestion des Erreurs et Sécurité**](#36-étape-6--gestion-des-erreurs-et-sécurité)
+    - [3.7. **Étape 7 : Tests et Validation**](#37-étape-7--tests-et-validation)
+    - [3.8. **Étape 8 : Documentation et Rendu**](#38-étape-8--documentation-et-rendu)
+  - [4. **Partie Bonus (Optionnelle)**](#4-partie-bonus-optionnelle)
 
 
 ## 1. **Contexte et Objectif**

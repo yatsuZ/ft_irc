@@ -2,7 +2,6 @@
 
 Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equipe !!
 
-
 > Internet Relay Chat (traduction littérale, discussion relayée par Internet), un protocole de communication textuelle sur Internet.
 
 ## À faire
@@ -12,8 +11,8 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 | Ajouter mes mate a ce repos | ✔️ |
 | Connaître toutes les fonctions autorisées pour ce projet et comprendre ce qu'est un serveur IRC | ✔️ |
 | Faire un cahier decharge avec mon equipe | ✔️ |
+| Regarder en groupe comment realiser ce projet | ❌ |
 | Savoir qui fais quoi | ❌ |
-| TRABAJOR CODER COMME SA TA VIE EN DEPENT CODE CODE TEST COMUNIQUER REALISON CE PROJET LA ARRRRRUCVEEIBDU ***SAMIRA COME*** ON METS TROP DE TEMP SA MERE !!!!!!!! jbfibrecvberuivfb | ❌ |
 
 
 |                       | Yassine                   | Samira                    | Come                       |
@@ -30,6 +29,7 @@ Pour approfondir vos connaissances sur les notions abordées dans ce projet, veu
 - **[GUIDE_ORGANISATION_GIT.md](./documentation/GUIDE_ORGANISATION_GIT.md)** : Un guide pour organiser et gérer votre projet avec Git.
 - **[Serveur_IRC.md](./documentation/Serveur_IRC.md)** : Des informations détaillées sur le protocole IRC et la mise en place d'un serveur IRC.
 - **[Cahier_des_charges.md](./documentation/Cahier_des_charges.md)** : Fichier qui dis ce qu'il faut faire etape par etape.
+- **[etape](./documentation/etape)** : Un dossier qui doccumente etape par etape la realisation du projet.
 
 Ces documents vous fourniront une base solide pour la réalisation de votre projet et vous aideront à mieux comprendre les technologies et concepts impliqués.
 
