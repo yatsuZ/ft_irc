@@ -9,6 +9,7 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 		- [différent type de serveur](#différent-type-de-serveur)
 		- [Détails supplémentaires](#détails-supplémentaires)
 	- [Serveur IRC](#serveur-irc)
+	- [Le Client](#le-client)
 	- [Liste de toutes les fonctions externes autorisées](#liste-de-toutes-les-fonctions-externes-autorisées)
 	- [Qu'est-ce qu'un processus](#quest-ce-quun-processus)
 	- [C'est quoi un socket](#cest-quoi-un-socket)
@@ -16,6 +17,7 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 		- [Syntaxe Générale](#syntaxe-générale)
 		- [Options Principales](#options-principales)
 		- [Exemples](#exemples)
+	- [Les fichier .ipp](#les-fichier-ipp)
 
 ## C'est quoi un Serveur
 
@@ -63,6 +65,10 @@ Un serveur est un ordinateur ou un système informatique qui fournit des ressour
 ## Serveur IRC
 
 [Consulter ceci pour savoir ce qu'es un Serveur IRC ?](./Serveur_IRC.md)
+
+## Le Client
+
+
 
 ## Liste de toutes les fonctions externes autorisées
 
@@ -140,3 +146,6 @@ La commande `nc` (Netcat) est utilisée pour lire et écrire des données sur de
   ```
 
 ---
+
+## Les fichier .ipp
+

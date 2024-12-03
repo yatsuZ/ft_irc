@@ -14,12 +14,11 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 | Regarder en groupe comment realiser ce projet | ❌ |
 | Savoir qui fais quoi | ❌ |
 
-
 |                       | Yassine                   | Samira                    | Come                       |
 |-----------------------|---------------------------|---------------------------|---------------------------|
-| **Fait**              | La documentation          |                           |                           |
+| **Fait**              |           |                           |                           |
 | **En train de faire** | Rien                      | rien                      | rien                      |
-| **À faire**           | En discuter avec l'équipe | en discuter avec l'équipe | En discuter avec l'équipe |
+| **À faire**           | ce docummenter sur [irssi](./documentation/Le_client_irssi.md) et dans [documentation](./documentation/Documentation.md#le-client) + expliquer les fichier [.ipp](./documentation/Documentation.md#les-fichier-ipp) + faire [lexecrire des commit](https://learngitbranching.js.org/?locale=fr_FR) | redige le fichier md [1ier etape](./documentation/etape/1_Organiser_la_structure.md) |  |
 
 ## Autres Documents
 
@@ -29,6 +28,7 @@ Pour approfondir vos connaissances sur les notions abordées dans ce projet, veu
 - **[GUIDE_ORGANISATION_GIT.md](./documentation/GUIDE_ORGANISATION_GIT.md)** : Un guide pour organiser et gérer votre projet avec Git.
 - **[Serveur_IRC.md](./documentation/Serveur_IRC.md)** : Des informations détaillées sur le protocole IRC et la mise en place d'un serveur IRC.
 - **[Cahier_des_charges.md](./documentation/Cahier_des_charges.md)** : Fichier qui dis ce qu'il faut faire etape par etape.
+- **[Le_client_irssi.md](./documentation/Le_client_irssi.md)** : Explication du Client irssi de son fonctionement.
 - **[etape](./documentation/etape)** : Un dossier qui doccumente etape par etape la realisation du projet.
 
 Ces documents vous fourniront une base solide pour la réalisation de votre projet et vous aideront à mieux comprendre les technologies et concepts impliqués.
