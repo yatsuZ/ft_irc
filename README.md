@@ -12,6 +12,7 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 | Connaître toutes les fonctions autorisées pour ce projet et comprendre ce qu'est un serveur IRC | ✔️ |
 | Faire un cahier decharge avec mon equipe | ✔️ |
 | Regarder en groupe comment realiser ce projet | ❌ |
+| Rediger [1ier etape la structure et comment realiser le projet](./documentation/etape/1_Organiser_la_structure.md) | ❌ |
 | Savoir qui fais quoi | ❌ |
 
 |                       | Yassine                   | Samira                    | Come                       |
