@@ -19,7 +19,7 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 |-----------------------|---------------------------|---------------------------|---------------------------|
 | **Fait**              |           |                           |                           |
 | **En train de faire** | Rien                      | rien                      | rien                      |
-| **À faire**           | ce docummenter sur [irssi](./documentation/Le_client_irssi.md) et dans [documentation](./documentation/Documentation.md#le-client) + expliquer les fichier [.ipp](./documentation/Documentation.md#les-fichier-ipp) + faire [lexecrire des commit](https://learngitbranching.js.org/?locale=fr_FR) | redige le fichier md [1ier etape](./documentation/etape/1_Organiser_la_structure.md) |  |
+| **À faire**           | faire [lexecrire des commit](https://learngitbranching.js.org/?locale=fr_FR) | redige le fichier md [1ier etape](./documentation/etape/1_Organiser_la_structure.md) |  |
 
 ## Autres Documents
 

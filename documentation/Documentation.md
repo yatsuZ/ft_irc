@@ -10,6 +10,7 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 		- [Détails supplémentaires](#détails-supplémentaires)
 	- [Serveur IRC](#serveur-irc)
 	- [Le Client](#le-client)
+		- [Les différents clients pour IRC](#les-différents-clients-pour-irc)
 	- [Liste de toutes les fonctions externes autorisées](#liste-de-toutes-les-fonctions-externes-autorisées)
 	- [Qu'est-ce qu'un processus](#quest-ce-quun-processus)
 	- [C'est quoi un socket](#cest-quoi-un-socket)
@@ -18,6 +19,8 @@ Ce fichier contient toutes les sources utiles à la création du projet.
 		- [Options Principales](#options-principales)
 		- [Exemples](#exemples)
 	- [Les fichier .ipp](#les-fichier-ipp)
+		- [Pourquoi utiliser des fichiers `.ipp` ?](#pourquoi-utiliser-des-fichiers-ipp-)
+		- [Utilisation typique](#utilisation-typique)
 
 ## C'est quoi un Serveur
 
@@ -68,7 +71,19 @@ Un serveur est un ordinateur ou un système informatique qui fournit des ressour
 
 ## Le Client
 
+Après avoir expliqué le rôle du serveur, il est important de se pencher sur les **clients**. Un client est une application ou un système utilisé pour se connecter à un serveur et interagir avec lui.
 
+### Les différents clients pour IRC
+
+Pour un serveur IRC, voici quelques exemples de clients :
+
+- **mIRC** : Un client IRC populaire sous Windows, avec une interface simple et de nombreuses fonctionnalités.
+- **HexChat** : Multi-plateforme et open source, idéal pour une utilisation intuitive.
+- **irssi** : Client IRC en ligne de commande, adapté pour les utilisateurs avancés.
+- **WeeChat** : Client IRC modulaire, conçu pour être extensible et personnalisable.
+- **The Lounge** : Client IRC moderne accessible via un navigateur web.
+
+> Dans ce projet, nous devons développer uniquement le **serveur**, pas le client. Pour tester et interagir avec le serveur, nous utiliserons le client [**irssi**](./Serveur_IRC.md).  
 
 ## Liste de toutes les fonctions externes autorisées
 
@@ -149,3 +164,47 @@ La commande `nc` (Netcat) est utilisée pour lire et écrire des données sur de
 
 ## Les fichier .ipp
 
+Les fichiers `.ipp` sont des fichiers spécifiques à C++ utilisés pour définir des fonctions ou des méthodes de classes dans le cadre de modèles (**templates**). Ils servent à résoudre un problème lié à la séparation des déclarations et des définitions lorsque l’on travaille avec des templates.
+
+### Pourquoi utiliser des fichiers `.ipp` ?
+En C++, les définitions de templates doivent être visibles au moment de la compilation. Cela signifie qu’on ne peut pas séparer les déclarations (dans un `.hpp`) et les définitions (dans un `.cpp`) comme pour les classes ou les fonctions ordinaires. Pour organiser le code, les développeurs utilisent souvent des fichiers `.ipp` pour contenir les définitions des templates.
+
+### Utilisation typique
+- **Fichier `.hpp`** : Contient les déclarations des templates.
+- **Fichier `.ipp`** : Contient les définitions des templates.
+- **Inclusion** : Le fichier `.ipp` est inclus à la fin du fichier `.hpp` (ou dans le `.cpp` si nécessaire).
+
+Exemple :  
+
+**my_template.hpp**  
+```cpp
+#ifndef MY_TEMPLATE_HPP
+#define MY_TEMPLATE_HPP
+
+#include <iostream>
+
+template <typename T>
+class MyTemplate {
+public:
+    MyTemplate(T value);
+    void display() const;
+private:
+    T _value;
+};
+
+#include "my_template.ipp" // Inclusion du fichier .ipp
+#endif
+```
+
+**my_template.ipp**  
+```cpp
+template <typename T>
+MyTemplate<T>::MyTemplate(T value) : _value(value) {}
+
+template <typename T>
+void MyTemplate<T>::display() const {
+    std::cout << _value << std::endl;
+}
+```
+
+Ainsi, le fichier `.ipp` améliore la lisibilité et permet de structurer le code proprement tout en respectant les exigences des templates.
