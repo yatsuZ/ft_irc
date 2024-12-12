@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2024/07/27 12:50:05 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/12/12 18:59:18 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 .PHONY: all re clean fclean val test
 
 ############### OBJ du projet ircserv
+
 
 IRCSERV_SRC =	main.cpp
 
