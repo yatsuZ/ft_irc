@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/15 07:10:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/16 00:17:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,6 @@
 #include <unistd.h>
 #include <string>
 #include <unistd.h>
+#include <stdexcept>
+#include <sstream>
+#include <cctype>
