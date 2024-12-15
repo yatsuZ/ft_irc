@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.ipp                                          :+:      :+:    :+:   */
+/*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 18:43:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/12 18:48:49 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/12/15 06:54:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../header/color.hpp"
+#include "./../../header/Ft_irc.hpp"
 
-inline const char* getColorCode(Color color) {
-    if (color >= 0 && color < COLOR_COUNT)
-        return colorCodes[color];
-    return "\033[0m"; // Couleur par défaut
+Server::Server(): _name("Prenom")
+{
+	std::cout << getColorCode(BLUE) << "Constructeur de Server" << std::endl;
+	std::cout << getColorCode(GREEN) << "Server->_name = " << getColorCode(YELLOW) << _name << getColorCode(NOCOLOR) << std::endl;
+}
+
+Server::~Server()
+{
+	std::cout << getColorCode(RED) << "DEstructeur de Server" << getColorCode(NOCOLOR) << std::endl;
 }

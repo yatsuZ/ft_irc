@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/12 18:53:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/15 06:39:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int	main(int argc, char **argv)
 
 	std::cout << std::endl;
 	std::cout << getColorCode(RED) << "J'aurai reussi a cree un serveur Quand ...." << getColorCode(NOCOLOR) << std::endl;
+
+
+	std::cout << "------------------" << std::endl;
+
+	Server test;
 
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2024/12/12 18:59:18 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/12/15 07:02:05 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,13 @@
 
 ############### OBJ du projet ircserv
 
+CLASS_FILES = ./class/Server/Server.cpp
 
-IRCSERV_SRC =	main.cpp
+UTILS_FILES = ./utils/color.cpp
+
+IRCSERV_SRC =	main.cpp		\
+				${UTILS_FILES}	\
+				${CLASS_FILES}
 
 OBJ_PATH = obj/
 
