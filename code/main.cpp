@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/16 00:28:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/16 00:34:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 
 	std::cout << std::endl;
 	std::cout << getColorCode(RED) << "J'aurai reussi a cree un serveur Quand ...." << getColorCode(NOCOLOR) << std::endl;
+	std::cout << getColorCode(GREEN) << "Cree un socket puis configurer ladresse du serveur associer ladresse et la socket puis " << getColorCode(NOCOLOR) << std::endl;
 
 
 	std::cout << "------------------" << std::endl;
