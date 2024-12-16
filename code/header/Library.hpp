@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/16 00:17:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/16 03:28:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,6 @@
 #include <stdexcept>
 #include <sstream>
 #include <cctype>
+#include <arpa/inet.h>
+
+long ft_atol_limits(const std::string& str, long min, long max, bool *error);

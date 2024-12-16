@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/16 00:34:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/16 02:33:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	main(int argc, char **argv)
 		if (argc != 3 || !argv)
 			throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
 		Server test(argv[1], argv[2]);
+		std::cout << test;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << getColorCode(RED) << e.what() << getColorCode(NOCOLOR) << std::endl;
 		return (1);
 	}
-
 	return (0);
 }
