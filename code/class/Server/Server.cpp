@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/16 03:41:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/17 07:51:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,18 @@ int Server::_init_socket()
 {
 	int socketfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (socketfd < 0)
-			throw Init_serv_error("Erreur lors de la création du socket");
+		_throw_except("Erreur lors de la création du socket");
 	return (socketfd);
 }
 
+/// @brief Envoie une exception de type Init_serv_error et ferme correctemen le serveru (car sa ne passera pas automatiquemetn pas le destructeur)
+/// @param msg le message de lexception
+void Server::_throw_except(const std::string &msg)
+{
+	if (_socketfd != -1)
+		close(_socketfd);
+	throw Init_serv_error(msg);
+}
 
 //////////////////
 
@@ -70,6 +78,33 @@ _socketfd(-1)
 	std::cout << getColorCode(BLUE) << "Constructeur de Server" << std::endl;
 }
 
+void Server::_bind_and_listen()
+{
+	const sockaddr *sock_addr_serv_in_ptr = reinterpret_cast<const sockaddr *>(&this->_sock_addr_serv_in);
+
+	// Configure l'option SO_REUSEADDR 
+	int opt = REUSEADDR_OPTION;
+	// Sa peret de dire que le port peut etre desactiver rapidement et reutiliser
+	if (setsockopt(this->_socketfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0)
+		_throw_except("Erreur lors de la configuration de SO_REUSEADDR.");
+
+	// Configure la socket en mode non-bloquant
+	if (fcntl(this->_socketfd, F_SETFL, O_NONBLOCK) < 0)
+		_throw_except("Erreur lors de la mise en mode non-bloquant de la socket.");
+
+
+	// Associe la socket fd a la structure de sockaddr_in
+	if (bind(this->_socketfd, sock_addr_serv_in_ptr, sizeof(this->_sock_addr_serv_in)) < 0)
+		_throw_except("Erreur lors de l'association de l'adresse à la socket.");
+	std::cout << "Adresse associée à la socket avec succès." << std::endl;
+
+	// Dis au fd decouter lentre du port
+	if (listen(this->_socketfd, SOMAXCONN) < 0)
+		_throw_except("Erreur lors de la mise en écoute de la socket.");
+	std::cout << "Socket en écoute sur le port " << this->get_port() << "." << std::endl;
+}
+
+
 Server::Server(std::string argv1, std::string argv2):
 _name("Nom du Serveur"),
 _port(this->_is_a_legit_port(argv1)),
@@ -80,6 +115,15 @@ _socketfd(this->_init_socket())
 	this->_sock_addr_serv_in.sin_family = AF_INET;
 	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
 	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
+
+	this->_bind_and_listen();
+	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
+
+}
+
+void	Server::exec(void)
+{
+	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
 }
 
 Server::~Server()
