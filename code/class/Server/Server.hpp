@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/17 07:50:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/17 08:12:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #define ADDRESSE_IP_IN "127.0.0.1"
 #define REUSEADDR_OPTION 1
+#define BUFFER_SIZE 1024
+#define MAX_EVENTS 10
 
 class Init_serv_error : public std::exception
 {
