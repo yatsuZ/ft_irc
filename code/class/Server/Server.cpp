@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/17 08:14:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/18 02:36:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ _socketfd(this->_init_socket())
 
 }
 
+// utiliser epoll et comprendre fonctionement
 void	Server::exec(void)
 {
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
