@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/18 02:36:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/24 08:22:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,13 @@ void Server::_bind_and_listen()
 	std::cout << "Socket en écoute sur le port " << this->get_port() << "." << std::endl;
 }
 
+void	Server::_paramPoll(void)
+{
+	// Structure pour poll
+	this->_fds[0].fd = _socketfd;  // La socket du serveur
+	this->_fds[0].events = POLLIN; // On surveille les événements de lecture (connexion entrante)
+	this->_fds[0].revents = 0;
+}
 
 Server::Server(std::string argv1, std::string argv2):
 _name("Nom du Serveur"),
@@ -117,6 +124,7 @@ _socketfd(this->_init_socket())
 	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
 
 	this->_bind_and_listen();
+	
 	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
 
 }
@@ -125,27 +133,25 @@ _socketfd(this->_init_socket())
 void	Server::exec(void)
 {
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
-	// Structure pour poll
-	struct pollfd fds[MAX_EVENTS];
-	fds[0].fd = _socketfd;  // La socket du serveur
-	fds[0].events = POLLIN; // On surveille les événements de lecture (connexion entrante)
-	fds[0].revents = 0;
 
 	// Boucle principale
-	while (true) {
+	while (true)
+	{
 		// Poll pour attendre un événement
-		int ret = poll(fds, 1, -1); // Attente infinie pour des événements
-		if (ret < 0) {
+		int ret = poll(this->_fds, 1, -1); // Attente infinie pour des événements
+		if (ret < 0)
+		{
 			std::cerr << "Erreur dans poll()" << std::endl;
 			return;
 		}
-
 		// Vérification si la socket serveur est prête à accepter une connexion
-		if (fds[0].revents & POLLIN) {
+		if (this->_fds[0].revents & POLLIN)
+		{
 			sockaddr_in client_addr;
 			socklen_t client_len = sizeof(client_addr);
 			int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
-			if (client_fd < 0) {
+			if (client_fd < 0)
+			{
 				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
 				continue;
 			}
@@ -154,7 +160,8 @@ void	Server::exec(void)
 			// Lire les données envoyées par le client
 			char buffer[BUFFER_SIZE] = {0};
 			ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
-			if (bytes_read < 0) {
+			if (bytes_read < 0)
+			{
 				std::cerr << getColorCode(RED) << "Erreur de lecture des données" << getColorCode(NOCOLOR) << std::endl;
 				close(client_fd);
 				continue;

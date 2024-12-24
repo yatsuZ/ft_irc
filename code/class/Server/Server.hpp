@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/17 08:12:10 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/24 08:13:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,15 @@ private:
 	const std::string			_mot_de_passe;
 	const int					_socketfd;
 	sockaddr_in					_sock_addr_serv_in;
+	struct pollfd 				_fds[MAX_EVENTS];
+
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);
 	int				_init_socket(void);
 	void 			_bind_and_listen(void);
 	void			_throw_except(const std::string &msg);
+	void			_paramPoll(void);
 	Server();
 
 public:
