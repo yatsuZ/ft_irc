@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 09:36:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 23:47:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,21 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+
+/*
+cmd pour demarer le serveur avec valgrind:
+valgrind --tool=memcheck \
+        --leak-check=full \
+        --show-leak-kinds=all \
+        --track-origins=yes \
+        --log-file=valgrind.log \
+        --track-fds=yes \
+        --read-var-info=yes \
+        ./ircserv 8080 mdp
+
+test a faire :
+
+nc <ip> <port> <message>
+	exemple :
+	nc 127.0.0.1 8080 exit
+*/
