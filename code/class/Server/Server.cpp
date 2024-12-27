@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/24 08:22:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 08:37:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,12 @@ void Server::_bind_and_listen()
 void	Server::_paramPoll(void)
 {
 	// Structure pour poll
-	this->_fds[0].fd = _socketfd;  // La socket du serveur
-	this->_fds[0].events = POLLIN; // On surveille les événements de lecture (connexion entrante)
-	this->_fds[0].revents = 0;
+	struct pollfd server_pollfd;
+
+	server_pollfd.fd = _socketfd;	// La socket du serveur
+	server_pollfd.events = POLLIN;	// On surveille les événements de lecture (connexion entrante)
+	server_pollfd.revents = 0;
+	_fds.push_back(server_pollfd);
 }
 
 Server::Server(std::string argv1, std::string argv2):
@@ -125,6 +128,8 @@ _socketfd(this->_init_socket())
 
 	this->_bind_and_listen();
 	
+	this->_paramPoll();
+	
 	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
 
 }
@@ -138,12 +143,9 @@ void	Server::exec(void)
 	while (true)
 	{
 		// Poll pour attendre un événement
-		int ret = poll(this->_fds, 1, -1); // Attente infinie pour des événements
+		int ret = poll(this->_fds.data(), 1, 5); // Attente infinie pour des événements +  Utilise _fds.data() pour obtenir un pointeur sur le tableau interne
 		if (ret < 0)
-		{
-			std::cerr << "Erreur dans poll()" << std::endl;
-			return;
-		}
+			this->_throw_except("Erreur de la fonction poll()");
 		// Vérification si la socket serveur est prête à accepter une connexion
 		if (this->_fds[0].revents & POLLIN)
 		{
@@ -153,7 +155,7 @@ void	Server::exec(void)
 			if (client_fd < 0)
 			{
 				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
-				continue;
+				break;
 			}
 			std::cout << getColorCode(GREEN) << "Connexion acceptée!" << getColorCode(NOCOLOR) << std::endl;
 
@@ -164,7 +166,13 @@ void	Server::exec(void)
 			{
 				std::cerr << getColorCode(RED) << "Erreur de lecture des données" << getColorCode(NOCOLOR) << std::endl;
 				close(client_fd);
-				continue;
+				break;
+			}
+			// std::cout << "BUFFER = \"" << buffer << "\"" << std::endl;
+			if (std::string(buffer) == "exit\n")
+			{
+				close(client_fd);
+				break;
 			}
 			std::cout << getColorCode(CYAN) << "Message reçu: " << getColorCode(NOCOLOR) << getColorCode(MAGENTA) << buffer << getColorCode(NOCOLOR) << std::endl;
 
@@ -177,6 +185,7 @@ void	Server::exec(void)
 			close(client_fd);
 		}
 	}
+	std::cout << getColorCode(YELLOW) << "FIN DU SERVEUR" << getColorCode(NOCOLOR) << std::endl;
 }
 
 Server::~Server()
@@ -185,6 +194,33 @@ Server::~Server()
 	if (this->_socketfd > -1)
 		close(this->_socketfd);
 }
+
+std::ostream &operator<<(std::ostream &o, pollfd const &pollfds)
+{
+	o << getColorCode(YELLOW) << "\tFile Descriptor: " << getColorCode(BLUE) << pollfds.fd << getColorCode(NOCOLOR) << std::endl;
+	o << getColorCode(YELLOW) << "\tEvents: " << getColorCode(BLUE) << pollfds.events << getColorCode(NOCOLOR) << " (";
+
+	// Affichage détaillé des événements surveillés
+	if (pollfds.events & POLLIN) o << "POLLIN";
+	if (pollfds.events & POLLOUT) o << "POLLOUT";
+	if (pollfds.events & POLLERR) o << "POLLERR";
+	if (pollfds.events & POLLHUP) o << "POLLHUP";
+	if (pollfds.events & POLLNVAL) o << "POLLNVAL";
+	o << ")" << std::endl;
+
+	o << getColorCode(YELLOW) << "\tRevents: " << getColorCode(BLUE) << pollfds.revents << getColorCode(NOCOLOR) << " (";
+
+	// Affichage détaillé des événements retournés
+	if (pollfds.revents & POLLIN) o << "POLLIN";
+	if (pollfds.revents & POLLOUT) o << "POLLOUT";
+	if (pollfds.revents & POLLERR) o << "POLLERR";
+	if (pollfds.revents & POLLHUP) o << "POLLHUP";
+	if (pollfds.revents & POLLNVAL) o << "POLLNVAL";
+	o << ")" << std::endl;
+
+	return o;
+}
+
 
 std::ostream	&operator<<( std::ostream & o, Server const & serv)
 {
@@ -199,6 +235,14 @@ std::ostream	&operator<<( std::ostream & o, Server const & serv)
 	o << getColorCode(YELLOW) << "Socket IN Adresse IP du serveur = " << getColorCode(BLUE) << getColorCode(NOCOLOR) << ip_str << std::endl;
 	o << getColorCode(YELLOW) << "Le port du Serveur = " << getColorCode(BLUE) << serv.get_port() << getColorCode(NOCOLOR) << std::endl;
 	o << getColorCode(YELLOW) << "Le port du Serveur a parti de socket adresse in = " << getColorCode(BLUE) << ntohs(socket_adresse_in.sin_port) << getColorCode(NOCOLOR) << std::endl;
+	// Affichage des pollfds
+	o << getColorCode(YELLOW) << "Liste des pollfd surveillés :" << getColorCode(NOCOLOR) << std::endl;
+	for (size_t i = 0; i < serv.get_pollfds().size(); ++i)
+	{
+		o << getColorCode(CYAN) << "Pollfd #" << i << ":" << getColorCode(NOCOLOR) << std::endl;
+		o << serv.get_pollfds()[i];
+	}
 	o << "|----------------------------------------------------------------------------------------|" << std::endl;
 	return o;
 }
+

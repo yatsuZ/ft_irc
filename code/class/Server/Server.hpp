@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/24 08:13:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/26 18:11:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ private:
 	const std::string			_mot_de_passe;
 	const int					_socketfd;
 	sockaddr_in					_sock_addr_serv_in;
-	struct pollfd 				_fds[MAX_EVENTS];
+	std::vector<struct pollfd> 	_fds;
 
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
@@ -57,15 +57,17 @@ public:
 	Server(std::string argv1, std::string argv2);
 	~Server();
 
-	std::string				get_name(void) const {return _name;}
-	std::string				get_mdp(void) const {return _mot_de_passe;}
-	uint16_t 				get_port(void) const{return _port;}
-	int						get_socketfd(void) const{return _socketfd;}
-	sockaddr_in				get_socke_addr_serv(void) const{return _sock_addr_serv_in;}
-
+	std::string					get_name(void) const {return _name;}
+	std::string					get_mdp(void) const {return _mot_de_passe;}
+	uint16_t 					get_port(void) const{return _port;}
+	int							get_socketfd(void) const{return _socketfd;}
+	sockaddr_in					get_socke_addr_serv(void) const{return _sock_addr_serv_in;}
+	std::vector<struct pollfd>	get_pollfds(void) const {return this->_fds;}
 
 	void	exec(void);
 };
 
+
+std::ostream & operator<<(std::ostream &o, pollfd const &pollfds);
 std::ostream & operator<<( std::ostream & o, Server const & serv);
 

@@ -1,0 +1,15 @@
+==33834== Memcheck, a memory error detector
+==33834== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==33834== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==33834== Command: ./ircserv 8080 mdp
+==33834== Parent PID: 392
+==33834== 
+==33834== 
+==33834== HEAP SUMMARY:
+==33834==     in use at exit: 0 bytes in 0 blocks
+==33834==   total heap usage: 6 allocs, 6 frees, 73,760 bytes allocated
+==33834== 
+==33834== All heap blocks were freed -- no leaks are possible
+==33834== 
+==33834== For lists of detected and suppressed errors, rerun with: -s
+==33834== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
