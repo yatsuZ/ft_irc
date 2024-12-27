@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 08:37:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 23:55:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,29 +195,34 @@ Server::~Server()
 		close(this->_socketfd);
 }
 
-std::ostream &operator<<(std::ostream &o, pollfd const &pollfds)
+std::ostream &operator<<(std::ostream &o,std::vector<struct pollfd> const &pollfds)
 {
-	o << getColorCode(YELLOW) << "\tFile Descriptor: " << getColorCode(BLUE) << pollfds.fd << getColorCode(NOCOLOR) << std::endl;
-	o << getColorCode(YELLOW) << "\tEvents: " << getColorCode(BLUE) << pollfds.events << getColorCode(NOCOLOR) << " (";
-
-	// Affichage détaillé des événements surveillés
-	if (pollfds.events & POLLIN) o << "POLLIN";
-	if (pollfds.events & POLLOUT) o << "POLLOUT";
-	if (pollfds.events & POLLERR) o << "POLLERR";
-	if (pollfds.events & POLLHUP) o << "POLLHUP";
-	if (pollfds.events & POLLNVAL) o << "POLLNVAL";
-	o << ")" << std::endl;
-
-	o << getColorCode(YELLOW) << "\tRevents: " << getColorCode(BLUE) << pollfds.revents << getColorCode(NOCOLOR) << " (";
-
-	// Affichage détaillé des événements retournés
-	if (pollfds.revents & POLLIN) o << "POLLIN";
-	if (pollfds.revents & POLLOUT) o << "POLLOUT";
-	if (pollfds.revents & POLLERR) o << "POLLERR";
-	if (pollfds.revents & POLLHUP) o << "POLLHUP";
-	if (pollfds.revents & POLLNVAL) o << "POLLNVAL";
-	o << ")" << std::endl;
-
+	o << getColorCode(YELLOW) << "Liste des pollfd surveillés :" << getColorCode(NOCOLOR) << std::endl;
+	for (size_t i = 0; i < pollfds.size(); ++i)
+	{
+		o << getColorCode(CYAN) << "Pollfd #" << i << ":" << getColorCode(NOCOLOR) << std::endl;
+		struct pollfd current_poll_fd = pollfds[i];
+		o << getColorCode(YELLOW) << "\tFile Descriptor: " << getColorCode(BLUE) << current_poll_fd.fd << getColorCode(NOCOLOR) << std::endl;
+		o << getColorCode(YELLOW) << "\tEvents: " << getColorCode(BLUE) << current_poll_fd.events << getColorCode(NOCOLOR) << " (";
+	
+		// Affichage détaillé des événements surveillés
+		if (current_poll_fd.events & POLLIN) o << "POLLIN";
+		if (current_poll_fd.events & POLLOUT) o << "POLLOUT";
+		if (current_poll_fd.events & POLLERR) o << "POLLERR";
+		if (current_poll_fd.events & POLLHUP) o << "POLLHUP";
+		if (current_poll_fd.events & POLLNVAL) o << "POLLNVAL";
+		o << ")" << std::endl;
+	
+		o << getColorCode(YELLOW) << "\tRevents: " << getColorCode(BLUE) << current_poll_fd.revents << getColorCode(NOCOLOR) << " (";
+	
+		// Affichage détaillé des événements retournés
+		if (current_poll_fd.revents & POLLIN) o << "POLLIN";
+		if (current_poll_fd.revents & POLLOUT) o << "POLLOUT";
+		if (current_poll_fd.revents & POLLERR) o << "POLLERR";
+		if (current_poll_fd.revents & POLLHUP) o << "POLLHUP";
+		if (current_poll_fd.revents & POLLNVAL) o << "POLLNVAL";
+		o << ")" << std::endl;
+	}
 	return o;
 }
 
@@ -236,12 +241,7 @@ std::ostream	&operator<<( std::ostream & o, Server const & serv)
 	o << getColorCode(YELLOW) << "Le port du Serveur = " << getColorCode(BLUE) << serv.get_port() << getColorCode(NOCOLOR) << std::endl;
 	o << getColorCode(YELLOW) << "Le port du Serveur a parti de socket adresse in = " << getColorCode(BLUE) << ntohs(socket_adresse_in.sin_port) << getColorCode(NOCOLOR) << std::endl;
 	// Affichage des pollfds
-	o << getColorCode(YELLOW) << "Liste des pollfd surveillés :" << getColorCode(NOCOLOR) << std::endl;
-	for (size_t i = 0; i < serv.get_pollfds().size(); ++i)
-	{
-		o << getColorCode(CYAN) << "Pollfd #" << i << ":" << getColorCode(NOCOLOR) << std::endl;
-		o << serv.get_pollfds()[i];
-	}
+	o << serv.get_pollfds() << std::endl;
 	o << "|----------------------------------------------------------------------------------------|" << std::endl;
 	return o;
 }

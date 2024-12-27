@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/26 18:11:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 23:49:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ public:
 };
 
 
-std::ostream & operator<<(std::ostream &o, pollfd const &pollfds);
+std::ostream & operator<<(std::ostream &o, std::vector<struct pollfd> const &pollfds);
 std::ostream & operator<<( std::ostream & o, Server const & serv);
 

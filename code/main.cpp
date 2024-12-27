@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 08:34:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 23:47:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ valgrind --tool=memcheck \
         --show-leak-kinds=all \
         --track-origins=yes \
         --log-file=valgrind.log \
+        --track-fds=yes \
         --read-var-info=yes \
         ./ircserv 8080 mdp
 

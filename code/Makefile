@@ -6,12 +6,26 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2024/12/16 03:31:21 by yzaoui           ###   ########.fr        #
+#    Updated: 2024/12/27 23:47:38 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # pour dire que la cible ne sagit pas de nom fichier
 .PHONY: all re clean fclean val test
+
+############### POUR TESTER
+
+VAL_CMD = valgrind --tool=memcheck \
+		--leak-check=full \
+		--show-leak-kinds=all \
+		--track-origins=yes \
+		--track-fds=yes \
+		--log-file=valgrind.log \
+		--read-var-info=yes
+
+PORT = 8080
+
+MDP = mdp
 
 ############### OBJ du projet ircserv
 
@@ -52,6 +66,7 @@ $(OBJ_PATH):
 
 clean:
 	$(RM) $(OBJ_PATH)
+	${RM} valgrind.log
 
 fclean: clean
 	$(RM) ${PROGRAM_NAME}
@@ -59,7 +74,7 @@ fclean: clean
 re: fclean all
 
 test: all
-	./${PROGRAM_NAME}
+	${VAL_CMD} ./${PROGRAM_NAME} ${PORT} ${MDP}
 
 val: all
 	valgrind ./${PROGRAM_NAME}
