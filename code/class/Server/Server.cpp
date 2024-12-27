@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/24 08:22:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 09:43:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,12 +104,18 @@ void Server::_bind_and_listen()
 	std::cout << "Socket en écoute sur le port " << this->get_port() << "." << std::endl;
 }
 
-void	Server::_paramPoll(void)
+void	Server::_paramEPoll(void)
 {
-	// Structure pour poll
-	this->_fds[0].fd = _socketfd;  // La socket du serveur
-	this->_fds[0].events = POLLIN; // On surveille les événements de lecture (connexion entrante)
-	this->_fds[0].revents = 0;
+	_epollfd = epoll_create1(0);
+	if (_epollfd == -1)
+		_throw_except("Erreur lors de la création de epoll");
+
+	epoll_event ev;
+	ev.events = EPOLLIN; // Surveiller les événements de lecture
+	ev.data.fd = _socketfd; // Associer l'événement à la socket serveur
+
+	if (epoll_ctl(_epollfd, EPOLL_CTL_ADD, _socketfd, &ev) == -1)
+		_throw_except("Erreur lors de l'ajout de la socket serveur à epoll");
 }
 
 Server::Server(std::string argv1, std::string argv2):
@@ -124,57 +130,92 @@ _socketfd(this->_init_socket())
 	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
 
 	this->_bind_and_listen();
-	
+	this->_paramEPoll();
 	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
 
 }
+
+int Server::_handle_client(int client_fd)
+{
+	char buffer[BUFFER_SIZE] = {0};
+	ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
+
+	if (bytes_read <= 0)
+	{
+		// Déconnexion ou erreur
+		std::cout << "Client déconnecté: " << client_fd << std::endl;
+		close(client_fd);
+
+		// Retirer le client de epoll
+		epoll_ctl(_epollfd, EPOLL_CTL_DEL, client_fd, NULL);
+		return (0);
+	}
+
+	std::cout << "Message reçu de " << client_fd << ": " << buffer << std::endl;
+
+	// Répondre au client
+	const char* response = "Message reçu";
+	send(client_fd, response, strlen(response), 0);
+	if (std::string(buffer) == "exit\n")
+	{
+		close(client_fd);
+		// Retirer le client de epoll
+		epoll_ctl(_epollfd, EPOLL_CTL_DEL, client_fd, NULL);
+		return (1);
+	}
+	return (0);
+}
+
 
 // utiliser epoll et comprendre fonctionement
 void	Server::exec(void)
 {
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
 
-	// Boucle principale
+	epoll_event events[MAX_EVENTS]; // Tableau pour stocker les événements
+
 	while (true)
 	{
-		// Poll pour attendre un événement
-		int ret = poll(this->_fds, 1, -1); // Attente infinie pour des événements
-		if (ret < 0)
+		int nfds = epoll_wait(_epollfd, events, MAX_EVENTS, -1); // Attendre les événements
+		if (nfds == -1)
 		{
-			std::cerr << "Erreur dans poll()" << std::endl;
-			return;
+			std::cerr << "Erreur dans epoll_wait" << std::endl;
+			break;
 		}
-		// Vérification si la socket serveur est prête à accepter une connexion
-		if (this->_fds[0].revents & POLLIN)
+
+		for (int i = 0; i < nfds; ++i)
 		{
-			sockaddr_in client_addr;
-			socklen_t client_len = sizeof(client_addr);
-			int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
-			if (client_fd < 0)
+			if (events[i].data.fd == _socketfd)
 			{
-				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
-				continue;
-			}
-			std::cout << getColorCode(GREEN) << "Connexion acceptée!" << getColorCode(NOCOLOR) << std::endl;
+				// Nouvelle connexion
+				sockaddr_in client_addr;
+				socklen_t client_len = sizeof(client_addr);
+				int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
+				if (client_fd == -1)
+				{
+					std::cerr << "Erreur d'acceptation de la connexion" << std::endl;
+					continue;
+				}
 
-			// Lire les données envoyées par le client
-			char buffer[BUFFER_SIZE] = {0};
-			ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
-			if (bytes_read < 0)
+				std::cout << "Nouvelle connexion acceptée: " << client_fd << std::endl;
+
+				// Ajouter le client à epoll
+				epoll_event ev;
+				ev.events = EPOLLIN; // Surveiller les événements de lecture
+				ev.data.fd = client_fd;
+
+				if (epoll_ctl(_epollfd, EPOLL_CTL_ADD, client_fd, &ev) == -1)
+				{
+					std::cerr << "Erreur lors de l'ajout du client à epoll" << std::endl;
+					close(client_fd);
+				}
+			}
+			else
 			{
-				std::cerr << getColorCode(RED) << "Erreur de lecture des données" << getColorCode(NOCOLOR) << std::endl;
-				close(client_fd);
-				continue;
+				// Gérer les données du client
+				if (_handle_client(events[i].data.fd) == 1)
+					return;
 			}
-			std::cout << getColorCode(CYAN) << "Message reçu: " << getColorCode(NOCOLOR) << getColorCode(MAGENTA) << buffer << getColorCode(NOCOLOR) << std::endl;
-
-			// Répondre au client
-			const char* response = "Message reçu";
-			send(client_fd, response, strlen(response), 0);
-			std::cout << getColorCode(GREEN) << "Réponse envoyée au client" << getColorCode(NOCOLOR) << std::endl;
-
-			// Fermer la connexion avec le client
-			close(client_fd);
 		}
 	}
 }
@@ -182,6 +223,8 @@ void	Server::exec(void)
 Server::~Server()
 {
 	std::cout << getColorCode(RED) << "DEstructeur de Server" << getColorCode(NOCOLOR) << std::endl;
+	if (this->_epollfd > -1)
+		close(_epollfd);
 	if (this->_socketfd > -1)
 		close(this->_socketfd);
 }
@@ -199,6 +242,32 @@ std::ostream	&operator<<( std::ostream & o, Server const & serv)
 	o << getColorCode(YELLOW) << "Socket IN Adresse IP du serveur = " << getColorCode(BLUE) << getColorCode(NOCOLOR) << ip_str << std::endl;
 	o << getColorCode(YELLOW) << "Le port du Serveur = " << getColorCode(BLUE) << serv.get_port() << getColorCode(NOCOLOR) << std::endl;
 	o << getColorCode(YELLOW) << "Le port du Serveur a parti de socket adresse in = " << getColorCode(BLUE) << ntohs(socket_adresse_in.sin_port) << getColorCode(NOCOLOR) << std::endl;
+	// Informations sur epoll
+	o << getColorCode(YELLOW) << "Le file descriptor epoll = " << getColorCode(BLUE) << serv.get_epollfd() << getColorCode(NOCOLOR) << std::endl;
+
+	o << getColorCode(YELLOW) << "Événements surveillés par epoll :" << getColorCode(NOCOLOR) << std::endl;
+
+	// Affichage des descripteurs surveillés
+	struct epoll_event events[MAX_EVENTS];
+	int nfds = epoll_wait(serv.get_epollfd(), events, MAX_EVENTS, 0); // Non-bloquant pour obtenir les descripteurs
+	if (nfds == -1)
+		o << getColorCode(RED) << "Erreur lors de la récupération des descripteurs epoll." << getColorCode(NOCOLOR) << std::endl;
+	else if (nfds == 0)
+		o << getColorCode(YELLOW) << "Aucun descripteur surveillé actuellement." << getColorCode(NOCOLOR) << std::endl;
+	else
+	{
+		for (int i = 0; i < nfds; ++i)
+		{
+			o << getColorCode(YELLOW) << "Descripteur : " << getColorCode(BLUE) << events[i].data.fd << getColorCode(NOCOLOR);
+			o << getColorCode(YELLOW) << " | Événements : " << getColorCode(BLUE);
+			if (events[i].events & EPOLLIN) o << "EPOLLIN ";
+			if (events[i].events & EPOLLOUT) o << "EPOLLOUT ";
+			if (events[i].events & EPOLLERR) o << "EPOLLERR ";
+			if (events[i].events & EPOLLHUP) o << "EPOLLHUP ";
+			o << getColorCode(NOCOLOR) << std::endl;
+		}
+	}
+
 	o << "|----------------------------------------------------------------------------------------|" << std::endl;
 	return o;
 }

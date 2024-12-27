@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/17 07:52:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/27 09:36:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void TO_DO(void)
 
 int	main(int argc, char **argv)
 {
-	TO_DO();
+	// TO_DO();
 	std::cout << "------------------" << std::endl;
 	try
 	{
