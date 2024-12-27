@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 09:39:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/28 00:06:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ private:
 	void 			_bind_and_listen(void);
 	void			_throw_except(const std::string &msg);
 	void			_paramEPoll(void);
-	int			_handle_client(int client_fd);
+	int				_handle_client(int client_fd);
 	Server();
 
 public:
@@ -68,6 +68,8 @@ public:
 
 	void	exec(void);
 };
+
+void show_epollfd_data( std::ostream & o, int const & epollfd);
 
 std::ostream & operator<<( std::ostream & o, Server const & serv);
 
