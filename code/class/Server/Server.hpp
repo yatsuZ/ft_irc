@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 23:49:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/30 05:26:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #define BUFFER_SIZE 1024
 #define MAX_EVENTS 10
 
+
+/// @brief Exception pour toutes erreurs provenant soit de l'initialisation de la classe Serveur ou provenant de la méthode Exec
 class Init_serv_error : public std::exception
 {
 	private:
@@ -33,17 +35,17 @@ class Init_serv_error : public std::exception
 		}
 };
 
+/// @brief Class Serveur : la classe principale qui gère tout, y compris la gestion des connexions et des échanges de données.
 class Server
 {
 private:
 
-	const std::string			_name;
-	const uint16_t 				_port;
-	const std::string			_mot_de_passe;
-	const int					_socketfd;
-	sockaddr_in					_sock_addr_serv_in;
-	std::vector<struct pollfd> 	_fds;
-
+	const std::string			_name;				// Nom du serveur
+	const uint16_t 				_port;				// Port d'écoute du serveur
+	const std::string			_mot_de_passe;		// Mot de passe du serveur IRC
+	const int					_socketfd;			// Le descripteur de la socket
+	sockaddr_in					_sock_addr_serv_in;	// Adresse de la socket du serveur
+	std::vector<struct pollfd> 	_fds;				// Vecteur de pollfd pour gérer plusieurs connexions
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);
@@ -67,7 +69,8 @@ public:
 	void	exec(void);
 };
 
-
+/// @brief Affiche tout les attributs de tout les pollfd du vecteur
 std::ostream & operator<<(std::ostream &o, std::vector<struct pollfd> const &pollfds);
+/// @brief Affiche tout les attributs de la class serveur
 std::ostream & operator<<( std::ostream & o, Server const & serv);
 

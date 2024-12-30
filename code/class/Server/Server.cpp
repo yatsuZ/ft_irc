@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/27 23:55:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2024/12/30 05:52:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 uint16_t  Server::_is_a_legit_port(std::string & argv1)
 {
 	for (size_t i = 0; i < argv1.size(); ++i) {
-		if (!std::isdigit(argv1[i])) {
+		if (!std::isdigit(argv1[i]))
 			throw Init_serv_error("Le premier argument : \"" + argv1 + "\" n'est pas un nombre valide.");
-		}
 	}
 
 	bool error = false;
@@ -50,6 +49,8 @@ std::string Server::_is_a_legit_mdp(std::string & argv2) {
 	return std::string(argv2);
 }
 
+/// @brief Initialise la FD socket
+/// @return le fd
 int Server::_init_socket()
 {
 	int socketfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -78,13 +79,36 @@ _socketfd(-1)
 	std::cout << getColorCode(BLUE) << "Constructeur de Server" << std::endl;
 }
 
+/// @brief Constructeur du serveur
+/// @param argv1 Le port qui sera parser et configurer en temp que _port
+/// @param argv2 Le mot de passe du serveur qui sera stockée dans _mdp
+Server::Server(std::string argv1, std::string argv2):
+_name("Nom du Serveur"),
+_port(this->_is_a_legit_port(argv1)),
+_mot_de_passe(this->_is_a_legit_mdp(argv2)),
+_socketfd(this->_init_socket())
+{
+	std::cout << getColorCode(BLUE) << "Constructeur de Server" << getColorCode(NOCOLOR) << std::endl;
+	this->_sock_addr_serv_in.sin_family = AF_INET;
+	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
+	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
+
+	this->_bind_and_listen();
+	
+	this->_paramPoll();
+	
+	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
+
+}
+
+/// @brief Configure le port et les sockets
 void Server::_bind_and_listen()
 {
 	const sockaddr *sock_addr_serv_in_ptr = reinterpret_cast<const sockaddr *>(&this->_sock_addr_serv_in);
 
 	// Configure l'option SO_REUSEADDR 
 	int opt = REUSEADDR_OPTION;
-	// Sa peret de dire que le port peut etre desactiver rapidement et reutiliser
+	// Sa permet de dire que le port peut etre desactiver rapidement et reutiliser
 	if (setsockopt(this->_socketfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0)
 		_throw_except("Erreur lors de la configuration de SO_REUSEADDR.");
 
@@ -115,26 +139,7 @@ void	Server::_paramPoll(void)
 	_fds.push_back(server_pollfd);
 }
 
-Server::Server(std::string argv1, std::string argv2):
-_name("Nom du Serveur"),
-_port(this->_is_a_legit_port(argv1)),
-_mot_de_passe(this->_is_a_legit_mdp(argv2)),
-_socketfd(this->_init_socket())
-{
-	std::cout << getColorCode(BLUE) << "Constructeur de Server" << getColorCode(NOCOLOR) << std::endl;
-	this->_sock_addr_serv_in.sin_family = AF_INET;
-	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
-	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
-
-	this->_bind_and_listen();
-	
-	this->_paramPoll();
-	
-	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
-
-}
-
-// utiliser epoll et comprendre fonctionement
+/// @brief Methode qui est le coeur du programme
 void	Server::exec(void)
 {
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
