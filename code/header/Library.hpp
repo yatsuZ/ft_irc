@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.hpp                                          :+:      :+:    :+:   */
+/*   Library.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 12:50:27 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/15 07:06:59 by yzaoui           ###   ########.fr       */
+/*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
+/*   Updated: 2024/12/26 17:40:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "color.hpp"
+
+#include <iostream>
+#include <cstring>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
 #include <string>
+#include <unistd.h>
+#include <stdexcept>
+#include <sstream>
+#include <cctype>
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <poll.h>
+#include <errno.h>
+#include <cstdio>
+#include <vector>
+#include <cstdlib>
 
-// Définition de l'énumération
-enum Color {
-	NOCOLOR,
-	RED,
-	GREEN,
-	YELLOW,
-	BLUE,
-	MAGENTA,
-	CYAN,
-	WHITE,
-	COLOR_COUNT // Taille du tableau de couleur
-};
 
-// Tableau associé avec leur valeur ascii
-extern const char* colorCodes[COLOR_COUNT];
-
-// Retourne la valeur ascii de la couleur demande
-const char* getColorCode(Color color);
-
+long ft_atol_limits(const std::string& str, long min, long max, bool *error);
