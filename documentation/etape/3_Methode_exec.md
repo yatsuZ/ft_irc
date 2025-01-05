@@ -17,6 +17,7 @@ Dans cette section, nous allons expliquer ce qu'est **poll** et ses variantes, c
 	- [Code source de `_paramPoll()` et `exec()`](#code-source-de-_parampoll-et-exec)
 		- [Fonctionnement de `_paramPoll()`](#fonctionnement-de-_parampoll)
 		- [Fonctionnement de `exec()`](#fonctionnement-de-exec)
+	- [Tester](#tester)
 		- [Alternatives envisagées](#alternatives-envisagées)
 	- [Références](#références)
 
@@ -156,6 +157,9 @@ void	Server::exec(void)
 	std::cout << getColorCode(YELLOW) << "Fin du Serveur" << getColorCode(NOCOLOR) << std::endl;
 }
 ```
+
+## Tester 
+
 
 ---
 
