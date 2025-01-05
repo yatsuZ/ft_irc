@@ -5,25 +5,20 @@ Dans cette section, nous allons définir les fonctionnalités du serveur, son ut
 ## Table des matières
 
 - [2. Création du serveur](#2-création-du-serveur)
-	- [Table des matières](#table-des-matières)
-	- [Objectif](#objectif)
-		- [Qu'est-ce qu'un serveur](#quest-ce-quun-serveur)
-		- [C'est quoi un socket](#cest-quoi-un-socket)
-	- [Structure et rôle de la classe `Server`](#structure-et-rôle-de-la-classe-server)
-		- [Brève description](#brève-description)
-		- [Présentation du fichier `server.hpp`](#présentation-du-fichier-serverhpp)
-		- [Constructeur Paramétré](#constructeur-paramétré)
-		- [Définition de chaque Attribut](#définition-de-chaque-attribut)
-		- [Paramétrage des Attributs](#paramétrage-des-attributs)
-			- [**`_sock_addr_serv_in`** (type `sockaddr_in`)](#_sock_addr_serv_in-type-sockaddr_in)
-			- [**Méthode `_bind_and_listen()`**](#méthode-_bind_and_listen)
-			- [**`_fds`**](#_fds)
-	- [Conclusion](#conclusion)
-	- [Fin du fichier MD : Création du serveur](#fin-du-fichier-md--création-du-serveur)
-				- [**Utilité de `_fds`**](#utilité-de-_fds)
-				- [**Différentes Possibilités pour `_fds`**](#différentes-possibilités-pour-_fds)
-				- [**Avantages et Inconvénients des Différentes Méthodes**](#avantages-et-inconvénients-des-différentes-méthodes)
-				- [**Conclusion**](#conclusion-1)
+  - [Table des matières](#table-des-matières)
+  - [Objectif](#objectif)
+    - [Qu'est-ce qu'un serveur](#quest-ce-quun-serveur)
+    - [C'est quoi un socket](#cest-quoi-un-socket)
+  - [Structure et rôle de la classe `Server`](#structure-et-rôle-de-la-classe-server)
+    - [Brève description](#brève-description)
+    - [Présentation du fichier `server.hpp`](#présentation-du-fichier-serverhpp)
+    - [Constructeur Paramétré](#constructeur-paramétré)
+    - [Définition de chaque Attribut](#définition-de-chaque-attribut)
+    - [Paramétrage des Attributs](#paramétrage-des-attributs)
+      - [**`_sock_addr_serv_in`** (type `sockaddr_in`)](#_sock_addr_serv_in-type-sockaddr_in)
+      - [**Méthode `_bind_and_listen()`**](#méthode-_bind_and_listen)
+      - [**`_fds`**](#_fds)
+  - [Conclusion](#conclusion)
 
 
 ## Objectif
@@ -301,55 +296,3 @@ L'attribut `_fds` est utilisé pour gérer les descripteurs de fichiers dans le 
 Dans ce fichier, nous avons exploré les principales utilités du serveur, ainsi que l'initialisation de ses attributs. Nous avons détaillé le rôle de chaque attribut et expliqué comment ils sont configurés lors de la création du serveur. 
 
 Dans le prochain fichier Markdown, nous approfondirons l'utilisation de ces attributs pour mettre en place le programme d'écoute du serveur. Nous discuterons également des différentes options de gestion des descripteurs de fichiers, en comparant `poll` et `epoll`, leurs avantages, inconvénients, ainsi que d'autres alternatives possibles.
-
-## Fin du fichier MD : Création du serveur
-
-------------------------------------------
-
-Super partie
-
-L'attribut `_fds` fait référence à un tableau ou une structure qui est utilisé pour gérer les descripteurs de fichiers (file descriptors) dans le cadre de la gestion des entrées/sorties (I/O) non-bloquantes, souvent en combinaison avec un mécanisme de *polling* (comme `poll()` ou `select()`), qui permet au serveur de gérer plusieurs connexions simultanément sans blocage.
-
-##### **Utilité de `_fds`**
-
-L'attribut `_fds` sert à stocker les descripteurs de fichiers des sockets ou autres ressources d'entrée/sortie que le serveur doit surveiller. Dans un serveur, ces descripteurs de fichiers sont utilisés pour suivre les connexions clients entrantes, afin de pouvoir les lire ou écrire sans bloquer l'exécution du programme.
-
-Par exemple, dans un serveur qui utilise `poll()` ou `select()`, `_fds` contient les descripteurs de fichiers des connexions en cours, et le serveur peut vérifier si ces descripteurs sont prêts à être lus ou écrits. Cela permet de gérer de manière efficace plusieurs connexions en même temps.
-
-##### **Différentes Possibilités pour `_fds`**
-
-Le type et la configuration exacte de `_fds` dépendront de l'implémentation du mécanisme de *polling* que vous choisissez d'utiliser. Il existe plusieurs options pour gérer la surveillance des descripteurs de fichiers :
-
-1. **`poll()`** :
-   - Utilise un tableau de structures `pollfd` pour suivre l'état des descripteurs de fichiers.
-   - Avantage : Plus flexible que `select()`, car il permet de gérer un plus grand nombre de descripteurs de fichiers.
-   - Inconvénient : Moins portable que `select()` dans certains environnements plus anciens.
-
-2. **`select()`** :
-   - Utilise trois ensembles de descripteurs (pour la lecture, l'écriture et les erreurs) pour surveiller les descripteurs de fichiers.
-   - Avantage : Très largement supporté et bien documenté.
-   - Inconvénient : Limitations sur le nombre de descripteurs de fichiers qu'il peut gérer (souvent 1024 par défaut).
-
-3. **`epoll()`** (sur Linux) :
-   - Une alternative plus performante à `poll()` et `select()`, particulièrement pour les serveurs qui doivent gérer un grand nombre de connexions.
-   - Avantage : Très performant avec un grand nombre de descripteurs de fichiers.
-   - Inconvénient : Limité aux systèmes Linux.
-
-##### **Avantages et Inconvénients des Différentes Méthodes**
-
-- **`poll()`** :
-  - **Avantages** : Plus flexible que `select()`, capable de gérer un plus grand nombre de descripteurs de fichiers.
-  - **Inconvénients** : Moins performant que `epoll()` sur un grand nombre de descripteurs de fichiers.
-
-- **`select()`** :
-  - **Avantages** : Largement supporté, simple à utiliser.
-  - **Inconvénients** : Limité par le nombre de descripteurs qu'il peut gérer (souvent 1024).
-
-- **`epoll()`** :
-  - **Avantages** : Très performant pour un grand nombre de descripteurs de fichiers.
-  - **Inconvénients** : Limité à Linux et plus complexe à utiliser que `poll()` ou `select()`.
-
-##### **Conclusion**
-
-L'attribut `_fds` est essentiel pour la gestion des connexions simultanées dans un serveur. Le choix de l'outil de *polling* (comme `poll()`, `select()`, ou `epoll()`) dépendra de vos besoins en termes de performance et de portabilité. Chaque option présente des avantages et des inconvénients, et il est important de choisir celle qui convient le mieux à votre cas d'utilisation.
-
