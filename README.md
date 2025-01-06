@@ -19,7 +19,7 @@ Créez notre propre serveur IRC, en suivant les RFC standards d'Internet. En equ
 |-----------------------|---------------------------|---------------------------|---------------------------|
 | **Fait**              |           |                           |                           |
 | **En train de faire** | Rien                      | rien                      | rien                      |
-| **À faire**           | Cree un serveur qui ecoute le port dentree | redige le fichier md [1ier etape](./documentation/etape/1_Organiser_la_structure.md) |  |
+| **À faire**           |  Ammeliorer le code de la methode exec et la class server + savoir comment marche irssi | redige le fichier md [1ier etape](./documentation/etape/1_Organiser_la_structure.md) | Savoir comment marche irssi + Savir comment marche le code |
 
 ## Autres Documents
 
@@ -37,4 +37,4 @@ Ces documents vous fourniront une base solide pour la réalisation de votre proj
 ## Auteur
 
 Ce projet a été réalisé par [yatsuZ](https://github.com/yatsuZ), [Kvroooo](https://github.com/Kvroooo) et [Yosho2](https://github.com/Yosho2) !!! :smiley:
-
+ 
