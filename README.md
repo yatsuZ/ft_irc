@@ -38,3 +38,7 @@ Ces documents vous fourniront une base solide pour la réalisation de votre proj
 
 Ce projet a été réalisé par [yatsuZ](https://github.com/yatsuZ), [Kvroooo](https://github.com/Kvroooo) et [Yosho2](https://github.com/Yosho2) !!! :smiley:
 
+Je dois expliquer comment :
+	1. Tester mon programme et
+	2. avoir plusieur connexion
+	3. stocker les adresse des client
