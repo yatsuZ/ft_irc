@@ -17,10 +17,10 @@
 /// @return uint16_t le port par argv1
 uint16_t  Server::_is_a_legit_port(std::string & argv1)
 {
-	for (size_t i = 0; i < argv1.size(); ++i) {
-		if (!std::isdigit(argv1[i]))
-			throw Init_serv_error("Le premier argument : \"" + argv1 + "\" n'est pas un nombre valide.");
-	}
+	// for (size_t i = 0; i < argv1.size(); ++i) {
+	// 	if (!std::isdigit(argv1[i]))
+	// 		throw Init_serv_error("Le premier argument : \"" + argv1 + "\" n'est pas un nombre valide.");
+	// }
 
 	bool error = false;
 	long portl = ft_atol_limits(argv1, 1, 65535, &error);
