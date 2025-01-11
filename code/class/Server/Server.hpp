@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/30 05:26:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/11 01:25:54 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "./../../header/Library.hpp"
+#include "./../Client/Client.hpp"
 
 #define ADDRESSE_IP_IN "127.0.0.1"
 // #define ADDRESSE_IP_IN "10.13.1.13"
@@ -47,6 +47,7 @@ private:
 	const int					_socketfd;			// Le descripteur de la socket
 	sockaddr_in					_sock_addr_serv_in;	// Adresse de la socket du serveur
 	std::vector<struct pollfd> 	_fds;				// Vecteur de pollfd pour gérer plusieurs connexions
+	std::vector<Client> 		_all_clients;		// Vecteur de tout les clients
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);
@@ -66,8 +67,14 @@ public:
 	int							get_socketfd(void) const{return _socketfd;}
 	sockaddr_in					get_socke_addr_serv(void) const{return _sock_addr_serv_in;}
 	std::vector<struct pollfd>	get_pollfds(void) const {return this->_fds;}
+	
 
+	void	connect(void);
+	void	link(int client_fd);
+	void	disconnect(int client_index);
 	void	exec(void);
+	void	old_exec(void);
+
 };
 
 /// @brief Affiche tout les attributs de tout les pollfd du vecteur

@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/30 05:52:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/10 23:58:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../header/Ft_irc.hpp"
+#include "./Server.hpp"
 
 /// @brief verifier que argv1 est un port legit et return sa valeur en uint16_t  sinon envoie une exception, un bon port est compris entre 1 et 65535
 /// @param argv1 Le premier arguement qui est un port en string
@@ -139,60 +139,6 @@ void	Server::_paramPoll(void)
 	_fds.push_back(server_pollfd);
 }
 
-/// @brief Methode qui est le coeur du programme
-void	Server::exec(void)
-{
-	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
-
-	// Boucle principale
-	while (true)
-	{
-		// Poll pour attendre un événement
-		int ret = poll(this->_fds.data(), 1, 5); // Attente infinie pour des événements +  Utilise _fds.data() pour obtenir un pointeur sur le tableau interne
-		if (ret < 0)
-			this->_throw_except("Erreur de la fonction poll()");
-		// Vérification si la socket serveur est prête à accepter une connexion
-		if (this->_fds[0].revents & POLLIN)
-		{
-			sockaddr_in client_addr;
-			socklen_t client_len = sizeof(client_addr);
-			int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
-			if (client_fd < 0)
-			{
-				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
-				break;
-			}
-			std::cout << getColorCode(GREEN) << "Connexion acceptée!" << getColorCode(NOCOLOR) << std::endl;
-
-			// Lire les données envoyées par le client
-			char buffer[BUFFER_SIZE] = {0};
-			ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
-			if (bytes_read < 0)
-			{
-				std::cerr << getColorCode(RED) << "Erreur de lecture des données" << getColorCode(NOCOLOR) << std::endl;
-				close(client_fd);
-				break;
-			}
-			// std::cout << "BUFFER = \"" << buffer << "\"" << std::endl;
-			if (std::string(buffer) == "exit\n")
-			{
-				close(client_fd);
-				break;
-			}
-			std::cout << getColorCode(CYAN) << "Message reçu: " << getColorCode(NOCOLOR) << getColorCode(MAGENTA) << buffer << getColorCode(NOCOLOR) << std::endl;
-
-			// Répondre au client
-			const char* response = "Message reçu";
-			send(client_fd, response, strlen(response), 0);
-			std::cout << getColorCode(GREEN) << "Réponse envoyée au client" << getColorCode(NOCOLOR) << std::endl;
-
-			// Fermer la connexion avec le client
-			close(client_fd);
-		}
-	}
-	std::cout << getColorCode(YELLOW) << "FIN DU SERVEUR" << getColorCode(NOCOLOR) << std::endl;
-}
-
 Server::~Server()
 {
 	std::cout << getColorCode(RED) << "DEstructeur de Server" << getColorCode(NOCOLOR) << std::endl;
@@ -230,7 +176,6 @@ std::ostream &operator<<(std::ostream &o,std::vector<struct pollfd> const &pollf
 	}
 	return o;
 }
-
 
 std::ostream	&operator<<( std::ostream & o, Server const & serv)
 {
