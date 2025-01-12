@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/10 23:58:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/12 19:44:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,9 +139,25 @@ void	Server::_paramPoll(void)
 	_fds.push_back(server_pollfd);
 }
 
+void	Server::_update_index_client_pollfd(size_t start)
+{
+	for (size_t i = start + 1; i < this->_all_clients.size(); i++)
+	{
+		Client & current_client = this->_all_clients[i];
+	
+		long index_of_client_pollfd = current_client.get_index_client_pollfd();
+
+		current_client.set_index_client_pollfd(index_of_client_pollfd - 1);
+	}
+}
+
 Server::~Server()
 {
 	std::cout << getColorCode(RED) << "DEstructeur de Server" << getColorCode(NOCOLOR) << std::endl;
+	for (std::vector<Client>::iterator client = this->_all_clients.begin(); client < this->_all_clients.end(); client++)
+	{
+		(*client).disconnect();
+	}
 	if (this->_socketfd > -1)
 		close(this->_socketfd);
 }

@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/11 00:34:01 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/01/12 19:46:57 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ VAL_CMD = valgrind --tool=memcheck \
 		--show-leak-kinds=all \
 		--track-origins=yes \
 		--track-fds=yes \
-		--log-file=valgrind.log \
-		--read-var-info=yes
+		--read-var-info=yes \
+		# --log-file=valgrind.log
 
 PORT = 8080
 

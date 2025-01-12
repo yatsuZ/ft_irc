@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/11 01:25:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/12 20:48:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 #include "./../Client/Client.hpp"
 
+
+enum Action {
+	NOACTION,
+	SHUTDOWN,
+};
+
 #define ADDRESSE_IP_IN "127.0.0.1"
 // #define ADDRESSE_IP_IN "10.13.1.13"
 #define REUSEADDR_OPTION 1
 #define BUFFER_SIZE 1024
 #define MAX_EVENTS 10
+
+
 
 
 /// @brief Exception pour toutes erreurs provenant soit de l'initialisation de la classe Serveur ou provenant de la méthode Exec
@@ -55,6 +63,8 @@ private:
 	void 			_bind_and_listen(void);
 	void			_throw_except(const std::string &msg);
 	void			_paramPoll(void);
+
+	void			_update_index_client_pollfd(size_t start);
 	Server();
 
 public:
@@ -70,13 +80,15 @@ public:
 	
 
 	void	connect(void);
-	void	link(int client_fd);
-	void	disconnect(int client_index);
+	Action	link(Client &current_client, pollfd &current_pollfd);
+	void	disconnect(Client &client, size_t index_client);
 	void	exec(void);
 	void	old_exec(void);
 
 };
 
+/// @brief Affiche tout les Client et leur contenue
+std::ostream & operator<<(std::ostream &o, std::vector<Client> const &all_clients);
 /// @brief Affiche tout les attributs de tout les pollfd du vecteur
 std::ostream & operator<<(std::ostream &o, std::vector<struct pollfd> const &pollfds);
 /// @brief Affiche tout les attributs de la class serveur

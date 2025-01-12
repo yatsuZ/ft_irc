@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/10 22:46:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/12 20:28:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 		Server test(argv[1], argv[2]);
 		std::cout << test;
 		test.exec();
+		// test.old_exec();
 	}
 	catch(const std::exception& e)
 	{

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/11 01:26:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/12 20:51:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 /// @brief Quand pc se connecte aux serveur
 void	Server::connect(void)
 {
+
+	std::cout << "-------- CONNECTION -----------" << std::endl;
 	sockaddr_in client_addr;
 	socklen_t client_len = sizeof(client_addr);
 
@@ -29,44 +31,57 @@ void	Server::connect(void)
 	pollfd client_pollfd = {client_fd, POLLIN, 0};
 	this->_fds.push_back(client_pollfd);
 
-	std::cout << "Client connecté : FD = " << client_fd << std::endl;
+// Verifier ici si il sagit dune reconexion ou un nvx compte heheh
+	this->_all_clients.push_back(Client(-1, (this->_fds.size() - 1), client_addr, client_len));
+	this->_all_clients[this->_all_clients.size() - 1].set_fd(client_fd);
 }
 
 /// @brief Quand pc transmet des info et communique
-void	Server::link(int client_fd)
+Action	Server::link(Client &current_client, pollfd &current_pollfd)
 {
+	(void) current_client;
 	char buffer[1024];
 	memset(buffer, 0, sizeof(buffer));
 
-	ssize_t bytes_received = recv(client_fd, buffer, sizeof(buffer) - 1, 0);
+	ssize_t bytes_received = recv(current_pollfd.fd, buffer, sizeof(buffer) - 1, 0);
 	if (bytes_received <= 0)
 	{
 		perror("Reception failed");
-		return;
+		return (NOACTION);
 	}
 
-	std::cout << "Message reçu de FD " << client_fd << ": " << buffer << std::endl;
+	std::cout << "Message recu: " << buffer << std::endl;
+	if (std::string(buffer) == "exit\n")
+		return (SHUTDOWN);
 
 	// Echo du message à tous les autres clients
 	for (std::vector<pollfd>::iterator client = this->_fds.begin(); client != this->_fds.end(); client++)
 	{
-		if ((*client).fd != this->_fds[0].fd && (*client).fd != client_fd)
+		if ((*client).fd != this->_fds[0].fd && (*client).fd != current_pollfd.fd)
 			send((*client).fd, buffer, bytes_received, 0);
 	}
+	return (NOACTION);
 }
 
 /// @brief Quand pc se deconnecte aux serveur
-void	Server::disconnect(int client_index)
+void	Server::disconnect(Client &client, size_t index_client)
 {
-	std::cout << "Client déconnecté : FD = " << this->_fds[client_index].fd << std::endl;
-	close(this->_fds[client_index].fd);
-	this->_fds.erase(this->_fds.begin() + client_index);
+	std::cout << "-------- DECO -----------" << std::endl;
+	if (client.get_index_client_pollfd() < 0)
+		return;
 
+	std::cout << "Client déconnecté : ID = " << client.get_id() << std::endl;
+	client.disconnect();
+	this->_fds.erase(this->_fds.begin() + client.get_index_client_pollfd());
+	client.set_index_client_pollfd(-1);
+	this->_update_index_client_pollfd(index_client);
 }
 
 /// @brief Methode qui est le coeur du programme
 void	Server::exec(void)
 {
+	Action	action_a_faire = NOACTION;
+	pollfd	current_pollfd;
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
 
 	// Boucle principale
@@ -76,31 +91,31 @@ void	Server::exec(void)
 		int ret = poll(this->_fds.data(), this->_fds.size(), 5); // Attente infinie pour des événements +  Utilise _fds.data() pour obtenir un pointeur sur le tableau interne
 		if (ret < 0)
 			this->_throw_except("Erreur de la fonction poll()");
-
-		for (size_t i = 0; i < this->_fds.size(); ++i)
+		if (this->_fds[0].revents & POLLIN)
+			this->connect();// Nouvelle connexion
+		for (size_t i = 0; i < this->_all_clients.size(); i++)
 		{
-			if (this->_fds[i].revents & POLLIN)
+			Client &current_client(this->_all_clients[i]);
+			if (current_client.get_index_client_pollfd() < 0)
+				continue;
+			current_pollfd = this->_fds[current_client.get_index_client_pollfd()];
+
+			if (current_pollfd.revents & POLLIN)
 			{
-				if (!i)
-					this->connect();// Nouvelle connexion
+				// Données reçues ou déconnexion
+				char buffer[1];
+				ssize_t check = recv(current_pollfd.fd, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT);
+
+				if (check == 0)
+					this->disconnect(current_client, i);
 				else
-				{
-					// Données reçues ou déconnexion
-					char buffer[1];
-					ssize_t check = recv(this->_fds[i].fd, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT);
-					if (check == 0)
-					{
-						this->disconnect(i);
-						--i; // Réajuster l'index après suppression
-					}
-					else
-						this->link(this->_fds[i].fd);
-				}
+					action_a_faire = this->link(current_client, current_pollfd);
 			}
+			if (action_a_faire == SHUTDOWN)
+				return ;
 		}
 	}
 }
-
 
 /// @brief Methode qui est le coeur du programme Ancienne version
 void	Server::old_exec(void)
