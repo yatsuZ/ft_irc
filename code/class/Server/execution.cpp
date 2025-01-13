@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/13 03:31:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/13 22:36:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,59 +108,4 @@ void	Server::exec(void)
 				return ;
 		}
 	}
-}
-
-/// @brief Methode qui est le coeur du programme Ancienne version
-void	Server::old_exec(void)
-{
-	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
-
-	// Boucle principale
-	while (true)
-	{
-		// Poll pour attendre un événement
-		int ret = poll(this->_all_pollfd.data(), this->_all_pollfd.size(), 5); // Attente infinie pour des événements +  Utilise _all_pollfd.data() pour obtenir un pointeur sur le tableau interne
-		if (ret < 0)
-			this->_throw_except("Erreur de la fonction poll()");
-
-		// Vérification si la socket serveur est prête à accepter une connexion
-		if (this->_all_pollfd[0].revents & POLLIN)
-		{
-			sockaddr_in client_addr;
-			socklen_t client_len = sizeof(client_addr);
-			int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
-			if (client_fd < 0)
-			{
-				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
-				break;
-			}
-			std::cout << getColorCode(GREEN) << "Connexion acceptée!" << getColorCode(NOCOLOR) << std::endl;
-
-			// Lire les données envoyées par le client
-			char buffer[BUFFER_SIZE] = {0};
-			ssize_t bytes_read = read(client_fd, buffer, BUFFER_SIZE);
-			if (bytes_read < 0)
-			{
-				std::cerr << getColorCode(RED) << "Erreur de lecture des données" << getColorCode(NOCOLOR) << std::endl;
-				close(client_fd);
-				break;
-			}
-			// std::cout << "BUFFER = \"" << buffer << "\"" << std::endl;
-			if (std::string(buffer) == "exit\n")
-			{
-				close(client_fd);
-				break;
-			}
-			std::cout << getColorCode(CYAN) << "Message reçu: " << getColorCode(NOCOLOR) << getColorCode(MAGENTA) << buffer << getColorCode(NOCOLOR) << std::endl;
-
-			// Répondre au client
-			const char* response = "Message reçu";
-			send(client_fd, response, strlen(response), 0);
-			std::cout << getColorCode(GREEN) << "Réponse envoyée au client" << getColorCode(NOCOLOR) << std::endl;
-
-			// Fermer la connexion avec le client
-			close(client_fd);
-		}
-	}
-	std::cout << getColorCode(YELLOW) << "FIN DU SERVEUR" << getColorCode(NOCOLOR) << std::endl;
 }

@@ -1,53 +1,85 @@
-# 1 Organiser la structure
+# 1. Organiser la structure
 
-- [1 Organiser la structure](#1-organiser-la-structure)
+- [1. Organiser la structure](#1-organiser-la-structure)
 	- [Objectif](#objectif)
-	- [Fonctionement](#fonctionement)
+	- [Fonctionnement](#fonctionnement)
 	- [Comment faire](#comment-faire)
-	- [Les prinipaux objet](#les-prinipaux-objet)
-	- [Leur role](#leur-role)
-	- [Comment ils interagisse entre eux](#comment-ils-interagisse-entre-eux)
-	- [Ce qui sont capable de faire](#ce-qui-sont-capable-de-faire)
+	- [Les principaux objets](#les-principaux-objets)
+	- [Leur rôle](#leur-rôle)
+	- [Comment ils interagissent entre eux](#comment-ils-interagissent-entre-eux)
+	- [Ce qu'ils sont capables de faire](#ce-quils-sont-capables-de-faire)
+	- [Le tester](#le-tester)
+		- [Avec `nc`](#avec-nc)
+		- [Avec `irssi`](#avec-irssi)
+	- [Fin](#fin)
 
 ## Objectif
 
-Ceci et la premiere etape du projet c'est de savoir comment organiser la structure du projet.
-plus savoir comment sa marchera
+La première étape du projet est de définir comment organiser la structure du projet et comprendre son fonctionnement.
 
-## Fonctionement
+## Fonctionnement
 
-De ce qu'on as compris pour lexecution du projet de cette maniere :
+Voici ce que nous avons compris pour l'exécution du projet :
+
 ```bash
 ./ircserv <port> <password>
 ```
-- port : Le numéro du port sur lequel votre serveur acceptera les connexions entrantes.
-- password : Le mot de passe permettant de s’identifier auprès de votre serveur IRC, et qui devra être fourni par tout client IRC souhaitant s’y connecter
 
-pour atctiver mais pour y acceder sa sera avec un service de client choisi (Nous avons choisi [Irssi](https://fr.wikipedia.org/wiki/Irssi)) cqr deja installer sur les pos de 42 et ce quon as vu assez simple dutilisation.
+- **port** : Le numéro du port sur lequel votre serveur acceptera les connexions entrantes.
+- **password** : Le mot de passe permettant de s’identifier auprès de votre serveur IRC, et qui devra être fourni par tout client IRC souhaitant s’y connecter.
 
-Donc maitnant c'est de savoir comment communiquer entre le serveur et le client et la structure dans le server.
+Pour activer et accéder au serveur, nous utiliserons un client IRC. Nous avons choisi [Irssi](https://fr.wikipedia.org/wiki/Irssi), qui est déjà installé sur les postes de 42 et est simple d’utilisation.
 
-documentation de [irssi](https://irssi.org/documentation/)
+**Documentation utile** : [Irssi Documentation](https://irssi.org/documentation/)
 
 ## Comment faire
 
-Reflechir aux besoin et que devra faire notre serveur irc.
-Reflechir aux different orbjet / class et leur methode et atrribut.
+- Réfléchir aux besoins du serveur IRC et définir ses fonctionnalités principales.
+- Concevoir les différents objets/classes ainsi que leurs méthodes et attributs.
 
-## Les prinipaux objet
+## Les principaux objets
 
-Je dirais :
-Le serveur
-Les chanelle 
-Les utilisateurs 
-Les socket de comunication peut etre.
+Nous avons identifié les classes suivantes :
+- **Serveur**
+- **Utilisateur**  
 
-et c'est les principaux objet
+Possiblement :
+- **Channel**
+- **Bot**
+- **Fichier**
 
-## Leur role
+## Leur rôle
 
-## Comment ils interagisse entre eux
+- **Serveur** : La classe principale, contenant les utilisateurs et les channels.
+- **Utilisateur** : Représente chaque utilisateur connecté au serveur.
+- **Channel** : (si implémenté) Représente les canaux de discussion.
+- **Bot** : (optionnel) Un bot pour automatiser certaines tâches.
+- **Fichier** : (optionnel) Gère les échanges de fichiers.
 
-## Ce qui sont capable de faire 
+## Comment ils interagissent entre eux
 
-a complter plus tard
+La structure ressemblerait à un triangle :
+- Le **Serveur** contient une liste (ou un vecteur) d’**Utilisateurs** et de **Channels**.
+- Chaque **Utilisateur** a une liste de **Channels** auxquels il appartient.
+- Chaque **Channel** a une liste d’**Utilisateurs** connectés.
+
+## Ce qu'ils sont capables de faire
+
+Pour plus de détails sur les fonctionnalités attendues, consultez : [Cahier des charges](./../Cahier_des_charges.md).
+
+## Le tester
+
+### Avec `nc`
+
+1. Exécutez le programme comme montré précédemment.
+2. Depuis un PC dans le même réseau que le serveur, lancez la commande suivante :
+   ```bash
+   nc <ip> <port>
+   ```
+3. Vous pourrez alors envoyer des données au serveur sous forme de bytes.
+
+### Avec `irssi`
+
+Cette méthode est en cours de développement.
+
+## Fin

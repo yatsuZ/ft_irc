@@ -1,183 +1,172 @@
-# 3. Le cœur du programme  
+# 3. Le cœur du programme
 
-Dans cette section, nous allons expliquer ce qu'est **poll** et ses variantes, comment choisir la méthode adaptée, comment les configurer, et détailler la méthode `exec()`.  
+Dans cette section, nous explorons le concept de **poll** et ses variantes, les méthodes pour choisir l'outil adapté, leur configuration, ainsi que le fonctionnement détaillé de la méthode `exec()`.
 
-## Table des matières  
+## Table des matières
 
 - [3. Le cœur du programme](#3-le-cœur-du-programme)
 	- [Table des matières](#table-des-matières)
 	- [Objectif](#objectif)
 	- [Outils de multiplexage d'I/O](#outils-de-multiplexage-dio)
 		- [Problématique](#problématique)
-		- [Définition, utilité et caractéristiques](#définition-utilité-et-caractéristiques)
-		- [Pourquoi le multiplexage d'I/O est utile ?](#pourquoi-le-multiplexage-dio-est-utile-)
+		- [Définition et utilité](#définition-et-utilité)
+		- [Pourquoi utiliser le multiplexage d'I/O ?](#pourquoi-utiliser-le-multiplexage-dio-)
 		- [Exemple concret](#exemple-concret)
-		- [Les différents outils](#les-différents-outils)
+		- [Comparaison des outils](#comparaison-des-outils)
 	- [La méthode `exec()`](#la-méthode-exec)
-	- [Code source de `_paramPoll()` et `exec()`](#code-source-de-_parampoll-et-exec)
-		- [Fonctionnement de `_paramPoll()`](#fonctionnement-de-_parampoll)
+		- [Initialisation avec `_paramPoll()`](#initialisation-avec-_parampoll)
 		- [Fonctionnement de `exec()`](#fonctionnement-de-exec)
-	- [Tester](#tester)
+	- [Explications et tests](#explications-et-tests)
+		- [Explications](#explications)
+		- [Tester le programme](#tester-le-programme)
 		- [Alternatives envisagées](#alternatives-envisagées)
-	- [Références](#références)
 
 ---
 
-## Objectif  
+## Objectif
 
-- Expliquer ce qu'est un **outil de multiplexage d'I/O**, ses variantes, et pourquoi ils sont nécessaires.  
-- Présenter les différents outils de multiplexage d'I/O (**poll**, **epoll**, etc.), leurs points forts et leurs faiblesses.  
-- Décrire comment l'outil choisi est utilisé dans la méthode `exec()` et pourquoi il a été sélectionné.  
-
----
-
-## Outils de multiplexage d'I/O  
-
-### Problématique  
-
-Lorsqu'un programme doit gérer de multiples connexions simultanément (ex. serveur web, chat), il est inefficace de créer un thread ou un processus par connexion. Cela consomme trop de ressources et limite la scalabilité.  
-
-Les **outils de multiplexage d'I/O** permettent de surveiller plusieurs descripteurs de fichiers (sockets, fichiers, pipes, etc.) en une seule opération, rendant le programme plus efficace.  
+- Présenter les outils de multiplexage d'I/O (**poll**, **epoll**, etc.), leurs caractéristiques, avantages et inconvénients.
+- Décrire leur rôle dans le programme, notamment au sein de la méthode `exec()`.
+- Expliquer pourquoi `poll` a été choisi pour ce projet.
 
 ---
 
-### Définition, utilité et caractéristiques  
+## Outils de multiplexage d'I/O
 
-1. **Multiplexage**  
-   - Signifie "gérer plusieurs choses en parallèle".  
-   - Ici, cela désigne la capacité à surveiller plusieurs descripteurs d'I/O pour détecter ceux qui sont prêts (lecture, écriture, erreurs).  
+### Problématique
 
-2. **I/O (Input/Output)**  
-   - Représente toutes les opérations d'entrée (lecture) et de sortie (écriture).  
-   - Exemples :  
-     - Lecture d'une socket réseau.  
-     - Écriture dans un fichier.  
-     - Communication entre processus via un pipe.  
+Lorsqu'un programme doit gérer plusieurs connexions simultanément (par exemple, un serveur web ou une application de chat), créer un thread ou un processus par connexion est inefficace. Cela consomme beaucoup de ressources et limite la scalabilité.
 
----
+Les outils de multiplexage d'I/O permettent de surveiller plusieurs descripteurs de fichiers (sockets, fichiers, pipes, etc.) dans une seule opération, rendant le programme plus performant.
 
-### Pourquoi le multiplexage d'I/O est utile ?  
+### Définition et utilité
 
-Le multiplexage d'I/O résout les problèmes suivants :  
-- Éviter le blocage du programme sur des descripteurs non prêts.  
-- Réduire le nombre de threads/processus nécessaires pour gérer plusieurs connexions.  
-- Optimiser la gestion des ressources pour des applications à grande échelle.  
+1. **Multiplexage** :
+   - Gérer plusieurs descripteurs simultanément.
+   - Identifier lesquels sont prêts pour une opération d'entrée ou de sortie.
 
----
+2. **I/O (Input/Output)** :
+   - Opérations de lecture et d'écriture.
+   - Exemples :
+     - Lecture depuis une socket réseau.
+     - Écriture dans un fichier.
+     - Communication via un pipe.
 
-### Exemple concret  
+### Pourquoi utiliser le multiplexage d'I/O ?
 
-Imaginez un serveur web gérant 1000 connexions simultanées :  
-- **Sans multiplexage** :  
-  - 1000 threads ou processus, chacun bloqué en attendant des données.  
-  - Très coûteux en mémoire et CPU.  
-- **Avec multiplexage** :  
-  - Une seule boucle surveille les 1000 connexions.  
-  - Le serveur agit uniquement quand une connexion est prête (lecture/écriture).  
+Le multiplexage d'I/O résout plusieurs problèmes :
+- Empêche le blocage du programme sur des descripteurs non prêts.
+- Réduit le nombre de threads/processus nécessaires.
+- Améliore la gestion des ressources pour les applications à grande échelle.
 
----
+### Exemple concret
 
-### Les différents outils  
+Un serveur web gérant 1000 connexions simultanées :
+- **Sans multiplexage** :
+  - 1000 threads ou processus sont créés, chacun bloqué en attente de données.
+  - Consommation excessive de mémoire et CPU.
+- **Avec multiplexage** :
+  - Une seule boucle surveille les 1000 connexions.
+  - Le serveur agit uniquement lorsque des connexions sont prêtes (lecture/écriture).
 
-Voici un tableau comparatif des principaux outils de multiplexage d'I/O :  
+### Comparaison des outils
 
-| Outil       | Description                         | Avantages                                   | Inconvénients                            | Compatibilité           |  
-|-------------|-------------------------------------|---------------------------------------------|------------------------------------------|-------------------------|  
-| **`select`** | Premier outil historique           | Simple à utiliser, très compatible          | Limité à 1024 descripteurs, inefficace   | Tous les systèmes Unix  |  
-| **`poll`**   | Amélioration de `select`           | Gère plus de descripteurs, syntaxe simple   | Moins performant pour un grand nombre    | Tous les systèmes Unix  |  
-| **`epoll`**  | Spécifique à Linux, très performant| Scalabilité, supporte des millions de connexions | Syntaxe plus complexe, Linux uniquement | Linux                  |  
-| **`kqueue`** | Alternative sur BSD/macOS          | Très performant, comparable à `epoll`      | Non disponible sur Linux                 | BSD, macOS             |  
-| **`io_uring`** | Outil récent sur Linux            | Performances avancées, support moderne     | Nécessite un noyau récent, adoption lente| Linux (noyau récent)   |  
+| Outil       | Description                         | Avantages                                   | Inconvénients                            | Compatibilité           |
+|-------------|-------------------------------------|---------------------------------------------|------------------------------------------|-------------------------|
+| **`select`** | Premier outil historique           | Simple, très compatible                     | Limité à 1024 descripteurs, inefficace   | Tous les systèmes Unix  |
+| **`poll`**   | Amélioration de `select`           | Gère plus de descripteurs, syntaxe simple   | Moins performant pour un grand nombre    | Tous les systèmes Unix  |
+| **`epoll`**  | Spécifique à Linux, très performant| Scalabilité, supporte des millions de connexions | Syntaxe plus complexe, Linux uniquement | Linux                  |
+| **`kqueue`** | Alternative sur BSD/macOS          | Très performant, comparable à `epoll`      | Non disponible sur Linux                 | BSD, macOS             |
+| **`io_uring`** | Outil récent sur Linux            | Performances avancées, support moderne     | Nécessite un noyau récent, adoption lente| Linux (noyau récent)   |
 
-> **Note** : Pour ce projet, nous avons choisi `poll` car il est le mécanisme par défaut proposé dans le sujet. Cependant, nous avons envisagé d'utiliser `epoll` pour ses meilleures performances.  
-
----
-
-## La méthode `exec()`  
-
-Dans cette section, nous détaillons la méthode `exec()` utilisée dans le programme, ainsi que son rôle et son fonctionnement. Nous abordons également la méthode `_paramPoll()`.  
+> **Note** : `poll` a été choisi pour ce projet car il est compatible avec la majorité des systèmes Unix et répond aux exigences du sujet.
 
 ---
 
-## Code source de `_paramPoll()` et `exec()`  
+## La méthode `exec()`
 
-### Fonctionnement de `_paramPoll()`  
+### Initialisation avec `_paramPoll()`
 
-La méthode `_paramPoll()` initialise le premier descripteur, dédié au serveur, en paramétrant les événements à surveiller.  
-
-Nous utilisons un **vecteur** pour stocker les structures `pollfd`, car il permet de gérer dynamiquement plusieurs descripteurs de clients connectés. La taille du vecteur peut être ajustée à tout moment, et il offre un accès facile aux informations de chaque descripteur.  
+La méthode `_paramPoll()` configure le descripteur du serveur pour surveiller les connexions entrantes. Les descripteurs sont stockés dans un vecteur pour une gestion dynamique.
 
 ```cpp
-void	Server::_paramPoll(void)
+void Server::_paramPoll(void)
 {
-	// Structure pour poll
-	struct pollfd server_pollfd;
+    struct pollfd server_pollfd;
+    server_pollfd.fd = _socketfd; // Descripteur de la socket du serveur
+    server_pollfd.events = POLLIN; // Surveiller les événements de lecture
+    server_pollfd.revents = 0;
+    _all_pollfd.push_back(server_pollfd);
+}
+```
 
-	server_pollfd.fd = _socketfd;	// La socket du serveur
-	server_pollfd.events = POLLIN;	// On surveille les événements de lecture (connexion entrante)
-	server_pollfd.revents = 0;
-	_all_pollfd.push_back(server_pollfd);
+### Fonctionnement de `exec()`
+
+La méthode `exec()` est le cœur du programme. Elle surveille les événements réseau et gère les connexions entrantes, les échanges de messages et les déconnexions.
+
+```cpp
+void Server::exec(void)
+{
+    Action action_a_faire = NOACTION;
+    pollfd current_pollfd;
+
+    while (true)
+    {
+        int ret = poll(_all_pollfd.data(), _all_pollfd.size(), 5); // Surveiller les événements
+        if (ret < 0)
+            throw std::runtime_error("Erreur de la fonction poll()");
+
+        if (_all_pollfd[0].revents & POLLIN)
+            connect(); // Nouvelle connexion
+
+        for (size_t i = 1; i < _all_pollfd.size(); i++)
+        {
+            current_pollfd = _all_pollfd[i];
+
+            if (current_pollfd.revents & POLLIN)
+            {
+                char buffer[1];
+                ssize_t check = recv(current_pollfd.fd, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT);
+
+                if (check == 0)
+                    disconnect(i--, current_pollfd); // Déconnexion
+                else
+                    action_a_faire = link(current_pollfd); // Échange de messages
+            }
+
+            if (action_a_faire == SHUTDOWN)
+                return;
+        }
+    }
 }
 ```
 
 ---
 
-### Fonctionnement de `exec()`  
+## Explications et tests
 
-Une fois les attributs nécessaires configurés, la méthode `exec()` démarre une boucle infinie pour surveiller les événements réseau.  
+### Explications
 
-```cpp
-/// @brief Méthode qui est le cœur du programme
-void	Server::exec(void)
-{
-	std::cout << getColorCode(YELLOW) << "Exécution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
+- `exec()` utilise `poll` pour surveiller les descripteurs.
+- Les événements détectés déclenchent des actions spécifiques :
+  - **Connexion** : Ajouter un nouveau client à la liste.
+  - **Déconnexion** : Retirer le client de la liste et fermer le descripteur.
+  - **Échange** : Transférer des messages entre clients.
 
-	// Boucle principale
-	while (true)
-	{
-		// Poll pour attendre un événement
-		int ret = poll(this->_all_pollfd.data(), _all_pollfd.size(), -1); // Attente infinie pour des événements
-		if (ret < 0)
-			this->_throw_except("Erreur de la fonction poll()");
-		// Vérification si la socket serveur est prête à accepter une connexion
-		if (this->_all_pollfd[0].revents & POLLIN)
-		{
-			sockaddr_in client_addr;
-			socklen_t client_len = sizeof(client_addr);
-			int client_fd = accept(_socketfd, (struct sockaddr*)&client_addr, &client_len);
-			if (client_fd < 0)
-			{
-				std::cerr << getColorCode(RED) << "Erreur d'acceptation de la connexion" << getColorCode(NOCOLOR) << std::endl;
-				continue;
-			}
-			std::cout << getColorCode(GREEN) << "Connexion acceptée!" << getColorCode(NOCOLOR) << std::endl;
-			close(client_fd);
-		}
-	}
-	std::cout << getColorCode(YELLOW) << "Fin du Serveur" << getColorCode(NOCOLOR) << std::endl;
-}
-```
+### Tester le programme
 
-## Tester 
+1. Lancer le serveur.
+2. Depuis un autre terminal ou machine sur le même réseau :
+   ```bash
+   nc <ip_du_serveur> <port>
+   ```
+3. Envoyer des messages et observer leur retransmission.
 
+### Alternatives envisagées
 
----
-
-### Alternatives envisagées  
-
-- **Approche avec `epoll`** :  
-  Une branche expérimentale nommée `test_avec_epoll` implémente une version similaire avec `epoll`, qui est plus performant pour un grand nombre de connexions.  
-
-- **Choix final** :  
-  Nous avons retenu `poll` pour sa simplicité et sa compatibilité avec le sujet du projet.  
-
----
-
-## Références  
-
-1. [Page de manuel de `poll`](https://man7.org/linux/man-pages/man2/poll.2.html)  
-2. [Page de manuel de `epoll`](https://man7.org/linux/man-pages/man7/epoll.7.html)  
-3. [Guide sur le multiplexage d'E/S asynchrone par Julia Evans](https://jvns.ca/blog/2017/06/03/async-io-on-linux--select--poll--and-epoll/)  
-4. [Tutoriel vidéo : Introduction à `select`, `poll`, et `epoll` sur Linux (YouTube)](https://www.youtube.com/watch?v=dEHZb9JsmOU)  
-5. Documentation interne du projet.  
-
+- **Utilisation de `epoll`** :
+  - Plus performant pour un grand nombre de connexions.
+  - Limité à Linux.
+- **Approche avec `kqueue`** :
+  - Idéal pour macOS et BSD.
+  - Non compatible avec Linux.
