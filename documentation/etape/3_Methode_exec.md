@@ -116,7 +116,7 @@ void	Server::_paramPoll(void)
 	server_pollfd.fd = _socketfd;	// La socket du serveur
 	server_pollfd.events = POLLIN;	// On surveille les événements de lecture (connexion entrante)
 	server_pollfd.revents = 0;
-	_fds.push_back(server_pollfd);
+	_all_pollfd.push_back(server_pollfd);
 }
 ```
 
@@ -136,11 +136,11 @@ void	Server::exec(void)
 	while (true)
 	{
 		// Poll pour attendre un événement
-		int ret = poll(this->_fds.data(), _fds.size(), -1); // Attente infinie pour des événements
+		int ret = poll(this->_all_pollfd.data(), _all_pollfd.size(), -1); // Attente infinie pour des événements
 		if (ret < 0)
 			this->_throw_except("Erreur de la fonction poll()");
 		// Vérification si la socket serveur est prête à accepter une connexion
-		if (this->_fds[0].revents & POLLIN)
+		if (this->_all_pollfd[0].revents & POLLIN)
 		{
 			sockaddr_in client_addr;
 			socklen_t client_len = sizeof(client_addr);

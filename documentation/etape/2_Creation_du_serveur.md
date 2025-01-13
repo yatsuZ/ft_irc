@@ -17,7 +17,7 @@ Dans cette section, nous allons définir les fonctionnalités du serveur, son ut
     - [Paramétrage des Attributs](#paramétrage-des-attributs)
       - [**`_sock_addr_serv_in`** (type `sockaddr_in`)](#_sock_addr_serv_in-type-sockaddr_in)
       - [**Méthode `_bind_and_listen()`**](#méthode-_bind_and_listen)
-      - [**`_fds`**](#_fds)
+      - [**`_all_pollfd`**](#_all_pollfd)
   - [Conclusion](#conclusion)
 
 
@@ -97,7 +97,7 @@ private:
 	const std::string			_mot_de_passe;		// Mot de passe du serveur IRC
 	const int					_socketfd;			// Le descripteur de la socket
 	sockaddr_in					_sock_addr_serv_in;	// Adresse de la socket du serveur
-	std::vector<struct pollfd> 	_fds;				// Vecteur de pollfd pour gérer plusieurs connexions
+	std::vector<struct pollfd> 	_all_pollfd;				// Vecteur de pollfd pour gérer plusieurs connexions
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);
@@ -116,7 +116,7 @@ public:
 	uint16_t 					get_port(void) const{return _port;}
 	int							get_socketfd(void) const{return _socketfd;}
 	sockaddr_in					get_socke_addr_serv(void) const{return _sock_addr_serv_in;}
-	std::vector<struct pollfd>	get_pollfds(void) const {return this->_fds;}
+	std::vector<struct pollfd>	get_pollfds(void) const {return this->_all_pollfd;}
 
 	void	exec(void);
 };
@@ -214,7 +214,7 @@ _socketfd(this->_init_socket())					// Initialisation du descripteur de fichier 
 
 ### Paramétrage des Attributs
 
-Dans le code, certains attributs sont initialisés automatiquement grâce aux mécanismes internes de C++, mais il est important de les configurer correctement. C'est le cas pour les attributs `_sock_addr_serv_in` et `_fds`.
+Dans le code, certains attributs sont initialisés automatiquement grâce aux mécanismes internes de C++, mais il est important de les configurer correctement. C'est le cas pour les attributs `_sock_addr_serv_in` et `_all_pollfd`.
 
 #### **`_sock_addr_serv_in`** (type `sockaddr_in`)
 
@@ -287,9 +287,9 @@ void Server::_bind_and_listen()
 
    - **`SOMAXCONN`** : Cette constante définit la taille maximale de la file d'attente pour les connexions en attente.
 
-#### **`_fds`**
+#### **`_all_pollfd`**
 
-L'attribut `_fds` est utilisé pour gérer les descripteurs de fichiers dans le cadre de la gestion des connexions multiples via des mécanismes de *polling*. Cependant, la configuration et le choix de la méthode de *polling* (telles que `poll()`, `select()`, ou `epoll()`) nécessitent une discussion plus approfondie sur leur fonctionnement et leurs avantages respectifs. Nous aborderons ces aspects dans un fichier ultérieur, car l'objectif ici est de se concentrer sur l'initialisation des attributs et des paramètres du serveur. 
+L'attribut `_all_pollfd` est utilisé pour gérer les descripteurs de fichiers dans le cadre de la gestion des connexions multiples via des mécanismes de *polling*. Cependant, la configuration et le choix de la méthode de *polling* (telles que `poll()`, `select()`, ou `epoll()`) nécessitent une discussion plus approfondie sur leur fonctionnement et leurs avantages respectifs. Nous aborderons ces aspects dans un fichier ultérieur, car l'objectif ici est de se concentrer sur l'initialisation des attributs et des paramètres du serveur. 
 
 ## Conclusion
 
