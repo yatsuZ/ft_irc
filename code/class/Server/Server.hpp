@@ -6,14 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/12 20:48:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/12 21:40:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "./../Client/Client.hpp"
-
+#include "./../../header/Library.hpp"
 
 enum Action {
 	NOACTION,
@@ -54,8 +53,7 @@ private:
 	const std::string			_mot_de_passe;		// Mot de passe du serveur IRC
 	const int					_socketfd;			// Le descripteur de la socket
 	sockaddr_in					_sock_addr_serv_in;	// Adresse de la socket du serveur
-	std::vector<struct pollfd> 	_fds;				// Vecteur de pollfd pour gérer plusieurs connexions
-	std::vector<Client> 		_all_clients;		// Vecteur de tout les clients
+	std::vector<struct pollfd> 	_all_pollfd;				// Vecteur de pollfd pour gérer plusieurs connexions
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);
@@ -64,7 +62,6 @@ private:
 	void			_throw_except(const std::string &msg);
 	void			_paramPoll(void);
 
-	void			_update_index_client_pollfd(size_t start);
 	Server();
 
 public:
@@ -76,19 +73,19 @@ public:
 	uint16_t 					get_port(void) const{return _port;}
 	int							get_socketfd(void) const{return _socketfd;}
 	sockaddr_in					get_socke_addr_serv(void) const{return _sock_addr_serv_in;}
-	std::vector<struct pollfd>	get_pollfds(void) const {return this->_fds;}
+	std::vector<struct pollfd>	get_pollfds(void) const {return this->_all_pollfd;}
 	
 
 	void	connect(void);
-	Action	link(Client &current_client, pollfd &current_pollfd);
-	void	disconnect(Client &client, size_t index_client);
+	Action	link(pollfd &current_pollfd);
+	void	disconnect(size_t i, pollfd &current_pollfd);
 	void	exec(void);
 	void	old_exec(void);
 
 };
 
-/// @brief Affiche tout les Client et leur contenue
-std::ostream & operator<<(std::ostream &o, std::vector<Client> const &all_clients);
+#include "./affichage.ipp"
+
 /// @brief Affiche tout les attributs de tout les pollfd du vecteur
 std::ostream & operator<<(std::ostream &o, std::vector<struct pollfd> const &pollfds);
 /// @brief Affiche tout les attributs de la class serveur

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2024/12/16 03:36:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/13 03:25:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ long ft_atol_limits(const std::string& str, long min, long max, bool *error)
 		*error = true;
 		
 	return result;
+}
+
+std::string intToString(int value)
+{
+	std::ostringstream oss;
+	oss << value;
+	return oss.str();
 }
