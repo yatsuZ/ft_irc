@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/12 21:40:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:40:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 enum Action {
 	NOACTION,
 	SHUTDOWN,
+	DECO
 };
 
 #define ADDRESSE_IP_IN "127.0.0.1"

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/13 22:36:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/16 18:40:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	Server::connect(void)
 	}
 
 	// Ajouter le nouveau client à la liste
-	pollfd client_pollfd = {client_fd, POLLIN, 0};
+	pollfd client_pollfd = {client_fd, POLLIN | POLLOUT | POLLHUP, 0};
 	this->_all_pollfd.push_back(client_pollfd);
 	
 // Verifier ici si il sagit dune reconexion ou un nvx compte heheh
@@ -42,13 +42,14 @@ Action	Server::link(pollfd &current_pollfd)
 	memset(buffer, 0, sizeof(buffer));
 
 	ssize_t bytes_received = recv(current_pollfd.fd, buffer, sizeof(buffer) - 1, 0);
-	if (bytes_received <= 0)
-	{
-		perror("Reception failed");
-		return (NOACTION);
-	}
-
-	if (std::string(buffer) == "exit\n")
+	if (bytes_received < 0)
+		return (perror("Reception failed : "), NOACTION);
+	else
+		buffer[bytes_received] = '\0';
+	
+	if (bytes_received == 0)
+		return (DECO);
+	if (bytes_received && std::string(buffer) == "exit\n")
 		return (SHUTDOWN);
 
 	std::string message("Message du fd " + std::string(getColorCode(RED)) + intToString(current_pollfd.fd) + std::string(getColorCode(NOCOLOR)) + ": " + std::string(getColorCode(GREEN)) + buffer + std::string(getColorCode(NOCOLOR)));
@@ -93,19 +94,15 @@ void	Server::exec(void)
 		for (size_t i = 1; i < this->_all_pollfd.size(); i++)
 		{
 			current_pollfd = this->_all_pollfd[i];
-			if (current_pollfd.revents & POLLIN)
-			{
-				// Données reçues ou déconnexion
-				char buffer[1];
-				ssize_t check = recv(current_pollfd.fd, buffer, sizeof(buffer), MSG_PEEK | MSG_DONTWAIT);
 
-				if (check == 0)
-					this->disconnect(i--, current_pollfd);
-				else
-					action_a_faire = this->link(current_pollfd);
-			}
+			if (current_pollfd.revents & POLLIN)
+				action_a_faire = this->link(current_pollfd);
+
 			if (action_a_faire == SHUTDOWN)
 				return ;
+			else if (action_a_faire == DECO)
+				this->disconnect(i--, current_pollfd);
+			action_a_faire = NOACTION;
 		}
 	}
 }
