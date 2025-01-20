@@ -6,27 +6,14 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/16 18:40:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/20 01:46:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "./../../header/Library.hpp"
-
-enum Action {
-	NOACTION,
-	SHUTDOWN,
-	DECO
-};
-
-#define ADDRESSE_IP_IN "127.0.0.1"
-// #define ADDRESSE_IP_IN "10.13.1.13"
-#define REUSEADDR_OPTION 1
-#define BUFFER_SIZE 1024
-#define MAX_EVENTS 10
-
-
+#include "./../Cmd_irssi/Cmd_irssi.hpp"
+#include "./../Data_buffer/Data_buffer.hpp"
 
 
 /// @brief Exception pour toutes erreurs provenant soit de l'initialisation de la classe Serveur ou provenant de la méthode Exec
@@ -78,10 +65,10 @@ public:
 	
 
 	void	connect(void);
-	Action	link(pollfd &current_pollfd);
+	Action	link(pollfd &current_pollfd);// doit return une liste de cmd_irssi
 	void	disconnect(size_t i, pollfd &current_pollfd);
 	void	exec(void);
-	void	old_exec(void);
+	void	send_message(std::string message, pollfd &current_pollfd);
 
 };
 

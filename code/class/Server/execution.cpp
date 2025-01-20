@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/16 18:40:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/20 00:46:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,26 @@ void	Server::connect(void)
 /// @brief Quand pc transmet des info et communique
 Action	Server::link(pollfd &current_pollfd)
 {
-	char buffer[1024];
-	memset(buffer, 0, sizeof(buffer));
+	Action action = NO_ACTION;
 
-	ssize_t bytes_received = recv(current_pollfd.fd, buffer, sizeof(buffer) - 1, 0);
-	if (bytes_received < 0)
-		return (perror("Reception failed : "), NOACTION);
-	else
-		buffer[bytes_received] = '\0';
-	
-	if (bytes_received == 0)
-		return (DECO);
-	if (bytes_received && std::string(buffer) == "exit\n")
-		return (SHUTDOWN);
-
-	std::string message("Message du fd " + std::string(getColorCode(RED)) + intToString(current_pollfd.fd) + std::string(getColorCode(NOCOLOR)) + ": " + std::string(getColorCode(GREEN)) + buffer + std::string(getColorCode(NOCOLOR)));
-	std::cout << message;
-
-
-	// Echo du message à tous les autres clients
-	for (std::vector<pollfd>::iterator client = this->_all_pollfd.begin(); client != this->_all_pollfd.end(); client++)
-	{
-		if ((*client).fd != this->_all_pollfd[0].fd && (*client).fd != current_pollfd.fd)
-			send((*client).fd, message.c_str(), message.size(), 0);
-	}
-	return (NOACTION);
+	Data_buffer<char>	buff(current_pollfd.fd, &action);
+	if (action != NO_ACTION)
+		return (action);
+	std::string message(buff.get_data_in_string());
+	std::cout << "Message recu :" << message << std::endl;
+	if (message == "exit\n")
+		action = SHUTDOWN;
+	return (action);
 }
+
+/// envoye un message aux client
+void	Server::send_message(std::string message, pollfd &current_pollfd)
+{
+	std::cout << getColorCode(BLUE) << "Message envoyé aux pollfd" << getColorCode(NOCOLOR) << "(" << current_pollfd.fd << ") : \"" << getColorCode(GREEN) << message << getColorCode(NOCOLOR) << "\"";
+
+	send(current_pollfd.fd, message.c_str(), message.size(), 0);
+}
+
 
 /// @brief Quand pc se deconnecte aux serveur
 void	Server::disconnect(size_t i, pollfd &current_pollfd)
@@ -78,7 +72,7 @@ void	Server::disconnect(size_t i, pollfd &current_pollfd)
 /// @brief Methode qui est le coeur du programme
 void	Server::exec(void)
 {
-	Action	action_a_faire = NOACTION;
+	Action	action_a_faire = NO_ACTION;
 	pollfd	current_pollfd;
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
 
@@ -102,7 +96,9 @@ void	Server::exec(void)
 				return ;
 			else if (action_a_faire == DECO)
 				this->disconnect(i--, current_pollfd);
-			action_a_faire = NOACTION;
+			else if (action_a_faire == ERROR_RECV_DATA)
+				this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
+			action_a_faire = NO_ACTION;
 		}
 	}
 }
