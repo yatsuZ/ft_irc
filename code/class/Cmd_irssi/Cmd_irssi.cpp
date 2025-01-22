@@ -14,11 +14,18 @@
 
 const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) const
 {
+	// std::cout << "MESSAGE RECU = \"" << MAGENTA << all_message_from_client << NOCOLOR<<"\"";
 	std::string delimiteur = " \t\n";
 	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
+	size_t	len_of_tokens = tokens.size();
 	if (tokens.empty())
 		return (std::string());
-	std::cout << "token[0] = " << tokens[0] << std::endl;
+	for (size_t i = 0; i < len_of_tokens; i++)
+	{
+		if (is_sep(tokens[i][0], delimiteur) != -1)
+			return (tokens[0]);
+	}
+	
 	return (tokens[0]);
 }
 
@@ -27,9 +34,19 @@ const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from
 	std::string delimiteur = " \t\n";
 	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
 	std::vector<std::string> list_arg;
-	for (std::size_t i = 1; i < tokens.size(); ++i)
+	size_t	len_of_tokens = tokens.size();
+	bool	first_find = false;
+	if (this->get_cmd().empty())
+		return (list_arg);
+	for (std::size_t i = 0; i < tokens.size(); ++i)
 	{
-		list_arg.push_back(tokens[i]);
+		if (is_sep(tokens[i][0], delimiteur) != -1)
+		{
+			if (first_find)
+				list_arg.push_back(tokens[i]);
+			else
+				first_find = true;
+		}
 	}
 	return (list_arg);
 }
@@ -50,7 +67,14 @@ Cmd_irssi::Cmd_irssi(std::string all_message_from_client):
 _cmd(this->init_cmd(all_message_from_client)),
 _arg(this->init_arg(all_message_from_client)),
 _action_to_do(this->init_action())
-{	
+{
+	// std::cout << "message = \"" << MAGENTA << all_message_from_client << NOCOLOR << "\"" << std::endl;
+	// std::cout << "token[" << 0 << "] = " << this->_cmd << std::endl;
+	// for (std::size_t i = 0; i < this->_arg.size(); ++i)
+	// {
+	// 	std::cout << "token[" << (i + 1) << "] = " << this->_arg[i] << std::endl;
+	// }
+	// std::cout << "action = " << this->_action_to_do << std::endl;
 }
 
 Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(), _arg(), _action_to_do()
@@ -64,23 +88,27 @@ Cmd_irssi::~Cmd_irssi()
 
 std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 {
-	if (cmd_irssi.get_cmd().empty())
-		o << getColorCode(CYAN) << "Pas de commande et ni d'argument" << getColorCode(NOCOLOR);
+	const std::string &cmd = cmd_irssi.get_cmd();
+	const std::vector<std::string> &lst_cmd = cmd_irssi.get_arg();
+	size_t taille_de_lst_cmd = lst_cmd.size();
+	Action act = cmd_irssi.get_action();
+
+	o << "cmd_irssi = ";
+	if (cmd.empty())
+		o << CYAN << "Pas de commande et ni d'argument" << NOCOLOR;
 	else
 	{
-		o << getColorCode(YELLOW) << cmd_irssi.get_cmd() << getColorCode(NOCOLOR) << " " ;
-		o << "[ ";
-		for (std::vector<std::string>::const_iterator it_arg = cmd_irssi.get_arg().begin();
-			it_arg != cmd_irssi.get_arg().end(); ++it_arg)
+		o << "\"" << YELLOW << cmd << NOCOLOR << "\" [ ";
+		for (size_t index_arg = 0; index_arg < taille_de_lst_cmd; ++index_arg)
 		{
-			o << "\"" << getColorCode(GREEN) << *it_arg;
-			if (it_arg + 1 != cmd_irssi.get_arg().end())
-				o << getColorCode(NOCOLOR) << "\", ";
+			o << "\"" << GREEN << lst_cmd[index_arg];
+			if (index_arg + 1 < taille_de_lst_cmd)
+				o << NOCOLOR << "\", ";
+			else
+				o << NOCOLOR << "]";
 		}
-		o << "]";
 	}
-	o << "| action a faire : ";
-	o << getColorCode(RED) << getActionString(cmd_irssi.get_action()) << getColorCode(NOCOLOR);
+	o << "| action a faire : " << RED << act << NOCOLOR;
 	return o;
 }
 
@@ -90,7 +118,11 @@ Cmd_irssi::Cmd_irssi(Cmd_irssi const & src): _cmd(src.get_cmd()), _arg(src.get_a
 
 Cmd_irssi	&Cmd_irssi::operator=(Cmd_irssi const & rf)
 {
-	(void) rf;
-	// if (this != &rf)
+	if (this != &rf)
+	{
+		this->_cmd = rf.get_cmd();
+		this->_arg = rf.get_arg();
+		this->_action_to_do = rf.get_action();
+	}
 	return (*this);
 }

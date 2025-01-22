@@ -19,7 +19,7 @@ class Cmd_irssi
 {
 private:
 	std::string					_cmd;
-	std::vector<std::string>		_arg;
+	std::vector<std::string>	_arg;
 	Action						_action_to_do;
 //	Utilisateur	_autor;
 	const std::string				init_cmd(std::string &all_message_from_client) const;

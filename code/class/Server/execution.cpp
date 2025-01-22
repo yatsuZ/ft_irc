@@ -61,7 +61,7 @@ std::vector<Cmd_irssi>	Server::link(pollfd &current_pollfd)
 		std::string line = all_line[i]; /// ICI sa dconne a refaire
 		Cmd_irssi cmd(line);
 		// std::cout << cmd << std::endl;
-		// list_cmd.push_back(cmd);
+		list_cmd.push_back(cmd);
 	}
 	return (list_cmd);
 }
@@ -106,19 +106,27 @@ void	Server::exec(void)
 			current_pollfd = this->_all_pollfd[i];
 
 			if (current_pollfd.revents & POLLIN)
-				list_cmd = this->link(current_pollfd);
-			for (std::vector<Cmd_irssi>::const_iterator iter_cmd_irssi = list_cmd.begin(); iter_cmd_irssi != list_cmd.end(); iter_cmd_irssi++)
 			{
-				std::cout << (*iter_cmd_irssi) << std::endl;
-				if ((*iter_cmd_irssi).get_action() == SHUTDOWN)
-					return ;
-				else if ((*iter_cmd_irssi).get_action() == DECO)
-					this->disconnect(i--, current_pollfd);
-				else if ((*iter_cmd_irssi).get_action() == ERROR_RECV_DATA)
-					this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
-				else if ((*iter_cmd_irssi).get_action() == IDK)
-					std::cout << *iter_cmd_irssi << std::endl;
+				list_cmd = this->link(current_pollfd);
 
+				for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
+				{
+					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
+					std::cout << "index_cmd = " << index_cmd << " | " << iter_cmd_irssi << std::endl;
+					if (iter_cmd_irssi.get_action() == SHUTDOWN)
+						return ;
+					else if (iter_cmd_irssi.get_action() == DECO)
+					{
+						this->disconnect(i, current_pollfd);
+						i--;
+						break;
+					}
+					else if (iter_cmd_irssi.get_action() == ERROR_RECV_DATA)
+						this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
+					else if (iter_cmd_irssi.get_action() == IDK)
+						std::cout << iter_cmd_irssi << std::endl;
+
+				}
 			}
 		}
 	}

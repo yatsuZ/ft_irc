@@ -50,6 +50,9 @@
 		"sstream": "cpp",
 		"ctime": "cpp",
 		"iomanip": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"ranges": "cpp",
+		"span": "cpp",
+		"optional": "cpp"
 	}
 }

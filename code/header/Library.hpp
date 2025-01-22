@@ -38,6 +38,8 @@
 bool	compare_str_char(const char &c, const std::string& str);
 long ft_atol_limits(const std::string& str, long min, long max, bool *error);
 std::string intToString(int value);
-std::vector<std::string> ft_split(const std::string& str, const std::string& delimiter);
+std::vector<std::string> ft_split(const std::string& , const std::string& );
+
 std::ostream & operator<<( std::ostream & o, Action const & action);
 std::ostream & operator<<( std::ostream & o, Color const & color);
+ssize_t	is_sep(char c, std::string str);

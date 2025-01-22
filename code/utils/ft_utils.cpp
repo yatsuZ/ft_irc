@@ -62,41 +62,65 @@ bool	compare_str_char(const char &c, const std::string& str)
 	return (str.find(c) != std::string::npos);
 }
 
-// std::string::size_type close_character(std::string::size_type start, std::string::size_type end, const std::string& str, const std::string& delimiter)
-// {
-// 	std::string::size_type ret = std::string::npos;
-// 	std::string::size_type tmp = ret;
-// 	for (size_t i = 0; i < delimiter.size(); i++)
-// 	{
-// 		tmp = str.find(delimiter[i], end - start);
-// 		if (tmp != std::string::npos && (tmp < ret || ret == std::string::npos))
-// 			ret = tmp;
-// 	}
-// 	return (ret);
-
-// }
-
-std::vector<std::string> ft_split(const std::string& str, const std::string& delimiters) {
-	std::vector<std::string> result;
-	std::string::size_type start = 0;
-	std::string::size_type end = 0;
-
-	while (start < str.length()) {
-		// Trouve le début d'un mot (non-délimiteur)
-		start = str.find_first_not_of(delimiters, end);
-		if (start == std::string::npos) {
-			break; // Plus de mots à trouver
-		}
-
-		// Trouve la fin du mot (prochain délimiteur)
-		end = str.find_first_of(delimiters, start);
-		if (end == std::string::npos) {
-			end = str.length(); // Si aucun délimiteur trouvé, va jusqu'à la fin
-		}
-
-		// Extrait le mot et l'ajoute au résultat
-		result.push_back(str.substr(start, end - start));
+std::string::size_type close_character(std::string::size_type start, std::string::size_type end, const std::string& str, const std::string& delimiter)
+{
+	std::string::size_type ret = std::string::npos;
+	std::string::size_type tmp = ret;
+	for (size_t i = 0; i < delimiter.size(); i++)
+	{
+		tmp = str.find(delimiter[i], end - start);
+		if (tmp != std::string::npos && (tmp < ret || ret == std::string::npos))
+			ret = tmp;
 	}
+	return (ret);
 
-	return result;
+}
+
+/////////////////////////////// Samira part botom
+
+
+/*
+*/
+//renvoie l'index du separateur dans &sep, - 1 si il trouve pas
+ssize_t	is_sep(char c, std::string sep) 
+{
+	for(size_t i = 0; i< sep.size(); i++)
+	{
+		if (sep[i] == c)
+			return i;
+	}
+	return -1;
+}
+
+std::vector<std::string> ft_split(const std::string & str, const std::string & sep)
+{
+	size_t						i;
+	int							idx;
+	std::string					word;
+	std::vector<std::string>	split;
+
+	i = 0;
+	if (str.size() == 0)
+		return (split);
+	while (str[i] && i < str.size())
+	{
+		idx = is_sep(str[i], sep); 
+		word.push_back(str[i]);
+		if (idx != -1)
+		{
+			// std::cout << "word=\"" << word << "\"" << std::endl;
+			while (str[i] && str[i] == sep[idx])
+				i++;
+			split.push_back(word);
+			word.clear();
+		}
+		else
+			i++;
+	}
+	if (word.size() != 0)
+	{
+		split.push_back(word);
+		word.clear();
+	}
+	return (split);
 }
