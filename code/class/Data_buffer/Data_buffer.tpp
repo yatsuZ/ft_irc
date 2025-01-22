@@ -40,7 +40,7 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 template <typename T>
 std::vector<std::string>	&Data_buffer<T>::get_data_in_list_of_line(void) const
 {
-	return (ft_split(this->get_data_in_string(), "\n"));
+	return (ft_split_no_seperator(this->get_data_in_string(), "\n"));
 }
 
 
@@ -52,7 +52,8 @@ Data_buffer<T>::~Data_buffer()
 template <typename T>
 std::string	Data_buffer<T>::get_data_in_string(void) const
 {
-	return (std::string(this->_data.data()));
+	std::string str = this->_data.data();
+	return (str);
 }
 
 template <typename T>

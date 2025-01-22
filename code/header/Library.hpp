@@ -43,3 +43,4 @@ std::vector<std::string> ft_split(const std::string& , const std::string& );
 std::ostream & operator<<( std::ostream & o, Action const & action);
 std::ostream & operator<<( std::ostream & o, Color const & color);
 ssize_t	is_sep(char c, std::string str);
+std::vector<std::string> ft_split_no_seperator(const std::string & str, const std::string & sep);

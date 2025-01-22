@@ -95,32 +95,59 @@ ssize_t	is_sep(char c, std::string sep)
 std::vector<std::string> ft_split(const std::string & str, const std::string & sep)
 {
 	size_t						i;
-	int							idx;
-	std::string					word;
+	ssize_t						idx;
+	std::string					word = "";
 	std::vector<std::string>	split;
 
 	i = 0;
 	if (str.size() == 0)
 		return (split);
-	while (str[i] && i < str.size())
+	while (i < str.size())
 	{
-		idx = is_sep(str[i], sep); 
-		word.push_back(str[i]);
+		idx = is_sep(str[i], sep);
+		if (idx == -1) 
+			word.push_back(str[i]);
 		if (idx != -1)
 		{
-			// std::cout << "word=\"" << word << "\"" << std::endl;
-			while (str[i] && str[i] == sep[idx])
+			if (!word.empty())
+			{
+				word.push_back(0);
+				split.push_back(word);
+			}
+			word = "";
+			while (str[i] == sep[idx])
+			{
+				word.push_back(str[i]);
 				i++;
+			}
+			word.push_back(0);
 			split.push_back(word);
-			word.clear();
+			word = "";
 		}
 		else
 			i++;
 	}
 	if (word.size() != 0)
 	{
+		word.push_back(0);
 		split.push_back(word);
-		word.clear();
+		word = "";
 	}
+
 	return (split);
+}
+
+std::vector<std::string> ft_split_no_seperator(const std::string & str, const std::string & sep)
+{
+	std::vector<std::string> all_vect = ft_split(str, sep);
+	std::vector<std::string> new_vect;
+	size_t	len_of_tokens = all_vect.size();
+
+	for (std::size_t i = 0; i < len_of_tokens; ++i)
+	{
+		if (is_sep(all_vect[i][0], sep) == -1)
+			new_vect.push_back(all_vect[i]);
+	}
+
+	return (new_vect);
 }

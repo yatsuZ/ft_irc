@@ -16,38 +16,29 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 {
 	// std::cout << "MESSAGE RECU = \"" << MAGENTA << all_message_from_client << NOCOLOR<<"\"";
 	std::string delimiteur = " \t\n";
-	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
-	size_t	len_of_tokens = tokens.size();
+	std::vector<std::string> tokens = ft_split_no_seperator(all_message_from_client, delimiteur);
+
 	if (tokens.empty())
 		return (std::string());
-	for (size_t i = 0; i < len_of_tokens; i++)
-	{
-		if (is_sep(tokens[i][0], delimiteur) != -1)
-			return (tokens[0]);
-	}
-	
+
 	return (tokens[0]);
 }
 
 const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
 {
 	std::string delimiteur = " \t\n";
-	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
+	std::vector<std::string> tokens = ft_split_no_seperator(all_message_from_client, delimiteur);
 	std::vector<std::string> list_arg;
 	size_t	len_of_tokens = tokens.size();
-	bool	first_find = false;
+
 	if (this->get_cmd().empty())
 		return (list_arg);
-	for (std::size_t i = 0; i < tokens.size(); ++i)
+
+	for (std::size_t i = 1; i < len_of_tokens; ++i)
 	{
-		if (is_sep(tokens[i][0], delimiteur) != -1)
-		{
-			if (first_find)
-				list_arg.push_back(tokens[i]);
-			else
-				first_find = true;
-		}
+		list_arg.push_back(tokens[i]);
 	}
+
 	return (list_arg);
 }
 
@@ -108,7 +99,7 @@ std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 				o << NOCOLOR << "]";
 		}
 	}
-	o << "| action a faire : " << RED << act << NOCOLOR;
+	o << "| action a faire : " << RED << act << NOCOLOR << std::endl;
 	return o;
 }
 
