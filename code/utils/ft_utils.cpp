@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 01:50:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 00:03:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ std::vector<std::string> ft_split(const std::string & str, const std::string & s
 		return (split);
 	while (str[i] && i < str.size())
 	{
-		idx = is_sep(str[i], sep); 
+		idx = is_sep(str[i], sep);
 		word.push_back(str[i]);
 		if (idx != -1)
 		{

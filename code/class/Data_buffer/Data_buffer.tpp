@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 01:01:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 00:01:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 template <typename T>
 std::vector<std::string>	&Data_buffer<T>::get_data_in_list_of_line(void) const
 {
-	return (ft_split(this->get_data_in_string(), "\n"));
+	return (ft_split(this->get_data_in_string(), "\n\r"));
 }
 
 

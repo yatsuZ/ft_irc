@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 01:56:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 00:01:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ std::vector<Cmd_irssi>	Server::link(pollfd &current_pollfd)
 
 //	std::cout << "Message recu :" << message << std::endl;
 
-	all_line = ft_split(message, "\n");
+	all_line = ft_split(message, "\n\r");
 	for (size_t i = 0; i < all_line.size(); ++i)
 	{
 		std::string line = all_line[i]; /// ICI sa dconne a refaire
