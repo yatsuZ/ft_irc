@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/13 03:25:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/22 01:38:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@
 #include <cstdlib>
 #include <iomanip>
 #include <iostream>
+#include <typeinfo> // Pour typeid
 
+bool	compare_str_char(const char &c, const std::string& str);
 long ft_atol_limits(const std::string& str, long min, long max, bool *error);
 std::string intToString(int value);
+std::vector<std::string> ft_split(const std::string& str, const std::string& delimiter);
+std::ostream & operator<<( std::ostream & o, Action const & action);
+std::ostream & operator<<( std::ostream & o, Color const & color);

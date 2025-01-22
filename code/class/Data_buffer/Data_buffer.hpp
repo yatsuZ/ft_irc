@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:12:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/20 01:45:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/21 23:49:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ private:
 public:
 	Data_buffer(int client_fd, Action *to_do);
 	~Data_buffer();
-	std::string	get_data_in_string(void);
-	size_t		get_total_bytes_received(void) const {return this->_total_bytes_received;}
+	std::string					get_data_in_string(void) const;
+	std::vector<std::string>	&get_data_in_list_of_line(void) const;
+	size_t						get_total_bytes_received(void) const {return this->_total_bytes_received;}
+	std::string					get_type_string(void) const {return typeid(T).name();}
 };
 
+template <typename T>
+std::ostream & operator<<( std::ostream & o, Data_buffer<T> const & data_buffer);
 
 #include "./Data_buffer.tpp"

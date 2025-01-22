@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/20 00:46:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/22 01:56:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,35 @@ void	Server::connect(void)
 	std::cout << this->_all_pollfd << std::endl;
 }
 
-/// @brief Quand pc transmet des info et communique
-Action	Server::link(pollfd &current_pollfd)
+/// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
+std::vector<Cmd_irssi>	Server::link(pollfd &current_pollfd)
 {
+	std::vector<Cmd_irssi>		list_cmd;
+	std::vector<std::string>	all_line;
 	Action action = NO_ACTION;
 
 	Data_buffer<char>	buff(current_pollfd.fd, &action);
+
 	if (action != NO_ACTION)
-		return (action);
+	{
+		Cmd_irssi n(action);
+		list_cmd.push_back(n);
+		return (list_cmd);
+	}
+
 	std::string message(buff.get_data_in_string());
-	std::cout << "Message recu :" << message << std::endl;
-	if (message == "exit\n")
-		action = SHUTDOWN;
-	return (action);
+
+//	std::cout << "Message recu :" << message << std::endl;
+
+	all_line = ft_split(message, "\n");
+	for (size_t i = 0; i < all_line.size(); ++i)
+	{
+		std::string line = all_line[i]; /// ICI sa dconne a refaire
+		Cmd_irssi cmd(line);
+		// std::cout << cmd << std::endl;
+		// list_cmd.push_back(cmd);
+	}
+	return (list_cmd);
 }
 
 /// envoye un message aux client
@@ -72,7 +88,7 @@ void	Server::disconnect(size_t i, pollfd &current_pollfd)
 /// @brief Methode qui est le coeur du programme
 void	Server::exec(void)
 {
-	Action	action_a_faire = NO_ACTION;
+	std::vector<Cmd_irssi>	list_cmd;
 	pollfd	current_pollfd;
 	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
 
@@ -90,15 +106,20 @@ void	Server::exec(void)
 			current_pollfd = this->_all_pollfd[i];
 
 			if (current_pollfd.revents & POLLIN)
-				action_a_faire = this->link(current_pollfd);
+				list_cmd = this->link(current_pollfd);
+			for (std::vector<Cmd_irssi>::const_iterator iter_cmd_irssi = list_cmd.begin(); iter_cmd_irssi != list_cmd.end(); iter_cmd_irssi++)
+			{
+				std::cout << (*iter_cmd_irssi) << std::endl;
+				if ((*iter_cmd_irssi).get_action() == SHUTDOWN)
+					return ;
+				else if ((*iter_cmd_irssi).get_action() == DECO)
+					this->disconnect(i--, current_pollfd);
+				else if ((*iter_cmd_irssi).get_action() == ERROR_RECV_DATA)
+					this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
+				else if ((*iter_cmd_irssi).get_action() == IDK)
+					std::cout << *iter_cmd_irssi << std::endl;
 
-			if (action_a_faire == SHUTDOWN)
-				return ;
-			else if (action_a_faire == DECO)
-				this->disconnect(i--, current_pollfd);
-			else if (action_a_faire == ERROR_RECV_DATA)
-				this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
-			action_a_faire = NO_ACTION;
+			}
 		}
 	}
 }

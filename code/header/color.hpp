@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:50:27 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/20 01:44:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/22 00:13:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 // #define BUFFER_SIZE 2
 #define BUFFER_SIZE 1024
 #define MAX_EVENTS 10
-
 
 // Définition de l'énumération
 enum Color {
@@ -40,7 +39,7 @@ enum Action {
 	ERROR_RECV_DATA,
 	SHUTDOWN,
 	DECO,
-	IDK
+	IDK// derniere Action du tableau
 };
 
 // Tableau associé avec leur valeur ascii
@@ -49,3 +48,8 @@ extern const char* colorCodes[COLOR_COUNT];
 // Retourne la valeur ascii de la couleur demande
 const char* getColorCode(Color color);
 
+// Tableau associé avec leur valeur d'action
+extern const char* action_tab[IDK + 1];
+
+// Retourne l'action en string 
+const char* getActionString(Action current_action);

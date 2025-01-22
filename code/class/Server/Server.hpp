@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/20 01:46:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/21 23:50:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ public:
 	
 
 	void	connect(void);
-	Action	link(pollfd &current_pollfd);// doit return une liste de cmd_irssi
+	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);// doit return une liste de cmd_irssi
 	void	disconnect(size_t i, pollfd &current_pollfd);
 	void	exec(void);
 	void	send_message(std::string message, pollfd &current_pollfd);
