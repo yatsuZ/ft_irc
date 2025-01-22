@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 00:03:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 00:18:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,22 +95,29 @@ ssize_t	is_sep(char c, std::string sep)
 std::vector<std::string> ft_split(const std::string & str, const std::string & sep)
 {
 	size_t						i;
-	int							idx;
+	ssize_t						idx;
 	std::string					word;
 	std::vector<std::string>	split;
 
 	i = 0;
 	if (str.size() == 0)
 		return (split);
-	while (str[i] && i < str.size())
+	while (i < str.size())
 	{
 		idx = is_sep(str[i], sep);
-		word.push_back(str[i]);
+		if (idx == -1) 
+			word.push_back(str[i]);
 		if (idx != -1)
 		{
 			// std::cout << "word=\"" << word << "\"" << std::endl;
-			while (str[i] && str[i] == sep[idx])
+			if (!word.empty())
+				split.push_back(word);
+			word.clear();
+			while (str[i] == sep[idx])
+			{
+				word.push_back(str[i]);
 				i++;
+			}
 			split.push_back(word);
 			word.clear();
 		}

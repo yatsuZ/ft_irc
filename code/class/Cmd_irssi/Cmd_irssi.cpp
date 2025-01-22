@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 00:04:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 00:28:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 
 const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
 {
-	std::string delimiteur = " \t\n\r";
+	std::string delimiteur = "\r \t\n";
 	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
 	std::vector<std::string> list_arg;
 	bool	first_find = false;
@@ -44,7 +44,9 @@ const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from
 		if (is_sep(tokens[i][0], delimiteur) == -1)
 		{
 			if (first_find)
+			{
 				list_arg.push_back(tokens[i]);
+			}
 			else
 				first_find = true;
 		}
@@ -70,13 +72,6 @@ _cmd(this->init_cmd(all_message_from_client)),
 _arg(this->init_arg(all_message_from_client)),
 _action_to_do(this->init_action())
 {
-	// std::cout << "message = \"" << MAGENTA << all_message_from_client << NOCOLOR << "\"" << std::endl;
-	// std::cout << "token[" << 0 << "] = " << this->_cmd << std::endl;
-	// for (std::size_t i = 0; i < this->_arg.size(); ++i)
-	// {
-	// 	std::cout << "token[" << (i + 1) << "] = " << this->_arg[i] << std::endl;
-	// }
-	// std::cout << "action = " << this->_action_to_do << std::endl;
 }
 
 Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(), _arg(), _action_to_do()
@@ -100,17 +95,18 @@ std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 		o << CYAN << "Pas de commande et ni d'argument" << NOCOLOR;
 	else
 	{
-		o << "\"" << YELLOW << cmd << NOCOLOR << "\" [ ";
+		o << "\"" << MAGENTA << cmd << NOCOLOR << "\" [ ";
 		for (size_t index_arg = 0; index_arg < taille_de_lst_cmd; ++index_arg)
 		{
-			o << "\"" << GREEN << lst_cmd[index_arg];
+			o << "\"" << YELLOW << lst_cmd[index_arg];
 			if (index_arg + 1 < taille_de_lst_cmd)
 				o << NOCOLOR << "\", ";
 			else
-				o << NOCOLOR << "]";
+			o << NOCOLOR << "\"";
 		}
+		o << " ]";
 	}
-	o << "| action a faire : " << RED << act << NOCOLOR;
+	o << " -> " << RED << act << NOCOLOR;
 	return o;
 }
 
