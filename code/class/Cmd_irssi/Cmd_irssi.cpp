@@ -22,7 +22,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 		return (std::string());
 	for (size_t i = 0; i < len_of_tokens; i++)
 	{
-		if (is_sep(tokens[i][0], delimiteur) != -1)
+		if (is_sep(tokens[i][0], delimiteur) == -1)
 			return (tokens[0]);
 	}
 	
@@ -34,13 +34,12 @@ const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from
 	std::string delimiteur = " \t\n";
 	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
 	std::vector<std::string> list_arg;
-	size_t	len_of_tokens = tokens.size();
 	bool	first_find = false;
 	if (this->get_cmd().empty())
 		return (list_arg);
 	for (std::size_t i = 0; i < tokens.size(); ++i)
 	{
-		if (is_sep(tokens[i][0], delimiteur) != -1)
+		if (is_sep(tokens[i][0], delimiteur) == -1)
 		{
 			if (first_find)
 				list_arg.push_back(tokens[i]);
