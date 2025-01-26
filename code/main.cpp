@@ -6,11 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 01:27:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/24 01:34:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./class/Server/Server.hpp"
+#include "./class/Irssi_serv/Irssi_serv.hpp"
 
 void TO_DO(void)
 {
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	{
 		if (argc != 3 || !argv)
 			throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
-		Server test(argv[1], argv[2]);
+		Irssi_serv test(argv[1], argv[2]);
 		std::cout << test;
 		test.exec();
 	}

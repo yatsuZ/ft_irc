@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/12 21:40:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/24 01:31:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ _socketfd(-1)
 /// @brief Constructeur du serveur
 /// @param argv1 Le port qui sera parser et configurer en temp que _port
 /// @param argv2 Le mot de passe du serveur qui sera stockée dans _mdp
-Server::Server(std::string argv1, std::string argv2):
+Server::Server(std::string &argv1, std::string &argv2):
 _name("Nom du Serveur"),
 _port(this->_is_a_legit_port(argv1)),
 _mot_de_passe(this->_is_a_legit_mdp(argv2)),

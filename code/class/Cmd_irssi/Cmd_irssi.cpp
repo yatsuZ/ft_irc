@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 00:28:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/25 19:56:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 
 const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
 {
-	std::string delimiteur = "\r \t\n";
+	std::string delimiteur = " \t\n\r";
 	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
 	std::vector<std::string> list_arg;
 	bool	first_find = false;
@@ -62,8 +62,9 @@ Action	Cmd_irssi::init_action(void) const
 	return (IDK);
 }
 
+//////////////////////////////////////////////////////
 
-Cmd_irssi::Cmd_irssi(): _cmd(), _arg(), _action_to_do(NO_ACTION)
+Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION)
 {
 }
 
@@ -74,14 +75,34 @@ _action_to_do(this->init_action())
 {
 }
 
-Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(), _arg(), _action_to_do()
+Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(action_to_do)
 {
-	this->_action_to_do = action_to_do;
+	// this->_action_to_do = action_to_do;
+	std::cout << "Construction par action" << std::endl;
+	std::cout << *this << std::endl;
+
+}
+
+Cmd_irssi::Cmd_irssi(Cmd_irssi const & src): _cmd(src.get_cmd()), _arg(src.get_arg()), _action_to_do(src.get_action())
+{
+}
+
+Cmd_irssi	&Cmd_irssi::operator=(Cmd_irssi const & rf)
+{
+	if (this != &rf)
+	{
+		// this->_cmd = rf.get_cmd();
+		// this->_arg = rf.get_arg();
+		this->_action_to_do = rf.get_action();
+	}
+	return (*this);
 }
 
 Cmd_irssi::~Cmd_irssi()
 {
 }
+
+//////////////////////////////////////////////////////
 
 std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 {
@@ -108,19 +129,4 @@ std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 	}
 	o << " -> " << RED << act << NOCOLOR;
 	return o;
-}
-
-Cmd_irssi::Cmd_irssi(Cmd_irssi const & src): _cmd(src.get_cmd()), _arg(src.get_arg()), _action_to_do(src.get_action())
-{
-}
-
-Cmd_irssi	&Cmd_irssi::operator=(Cmd_irssi const & rf)
-{
-	if (this != &rf)
-	{
-		this->_cmd = rf.get_cmd();
-		this->_arg = rf.get_arg();
-		this->_action_to_do = rf.get_action();
-	}
-	return (*this);
 }

@@ -6,14 +6,14 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 00:25:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/25 19:57:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Server.hpp"
+#include "./Irssi_serv.hpp"
 
 /// @brief Quand pc se connecte aux serveur
-void	Server::connect(void)
+void	Irssi_serv::connect(void)
 {
 
 	std::cout << "-------- CONNECTION -----------" << std::endl;
@@ -36,7 +36,7 @@ void	Server::connect(void)
 }
 
 /// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
-std::vector<Cmd_irssi>	Server::link(pollfd &current_pollfd)
+std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 {
 	std::vector<Cmd_irssi>		list_cmd;
 	std::vector<std::string>	all_line;
@@ -70,7 +70,7 @@ std::vector<Cmd_irssi>	Server::link(pollfd &current_pollfd)
 }
 
 /// envoye un message aux client
-void	Server::send_message(std::string message, pollfd &current_pollfd)
+void	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
 {
 	std::cout << getColorCode(BLUE) << "Message envoyé aux pollfd" << getColorCode(NOCOLOR) << "(" << current_pollfd.fd << ") : \"" << getColorCode(GREEN) << message << getColorCode(NOCOLOR) << "\"";
 
@@ -79,7 +79,7 @@ void	Server::send_message(std::string message, pollfd &current_pollfd)
 
 
 /// @brief Quand pc se deconnecte aux serveur
-void	Server::disconnect(size_t i, pollfd &current_pollfd)
+void	Irssi_serv::disconnect(size_t i, pollfd &current_pollfd)
 {
 	std::cout << "-------- DECO -----------" << std::endl;
 
@@ -89,7 +89,7 @@ void	Server::disconnect(size_t i, pollfd &current_pollfd)
 }
 
 /// @brief Methode qui est le coeur du programme
-void	Server::exec(void)
+void	Irssi_serv::exec(void)
 {
 	std::vector<Cmd_irssi>	list_cmd;
 	pollfd	current_pollfd;
@@ -128,8 +128,8 @@ void	Server::exec(void)
 						this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
 					// else if (iter_cmd_irssi.get_action() == IDK)
 					// 	std::cout << iter_cmd_irssi << std::endl;
-
 				}
+				list_cmd.clear();
 			}
 		}
 	}

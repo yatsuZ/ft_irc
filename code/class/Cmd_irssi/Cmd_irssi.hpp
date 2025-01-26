@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:01:10 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 01:23:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/23 23:10:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class Cmd_irssi
 {
 private:
-	std::string					_cmd;
-	std::vector<std::string>	_arg;
+	const std::string					_cmd;
+	const std::vector<std::string>		_arg;
 	Action						_action_to_do;
 //	Utilisateur	_autor;
 	const std::string				init_cmd(std::string &all_message_from_client) const;

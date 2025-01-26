@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/21 21:05:42 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/01/25 19:34:44 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,11 @@ MDP = mdp
 
 ############### OBJ du projet ircserv
 
-CLASS_FILES =	./class/Server/Server.cpp		\
-				./class/Server/execution.cpp	\
-				./class/Cmd_irssi/Cmd_irssi.cpp
+CLASS_FILES =	./class/Server/Server.cpp			\
+				./class/Cmd_irssi/Cmd_irssi.cpp		\
+				./class/Irssi_serv/execution.cpp	\
+				./class/Irssi_serv/Irssi_serv.cpp
+
 
 UTILS_FILES =	./utils/color.cpp	\
 				./utils/ft_utils.cpp

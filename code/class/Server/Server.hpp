@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/21 23:50:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/25 19:33:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Init_serv_error : public std::exception
 /// @brief Class Serveur : la classe principale qui gère tout, y compris la gestion des connexions et des échanges de données.
 class Server
 {
-private:
+protected:
 
 	const std::string			_name;				// Nom du serveur
 	const uint16_t 				_port;				// Port d'écoute du serveur
@@ -53,7 +53,7 @@ private:
 	Server();
 
 public:
-	Server(std::string argv1, std::string argv2);
+	Server(std::string & argv1, std::string & argv2);
 	~Server();
 
 	std::string					get_name(void) const {return _name;}
@@ -64,11 +64,7 @@ public:
 	std::vector<struct pollfd>	get_pollfds(void) const {return this->_all_pollfd;}
 	
 
-	void	connect(void);
-	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);// doit return une liste de cmd_irssi
-	void	disconnect(size_t i, pollfd &current_pollfd);
-	void	exec(void);
-	void	send_message(std::string message, pollfd &current_pollfd);
+	virtual void exec(void) = 0;
 
 };
 
