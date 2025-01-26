@@ -6,18 +6,18 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 22:54:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:23:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Irssi_serv.hpp"
 
-int	Irssi_serv::do_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	std::cout << GREEN << "VVV -------- START OF INTERPRETION CMD ----------- VVV" << NOCOLOR << std::endl;
 	std::cout << current_cmd << std::endl;
 	Action act = current_cmd.get_action();
-	int res = (this->*action_table[act])(current_cmd, current_pollfd, index_of_current_pollfd);
+	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_pollfd, index_of_current_pollfd);
 	std::cout << "^^^ -------- END OF INTERPRETION CMD ----------- ^^^" << std::endl;
 	return (res);
 }
@@ -50,10 +50,10 @@ void	Irssi_serv::exec(void)
 				for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
 				{
 					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
-					int res = do_action(iter_cmd_irssi, current_pollfd, i);
-					if (res == 1)
+					Reaction_Serv reaction = do_action(iter_cmd_irssi, current_pollfd, i);
+					if (reaction == PASS)
 						break;
-					else if (res == 2)
+					else if (reaction == STOP)
 						return;
 				}
 				list_cmd.clear();

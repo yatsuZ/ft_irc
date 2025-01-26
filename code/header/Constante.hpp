@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 21:46:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:29:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ enum Color {
 extern const char* colorCodes[COLOR_COUNT];
 
 
-//Important si changment apliquer dans le tableau action_tab
+//Important si changment apliquer dans le tableau action_tab (juste en bas)
 enum Action {
 	NO_ACTION,
 	ERROR_RECV_DATA,
@@ -48,6 +48,13 @@ enum Action {
 
 // Tableau associé avec leur valeur d'action
 extern const char* action_tab[IDK + 1];
+
+//Important si changment apliquer dans le tableau action_tab
+enum Reaction_Serv {
+	NONE,
+	PASS,
+	STOP
+};
 
 
 #define SEPERATOR_WITHOUT_SPACE_AND_TAB "\n\v\f\r"

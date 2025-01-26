@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 22:07:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:23:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ class Irssi_serv: public Server
 private:
 	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);
 	
-	int	do_action(Cmd_irssi &cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);
+	Reaction_Serv	do_action(Cmd_irssi &cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 
 
 	//// ACTION du serveur
-	int		ft_no_action(Cmd_irssi &, pollfd &, size_t &);		// NO_ACTION
-	int		ft_error_recv_data(Cmd_irssi &, pollfd &, size_t &);// ERROR_RECV_DATA
-	int		ft_shutdown(Cmd_irssi &, pollfd &, size_t &);		// SHUTDOWN
-	int		ft_disconnect(Cmd_irssi &, pollfd &, size_t &);		// DISCONNECT
-	int		ft_idk(Cmd_irssi &, pollfd &, size_t &);			// IDK dernier
+	Reaction_Serv		ft_no_action(Cmd_irssi &, pollfd &, size_t &);		// NO_ACTION
+	Reaction_Serv		ft_error_recv_data(Cmd_irssi &, pollfd &, size_t &);// ERROR_RECV_DATA
+	Reaction_Serv		ft_shutdown(Cmd_irssi &, pollfd &, size_t &);		// SHUTDOWN
+	Reaction_Serv		ft_disconnect(Cmd_irssi &, pollfd &, size_t &);		// DISCONNECT
+	Reaction_Serv		ft_idk(Cmd_irssi &, pollfd &, size_t &);			// IDK dernier
 
-	typedef int (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);
+	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 	MethodeActionIrc action_table[IDK + 1];
 
 	// OTHER

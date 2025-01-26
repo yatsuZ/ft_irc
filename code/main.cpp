@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 23:19:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 23:32:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 void TO_DO(void)
 {
-	std::cout << BLUE << "SALUT voici ce qu'il a faire." << NOCOLOR << std::endl;
-	std::cout <<"Faire linterpretation des action recu du client irssi pour cela."  << std::endl;
-	std::cout <<"aller dans le fichier" << YELLOW << "./class/Cmd_irssi/Cmd_irssi.cpp" << NOCOLOR << " dans cette methode : " << MAGENTA << "Cmd_irssi::init_action(void)" << NOCOLOR << std::endl;
-	std::cout << GREEN << "Pour interpreter la premiere commande" << NOCOLOR << std::endl;
-	std::cout << "Il faudra aussi aller dans " << YELLOW << "./header/Constante.hpp" << NOCOLOR << " pour ajouter dans lenum " << RED << "ACTION" << NOCOLOR
-	<< " le nouveaux ACTION enum il faudra aussi aller dans " << YELLOW << "./header/Constante.hpp" << NOCOLOR << std::endl;
-	std::cout << "Et" << std::endl;
-	std::cout << YELLOW << "./utils/define_array_and_get_element_of_array.cpp" << NOCOLOR << " pour ajouter le message de cette nouvelle action ce quelle fais ou etc." << std::endl;
-	std::cout << RED << "/!\\ RESPECTER LES COMMENTAIRES LE MEME ORDRE TRES IMPORTANT. " << NOCOLOR << std::endl;
-	
-	std::cout << "Pour finir aller dans Irssi_serv.hpp pour crée la nouvelle methode de laction. Ne pas oublier de rajouter dans le constructeur et hope FINI." <<std::endl;
-	std::cout << std::endl;
-	std::cout << "------------------" << std::endl;
-	std::cout << "--BONNE-CHANCE--" << GREEN << ";D" << NOCOLOR << std::endl;
+	std::cout << BLUE << "SALUT ! Voici ce qu'il y a à faire." << NOCOLOR << std::endl;
 
+	std::cout << "1. " << CYAN << "Faire l'interprétation des actions reçues du client irssi." << NOCOLOR << std::endl;
+	std::cout << "\t- Aller dans le fichier " << YELLOW << "./class/Cmd_irssi/Cmd_irssi.cpp" << NOCOLOR
+			  << " et modifier la méthode : " << MAGENTA << "Cmd_irssi::init_action(void)" << NOCOLOR << "." << std::endl;
+
+	std::cout << "2. " << GREEN << "Pour interpréter la première commande :" << NOCOLOR << std::endl;
+	std::cout << "\t- Modifier " << YELLOW << "./header/Constante.hpp" << NOCOLOR
+			  << " pour ajouter une nouvelle action dans l'énumération " << RED << "ACTION" << NOCOLOR << "." << std::endl;
+	std::cout << "\t- Respecter les commentaires et l'ordre, c'est très important !" << std::endl;
+
+	std::cout << "3. " << CYAN << "Ajouter le message associé à cette nouvelle action dans le fichier :" << NOCOLOR << std::endl;
+	std::cout << "\t- " << YELLOW << "./utils/define_array_and_get_element_of_array.cpp" << NOCOLOR << "." << std::endl;
+
+	std::cout << "4. " << MAGENTA << "Pour finir :" << NOCOLOR << std::endl;
+	std::cout << "\t- Créer la nouvelle méthode pour l'action dans " << YELLOW << "./class/Irssi_serv/Irssi_serv.hpp" << NOCOLOR << "." << std::endl;
+	std::cout << "\t- Ne pas oublier de l'ajouter dans le constructeur." << std::endl;
+
+	std::cout << std::endl;
+	std::cout << RED << "/!\\ IMPORTANT : Respecter l'ordre et les commentaires pour éviter les erreurs." << NOCOLOR << std::endl;
+	std::cout << std::endl;
+	std::cout << "---------------------------" << std::endl;
+	std::cout << WHITE << "-- BONNE CHANCE --" << GREEN << " (O_<)★彡" << NOCOLOR << std::endl;
 }
 
 int	main(int argc, char **argv)
@@ -36,7 +44,7 @@ int	main(int argc, char **argv)
 	(void)	argc;
 	(void)	argv;
 	TO_DO();
-	std::cout << "------------------" << std::endl;
+	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{
 		if (argc != 3 || !argv)
@@ -56,13 +64,13 @@ int	main(int argc, char **argv)
 /*
 cmd pour demarer le serveur avec valgrind:
 valgrind --tool=memcheck \
-        --leak-check=full \
-        --show-leak-kinds=all \
-        --track-origins=yes \
-        --log-file=valgrind.log \
-        --track-fds=yes \
-        --read-var-info=yes \
-        ./ircserv 8080 mdp
+		--leak-check=full \
+		--show-leak-kinds=all \
+		--track-origins=yes \
+		--log-file=valgrind.log \
+		--track-fds=yes \
+		--read-var-info=yes \
+		./ircserv 8080 mdp
 
 test a faire :
 
