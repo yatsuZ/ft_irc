@@ -6,12 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/25 19:56:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:33:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Data_buffer.hpp"
 
+//////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
 template <typename T>
 Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes_received(0)
@@ -38,37 +39,22 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 }
 
 template <typename T>
-std::vector<std::string>	&Data_buffer<T>::get_data_in_list_of_line(void) const
-{
-	return (ft_split(this->get_data_in_string(), "\n\r"));
-}
-
-
-template <typename T>
 Data_buffer<T>::~Data_buffer()
 {
 }
+
+//////////////////////////////////////////////////////////// Methode GET de la class
+
+template <typename T>
+std::vector<std::string>	Data_buffer<T>::get_data_in_vector_of_line(void) const
+{
+	// il coupe chaque ligne
+	return (ft_split(this->get_data_in_string(), SEPERATOR_WITHOUT_SPACE_AND_TAB));
+}
+
 
 template <typename T>
 std::string	Data_buffer<T>::get_data_in_string(void) const
 {
 	return (std::string(this->_data.data()));
-}
-
-template <typename T>
-std::ostream & operator<<( std::ostream & o, Data_buffer<T> const & data_buffer)
-{
-	o << "Data_buffer:" << std::endl;
-	o << getColorCode(BLUE) << "\t_value_type: " << getColorCode(NOCOLOR) << data_buffer.get_type_string() << std::endl;
-	o << getColorCode(BLUE) << "\t_total_bytes_received: " << getColorCode(NOCOLOR) << data_buffer.get_total_bytes_received() << std::endl;
-	o << getColorCode(BLUE) << "\t_data:" << getColorCode(NOCOLOR) << " [";
-	for (typename std::vector<T>::const_iterator it = data_buffer._data.begin();
-		it != data_buffer._data.end(); ++it)
-	{
-		o << *it;
-		if (it + 1 != data_buffer._data.end())
-			o << ", ";
-	}
-	o << "]" << std::endl;
-	return o;
 }

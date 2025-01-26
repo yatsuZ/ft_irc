@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 00:18:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:31:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,6 @@ std::string::size_type close_character(std::string::size_type start, std::string
 
 }
 
-/////////////////////////////// Samira part botom
-
-
-/*
-*/
 //renvoie l'index du separateur dans &sep, - 1 si il trouve pas
 ssize_t	is_sep(char c, std::string sep) 
 {

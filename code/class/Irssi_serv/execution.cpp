@@ -6,94 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/25 19:57:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:21:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Irssi_serv.hpp"
 
-/// @brief Quand pc se connecte aux serveur
-void	Irssi_serv::connect(void)
-{
-
-	std::cout << "-------- CONNECTION -----------" << std::endl;
-	sockaddr_in client_addr;
-	socklen_t client_len = sizeof(client_addr);
-
-	int client_fd = accept(this->get_socketfd(), (struct sockaddr*)&client_addr, &client_len);
-	if (client_fd == -1)
-	{
-		perror("Accept failed");
-		return;
-	}
-
-	// Ajouter le nouveau client à la liste
-	pollfd client_pollfd = {client_fd, POLLIN | POLLOUT | POLLHUP, 0};
-	this->_all_pollfd.push_back(client_pollfd);
-	
-// Verifier ici si il sagit dune reconexion ou un nvx compte heheh
-	std::cout << this->_all_pollfd << std::endl;
-}
-
-/// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
-std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
-{
-	std::vector<Cmd_irssi>		list_cmd;
-	std::vector<std::string>	all_line;
-	Action action = NO_ACTION;
-
-	Data_buffer<char>	buff(current_pollfd.fd, &action);
-
-	if (action != NO_ACTION)
-	{
-		Cmd_irssi n(action);
-		list_cmd.push_back(n);
-		return (list_cmd);
-	}
-
-	std::string message(buff.get_data_in_string());
-
-//	std::cout << "Message recu :" << message << std::endl;
-	std::string separateur = "\n\r";
-	all_line = ft_split(message, separateur);
-	for (size_t i = 0; i < all_line.size(); ++i)
-	{
-		std::string line = all_line[i]; /// ICI sa dconne a refaire
-		if (is_sep(line[0], separateur) == -1)
-		{
-			Cmd_irssi cmd(line);
-			// std::cout << cmd << std::endl;
-			list_cmd.push_back(cmd);
-		}
-	}
-	return (list_cmd);
-}
-
-/// envoye un message aux client
-void	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
-{
-	std::cout << getColorCode(BLUE) << "Message envoyé aux pollfd" << getColorCode(NOCOLOR) << "(" << current_pollfd.fd << ") : \"" << getColorCode(GREEN) << message << getColorCode(NOCOLOR) << "\"";
-
-	send(current_pollfd.fd, message.c_str(), message.size(), 0);
-}
-
-
-/// @brief Quand pc se deconnecte aux serveur
-void	Irssi_serv::disconnect(size_t i, pollfd &current_pollfd)
-{
-	std::cout << "-------- DECO -----------" << std::endl;
-
-	this->_all_pollfd.erase(this->_all_pollfd.begin() + i);
-	close(current_pollfd.fd);
-	std::cout << this->_all_pollfd << std::endl;
-}
 
 /// @brief Methode qui est le coeur du programme
 void	Irssi_serv::exec(void)
 {
 	std::vector<Cmd_irssi>	list_cmd;
 	pollfd	current_pollfd;
-	std::cout << getColorCode(YELLOW) << "Execution du Serveur ..." << getColorCode(NOCOLOR) << std::endl;
+	std::cout << YELLOW << "Execution du Serveur ..." << NOCOLOR << std::endl;
 
 	// Boucle principale
 	while (true)
@@ -133,4 +58,32 @@ void	Irssi_serv::exec(void)
 			}
 		}
 	}
+}
+
+/// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
+std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
+{
+	std::vector<Cmd_irssi>		list_cmd;
+	std::vector<std::string>	all_line;
+	Action action = NO_ACTION;
+
+	Data_buffer<char>	buff(current_pollfd.fd, &action);
+
+	if (action != NO_ACTION)
+	{
+		Cmd_irssi n(action);
+		list_cmd.push_back(n);
+		return (list_cmd);
+	}
+
+	std::string message(buff.get_data_in_string());
+
+	all_line = buff.get_data_in_vector_of_line();
+	for (size_t i = 0; i < all_line.size(); ++i)
+	{
+		std::string line = all_line[i];
+		if (is_sep(line[0], SEPERATOR_WITHOUT_SPACE_AND_TAB) == -1)
+			list_cmd.push_back(line);
+	}
+	return (list_cmd);
 }

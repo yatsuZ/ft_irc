@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/25 19:34:44 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/01/26 20:34:48 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,12 +31,14 @@ MDP = mdp
 
 CLASS_FILES =	./class/Server/Server.cpp			\
 				./class/Cmd_irssi/Cmd_irssi.cpp		\
+				./class/Irssi_serv/Irssi_serv.cpp	\
 				./class/Irssi_serv/execution.cpp	\
-				./class/Irssi_serv/Irssi_serv.cpp
+				./class/Irssi_serv/action.cpp	\
 
 
 UTILS_FILES =	./utils/color.cpp	\
-				./utils/ft_utils.cpp
+				./utils/ft_utils.cpp	\
+				./utils/affichage_utils.cpp
 
 IRCSERV_SRC =	main.cpp		\
 				${UTILS_FILES}	\

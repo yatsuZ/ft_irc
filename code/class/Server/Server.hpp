@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:22:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/25 19:33:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 19:38:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ public:
 	virtual void exec(void) = 0;
 
 };
-
-#include "./affichage.ipp"
 
 /// @brief Affiche tout les attributs de tout les pollfd du vecteur
 std::ostream & operator<<(std::ostream &o, std::vector<struct pollfd> const &pollfds);

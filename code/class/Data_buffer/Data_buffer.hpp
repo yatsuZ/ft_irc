@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:12:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/21 23:49:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:33:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "./../../header/Library.hpp"
+#include "./../../header/Ft_irc.hpp"
 
 
 template <typename T>
@@ -28,7 +28,7 @@ public:
 	Data_buffer(int client_fd, Action *to_do);
 	~Data_buffer();
 	std::string					get_data_in_string(void) const;
-	std::vector<std::string>	&get_data_in_list_of_line(void) const;
+	std::vector<std::string>	get_data_in_vector_of_line(void) const;
 	size_t						get_total_bytes_received(void) const {return this->_total_bytes_received;}
 	std::string					get_type_string(void) const {return typeid(T).name();}
 };

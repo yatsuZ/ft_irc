@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.hpp                                          :+:      :+:    :+:   */
+/*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 12:50:27 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/22 00:13:33 by yzaoui           ###   ########.fr       */
+/*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
+/*   Updated: 2025/01/26 20:18:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include <string>
 
 #define ADDRESSE_IP_IN "127.0.0.1"
 // #define ADDRESSE_IP_IN "10.13.1.13"
@@ -34,6 +33,9 @@ enum Color {
 	COLOR_COUNT // Taille du tableau de couleur
 };
 
+// Tableau associé avec leur valeur ascii
+extern const char* colorCodes[COLOR_COUNT];
+
 enum Action {
 	NO_ACTION,
 	ERROR_RECV_DATA,
@@ -42,14 +44,9 @@ enum Action {
 	IDK// derniere Action du tableau
 };
 
-// Tableau associé avec leur valeur ascii
-extern const char* colorCodes[COLOR_COUNT];
-
-// Retourne la valeur ascii de la couleur demande
-const char* getColorCode(Color color);
-
 // Tableau associé avec leur valeur d'action
 extern const char* action_tab[IDK + 1];
 
-// Retourne l'action en string 
-const char* getActionString(Action current_action);
+
+#define SEPERATOR_WITHOUT_SPACE_AND_TAB "\n\v\f\r"
+#define SEPERATOR " \t\n\v\f\r"

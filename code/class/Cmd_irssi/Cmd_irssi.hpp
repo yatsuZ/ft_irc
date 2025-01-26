@@ -6,14 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:01:10 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/23 23:10:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:34:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "./../../header/Library.hpp"
-
+#include "./../../header/Ft_irc.hpp"
 
 class Cmd_irssi
 {

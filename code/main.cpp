@@ -6,21 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/24 01:34:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:09:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./class/Irssi_serv/Irssi_serv.hpp"
+#include "./affichage.ipp"
 
 void TO_DO(void)
 {
-	std::cout << getColorCode(RED) << "link doit return une liste de cmd_irssi" << getColorCode(NOCOLOR) << std::endl;
+	std::cout << RED << "Netoyer re adpater les fichier et ameliorer le code " << NOCOLOR << std::endl;
 }
 
 int	main(int argc, char **argv)
 {
-	(void) argc;
-	(void) argv;
 	TO_DO();
 	std::cout << "------------------" << std::endl;
 	try
@@ -33,7 +31,7 @@ int	main(int argc, char **argv)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << getColorCode(RED) << e.what() << getColorCode(NOCOLOR) << std::endl;
+		std::cerr << RED << e.what() << NOCOLOR << std::endl;
 		return (1);
 	}
 	return (0);

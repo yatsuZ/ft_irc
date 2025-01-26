@@ -6,11 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/24 01:31:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 19:54:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Server.hpp"
+
+//////////////////////////////////////////////////////////// Methode pour defnir les attribut individuellement
 
 /// @brief verifier que argv1 est un port legit et return sa valeur en uint16_t  sinon envoie une exception, un bon port est compris entre 1 et 65535
 /// @param argv1 Le premier arguement qui est un port en string
@@ -36,7 +38,6 @@ uint16_t  Server::_is_a_legit_port(std::string & argv1)
 	return port;
 }
 
-
 /// @brief Verifie que le 2iem argument est un bon mot de passe, un bon mot de passe doit etre composée que de caractere alphanumerique sans separateur
 /// @param argv2 Le 2iem argument qui est sensé etre le mot de passe
 /// @return le mot de passe
@@ -59,47 +60,7 @@ int Server::_init_socket()
 	return (socketfd);
 }
 
-/// @brief Envoie une exception de type Init_serv_error et ferme correctemen le serveru (car sa ne passera pas automatiquemetn pas le destructeur)
-/// @param msg le message de lexception
-void Server::_throw_except(const std::string &msg)
-{
-	if (_socketfd != -1)
-		close(_socketfd);
-	throw Init_serv_error(msg);
-}
-
-//////////////////
-
-Server::Server():
-_name("Nom du Serveur"),
-_port(-1),
-_mot_de_passe(""),
-_socketfd(-1)
-{
-	std::cout << getColorCode(BLUE) << "Constructeur de Server" << std::endl;
-}
-
-/// @brief Constructeur du serveur
-/// @param argv1 Le port qui sera parser et configurer en temp que _port
-/// @param argv2 Le mot de passe du serveur qui sera stockée dans _mdp
-Server::Server(std::string &argv1, std::string &argv2):
-_name("Nom du Serveur"),
-_port(this->_is_a_legit_port(argv1)),
-_mot_de_passe(this->_is_a_legit_mdp(argv2)),
-_socketfd(this->_init_socket())
-{
-	std::cout << getColorCode(BLUE) << "Constructeur de Server" << getColorCode(NOCOLOR) << std::endl;
-	this->_sock_addr_serv_in.sin_family = AF_INET;
-	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
-	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
-
-	this->_bind_and_listen();
-	
-	this->_paramPoll();
-	
-	std::cout << getColorCode(GREEN) << "Construction Fini" << getColorCode(NOCOLOR) << std::endl;
-
-}
+//////////////////////////////////////////////////////////// Methode de Parametrage
 
 /// @brief Configure le port et les sockets
 void Server::_bind_and_listen()
@@ -139,12 +100,56 @@ void	Server::_paramPoll(void)
 	_all_pollfd.push_back(server_pollfd);
 }
 
+
+//////////////////////////////////////////////////////////// Constructeur Destructeur de la class
+
+Server::Server():
+_name("Nom du Serveur"),
+_port(-1),
+_mot_de_passe(""),
+_socketfd(-1)
+{
+	std::cout << BLUE << "Constructeur de Server" << std::endl;
+}
+
+/// @brief Constructeur du serveur
+/// @param argv1 Le port qui sera parser et configurer en temp que _port
+/// @param argv2 Le mot de passe du serveur qui sera stockée dans _mdp
+Server::Server(std::string &argv1, std::string &argv2):
+_name("Nom du Serveur"),
+_port(this->_is_a_legit_port(argv1)),
+_mot_de_passe(this->_is_a_legit_mdp(argv2)),
+_socketfd(this->_init_socket())
+{
+	std::cout << BLUE << "Constructeur de Server" << NOCOLOR << std::endl;
+	this->_sock_addr_serv_in.sin_family = AF_INET;
+	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
+	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
+
+	this->_bind_and_listen();
+	
+	this->_paramPoll();
+	
+	std::cout << GREEN << "Construction Fini" << NOCOLOR << std::endl;
+}
+
 Server::~Server()
 {
-	std::cout << getColorCode(RED) << "DEstructeur de Server" << getColorCode(NOCOLOR) << std::endl;
+	std::cout << RED << "DEstructeur de Server" << NOCOLOR << std::endl;
 	for (std::vector<struct pollfd>::iterator i = this->_all_pollfd.begin(); i != this->_all_pollfd.end(); i++)
 	{
 		if ((*i).fd > 0)
 			close((*i).fd);
 	}
+}
+
+//////////////////////////////////////////////////////////// Autre Methode Utile
+
+/// @brief Envoie une exception de type Init_serv_error et ferme correctemen le serveru (car sa ne passera pas automatiquemetn pas le destructeur)
+/// @param msg le message de lexception
+void Server::_throw_except(const std::string &msg)
+{
+	if (_socketfd != -1)
+		close(_socketfd);
+	throw Init_serv_error(msg);
 }

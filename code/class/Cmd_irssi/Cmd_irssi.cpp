@@ -6,23 +6,23 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/25 19:56:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 20:18:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Server/Server.hpp"
 
+//////////////////////////////////////////////////////////// Methode pour defnir les attribut individuellement
+
 const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) const
 {
-	// std::cout << "MESSAGE RECU = \"" << MAGENTA << all_message_from_client << NOCOLOR<<"\"";
-	std::string delimiteur = " \t\n\r";
-	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
+	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	size_t	len_of_tokens = tokens.size();
 	if (tokens.empty())
 		return (std::string());
 	for (size_t i = 0; i < len_of_tokens; i++)
 	{
-		if (is_sep(tokens[i][0], delimiteur) == -1)
+		if (is_sep(tokens[i][0], SEPERATOR) == -1)
 			return (tokens[i]);
 	}
 
@@ -31,8 +31,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 
 const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
 {
-	std::string delimiteur = " \t\n\r";
-	std::vector<std::string> tokens = ft_split(all_message_from_client, delimiteur);
+	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	std::vector<std::string> list_arg;
 	bool	first_find = false;
 
@@ -41,7 +40,7 @@ const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from
 
 	for (std::size_t i = 0; i < tokens.size(); ++i)
 	{
-		if (is_sep(tokens[i][0], delimiteur) == -1)
+		if (is_sep(tokens[i][0], SEPERATOR) == -1)
 		{
 			if (first_find)
 			{
@@ -62,7 +61,7 @@ Action	Cmd_irssi::init_action(void) const
 	return (IDK);
 }
 
-//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
 Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION)
 {
@@ -100,33 +99,4 @@ Cmd_irssi	&Cmd_irssi::operator=(Cmd_irssi const & rf)
 
 Cmd_irssi::~Cmd_irssi()
 {
-}
-
-//////////////////////////////////////////////////////
-
-std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
-{
-	const std::string &cmd = cmd_irssi.get_cmd();
-	const std::vector<std::string> &lst_cmd = cmd_irssi.get_arg();
-	size_t taille_de_lst_cmd = lst_cmd.size();
-	Action act = cmd_irssi.get_action();
-
-	o << "cmd_irssi = ";
-	if (cmd.empty())
-		o << CYAN << "Pas de commande et ni d'argument" << NOCOLOR;
-	else
-	{
-		o << "\"" << MAGENTA << cmd << NOCOLOR << "\" [ ";
-		for (size_t index_arg = 0; index_arg < taille_de_lst_cmd; ++index_arg)
-		{
-			o << "\"" << YELLOW << lst_cmd[index_arg];
-			if (index_arg + 1 < taille_de_lst_cmd)
-				o << NOCOLOR << "\", ";
-			else
-			o << NOCOLOR << "\"";
-		}
-		o << " ]";
-	}
-	o << " -> " << RED << act << NOCOLOR;
-	return o;
 }
