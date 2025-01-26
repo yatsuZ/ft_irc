@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/26 22:20:02 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/01/26 23:10:18 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ CLASS_FILES =	./class/Server/Server.cpp			\
 
 
 
-UTILS_FILES =	./utils/color.cpp	\
+UTILS_FILES =	./utils/define_array_and_get_element_of_array.cpp	\
 				./utils/ft_utils.cpp	\
 				./utils/affichage_utils.cpp
 
