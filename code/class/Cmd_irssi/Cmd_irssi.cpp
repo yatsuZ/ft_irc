@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:18:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 22:35:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ _action_to_do(this->init_action())
 Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(action_to_do)
 {
 	// this->_action_to_do = action_to_do;
-	std::cout << "Construction par action" << std::endl;
-	std::cout << *this << std::endl;
+	// std::cout << "Construction par action" << std::endl;
+	// std::cout << *this << std::endl;
 
 }
 

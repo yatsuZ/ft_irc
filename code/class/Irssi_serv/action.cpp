@@ -6,49 +6,62 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:12:00 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:13:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 22:36:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Irssi_serv.hpp"
 
-/// @brief Quand pc se connecte aux serveur
-void	Irssi_serv::connect(void)
+int	Irssi_serv::ft_no_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+	std::cout << "-------- NO ACTION -----------" << std::endl;
 
-	std::cout << "-------- CONNECTION -----------" << std::endl;
-	sockaddr_in client_addr;
-	socklen_t client_len = sizeof(client_addr);
+	return (0);
+}
 
-	int client_fd = accept(this->get_socketfd(), (struct sockaddr*)&client_addr, &client_len);
-	if (client_fd == -1)
-	{
-		perror("Accept failed");
-		return;
-	}
+int	Irssi_serv::ft_error_recv_data(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	current_cmd;
+	(void)	index_of_current_pollfd;
+	std::cout << "-------- ERROR OF FUNCTION RECV -----------" << std::endl;
 
-	// Ajouter le nouveau client à la liste
-	pollfd client_pollfd = {client_fd, POLLIN | POLLOUT | POLLHUP, 0};
-	this->_all_pollfd.push_back(client_pollfd);
-	
-// Verifier ici si il sagit dune reconexion ou un nvx compte heheh
-	std::cout << this->_all_pollfd << std::endl;
+	this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
+	return (0);
+}
+
+int	Irssi_serv::ft_shutdown(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+	std::cout << "-------- SHUTDOWN -----------" << std::endl;
+
+	return (2);
 }
 
 /// @brief Quand pc se deconnecte aux serveur
-void	Irssi_serv::disconnect(size_t i, pollfd &current_pollfd)
+int	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << "-------- DECO -----------" << std::endl;
+	(void)	current_cmd;
+	std::cout << "-------- DISCONNECT -----------" << std::endl;
 
-	this->_all_pollfd.erase(this->_all_pollfd.begin() + i);
+	this->_all_pollfd.erase(this->_all_pollfd.begin() + index_of_current_pollfd);
 	close(current_pollfd.fd);
 	std::cout << this->_all_pollfd << std::endl;
+	index_of_current_pollfd--;
+	return (1);
 }
 
-/// envoye un message aux client
-void	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
+int	Irssi_serv::ft_idk(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : \"" << GREEN << message << NOCOLOR << "\"";
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+	std::cout << CYAN << "-------- I DONT KNOW ?? -----------" << NOCOLOR << std::endl;
 
-	send(current_pollfd.fd, message.c_str(), message.size(), 0);
+	// std::cout << current_cmd << std::endl;
+	return (0);
 }

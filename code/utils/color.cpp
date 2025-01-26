@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:43:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 19:41:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 21:46:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ const char* action_tab[IDK + 1] =
 	"Pas d'action", // NO_ACTION
 	"Probléme de la fonction recv, lors de la recpetion des données", // ERROR_RECV_DATA
 	"Fermetur du serveur. On etein le serveur", // SHUTDOWN
-	"Déconexion d'un client", // DECO
+	"Déconexion d'un client", // DISCONNECT
 	"... Action non reconnus", // IDK
 };
 

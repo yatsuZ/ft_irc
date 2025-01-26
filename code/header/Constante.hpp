@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:18:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 21:46:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ enum Color {
 // Tableau associé avec leur valeur ascii
 extern const char* colorCodes[COLOR_COUNT];
 
+
+//Important si changment apliquer dans le tableau action_tab
 enum Action {
 	NO_ACTION,
 	ERROR_RECV_DATA,
 	SHUTDOWN,
-	DECO,
+	DISCONNECT,
 	IDK// derniere Action du tableau
 };
 

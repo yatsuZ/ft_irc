@@ -6,11 +6,21 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:21:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 22:54:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Irssi_serv.hpp"
+
+int	Irssi_serv::do_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	std::cout << GREEN << "VVV -------- START OF INTERPRETION CMD ----------- VVV" << NOCOLOR << std::endl;
+	std::cout << current_cmd << std::endl;
+	Action act = current_cmd.get_action();
+	int res = (this->*action_table[act])(current_cmd, current_pollfd, index_of_current_pollfd);
+	std::cout << "^^^ -------- END OF INTERPRETION CMD ----------- ^^^" << std::endl;
+	return (res);
+}
 
 
 /// @brief Methode qui est le coeur du programme
@@ -40,19 +50,11 @@ void	Irssi_serv::exec(void)
 				for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
 				{
 					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
-					std::cout << iter_cmd_irssi << std::endl;
-					if (iter_cmd_irssi.get_action() == SHUTDOWN)
-						return ;
-					else if (iter_cmd_irssi.get_action() == DECO)
-					{
-						this->disconnect(i, current_pollfd);
-						i--;
+					int res = do_action(iter_cmd_irssi, current_pollfd, i);
+					if (res == 1)
 						break;
-					}
-					else if (iter_cmd_irssi.get_action() == ERROR_RECV_DATA)
-						this->send_message(std::string(getColorCode(RED)) + "Error de recv data Fail..." + std::string(getColorCode(NOCOLOR)), current_pollfd);
-					// else if (iter_cmd_irssi.get_action() == IDK)
-					// 	std::cout << iter_cmd_irssi << std::endl;
+					else if (res == 2)
+						return;
 				}
 				list_cmd.clear();
 			}
@@ -68,6 +70,10 @@ std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 	Action action = NO_ACTION;
 
 	Data_buffer<char>	buff(current_pollfd.fd, &action);
+
+	std::cout << BLUE << "~~~ -------- Message recu----------- ~~~" << NOCOLOR << std::endl;
+
+	std::cout << RED << "\"" << NOCOLOR << buff.get_data_in_string() << RED << "\"" << NOCOLOR << std::endl;
 
 	if (action != NO_ACTION)
 	{

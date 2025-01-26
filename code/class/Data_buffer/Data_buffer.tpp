@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:33:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/26 21:46:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 	}
 
 	if (!_total_bytes_received || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))// verifier si il sagit dune deconxion ou une fin de lecture ??
-		*to_do = DECO;
+		*to_do = DISCONNECT;
 }
 
 template <typename T>
