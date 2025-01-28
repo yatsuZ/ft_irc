@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 22:35:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/28 01:12:40 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from
 
 Action	Cmd_irssi::init_action(void) const
 {
-	if (this->get_cmd() == "exit")
+	if (this->get_cmd() == "SHUTDOWN")
 		return (SHUTDOWN);
+	if (this->get_cmd() == "NICK")
+		return (NICK);
 	return (IDK);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 23:10:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/28 00:55:46 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ const char* action_tab[IDK + 1] =
 {
 	"Pas d'action", // NO_ACTION
 	"Probléme de la fonction recv, lors de la recpetion des données", // ERROR_RECV_DATA
-	"Fermetur du serveur. On etein le serveur", // SHUTDOWN
+	"Fermeture du serveur. On eteint le serveur", // SHUTDOWN
 	"Déconexion d'un client", // DISCONNECT
+	"Set le nom de l'utilisateur", //NICK
 	"... Action non reconnus", // IDK
 };
 

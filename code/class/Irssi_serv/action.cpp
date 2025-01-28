@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:12:00 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 23:22:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/28 01:01:27 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_
 	std::cout << this->_all_pollfd << std::endl;
 	index_of_current_pollfd--;
 	return (PASS);
+}
+
+Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+	std::cout << "-------- SET NICK -----------" << std::endl;
+
+	return (NONE);
 }
 
 Reaction_Serv	Irssi_serv::ft_idk(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
