@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 22:15:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/31 01:01:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /// @brief Quand pc se connecte aux serveur
 void	Irssi_serv::connect(void)
 {
-
 	std::cout << "-------- CONNECTION -----------" << std::endl;
 	sockaddr_in client_addr;
 	socklen_t client_len = sizeof(client_addr);
@@ -30,9 +29,10 @@ void	Irssi_serv::connect(void)
 	// Ajouter le nouveau client à la liste
 	pollfd client_pollfd = {client_fd, POLLIN | POLLOUT | POLLHUP, 0};
 	this->_all_pollfd.push_back(client_pollfd);
-	
-// Verifier ici si il sagit dune reconexion ou un nvx compte heheh
 	std::cout << this->_all_pollfd << std::endl;
+	Client new_client(this->_all_pollfd.size() - 1, client_addr, client_len);
+	std::cout << YELLOW << "New Client :\t" << NOCOLOR << new_client << std::endl;
+	this->_all_Client.push_back(new_client);
 }
 
 /// envoye un message aux client

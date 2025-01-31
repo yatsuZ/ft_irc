@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   User.hpp                                           :+:      :+:    :+:   */
+/*   UserHuman.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/01/31 01:20:39 by yzaoui           ###   ########.fr       */
+/*   Created: 2025/01/30 23:37:41 by yzaoui            #+#    #+#             */
+/*   Updated: 2025/01/31 01:21:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../../header/Ft_irc.hpp"
+#include "./../User.hpp"
+#include "./../../Client/Client.hpp"
 
-class User
+class UserHuman: public User, public Client
 {
-protected:
-	std::string				_name;
-	std::string				_nick;
 public:
-	User();
-	User(std::string & name);
-	~User();
-
-	void		setNick(const std::string &);
-	std::string	getNick();
-	void		setName(const std::string &);
-	std::string	getName();
-
+	UserHuman();
+	UserHuman(std::string & name, Client & client);
+	~UserHuman();
 };
 
-std::ostream & operator<<( std::ostream & o, User const & user);
+std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman);

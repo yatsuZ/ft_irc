@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+         #
+#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/28 01:09:31 by kuro             ###   ########.fr        #
+#    Updated: 2025/01/31 01:07:50 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ CLASS_FILES =	./class/Server/Server.cpp			\
 				./class/Irssi_serv/action.cpp		\
 				./class/Irssi_serv/other.cpp		\
 				./class/User/User.cpp				\
-				./class/Client/Client.cpp
+				./class/Client/Client.cpp			\
+				./class/User/UserHuman/UserHuman.cpp
 
 
 

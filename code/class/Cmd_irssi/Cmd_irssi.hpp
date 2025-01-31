@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:01:10 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/28 01:04:47 by kuro             ###   ########.fr       */
+/*   Updated: 2025/01/31 01:18:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "./../../header/Ft_irc.hpp"
-#include "./../User/User.hpp"
+#include "./../User/UserHuman/UserHuman.hpp"
 
 class Cmd_irssi
 {

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:09:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/01/31 01:29:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,30 @@ std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 		o << " ]";
 	}
 	o << " -> " << RED << act << NOCOLOR;
+	return o;
+}
+
+std::ostream & operator<<( std::ostream & o, Client const & client)
+{
+	sockaddr_in const &socket_adresse_client = client.get_client_addr();
+	char ip_str[INET_ADDRSTRLEN];
+	inet_ntop(AF_INET, &socket_adresse_client.sin_addr, ip_str, INET_ADDRSTRLEN);
+
+	o << "| " << "index pollfd = "	<< CYAN << client.get_index_pollfd() << NOCOLOR << " | "
+	<< "client adresse = " 			<< CYAN << ip_str << "::" << ntohs(socket_adresse_client.sin_port) << NOCOLOR << " | "
+	<< "taille de ladresse = "		<< CYAN << client.get_client_len() << NOCOLOR << " | "
+	<< "est il connectée = " 		<< CYAN << client.get_is_connect() << NOCOLOR << " |";
+	return o;
+}
+
+std::ostream & operator<<( std::ostream & o, User const & user)
+{
+	(void)	user;
+	return o;
+}
+
+std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman)
+{
+	(void)	userhuman;
 	return o;
 }

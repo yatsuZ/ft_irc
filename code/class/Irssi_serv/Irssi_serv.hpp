@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/28 01:00:24 by kuro             ###   ########.fr       */
+/*   Updated: 2025/01/31 01:18:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 class Irssi_serv: public Server
 {
 private:
+	std::vector<Client>		_all_Client;
+	std::vector<User>		_all_User;
 	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);
 	
 	Reaction_Serv	do_action(Cmd_irssi &cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);

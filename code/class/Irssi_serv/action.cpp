@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 20:12:00 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/28 01:01:27 by kuro             ###   ########.fr       */
+/*   Updated: 2025/01/31 01:45:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,27 @@ Reaction_Serv	Irssi_serv::ft_shutdown(Cmd_irssi &current_cmd, pollfd &current_po
 Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	(void)	current_cmd;
-	std::cout << "-------- DISCONNECT -----------" << std::endl;
+	std::cout << "-------- DISCONNECT -----------" << std::endl;// surpimer le client
+	std::cout << "All_client :" << std::endl;
 
+	bool find_client_associate_by_pollfd = false;
+	for (std::vector<Client>::iterator iteration_client = this->_all_Client.begin();
+	iteration_client != this->_all_Client.end(); iteration_client++)
+	{
+		ssize_t index_pollfd = iteration_client->get_index_pollfd();
+		if (index_pollfd != -1 && current_pollfd.fd == this->_all_pollfd[index_pollfd].fd)
+		{
+			std::cout << RED << "Client to erase :\t" << NOCOLOR << *iteration_client << std::endl;
+			iteration_client = this->_all_Client.erase(iteration_client);
+			if (iteration_client == this->_all_Client.end())
+				break ;
+			find_client_associate_by_pollfd = true;
+		}
+		if (find_client_associate_by_pollfd)
+			iteration_client->set_index_pollfd(iteration_client->get_index_pollfd() - 1);
+		std::cout << "\t- " << *iteration_client << std::endl;
+	}
+	
 	this->_all_pollfd.erase(this->_all_pollfd.begin() + index_of_current_pollfd);
 	close(current_pollfd.fd);
 	std::cout << this->_all_pollfd << std::endl;
