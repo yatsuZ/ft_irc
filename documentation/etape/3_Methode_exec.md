@@ -5,21 +5,22 @@ Dans cette section, nous explorons le concept de **poll** et ses variantes, les 
 ## Table des matières
 
 - [3. Le cœur du programme](#3-le-cœur-du-programme)
-	- [Table des matières](#table-des-matières)
-	- [Objectif](#objectif)
-	- [Outils de multiplexage d'I/O](#outils-de-multiplexage-dio)
-		- [Problématique](#problématique)
-		- [Définition et utilité](#définition-et-utilité)
-		- [Pourquoi utiliser le multiplexage d'I/O ?](#pourquoi-utiliser-le-multiplexage-dio-)
-		- [Exemple concret](#exemple-concret)
-		- [Comparaison des outils](#comparaison-des-outils)
-	- [La méthode `exec()`](#la-méthode-exec)
-		- [Initialisation avec `_paramPoll()`](#initialisation-avec-_parampoll)
-		- [Fonctionnement de `exec()`](#fonctionnement-de-exec)
-	- [Explications et tests](#explications-et-tests)
-		- [Explications](#explications)
-		- [Tester le programme](#tester-le-programme)
-		- [Alternatives envisagées](#alternatives-envisagées)
+  - [Table des matières](#table-des-matières)
+  - [Objectif](#objectif)
+  - [Outils de multiplexage d'I/O](#outils-de-multiplexage-dio)
+    - [Problématique](#problématique)
+    - [Définition et utilité](#définition-et-utilité)
+    - [Pourquoi utiliser le multiplexage d'I/O ?](#pourquoi-utiliser-le-multiplexage-dio-)
+    - [Exemple concret](#exemple-concret)
+    - [Comparaison des outils](#comparaison-des-outils)
+  - [La méthode `exec()`](#la-méthode-exec)
+    - [Initialisation avec `_paramPoll()`](#initialisation-avec-_parampoll)
+    - [Fonctionnement de `exec()`](#fonctionnement-de-exec)
+  - [Update](#update)
+  - [Explications et tests](#explications-et-tests)
+    - [Explications](#explications)
+    - [Tester le programme](#tester-le-programme)
+    - [Alternatives envisagées](#alternatives-envisagées)
 
 ---
 
@@ -140,6 +141,10 @@ void Server::exec(void)
     }
 }
 ```
+
+## Update
+
+Ce qui est ici est le point de depart du projet pour avoir une base solide en tremp il y a eu des modification dans le code et les realisation des class et structure.
 
 ---
 
