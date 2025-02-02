@@ -58,8 +58,12 @@ Action	Cmd_irssi::init_action(void) const
 {
 	if (this->get_cmd() == "SHUTDOWN")
 		return (SHUTDOWN);
-	if (this->get_cmd() == "NICK")
+	else if (this->get_cmd() == "NICK")
 		return (NICK);
+	else if (this->get_cmd() == "CAP")
+		return (CAP);
+	else if (this->get_cmd() == "USER")
+		return (USER);
 	return (IDK);
 }
 

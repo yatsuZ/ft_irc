@@ -30,7 +30,7 @@ void TO_DO(void)
 
 	std::cout << "4. " << MAGENTA << "Pour finir :" << NOCOLOR << std::endl;
 	std::cout << "\t- Créer la nouvelle méthode pour l'action dans " << YELLOW << "./class/Irssi_serv/Irssi_serv.hpp" << NOCOLOR << "." << std::endl;
-	std::cout << "\t- Ne pas oublier de l'ajouter dans le constructeur." << std::endl;
+	std::cout << "\t- Ne pas oublier de l'ajouter dans le constructeur dans " << YELLOW << "./class/Irssi_serv/Irssi_serv.cpp" << NOCOLOR << "." << std::endl;
 
 	std::cout << std::endl;
 	std::cout << RED << "/!\\ IMPORTANT : Respecter l'ordre et les commentaires pour éviter les erreurs." << NOCOLOR << std::endl;

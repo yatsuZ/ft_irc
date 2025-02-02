@@ -74,12 +74,33 @@ Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_
 	return (PASS);
 }
 
+Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+	std::cout << CYAN << "-------- CAPACITI -----------" << NOCOLOR << std::endl;
+
+	return (NONE);
+}
+
 Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	(void)	current_cmd;
 	(void)	current_pollfd;
 	(void)	index_of_current_pollfd;
-	std::cout << "-------- SET NICK -----------" << std::endl;
+	std::cout << CYAN << "-------- NICK -----------" << NOCOLOR << std::endl;
+
+	return (NONE);
+}
+
+Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	current_cmd;
+	(void)	current_pollfd;
+	(void)	index_of_current_pollfd;
+
+	std::cout << CYAN << "-------- USER -----------" << NOCOLOR << std::endl;
 
 	return (NONE);
 }

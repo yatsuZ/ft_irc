@@ -18,7 +18,9 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[ERROR_RECV_DATA] = &Irssi_serv::ft_error_recv_data;
 	action_table[SHUTDOWN] = &Irssi_serv::ft_shutdown;
 	action_table[DISCONNECT] = &Irssi_serv::ft_disconnect;
+	action_table[CAP] = &Irssi_serv::ft_cap;
 	action_table[NICK] = &Irssi_serv::ft_nick;
+	action_table[USER] = &Irssi_serv::ft_user;
 	action_table[IDK] = &Irssi_serv::ft_idk;
 }
 

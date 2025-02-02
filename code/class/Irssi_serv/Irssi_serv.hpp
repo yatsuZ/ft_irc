@@ -29,7 +29,9 @@ private:
 	Reaction_Serv		ft_error_recv_data(Cmd_irssi &, pollfd &, size_t &);// ERROR_RECV_DATA
 	Reaction_Serv		ft_shutdown(Cmd_irssi &, pollfd &, size_t &);		// SHUTDOWN
 	Reaction_Serv		ft_disconnect(Cmd_irssi &, pollfd &, size_t &);		// DISCONNECT
+	Reaction_Serv		ft_cap(Cmd_irssi &, pollfd &, size_t &);			// CAP
 	Reaction_Serv		ft_nick(Cmd_irssi &, pollfd &, size_t &);			// NICK
+	Reaction_Serv		ft_user(Cmd_irssi &, pollfd &, size_t &);			// USER
 	Reaction_Serv		ft_idk(Cmd_irssi &, pollfd &, size_t &);			// IDK dernier
 
 	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);

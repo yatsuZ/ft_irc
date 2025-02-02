@@ -30,6 +30,7 @@ enum Color {
 	MAGENTA,
 	CYAN,
 	WHITE,
+	PINK,
 	COLOR_COUNT // Taille du tableau de couleur
 };
 
@@ -43,7 +44,9 @@ enum Action {
 	ERROR_RECV_DATA,
 	SHUTDOWN,
 	DISCONNECT,
+	CAP,
 	NICK,
+	USER,
 	IDK// derniere Action du tableau
 };
 
