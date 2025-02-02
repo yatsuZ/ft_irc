@@ -61,16 +61,19 @@ Le protocole IRC est défini principalement par la **RFC 1459**, mais de nombreu
 
 ## Tableau des commandes que le serveur interprète
 
-| Nom de la commande | Arguments nécessaires | Ce que ça fait | Liens vers sa documentation |
-|--------------------|----------------------|----------------|----------------------------|
-| `CAP`              | [commande]           | Permet de négocier des capacités supplémentaires avec le serveur, comme la prise en charge de certaines extensions IRC. | [IRC CAP Command](https://ircv3.net/specs/capability-negotiation-3.1.html) |
-| `NICK`             | [nouveau-nom]        | Permet de définir ou de changer le pseudonyme de l'utilisateur. Si le pseudonyme est déjà pris, le serveur répondra par une erreur. | [IRC NICK Command](https://tools.ietf.org/html/rfc1459#section-2.3) |
-| `USER`             | [username] [hostname] [server] [realname] | Permet à l'utilisateur de s'identifier auprès du serveur IRC. L'argument `realname` est souvent utilisé pour donner un nom ou une description supplémentaire. | [IRC USER Command](https://tools.ietf.org/html/rfc1459#section-2.4) |
-| `PASS`             | [mot-de-passe]       | Permet à l'utilisateur de se connecter avec un mot de passe si le serveur nécessite une authentification. | [IRC PASS Command](https://tools.ietf.org/html/rfc1459#section-2.5) |
-| `JOIN`             | [canal] [mots-de-passe] | Permet à l'utilisateur de rejoindre un canal. Le serveur doit répondre par un message indiquant que l'utilisateur a rejoint le canal. | [IRC JOIN Command](https://tools.ietf.org/html/rfc1459#section-2.5) |
-| `PART`             | [canal]              | Permet à l'utilisateur de quitter un canal. Le serveur répondra en annonçant que l'utilisateur a quitté le canal. | [IRC PART Command](https://tools.ietf.org/html/rfc1459#section-2.6) |
-| `PRIVMSG`          | [destinataire] [message] | Envoie un message privé à un utilisateur ou à un canal. Le serveur transmet ce message aux autres utilisateurs du canal ou à la personne spécifiée. | [IRC PRIVMSG Command](https://tools.ietf.org/html/rfc1459#section-2.3) |
-| `PONG`             | [serveur]            | Réponse à un message `PING` envoyé par le serveur pour vérifier que la connexion est toujours active. Le client doit répondre par `PONG` pour maintenir la connexion. | [IRC PONG Command](https://tools.ietf.org/html/rfc1459#section-2.9) |
-| `QUIT`             | [message]            | Permet à l'utilisateur de se déconnecter du serveur IRC. Le serveur répondra en annonçant que l'utilisateur a quitté le serveur. | [IRC QUIT Command](https://tools.ietf.org/html/rfc1459#section-2.7) |
+voir ce document :
+- [irc documentation](https://datatracker.ietf.org/doc/html/rfc1459#section-4)
+
+| Nom de la commande | Arguments nécessaires | Ce que ça fait |
+|--------------------|----------------------|----------------|
+| `CAP`              | [commande]           | Permet de négocier des capacités supplémentaires avec le serveur, comme la prise en charge de certaines extensions IRC. |
+| `NICK`             | [nouveau-nom]        | Permet de définir ou de changer le pseudonyme de l'utilisateur. Si le pseudonyme est déjà pris, le serveur répondra par une erreur. |
+| `USER`             | [username] [hostname] [server] [realname] | Permet à l'utilisateur de s'identifier auprès du serveur IRC. L'argument `realname` est souvent utilisé pour donner un nom ou une description supplémentaire. |
+| `PASS`             | [mot-de-passe]       | Permet à l'utilisateur de se connecter avec un mot de passe si le serveur nécessite une authentification. |
+| `JOIN`             | [canal] [mots-de-passe] | Permet à l'utilisateur de rejoindre un canal. Le serveur doit répondre par un message indiquant que l'utilisateur a rejoint le canal. |
+| `PART`             | [canal]              | Permet à l'utilisateur de quitter un canal. Le serveur répondra en annonçant que l'utilisateur a quitté le canal. |
+| `PRIVMSG`          | [destinataire] [message] | Envoie un message privé à un utilisateur ou à un canal. Le serveur transmet ce message aux autres utilisateurs du canal ou à la personne spécifiée. |
+| `PONG`             | [serveur]            | Réponse à un message `PING` envoyé par le serveur pour vérifier que la connexion est toujours active. Le client doit répondre par `PONG` pour maintenir la connexion. |
+| `QUIT`             | [message]            | Permet à l'utilisateur de se déconnecter du serveur IRC. Le serveur répondra en annonçant que l'utilisateur a quitté le serveur. |
 
 
