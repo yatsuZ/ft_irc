@@ -104,7 +104,6 @@ std::vector<std::string> ft_split(const std::string & str, const std::string & s
 			word.push_back(str[i]);
 		if (idx != -1)
 		{
-			// std::cout << "word=\"" << word << "\"" << std::endl;
 			if (!word.empty())
 				split.push_back(word);
 			word.clear();
