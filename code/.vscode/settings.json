@@ -53,6 +53,11 @@
 		"*.tpp": "cpp",
 		"ranges": "cpp",
 		"span": "cpp",
-		"optional": "cpp"
+		"optional": "cpp",
+		"chrono": "cpp",
+		"ratio": "cpp",
+		"semaphore": "cpp",
+		"stop_token": "cpp",
+		"thread": "cpp"
 	}
 }

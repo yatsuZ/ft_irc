@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/01/31 01:07:50 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/02/03 13:31:41 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,15 +29,24 @@ MDP = mdp
 
 ############### OBJ du projet ircserv
 
-CLASS_FILES =	./class/Server/Server.cpp			\
-				./class/Cmd_irssi/Cmd_irssi.cpp		\
-				./class/Irssi_serv/Irssi_serv.cpp	\
-				./class/Irssi_serv/execution.cpp	\
-				./class/Irssi_serv/action.cpp		\
-				./class/Irssi_serv/other.cpp		\
-				./class/User/User.cpp				\
-				./class/Client/Client.cpp			\
-				./class/User/UserHuman/UserHuman.cpp
+ACTION_SERV_FILES =	cap.cpp				\
+					disconnect.cpp		\
+					error_recv_data.cpp	\
+					idk.cpp				\
+					nick.cpp			\
+					no_action.cpp		\
+					shutdown.cpp		\
+					user.cpp
+
+CLASS_FILES =	./class/Server/Server.cpp				\
+				./class/Cmd_irssi/Cmd_irssi.cpp			\
+				./class/Irssi_serv/Irssi_serv.cpp		\
+				./class/Irssi_serv/execution.cpp		\
+				./class/Irssi_serv/other.cpp			\
+				./class/User/User.cpp					\
+				./class/Client/Client.cpp				\
+				./class/User/UserHuman/UserHuman.cpp	\
+				${addprefix ./class/Irssi_serv/action_serv/, ${ACTION_SERV_FILES}}
 
 
 

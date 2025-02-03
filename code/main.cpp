@@ -6,11 +6,12 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 23:32:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:51:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./affichage.ipp"
+
 
 void TO_DO(void)
 {
@@ -39,25 +40,65 @@ void TO_DO(void)
 	std::cout << WHITE << "-- BONNE CHANCE --" << GREEN << " (O_<)★彡" << NOCOLOR << std::endl;
 }
 
+#include <iostream>
+#include <unistd.h>  // Pour la fonction sleep
+
+void afficher_texte_progressivement(std::string texte, int delai_s = 1)
+{
+	for (size_t i = 0; i < texte.length(); ++i)
+	{
+		std::cout << texte[i] << std::flush;
+		sleep(delai_s);  // Attente entre chaque caractère en secondes
+	}
+	std::cout << std::endl;
+}
+
+void Message_a_sam(void)
+{
+	std::string msg = std::string(getColorCode(RED)) + "Si tu as lu ce message, envoie un message sur Instagram, comme je sais que tu essaies de lire le code -_-.\n" + std::string(getColorCode(NOCOLOR)) ;
+	afficher_texte_progressivement(msg);
+	msg = std::string(getColorCode(PINK)) + "Salut SAM ! Voici ce qu'il y a à faire :\n" + std::string(getColorCode(NOCOLOR)) ;
+
+	afficher_texte_progressivement(msg);
+	msg = std::string("1. " + std::string(getColorCode(CYAN)) + "Compléter les réponses du serveur dans " + std::string(getColorCode(YELLOW)) + "./class/Irssi_serv/action_serv/nick.cpp\n" + std::string(getColorCode(NOCOLOR))) ;
+
+	afficher_texte_progressivement(msg);
+
+	msg = std::string(std::string(getColorCode(BLUE)) + "\t- Tu dois t'occuper de USER NICK, CAP n'est pas obligatoire.\n" + std::string(getColorCode(NOCOLOR))) ;
+
+	afficher_texte_progressivement(msg);
+
+	std::cout << std::endl;
+	afficher_texte_progressivement("/!\\ INFO : En regardant le code d'Ilhame, elle a créé des macros pour automatiser les messages, mais je ne sais pas quand les utiliser. Regarde dans header/Reponse_numeric_serv.hpp\n");
+
+	std::cout << std::endl;
+	afficher_texte_progressivement("---------------------------\n");
+	afficher_texte_progressivement("-- BONNE CHANCE -- (O_<)★彡\n");
+}
+
+
+
 int	main(int argc, char **argv)
 {
 	(void)	argc;
 	(void)	argv;
-	TO_DO();
+	// TO_DO();
+	Message_a_sam();
+
 	std::cout << "---------------------------" << std::endl << std::endl;
-	try
-	{
-		if (argc != 3 || !argv)
-			throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
-		Irssi_serv test(argv[1], argv[2]);
-		std::cout << test;
-		test.exec();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << NOCOLOR << std::endl;
-		return (1);
-	}
+	// try
+	// {
+	// 	if (argc != 3 || !argv)
+	// 		throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
+	// 	Irssi_serv test(argv[1], argv[2]);
+	// 	std::cout << test;
+	// 	test.exec();
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << RED << e.what() << NOCOLOR << std::endl;
+	// 	return (1);
+	// }
 	return (0);
 }
 
