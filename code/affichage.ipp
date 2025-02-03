@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/31 01:29:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 21:09:54 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ inline std::ostream &operator<<(std::ostream &o, std::vector<struct pollfd> cons
 }
 
 // Affichage de la class Serveur chacun de ces attribut
-inline std::ostream	&operator<<( std::ostream & o, Server const & serv)
+std::ostream	&operator<<( std::ostream & o, Server const & serv)
 {
 	sockaddr_in const &socket_adresse_in = serv.get_socke_addr_serv();
 	char ip_str[INET_ADDRSTRLEN];

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 20:31:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 21:22:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,8 @@ std::vector<std::string> ft_split(const std::string& , const std::string& );
 std::ostream & operator<<( std::ostream & o, Action const & action);
 std::ostream & operator<<( std::ostream & o, Color const & color);
 
+/////////////////////////////////////// A SUPRIMER
+
+void Message_a_sam(void);
+void afficher_texte_progressivement(std::string texte, int delai_s);
+void TO_DO(void);

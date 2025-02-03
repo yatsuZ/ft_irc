@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/03 13:31:41 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/02/03 21:22:19 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,9 @@ UTILS_FILES =	./utils/define_array_and_get_element_of_array.cpp	\
 				./utils/ft_utils.cpp	\
 				./utils/affichage_utils.cpp
 
-IRCSERV_SRC =	main.cpp		\
-				${UTILS_FILES}	\
+IRCSERV_SRC =	main.cpp						\
+				message_to_mate_to_delete.cpp	\
+				${UTILS_FILES}					\
 				${CLASS_FILES}
 
 OBJ_PATH = obj/
