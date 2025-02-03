@@ -6,18 +6,18 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/01/31 01:19:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 12:59:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "User.hpp"
 
-User::User(void): _name(""), _nick("")
+User::User(void): _nick(""), _name("")
 {
 	std::cout << "A new User is joining" << std::endl;
 }
 
-User::User(std::string & name): _name(name), _nick("")
+User::User(std::string & nick): _nick(nick), _name("")
 {
 	std::cout << "A new User is joining" << std::endl;
 }

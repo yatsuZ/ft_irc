@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/28 00:52:45 by kuro             ###   ########.fr       */
+/*   Updated: 2025/02/03 12:17:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#include "./Reponse_numeric_serv.hpp"
 
 #define ADDRESSE_IP_IN "127.0.0.1"
 // #define ADDRESSE_IP_IN "10.13.1.13"
@@ -60,6 +62,15 @@ enum Reaction_Serv {
 	STOP
 };
 
-
 #define SEPERATOR_WITHOUT_SPACE_AND_TAB "\n\v\f\r"
 #define SEPERATOR " \t\n\v\f\r"
+
+enum Fonctionalite_du_serveur {
+	CAP_SERV,
+	NICK_SERV,
+	USER_SERV,
+	NBR_DE_FONCTIONALITE_DU_SERV // dernier element
+};
+
+// Tableau associé avec leur valeur d'Fonctionalite_du_serveur
+extern const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV];

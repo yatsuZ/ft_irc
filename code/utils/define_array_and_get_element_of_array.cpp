@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/28 00:55:46 by kuro             ###   ########.fr       */
+/*   Updated: 2025/02/03 11:54:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,10 @@ const char* getActionString(Action current_action)
 		return action_tab[index_in_tab];
 	return action_tab[IDK];
 }
+
+const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV] =
+{
+	"CAP",	// CAP
+	"NICK",	// NICK
+	"USER",	// USER
+};

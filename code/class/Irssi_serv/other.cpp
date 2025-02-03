@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/31 01:01:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:16:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,18 @@ void	Irssi_serv::connect(void)
 /// envoye un message aux client
 int	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
 {
-	std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : \"" << GREEN << message << NOCOLOR << "\"";
+	std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : " << GREEN << "\"" << NOCOLOR << message << GREEN << "\"" << NOCOLOR << std::endl;
 
 	send(current_pollfd.fd, message.c_str(), message.size(), 0);
 	return (0);
+}
+
+Client * Irssi_serv::_get_client_by_index_of_pollfd(ssize_t i)
+{
+	for (size_t j = 0; j < this->_all_Client.size(); j++)
+	{
+		if (this->_all_Client[j].get_index_pollfd() == i && i != -1)
+			return (&(this->_all_Client[j]));
+	}
+	return (NULL);
 }

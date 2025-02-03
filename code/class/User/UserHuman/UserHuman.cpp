@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/31 01:21:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:00:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ UserHuman::UserHuman(void)
 {
 }
 
-UserHuman::UserHuman(std::string & name, Client & client): User(name), Client(client)
+UserHuman::UserHuman(std::string & nick, Client & client): User(nick), Client(client)
 {
 	std::cout << "A new User is joining" << std::endl;
 }

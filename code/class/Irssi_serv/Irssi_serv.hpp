@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/31 01:18:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/03 13:16:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Irssi_serv: public Server
 {
 private:
 	std::vector<Client>		_all_Client;
-	std::vector<User>		_all_User;
+	std::vector<UserHuman>	_all_User;
 	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);
 	
 	Reaction_Serv	do_action(Cmd_irssi &cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);
@@ -41,6 +41,7 @@ private:
 	void	connect(void);
 	int		send_message(std::string message, pollfd &current_pollfd);
 
+	Client * _get_client_by_index_of_pollfd(ssize_t i);
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);
