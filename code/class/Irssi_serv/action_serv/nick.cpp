@@ -59,8 +59,8 @@ Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd
 	_all_User.push_back(new_user);
 
 	// Envoyer un message de bienvenue au client
-	send_message("001 " + nick + " :Welcome to the Internet Relay Network " + nick, current_pollfd);  // RPL_WELCOME
-	send_message("002 " + nick + " :Your host is irc.server.com, running version 1.0", current_pollfd);  // RPL_YOURHOST
+	send_message("001 " + nick + " :Welcome to the Internet Relay Network " + nick + "\r\n", current_pollfd);  // RPL_WELCOME
+	send_message("002 " + nick + " :Your host is irc.server.com, running version 1.0"+ "\r\n", current_pollfd);  // RPL_YOURHOST
 
 	return (NONE);
 }

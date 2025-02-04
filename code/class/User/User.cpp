@@ -14,12 +14,12 @@
 
 User::User(void): _nick(""), _name("")
 {
-	std::cout << "A new User is joining" << std::endl;
+	// std::cout << "A Default User is joining" << std::endl;
 }
 
 User::User(std::string & nick): _nick(nick), _name("")
 {
-	std::cout << "A new User is joining" << std::endl;
+	// std::cout << "A Parametrick User with nick " << PINK << nick << NOCOLOR << " is joining" << std::endl;
 }
 
 User::~User(){}
