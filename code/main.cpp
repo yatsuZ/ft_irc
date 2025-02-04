@@ -18,22 +18,22 @@ int	main(int argc, char **argv)
 	(void)	argc;
 	(void)	argv;
 	// TO_DO();
-	Message_a_sam();
+	// Message_a_sam();
 
 	std::cout << "---------------------------" << std::endl << std::endl;
-	// try
-	// {
-	// 	if (argc != 3 || !argv)
-	// 		throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
-	// 	Irssi_serv test(argv[1], argv[2]);
-	// 	std::cout << test;
-	// 	test.exec();
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << NOCOLOR << std::endl;
-	// 	return (1);
-	// }
+	try
+	{
+		if (argc != 3 || !argv)
+			throw Init_serv_error("Pas le bon nombre d'argument il en faut 2.");
+		Irssi_serv test(argv[1], argv[2]);
+		std::cout << test;
+		test.exec();
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << NOCOLOR << std::endl;
+		return (1);
+	}
 	return (0);
 }
 
