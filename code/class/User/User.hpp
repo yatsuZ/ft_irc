@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/03 12:59:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/04 19:12:13 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,27 @@
 class User
 {
 protected:
-	std::string				_nick;
-	std::string				_name;
+	std::string		_nick;
+	std::string		_name;
+	std::string 	_hostname;
+	std::string		_realname;		
+	std::string		_servername;
 public:
 	User();
-	User(std::string & nick);
 	~User();
+	User(std::string & nick);
 
 	void		setNick(const std::string &);
-	std::string	getNick();
 	void		setName(const std::string &);
+	void		setHostname(const std::string &);
+	void		setServername(const std::string &);
+	void		setRealname(const std::string &);
+
+	std::string	getNick();
 	std::string	getName();
+	std::string	getHostname();
+	std::string	getRealname();
+	std::string	getServername();
 
 };
 

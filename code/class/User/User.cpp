@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/03 12:59:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/04 19:13:13 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,35 @@ User::User(std::string & nick): _nick(nick), _name("")
 
 User::~User(){}
 
-std::string User::getName()
-{return _nick;}
 
-void	User::setName(const std::string & n)
-{_nick = n;}
-
+// --- GETTERS
 std::string User::getNick()
 {return _nick;}
 
+std::string User::getName()
+{return _name;}
+
+std::string User::getHostname()
+{return _hostname;}
+
+std::string User::getRealname()
+{return _realname;}
+
+std::string User::getServername()
+{return _servername;}
+
+// --- SETTERS ---
+void	User::setName(const std::string & n)
+{_name = n;}
+
 void	User::setNick(const std::string & n)
 {_nick = n;}
+
+void	User::setHostname(const std::string & h)
+{_hostname = h;}
+
+void	User::setRealname(const std::string & n)
+{_realname = n;}
+
+void	User::setServername(const std::string & s)
+{_servername = s;}
