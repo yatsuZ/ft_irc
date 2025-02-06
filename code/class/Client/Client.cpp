@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:48 by kuro              #+#    #+#             */
-/*   Updated: 2025/01/31 01:21:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:23:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,14 @@ _client_len(src.get_client_len()),
 _is_connect(src.get_is_connect())
 {
 }
+
 Client::~Client(){}
+
+std::string	Client::get_ip_to_string(void) const
+{
+	char ip_buffer[INET_ADDRSTRLEN];  // Taille max pour une IPv4
+	if (inet_ntop(AF_INET, &(this->_client_addr.sin_addr), ip_buffer, INET_ADDRSTRLEN) == NULL)
+		return "Unknown"; // Gestion d'erreur
+
+	return std::string(ip_buffer);
+}

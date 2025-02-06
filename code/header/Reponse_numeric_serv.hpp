@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 09:47:59 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:42:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,26 @@
 #define CRLF "\r\n"
 
 // RPL (Réponses numériques)
+
 // RPL_WELCOME
-#define RPL_WELCOME(server_name, nick, user, host_ip) (":" + server_name + "001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host_ip + CRLF)
+#define RPL_WELCOME(server_name, nick, user, host_ip) (":" + server_name + " 001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host_ip + CRLF)
+// RPL_YOURHOST 
+#define RPL_YOURHOST(server_name, nick, version) (":" + server_name + " 002 " + nick + " :Your host is " + server_name + ", running version " + version + CRLF)
 
 // ERR (Erreurs numériques)
 
+// ERR_NOSUCHNICK
+#define ERR_NOSUCHNICK(server_name, targetnick) (":" + server_name + " 401 " + targetnick + " :No such nick/channel" + CRLF)
+// ERR_INVALIDCAPCMD
+#define ERR_INVALIDCAPCMD(server_name, subcommand) (":" + server_name + " 410 " + subcommand + " :Invalid CAP command" + CRLF)
+// ERR_UNKNOWNCOMMAND
+#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown command" + CRLF)
 // ERR_NONICKNAMEGIVEN
-#define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + "431 :No nickname given" + CRLF)
+#define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNICKNAME
-#define ERR_ERRONEUSNICKNAME(server_name, nick) (":" + server_name + "432 " + nick + ":Erroneous nickname" + CRLF)
+#define ERR_ERRONEUSNICKNAME(server_name, nick) (":" + server_name + " 432 " + nick + ":Erroneous nickname" + CRLF)
+// ERR_NICKNAMEINUSE
+#define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 
 
 
@@ -100,8 +111,6 @@
 #define ERR_NEEDMOREPARAMS(command) (": 461 " + command + " :Not enough parameters" + CRLF)
 // ERR_NICKCOLLISION
 #define ERR_NICKCOLLISION(nickname) (": 436 " + nickname + " :Nickname collision KILL" + CRLF)
-// ERR_NICKNAMEINUSE
-#define ERR_NICKNAMEINUSE(nickname, new_nick) (": 433 " + nickname + ": " + new_nick + " Nickname is already in use" + CRLF)
 // ERR_NOCHANMODES
 #define ERR_NOCHANMODES(nickname, channelname) (": 477 " + nickname + " #" + channelname + " :Channel doesn't support modes" + CRLF)
 // ERR_NOOPERHOST
@@ -110,8 +119,6 @@
 #define ERR_NORECIPIENT(command) (": 411 :No recipient given (" + command + ")" + CRLF)
 // ERR_NOSUCHCHANNEL
 #define ERR_NOSUCHCHANNEL(nickname, channelname) (": 403 " + nickname + " #" + channelname + " :No such channel" + CRLF)
-// ERR_NOSUCHNICK
-#define ERR_NOSUCHNICK(targetnick) (": 401 " + targetnick + " :No such nick/channel" + CRLF)
 // ERR_NOTEXTTOSEND
 #define ERR_NOTEXTTOSEND (std::string(": 412 :No text to send")) + CRLF
 // ERR_NOTONCHANNEL

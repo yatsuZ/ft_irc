@@ -6,12 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 13:24:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:43:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
 
+/*
 //commande otpionelle
 Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
@@ -40,4 +41,15 @@ Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd,
 	}
 
 	return (NONE);
+}
+*/
+
+//commande otpionelle
+Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+{
+	(void)	index_of_current_pollfd;
+	std::cout << PINK << "-------- CAPACITI -----------" << NOCOLOR << std::endl;
+
+	return (send_message(ERR_UNKNOWNCOMMAND(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
+
 }
