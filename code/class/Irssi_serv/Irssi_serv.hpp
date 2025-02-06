@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 13:16:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 06:54:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ private:
 	void	connect(void);
 	int		send_message(std::string message, pollfd &current_pollfd);
 
-	Client * _get_client_by_index_of_pollfd(ssize_t i);
+	Client		* _get_client_by_index_of_pollfd(ssize_t i);
+	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
+
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);

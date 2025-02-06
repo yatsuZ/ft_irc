@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 19:10:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 06:53:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,24 @@ int	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
 
 Client * Irssi_serv::_get_client_by_index_of_pollfd(ssize_t i)
 {
+	if (i == -1)
+		return (NULL);
 	for (size_t j = 0; j < this->_all_Client.size(); j++)
 	{
-		if (this->_all_Client[j].get_index_pollfd() == i && i != -1)
+		if (this->_all_Client[j].get_index_pollfd() == i)
 			return (&(this->_all_Client[j]));
+	}
+	return (NULL);
+}
+
+UserHuman * Irssi_serv::_get_userhuman_by_index_of_pollfd(ssize_t i)
+{
+	if (i == -1)
+		return (NULL);
+	for (size_t j = 0; j < this->_all_Client.size(); j++)
+	{
+		if (this->_all_User[j].get_index_pollfd() == i)
+			return (&(this->_all_User[j]));
 	}
 	return (NULL);
 }
