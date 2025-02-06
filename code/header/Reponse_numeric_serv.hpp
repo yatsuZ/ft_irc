@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 16:42:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:06:37 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 #define RPL_WELCOME(server_name, nick, user, host_ip) (":" + server_name + " 001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host_ip + CRLF)
 // RPL_YOURHOST 
 #define RPL_YOURHOST(server_name, nick, version) (":" + server_name + " 002 " + nick + " :Your host is " + server_name + ", running version " + version + CRLF)
+//RPL_USER (custoisé par sam pour reponse de cmd user)
+#define RPL_USER(server_name, nick, username, realname) (server_name + " 003:" + nick + " you are now registered as " + username + ", " + realname + CRLF)
 
 // ERR (Erreurs numériques)
-
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, targetnick) (":" + server_name + " 401 " + targetnick + " :No such nick/channel" + CRLF)
 // ERR_INVALIDCAPCMD
@@ -35,7 +36,8 @@
 #define ERR_ERRONEUSNICKNAME(server_name, nick) (":" + server_name + " 432 " + nick + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
-
+//ERR_ALREADYREGISTERED
+#define ERR_ALREADYREGISTRED(command) (command + ":Unauthorized command (already registered)" + CRLF)
 
 
 ///////////////////////////////////////////////////////////////////// 
@@ -86,7 +88,7 @@
 // ERR (Erreurs numériques)
 
 // ERR_ALREADYREGISTRED
-#define ERR_ALREADYREGISTRED (std::string(": 462 :You may not reregister")) + CRLF
+// #define ERR_ALREADYREGISTRED(command) (command + " :Unauthorized command (already registered)" + CRLF)
 // ERR_BADCHANMASK
 #define ERR_BADCHANMASK(nickname, channelname) (": 476 " + nickname + " #" + channelname + " :Bad Channel Mask" + CRLF)
 // ERR_BADCHANNELKEY

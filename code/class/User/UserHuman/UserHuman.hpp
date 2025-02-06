@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UserHuman.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 13:00:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 19:57:42 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ public:
 	UserHuman();
 	UserHuman(std::string & nick, Client & client);
 	~UserHuman();
+
+private:
 };
 
 std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman);

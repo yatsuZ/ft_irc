@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 16:49:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:10:53 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 	(void)	argc;
 	(void)	argv;
 	// TO_DO();
-	Message_a_sam();
-
+	// Message_a_sam();
+	Message_de_sam();
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{

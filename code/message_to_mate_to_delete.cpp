@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   message_to_mate_to_delete.cpp                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:19:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 16:49:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:14:25 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,16 @@ void Message_a_sam(void)
 	afficher_texte_progressivement("---------------------------");
 	afficher_texte_progressivement("------ BONNE CHANCE -------");
 	afficher_texte_progressivement(std::string(getColorCode(PINK)) + "      (O_<)★彡. . . ." + std::string(getColorCode(NOCOLOR)), 30000 * 5);
+
+}
+
+
+void	Message_de_sam(void)
+{
+	std::string msg = std::string(getColorCode(PINK)) + "Samira: il me reste une chose a check pour USER puis je regarderai pour JOIN !" + std::string(getColorCode(NOCOLOR));
+	afficher_texte_progressivement(msg);
+
+	msg = std::string(getColorCode(PINK)) + "J'ai fait une reponse custom pour USER comme je ne vois pas de reponse predefinie sur cette cmd" + std::string(getColorCode(NOCOLOR));
+	afficher_texte_progressivement(msg);
 
 }

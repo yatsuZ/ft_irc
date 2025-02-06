@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ft_irc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 21:22:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 20:12:08 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ std::ostream & operator<<( std::ostream & o, Color const & color);
 /////////////////////////////////////// A SUPRIMER
 
 void Message_a_sam(void);
+void	Message_de_sam(void);
 void afficher_texte_progressivement(std::string texte, int delai_s);
 void TO_DO(void);
