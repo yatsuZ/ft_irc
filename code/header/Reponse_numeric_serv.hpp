@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 12:17:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 09:47:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,20 @@
 
 // RPL (Réponses numériques)
 // RPL_WELCOME
-#define RPL_WELCOME(nick, user, host_ip) (": 001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host_ip + CRLF)
+#define RPL_WELCOME(server_name, nick, user, host_ip) (":" + server_name + "001 " + nick + " :Welcome to the Internet Relay Network " + nick + "!" + user + "@" + host_ip + CRLF)
+
+// ERR (Erreurs numériques)
+
+// ERR_NONICKNAMEGIVEN
+#define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + "431 :No nickname given" + CRLF)
+// ERR_ERRONEUSNICKNAME
+#define ERR_ERRONEUSNICKNAME(server_name, nick) (":" + server_name + "432 " + nick + ":Erroneous nickname" + CRLF)
+
+
+
+///////////////////////////////////////////////////////////////////// 
+
+// RPL (Réponses numériques)
 // RPL_JOINMSG
 #define RPL_JOINMSG(hostname, ipaddress, channelname) (":" + hostname + "@" + ipaddress + " JOIN #" + channelname + CRLF)
 // RPL_NAMREPL
@@ -75,8 +88,6 @@
 #define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
 // ERR_CHANOPRIVSNEEDED
 #define ERR_CHANOPRIVSNEEDED(nickname, channelname) (": 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
-// ERR_ERRONEUSNICKNAME
-#define ERR_ERRONEUSNICKNAME(nickname) (": 432 " + nickname + " :Erroneous nickname" + CRLF)
 // ERR_INVITEONLYCHAN
 #define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " #" + channelname + " :Cannot join channel (+i)" + CRLF)
 // ERR_KEYSET
@@ -93,8 +104,6 @@
 #define ERR_NICKNAMEINUSE(nickname, new_nick) (": 433 " + nickname + ": " + new_nick + " Nickname is already in use" + CRLF)
 // ERR_NOCHANMODES
 #define ERR_NOCHANMODES(nickname, channelname) (": 477 " + nickname + " #" + channelname + " :Channel doesn't support modes" + CRLF)
-// ERR_NONICKNAMEGIVEN
-#define ERR_NONICKNAMEGIVEN (std::string(": 431 :No nickname given") + CRLF)
 // ERR_NOOPERHOST
 #define ERR_NOOPERHOST(nickname) (": 491 " + nickname + " :No O-lines for your host" + CRLF)
 // ERR_NORECIPIENT

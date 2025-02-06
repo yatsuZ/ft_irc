@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 19:54:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 09:35:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	Server::_paramPoll(void)
 //////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
 Server::Server():
-_name("Nom du Serveur"),
+_name("Nom_du_Serveur"),
 _port(-1),
 _mot_de_passe(""),
 _socketfd(-1)

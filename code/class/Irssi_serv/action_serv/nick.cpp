@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 13:24:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 09:49:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,16 @@ Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd
 	std::cout << PINK << "-------- NICK -----------" << NOCOLOR << std::endl;
 
 	std::vector<std::string> list_dargument = current_cmd.get_arg();
-	// Vérifier si un argument (le surnom) a été fourni
-	if (list_dargument.empty()) {
-		// Si aucun argument n'est donné, envoyer l'erreur 431 : "No nickname given"
-		send_message(":server 431 * :No nickname given", current_pollfd);
-		return (NONE);
-	}
+
+	if (list_dargument.empty())
+		return (send_message(ERR_NONICKNAMEGIVEN(this->get_name()), current_pollfd), (NONE));
 
 	// Extraire le nickname du message
 	std::string nick = list_dargument[0];  // Le premier argument de la commande NICK est le surnom
 
 	// Vérifier que le surnom n'est pas vide et qu'il respecte les règles de longueur
-	if (nick.empty() || nick.length() > 50) {
-		// Envoie un message d'erreur pour un surnom invalide
-		send_message(":server 432 * :Erroneous nickname", current_pollfd);  // ERR_ERRONEUSNICKNAME
-		return (NONE);  // Aucun changement dans l'état du serveur
-	}
+	if (nick.empty() || nick.length() > 50)
+		return (send_message(ERR_ERRONEUSNICKNAME(this->get_name(), nick), current_pollfd), (NONE));
 
 	// Vérifier si le surnom est déjà utilisé par un autre utilisateur
 	for (size_t i = 0; i < this->_all_User.size(); i++)
