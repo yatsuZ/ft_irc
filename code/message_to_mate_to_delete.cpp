@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 21:19:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 21:31:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/06 16:49:40 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void Message_a_sam(void)
 	afficher_texte_progressivement(msg);
 
 	msg = std::string(std::string(getColorCode(BLUE)) + "\t- Tu dois t'occuper de USER NICK, CAP n'est pas obligatoire.\n" + std::string(getColorCode(NOCOLOR))) ;
+	msg = std::string(std::string(getColorCode(MAGENTA)) + "\t- + Adapter les reponse en fonction de la norme RPL. Et aller dans " + std::string(getColorCode(YELLOW)) + "./header/Reponse_numeric_serv.hpp" + std::string(getColorCode(NOCOLOR)) + " .\n" + std::string(getColorCode(NOCOLOR))) ;
 
 	afficher_texte_progressivement(msg);
 
