@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 12:17:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/07 00:53:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ enum Action {
 	CAP,
 	NICK,
 	USER,
+	MODE,
+	PING,
+	WHOIS,
 	IDK// derniere Action du tableau
 };
 

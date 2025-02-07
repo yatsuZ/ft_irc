@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 20:06:43 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/07 01:01:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ private:
 	Reaction_Serv		ft_cap(Cmd_irssi &, pollfd &, size_t &);			// CAP
 	Reaction_Serv		ft_nick(Cmd_irssi &, pollfd &, size_t &);			// NICK
 	Reaction_Serv		ft_user(Cmd_irssi &, pollfd &, size_t &);			// USER
+	Reaction_Serv		ft_mode(Cmd_irssi &, pollfd &, size_t &);			// MODE
+	Reaction_Serv		ft_ping(Cmd_irssi &, pollfd &, size_t &);			// PING
+	Reaction_Serv		ft_whois(Cmd_irssi &, pollfd &, size_t &);			// WHOIS
 	Reaction_Serv		ft_idk(Cmd_irssi &, pollfd &, size_t &);			// IDK dernier
 
 	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd);

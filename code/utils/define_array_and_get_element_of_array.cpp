@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 11:54:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/07 00:52:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ const char* action_tab[IDK + 1] =
 	"Capacite du serveur, voir argument",								// CAP == CAPacite
 	"Set le nom de l'utilisateur",										// NICK
 	"User command",														// USER
+	"JE ne sais pas quoi faire avec mode",
+	"JE ne sais pas quoi faire avec PING",
+	"JE ne sais pas quoi faire avec WHOIS",
 	"... Action non reconnus",											// IDK
 };
 
