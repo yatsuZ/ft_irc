@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:03:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 15:40:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, targetnick) (":" + server_name + " 401 " + targetnick + " :No such nick/channel" + CRLF)
+// ERR_NOORIGIN
+#define ERR_NOORIGIN(server_name, nickname) (":" + server_name + " 409 " + nickname + " :No origin specified" + CRLF)
 // ERR_INVALIDCAPCMD
 #define ERR_INVALIDCAPCMD(server_name, subcommand) (":" + server_name + " 410 " + subcommand + " :Invalid CAP command" + CRLF)
 // ERR_UNKNOWNCOMMAND
@@ -33,9 +35,11 @@
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNICKNAME
-#define ERR_ERRONEUSNICKNAME(server_name, nick) (":" + server_name + " 432 " + nick + ":Erroneous nickname" + CRLF)
+#define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
+// ERR_NEEDMOREPARAMS
+#define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(command) (command + ":Unauthorized command (already registered)" + CRLF)
 
@@ -109,8 +113,6 @@
 #define ERR_NEEDMODEPARM(channelname, mode) (": 696 #" + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
 // ERR_INVALIDMODEPARM
 #define ERR_INVALIDMODEPARM(channelname, mode) ": 696 #" + channelname + " Invalid mode parameter. " + mode + CRLF
-// ERR_NEEDMOREPARAMS
-#define ERR_NEEDMOREPARAMS(command) (": 461 " + command + " :Not enough parameters" + CRLF)
 // ERR_NICKCOLLISION
 #define ERR_NICKCOLLISION(nickname) (": 436 " + nickname + " :Nickname collision KILL" + CRLF)
 // ERR_NOCHANMODES

@@ -6,13 +6,13 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/09 13:11:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 15:21:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "User.hpp"
 
-User::User(void): _nick(""), _name(""), _droit_user(NONE_MODE)
+User::User(void): _nick("*"), _name("guest"), _droit_user(NONE_MODE)
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }

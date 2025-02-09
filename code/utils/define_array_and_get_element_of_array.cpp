@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:13:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 15:13:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ const char* action_tab[IDK + 1] =
 	"Set le nom de l'utilisateur",										// NICK
 	"User command",														// USER
 	"Je ne sais pas quoi faire avec MODE",
-	"Je ne sais pas quoi faire avec PING",
+	"Demande si la connexion est toujour etablie",						// PING
 	"Je ne sais pas quoi faire avec WHOIS",
 	"Je ne sais pas quoi faire avec QUIT",
 	"Je ne sais pas quoi faire avec JOIN",
