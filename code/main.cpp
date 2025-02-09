@@ -12,7 +12,6 @@
 
 #include "./affichage.ipp"
 
-
 int	main(int argc, char **argv)
 {
 	(void)	argc;
@@ -20,6 +19,7 @@ int	main(int argc, char **argv)
 	// TO_DO();
 	// Message_a_sam();
 	Message_de_sam();
+	Message_de_yaya();
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{

@@ -33,10 +33,11 @@ std::ostream & operator<<( std::ostream & o, Color const & color);
 
 /////////////////////////////////////// A SUPRIMER
 
-void Message_a_sam(void);
+void	Message_a_sam(void);
 void	Message_de_sam(void);
-void afficher_texte_progressivement(std::string texte, int delai_s);
-void TO_DO(void);
+void	Message_de_yaya(void);
+void	afficher_texte_progressivement(std::string texte, int delai_s);
+void	TO_DO(void);
 
 std::string operator+(Color const& color, std::string const& str);
 std::string operator+(std::string const& str, Color const& color);

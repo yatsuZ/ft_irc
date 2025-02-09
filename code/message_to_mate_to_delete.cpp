@@ -81,23 +81,24 @@ void	Message_de_sam(void)
 	std::string msg = std::string(getColorCode(PINK)) + "Samira: il me reste une chose a check pour USER puis je regarderai pour JOIN !" + std::string(getColorCode(NOCOLOR));
 	afficher_texte_progressivement(msg);
 
-	msg = std::string(getColorCode(PINK)) + "J'ai fait une reponse custom pour USER comme je ne vois pas de reponse predefinie sur cette cmd" + std::string(getColorCode(NOCOLOR));
+	msg = std::string(getColorCode(PINK)) + "\tJ'ai fait une reponse custom pour USER comme je ne vois pas de reponse predefinie sur cette cmd" + std::string(getColorCode(NOCOLOR));
 	afficher_texte_progressivement(msg);
 
 }
 
 void Message_de_yaya(void)
 {
-	std::string msg = YELLOW + "Yassine: " + BLUE + "OKI DOKI !!" + NOCOLOR;
+	std::string msg = YELLOW + "Yassine: " + CYAN + "OKI DOKI !!";
 	afficher_texte_progressivement(msg);
 
-	msg = MAGENTA + "\tA present je vais renetoyer mon code metre des const si possible et faire mieux databuffer" + NOCOLOR;
-	afficher_texte_progressivement(msg);
+	msg = "\tÀ présent, je vais nettoyer mon code, mettre des const si possible et faire mieux pour le databuffer";
+	afficher_texte_progressivement(msg, 40000);
 
-	msg = PINK + "\tet aussi faire les commande: " + YELLOW + "MODE JOIN etc" + NOCOLOR + " + verifeir ce qu a fais sam.";
-	afficher_texte_progressivement(msg);
+	msg = "\tEt aussi faire les commandes : " + YELLOW + "MODE JOIN, etc." + NOCOLOR + " + vérifier ce qu'a fait Sam.";
+	afficher_texte_progressivement(msg, 40000);
 
-	msg = GREEN + "\tD'ailleur j'ai refais la documentation de irssi" + NOCOLOR;
+	msg = CYAN + "\tD'ailleurs, j'ai refait la documentation d'Irssi" + NOCOLOR;
 	afficher_texte_progressivement(msg);
-
+	sleep(3);
+	std::cout << std::endl;
 }
