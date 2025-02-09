@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 15:13:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 20:02:17 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ const char* action_tab[IDK + 1] =
 	"Probléme de la fonction recv, lors de la recpetion des données",	// ERROR_RECV_DATA
 	"Fermeture du serveur. On eteint le serveur",						// SHUTDOWN
 	"Déconexion d'un client",											// DISCONNECT
-	"Capacite du serveur, voir argument",								// CAP == CAPacite
+	"Capacite du serveur, voir argument",								// CAP == Capablities
 	"Set le nom de l'utilisateur",										// NICK
-	"User command",														// USER
-	"Je ne sais pas quoi faire avec MODE",
+	"Identification de l'utilisateur aupres du serveur",				// USER
+	"definit comment est percu/definit user/channel",					// MOD
 	"Demande si la connexion est toujour etablie",						// PING
-	"Je ne sais pas quoi faire avec WHOIS",
+	"Demande les infos de l'utilisateur spécifié",						// 
 	"Je ne sais pas quoi faire avec QUIT",
 	"Je ne sais pas quoi faire avec JOIN",
 	"... Action non reconnus",											// IDK

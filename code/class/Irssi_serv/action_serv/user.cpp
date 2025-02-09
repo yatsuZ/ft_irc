@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   user.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 17:25:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 19:40:44 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, pollfd &current_pollfd
 	}
 
 	if (human->getSet_User())
-		return (send_message(ERR_ALREADYREGISTRED(current_cmd.get_cmd()), current_pollfd), (NONE));
+		return (send_message(ERR_ALREADYREGISTRED(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
 	
 	real_name = l_args[3];
 

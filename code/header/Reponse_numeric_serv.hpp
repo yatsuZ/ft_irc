@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 17:33:41 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:12:16 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@
 //RPL_USER (custoisé par sam pour reponse de cmd user)
 #define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
 //RPL_MODE
-// #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
-
+#define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
+//RPL_WHOISUSER
+#define RPL_WHOISUSER(server_name, nick, username, host, realname) (":" + server_name + " 311 " + " :" + nick + " " + username + " " + host + " * :" + realname + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
@@ -37,7 +38,7 @@
 #define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown the command \"" + command + "\"" + CRLF)
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
-// ERR_ERRONEUSNICKNAME
+// ERR_ERRONEUSNI CKNAME
 #define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
