@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/07 00:53:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:11:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,9 @@ enum Fonctionalite_du_serveur {
 
 // Tableau associé avec leur valeur d'Fonctionalite_du_serveur
 extern const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV];
+
+
+enum Mode
+{
+	NONE_MODE
+};

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/06 19:59:09 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/09 13:09:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ protected:
 	std::string		_nick;
 	std::string		_name;
 	std::string 	_hostname;
-	std::string		_realname;		
+	std::string		_realname;
 	std::string		_servername;
+	Mode			_droit_user;
 public:
 	User();
 	~User();
