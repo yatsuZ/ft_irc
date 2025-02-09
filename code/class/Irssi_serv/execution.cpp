@@ -57,6 +57,7 @@ void	Irssi_serv::exec(void)
 						return;
 				}
 				list_cmd.clear();
+				std::cout << std::endl;
 			}
 		}
 	}
