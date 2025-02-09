@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/07 00:52:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:14:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ Action	Cmd_irssi::init_action(void) const
 		return (WHOIS);
 	else if (this->get_cmd() == "QUIT")
 		return (QUIT);
+	else if (this->get_cmd() == "JOIN")
+		return (JOIN);
+
 	return (IDK);
 }
 

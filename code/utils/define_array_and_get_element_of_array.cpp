@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:05:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:13:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ const char* action_tab[IDK + 1] =
 	"Je ne sais pas quoi faire avec PING",
 	"Je ne sais pas quoi faire avec WHOIS",
 	"Je ne sais pas quoi faire avec QUIT",
+	"Je ne sais pas quoi faire avec JOIN",
 	"... Action non reconnus",											// IDK
 };
 

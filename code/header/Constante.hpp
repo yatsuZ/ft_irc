@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:11:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:13:39 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ enum Action {
 	PING,
 	WHOIS,
 	QUIT,
+	JOIN,
 	IDK// derniere Action du tableau
 };
 

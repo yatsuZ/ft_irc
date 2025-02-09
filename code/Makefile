@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/09 13:02:07 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/02/09 13:16:34 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ ACTION_SERV_FILES =	cap.cpp				\
 					mode.cpp			\
 					ping.cpp			\
 					whois.cpp			\
-					quit.cpp
+					quit.cpp			\
+					join.cpp
 
 CLASS_FILES =	./class/Server/Server.cpp				\
 				./class/Cmd_irssi/Cmd_irssi.cpp			\
