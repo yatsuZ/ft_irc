@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 12:58:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 13:03:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // RPL_YOURHOST 
 #define RPL_YOURHOST(server_name, nick, version) (":" + server_name + " 002 " + nick + " :Your host is " + server_name + ", running version " + version + CRLF)
 //RPL_USER (custoisé par sam pour reponse de cmd user)
-#define RPL_USER(server_name, nick, username, realname) (server_name + " 003:" + nick + " you are now registered as " + username + ", " + realname + CRLF)
+#define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
