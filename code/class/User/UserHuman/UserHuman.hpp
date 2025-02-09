@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UserHuman.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 19:57:42 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:56:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ class UserHuman: public User, public Client
 public:
 	UserHuman();
 	UserHuman(std::string & nick, Client & client);
+	UserHuman( Client & client);
 	~UserHuman();
 
 private:

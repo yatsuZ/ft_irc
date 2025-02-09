@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:14:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/09 16:28:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ private:
 	Client		* _get_client_by_index_of_pollfd(ssize_t i);
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
 
+	bool	_nick_already_used(std::string nick) const;
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);
