@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../header/Library.hpp"
+#include "./../header/Ft_irc.hpp"
 
 long ft_atol_limits(const std::string& str, long min, long max, bool *error)
 {
@@ -124,4 +124,28 @@ std::vector<std::string> ft_split(const std::string & str, const std::string & s
 		word.clear();
 	}
 	return (split);
+}
+
+// Définition de l'opérateur + pour Color + std::string
+std::string operator+(Color const& color, std::string const& str)
+{
+	return std::string(getColorCode(color)) + str;  // Ajoute la couleur avant la chaîne
+}
+
+// Définition de l'opérateur + pour std::string + Color
+std::string operator+(std::string const& str, Color const& color)
+{
+	return str +  std::string(getColorCode(color));  // Ajoute la couleur après la chaîne
+}
+
+// Définition de l'opérateur + pour Color + char *
+std::string operator+(Color const& color, const char * str)
+{
+	return std::string(getColorCode(color)) + std::string(str);  // Ajoute la couleur avant la chaîne
+}
+
+// Définition de l'opérateur + pour char * + Color
+std::string operator+(const char * str, Color const& color)
+{
+	return std::string(str) + std::string(getColorCode(color));  // Ajoute la couleur après la chaîne
 }

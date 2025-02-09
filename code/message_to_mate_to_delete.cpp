@@ -85,3 +85,19 @@ void	Message_de_sam(void)
 	afficher_texte_progressivement(msg);
 
 }
+
+void Message_de_yaya(void)
+{
+	std::string msg = YELLOW + "Yassine: " + BLUE + "OKI DOKI !!" + NOCOLOR;
+	afficher_texte_progressivement(msg);
+
+	msg = MAGENTA + "\tA present je vais renetoyer mon code metre des const si possible et faire mieux databuffer" + NOCOLOR;
+	afficher_texte_progressivement(msg);
+
+	msg = PINK + "\tet aussi faire les commande: " + YELLOW + "MODE JOIN etc" + NOCOLOR + " + verifeir ce qu a fais sam.";
+	afficher_texte_progressivement(msg);
+
+	msg = GREEN + "\tD'ailleur j'ai refais la documentation de irssi" + NOCOLOR;
+	afficher_texte_progressivement(msg);
+
+}
