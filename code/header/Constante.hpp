@@ -14,6 +14,7 @@
 
 #include "./Reponse_numeric_serv.hpp"
 
+#define SERVER_NAME "YASACO"
 #define ADDRESSE_IP_IN "127.0.0.1"
 // #define ADDRESSE_IP_IN "10.13.1.13"
 #define REUSEADDR_OPTION 1
@@ -52,6 +53,7 @@ enum Action {
 	MODE,
 	PING,
 	WHOIS,
+	QUIT,
 	IDK// derniere Action du tableau
 };
 

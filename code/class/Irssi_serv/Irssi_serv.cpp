@@ -24,6 +24,7 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[MODE] = &Irssi_serv::ft_mode;
 	action_table[PING] = &Irssi_serv::ft_ping;
 	action_table[WHOIS] = &Irssi_serv::ft_whois;
+	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[IDK] = &Irssi_serv::ft_idk;
 }
 

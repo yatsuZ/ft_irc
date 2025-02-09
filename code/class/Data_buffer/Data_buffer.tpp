@@ -23,18 +23,22 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 	{
 		bytes_received = recv(client_fd, this->_data.data() + this->_total_bytes_received, BUFFER_SIZE, 0);
 		this->_total_bytes_received += bytes_received;
-				if (bytes_received != BUFFER_SIZE || is_end(_total_bytes_received, this->_data[_total_bytes_received - 1]))
+
+		if (bytes_received != BUFFER_SIZE || is_end(_total_bytes_received, this->_data[_total_bytes_received - 1]))
 			break;
+
 		this->_data.resize(this->_data.capacity() + BUFFER_SIZE + 1);// ou reserve
 	}
 	
 	if (bytes_received < 0)
 	{
+		// this->_total_bytes_received = 0;
+		// this->_data.clear();
 		*to_do = ERROR_RECV_DATA;
 		perror("Reception failed : ");
 	}
 
-	if (!_total_bytes_received || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))// verifier si il sagit dune deconxion ou une fin de lecture ??
+	if (_total_bytes_received == 0 || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))// verifier si il sagit dune deconxion ou une fin de lecture ??
 		*to_do = DISCONNECT;
 }
 
@@ -48,8 +52,7 @@ Data_buffer<T>::~Data_buffer()
 template <typename T>
 std::vector<std::string>	Data_buffer<T>::get_data_in_vector_of_line(void) const
 {
-	// il coupe chaque ligne
-	return (ft_split(this->get_data_in_string(), SEPERATOR_WITHOUT_SPACE_AND_TAB));
+	return (ft_split(this->get_data_in_string(), CRLF));
 }
 
 
@@ -57,4 +60,28 @@ template <typename T>
 std::string	Data_buffer<T>::get_data_in_string(void) const
 {
 	return (std::string(this->_data.data()));
+}
+
+/*
+template <typename T>
+bool Data_buffer<T>::is_end(ssize_t taille, char *c)
+{
+	if (taille == 0 || *c == 0 || *c == EOF)
+		return (true);
+	char c1 = *c;
+	char c2 = *c + 1;
+	if (c1 == '\r' && (c2 == '\n' || c2 == '\0' || c2 == EOF))
+		return (true);
+	return (false);
+}
+*/
+
+template <typename T>
+bool Data_buffer<T>::is_end(ssize_t taille, char c)
+{
+	if (taille == 0)
+		return (false);
+	if (c == '\n' || c == EOF || c == '\0')
+		return (true);
+	return (false);
 }

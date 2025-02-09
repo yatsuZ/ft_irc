@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 20:06:37 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:58:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 // ERR_INVALIDCAPCMD
 #define ERR_INVALIDCAPCMD(server_name, subcommand) (":" + server_name + " 410 " + subcommand + " :Invalid CAP command" + CRLF)
 // ERR_UNKNOWNCOMMAND
-#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown command" + CRLF)
+#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown the command \"" + command + "\"" + CRLF)
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNICKNAME

@@ -14,12 +14,12 @@
 
 int	main(int argc, char **argv)
 {
-	(void)	argc;
-	(void)	argv;
+	// (void)	argc;
+	// (void)	argv;
 	// TO_DO();
 	// Message_a_sam();
-	Message_de_sam();
-	Message_de_yaya();
+	// Message_de_sam();
+	// Message_de_yaya();
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{

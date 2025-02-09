@@ -41,7 +41,7 @@ protected:
 	const std::string			_mot_de_passe;		// Mot de passe du serveur IRC
 	const int					_socketfd;			// Le descripteur de la socket
 	sockaddr_in					_sock_addr_serv_in;	// Adresse de la socket du serveur
-	std::vector<struct pollfd> 	_all_pollfd;				// Vecteur de pollfd pour gérer plusieurs connexions
+	std::vector<struct pollfd> 	_all_pollfd;		// Vecteur de pollfd pour gérer plusieurs connexions
 
 	uint16_t 		_is_a_legit_port(std::string &argv1);
 	std::string		_is_a_legit_mdp(std::string &argv2);

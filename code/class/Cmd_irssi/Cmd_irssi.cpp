@@ -70,6 +70,8 @@ Action	Cmd_irssi::init_action(void) const
 		return (PING);
 	else if (this->get_cmd() == "WHOIS")
 		return (WHOIS);
+	else if (this->get_cmd() == "QUIT")
+		return (QUIT);
 	return (IDK);
 }
 

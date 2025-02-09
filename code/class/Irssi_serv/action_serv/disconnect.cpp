@@ -16,7 +16,7 @@
 Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	(void)	current_cmd;
-	std::cout << "-------- DISCONNECT -----------" << std::endl;// surpimer le client
+	std::cout << RED << "◐◐◐◐◐◐◐◐◐◐◐ DISCONNECT ◑◑◑◑◑◑◑◑◑◑◑" << NOCOLOR << std::endl;// surpimer le client
 	std::cout << "All_client :" << std::endl;
 
 	bool find_client_associate_by_pollfd = false;

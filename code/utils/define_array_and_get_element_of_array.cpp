@@ -43,6 +43,7 @@ const char* action_tab[IDK + 1] =
 	"JE ne sais pas quoi faire avec mode",
 	"JE ne sais pas quoi faire avec PING",
 	"JE ne sais pas quoi faire avec WHOIS",
+	"JE ne sais pas quoi faire avec QUIT",
 	"... Action non reconnus",											// IDK
 };
 

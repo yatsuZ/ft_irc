@@ -19,11 +19,6 @@
 /// @return uint16_t le port par argv1
 uint16_t  Server::_is_a_legit_port(std::string & argv1)
 {
-	// for (size_t i = 0; i < argv1.size(); ++i) {
-	// 	if (!std::isdigit(argv1[i]))
-	// 		throw Init_serv_error("Le premier argument : \"" + argv1 + "\" n'est pas un nombre valide.");
-	// }
-
 	bool error = false;
 	long portl = ft_atol_limits(argv1, 1, 65535, &error);
 	uint16_t port;
@@ -81,12 +76,12 @@ void Server::_bind_and_listen()
 	// Associe la socket fd a la structure de sockaddr_in
 	if (bind(this->_socketfd, sock_addr_serv_in_ptr, sizeof(this->_sock_addr_serv_in)) < 0)
 		_throw_except("Erreur lors de l'association de l'adresse à la socket.");
-	std::cout << "Adresse associée à la socket avec succès." << std::endl;
+	// std::cout << "Adresse associée à la socket avec succès." << std::endl;
 
 	// Dis au fd decouter lentre du port
 	if (listen(this->_socketfd, SOMAXCONN) < 0)
 		_throw_except("Erreur lors de la mise en écoute de la socket.");
-	std::cout << "Socket en écoute sur le port " << this->get_port() << "." << std::endl;
+	// std::cout << "Socket en écoute sur le port " << this->get_port() << "." << std::endl;
 }
 
 void	Server::_paramPoll(void)
@@ -109,19 +104,19 @@ _port(-1),
 _mot_de_passe(""),
 _socketfd(-1)
 {
-	std::cout << BLUE << "Constructeur de Server" << std::endl;
+	// std::cout << BLUE << "Constructeur de Server" << std::endl;
 }
 
 /// @brief Constructeur du serveur
 /// @param argv1 Le port qui sera parser et configurer en temp que _port
 /// @param argv2 Le mot de passe du serveur qui sera stockée dans _mdp
 Server::Server(std::string &argv1, std::string &argv2):
-_name("Nom_du_Serveur"),
+_name(SERVER_NAME),
 _port(this->_is_a_legit_port(argv1)),
 _mot_de_passe(this->_is_a_legit_mdp(argv2)),
 _socketfd(this->_init_socket())
 {
-	std::cout << BLUE << "Constructeur de Server" << NOCOLOR << std::endl;
+	// std::cout << BLUE << "Constructeur de Server" << NOCOLOR << std::endl;
 	this->_sock_addr_serv_in.sin_family = AF_INET;
 	this->_sock_addr_serv_in.sin_addr.s_addr = inet_addr(ADDRESSE_IP_IN);
 	this->_sock_addr_serv_in.sin_port = htons(this->get_port());      // Port en format réseau (big-endian)
@@ -130,12 +125,12 @@ _socketfd(this->_init_socket())
 	
 	this->_paramPoll();
 	
-	std::cout << GREEN << "Construction Fini" << NOCOLOR << std::endl;
+	std::cout << GREEN << "Construction de Server Fini" << NOCOLOR << std::endl;
 }
 
 Server::~Server()
 {
-	std::cout << RED << "DEstructeur de Server" << NOCOLOR << std::endl;
+	std::cout << RED << "Destructeur de Server" << NOCOLOR << std::endl;
 	for (std::vector<struct pollfd>::iterator i = this->_all_pollfd.begin(); i != this->_all_pollfd.end(); i++)
 	{
 		if ((*i).fd > 0)

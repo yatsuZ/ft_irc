@@ -76,7 +76,7 @@ std::ostream	&operator<<( std::ostream & o, Server const & serv)
 	o << YELLOW << "Le file descriptor du socket = " << BLUE << serv.get_socketfd() << NOCOLOR << std::endl;
 	o << YELLOW << "Socket IN Adresse IP du serveur = " << BLUE << NOCOLOR << ip_str << std::endl;
 	o << YELLOW << "Le port du Serveur = " << BLUE << serv.get_port() << NOCOLOR << std::endl;
-	o << YELLOW << "Le port du Serveur a parti de socket adresse in = " << BLUE << ntohs(socket_adresse_in.sin_port) << NOCOLOR << std::endl;
+	// o << YELLOW << "Le port du Serveur a parti de socket adresse in = " << BLUE << ntohs(socket_adresse_in.sin_port) << NOCOLOR << std::endl;
 	// Affichage des pollfds
 	o << serv.get_pollfds() << std::endl;
 	o << "|----------------------------------------------------------------------------------------|" << std::endl;

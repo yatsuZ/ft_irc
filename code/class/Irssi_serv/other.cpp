@@ -15,7 +15,7 @@
 /// @brief Quand pc se connecte aux serveur
 void	Irssi_serv::connect(void)
 {
-	std::cout << "-------- CONNECTION -----------" << std::endl;
+	std::cout << GREEN << "◑◑◑◑◑◑◑◑◑◑◑ CONNECTION ◐◐◐◐◐◐◐◐◐◐◐" << NOCOLOR << std::endl;
 	sockaddr_in client_addr;
 	socklen_t client_len = sizeof(client_addr);
 
@@ -32,6 +32,7 @@ void	Irssi_serv::connect(void)
 	std::cout << this->_all_pollfd << std::endl;
 	Client new_client(this->_all_pollfd.size() - 1, client_addr, client_len);
 	std::cout << YELLOW << "New Client :\t" << NOCOLOR << new_client << std::endl;
+
 	this->_all_Client.push_back(new_client);
 }
 

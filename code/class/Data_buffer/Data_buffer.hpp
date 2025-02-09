@@ -23,7 +23,8 @@ private:
 	std::vector<_value_type>					_data;
 	ssize_t										_total_bytes_received;
 	void debug_is_end(ssize_t taille, char c){std::cout <<"c = " << int(c) << " | taille = " << taille << std::endl;}
-	bool is_end(ssize_t taille, char c){/*debug_is_end(taille, c);*/ return (taille && (c == '\n' || c == EOF || c == '\0'));}
+	bool is_end(ssize_t taille, char c);
+
 public:
 	Data_buffer(int client_fd, Action *to_do);
 	~Data_buffer();

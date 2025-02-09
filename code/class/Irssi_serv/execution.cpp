@@ -14,11 +14,11 @@
 
 Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << GREEN << "VVV -------- START OF INTERPRETION CMD ----------- VVV" << NOCOLOR << std::endl;
+	std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
 	std::cout << current_cmd << std::endl;
 	Action act = current_cmd.get_action();
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_pollfd, index_of_current_pollfd);
-	std::cout << "^^^ -------- END OF INTERPRETION CMD ----------- ^^^" << std::endl;
+	std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;
 	return (res);
 }
 
@@ -28,6 +28,7 @@ void	Irssi_serv::exec(void)
 {
 	std::vector<Cmd_irssi>	list_cmd;
 	pollfd	current_pollfd;
+
 	std::cout << YELLOW << "Execution du Serveur ..." << NOCOLOR << std::endl;
 
 	// Boucle principale
@@ -71,8 +72,7 @@ std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 	Action action = NO_ACTION;
 
 	Data_buffer<char>	buff(current_pollfd.fd, &action);
-
-	std::cout << BLUE << "~~~ -------- Message recu----------- ~~~" << NOCOLOR << std::endl;
+	std::cout << BLUE << "V-✉-✉-✉-✉-✉-✉ Message recu ✉-✉-✉-✉-✉-✉-V" << NOCOLOR << std::endl;
 
 	std::cout << RED << "\"" << NOCOLOR << buff.get_data_in_string() << RED << "\"" << NOCOLOR << std::endl;
 
@@ -89,7 +89,7 @@ std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 	for (size_t i = 0; i < all_line.size(); ++i)
 	{
 		std::string line = all_line[i];
-		if (is_sep(line[0], SEPERATOR_WITHOUT_SPACE_AND_TAB) == -1)
+		if (!(line[0] == CRLF[0] || line[0] == CRLF[1]))
 			list_cmd.push_back(line);
 	}
 	return (list_cmd);
