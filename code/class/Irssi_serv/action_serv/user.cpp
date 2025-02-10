@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 17:25:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/10 23:17:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, pollfd &current_pollfd
 
 	send_message(RPL_USER(get_name(), human->getNick(), human->getName(), human->getRealname()), current_pollfd);
 	send_message(RPL_WELCOME(this->get_name(), human->getNick(), human->getName(), human->get_ip_to_string()), current_pollfd);
-	send_message(RPL_YOURHOST(this->get_name(), human->getNick(), "<" + CYAN + "Yassine" + PINK + "Samira " + YELLOW +"Comme"+NOCOLOR+"> 0.1"), current_pollfd);
+	send_message(RPL_YOURHOST(this->get_name(), human->getNick(), "<" + CYAN + "Yassine " + PINK + "Samira " + YELLOW +"Comme"+NOCOLOR+"> 0.1"), current_pollfd);
 
 	human->setting_User();
 

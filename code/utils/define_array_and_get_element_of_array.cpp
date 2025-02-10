@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 15:13:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/10 23:01:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ const char* getColorCode(Color color)
 
 const char* action_tab[IDK + 1] =
 {
-	"Pas d'action",														// NO_ACTION
-	"Probléme de la fonction recv, lors de la recpetion des données",	// ERROR_RECV_DATA
-	"Fermeture du serveur. On eteint le serveur",						// SHUTDOWN
-	"Déconexion d'un client",											// DISCONNECT
-	"Capacite du serveur, voir argument",								// CAP == CAPacite
-	"Set le nom de l'utilisateur",										// NICK
-	"User command",														// USER
+	"Pas d'action",																	// NO_ACTION
+	"Probléme de la fonction recv, lors de la recpetion des données",				// ERROR_RECV_DATA
+	"Fermeture du serveur. On eteint le serveur",									// SHUTDOWN
+	"Déconexion d'un client et la supression de l'utilisateur de la bdd",			// DISCONNECT
+	"Capacite du serveur, voir argument",											// CAP == CAPacite
+	"Set le nom de l'utilisateur",													// NICK
+	"User command",																	// USER
 	"Je ne sais pas quoi faire avec MODE",
-	"Demande si la connexion est toujour etablie",						// PING
+	"Demande si la connexion est toujour etablie",									// PING
 	"Je ne sais pas quoi faire avec WHOIS",
-	"Je ne sais pas quoi faire avec QUIT",
+	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",	// QUIT
 	"Je ne sais pas quoi faire avec JOIN",
-	"... Action non reconnus",											// IDK
+	"... Action non reconnus",														// IDK
 };
 
 const char* getActionString(Action current_action)

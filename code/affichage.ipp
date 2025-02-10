@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/03 21:09:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/10 23:22:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,12 @@ std::ostream & operator<<( std::ostream & o, User const & user)
 
 std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman)
 {
-	(void)	userhuman;
+	o << "| " << "index pollfd = "	<< CYAN << userhuman.get_index_pollfd() << NOCOLOR << " |" << RED << " et dautre truc a afficher pour userhuman" << NOCOLOR;
+	return o;
+}
+
+std::ostream & operator<<( std::ostream & o, std::vector<UserHuman> const & userhumans)
+{
+	(void)	userhumans;
 	return o;
 }

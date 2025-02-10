@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 15:47:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/10 22:19:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Reaction_Serv	Irssi_serv::ft_ping(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	(void)	index_of_current_pollfd;
 	bool	parametre_avec_espace = false;
 	std::vector<std::string> list_args = current_cmd.get_arg();
 	std::cout << PINK << "-------- PING -----------" << NOCOLOR << std::endl;
