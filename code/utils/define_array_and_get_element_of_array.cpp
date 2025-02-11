@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 20:02:17 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:24:54 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ const char* action_tab[IDK + 1] =
 	"Capacite du serveur, voir argument",								// CAP == Capablities
 	"Set le nom de l'utilisateur",										// NICK
 	"Identification de l'utilisateur aupres du serveur",				// USER
-	"definit comment est percu/definit user/channel",					// MOD
+	"definit comment est percu/definit user/channel",					// MODE
 	"Demande si la connexion est toujour etablie",						// PING
-	"Demande les infos de l'utilisateur spécifié",						// 
+	"Demande les infos de l'utilisateur spécifié",						// WHOIS
 	"Je ne sais pas quoi faire avec QUIT",
 	"Je ne sais pas quoi faire avec JOIN",
 	"... Action non reconnus",											// IDK

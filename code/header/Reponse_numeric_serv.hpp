@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 19:12:16 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:05:06 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@
 //RPL_MODE
 #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
 //RPL_WHOISUSER
-#define RPL_WHOISUSER(server_name, nick, username, host, realname) (":" + server_name + " 311 " + " :" + nick + " " + username + " " + host + " * :" + realname + CRLF)
+#define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick  + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
+// #RPL_ENDOFWHOIS
+#define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS list" + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
@@ -35,7 +37,7 @@
 // ERR_INVALIDCAPCMD
 #define ERR_INVALIDCAPCMD(server_name, subcommand) (":" + server_name + " 410 " + subcommand + " :Invalid CAP command" + CRLF)
 // ERR_UNKNOWNCOMMAND
-#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown the command \"" + command + "\"" + CRLF)
+#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown command \"" + command + "\"" + CRLF)
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNI CKNAME
