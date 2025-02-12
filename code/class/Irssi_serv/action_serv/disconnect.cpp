@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/10 23:15:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 02:17:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_
 	close(current_pollfd.fd);
 	std::cout << this->_all_pollfd << std::endl;
 
-	this->_errase_client_from_tab(current_pollfd);
 	this->_errase_user_from_tab(current_pollfd);
+	this->_errase_client_from_tab(current_pollfd);
 	index_of_current_pollfd--;
 	return (PASS);
 }

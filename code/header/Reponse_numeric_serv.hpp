@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/11 19:05:06 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/12 02:18:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 //RPL_MODE
 #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
 //RPL_WHOISUSER
-#define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick  + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
+#define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
 // #RPL_ENDOFWHOIS
 #define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS list" + CRLF)
 

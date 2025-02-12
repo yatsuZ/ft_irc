@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nick.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/11 19:13:46 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/12 02:08:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd
 		return (send_message(ERR_NICKNAMEINUSE(this->get_name(), nick_user, new_nick), current_pollfd), (NONE));
 
 
+	if (new_nick == "*")
+		return (send_message(CRLF, current_pollfd), (NONE));
+
 	currentuser->setNick(new_nick);
+
 	if (currentuser->getSet_User() && nick_user == "*")
 	{
-		send_message("NICK " + new_nick + CRLF, current_pollfd);
+		send_message("NICK " + currentuser->getNick() + CRLF, current_pollfd);
 		send_message(RPL_WELCOME(this->get_name(), currentuser->getNick(), currentuser->getName(), currentuser->get_ip_to_string()), current_pollfd);
 		send_message(RPL_YOURHOST(this->get_name(), currentuser->getNick(), std::string(PINK + "<Yassine, Samira , Comme> 0.1" + NOCOLOR)), current_pollfd);
 	}
-	else if (new_nick == "*")
-	{
-		send_message(CRLF, current_pollfd);
-	}
 	else
-		send_message(":" + nick_user + " NICK :" + new_nick + CRLF, current_pollfd);
-
+		return (send_message(":" + nick_user + "!" + currentuser->getName() + "@" + this->get_name() + " NICK :" + currentuser->getNick() + CRLF, current_pollfd), (NONE));
+	
 	return (NONE);
 }
