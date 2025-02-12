@@ -33,19 +33,19 @@ const char* getColorCode(Color color)
 
 const char* action_tab[IDK + 1] =
 {
-	"Pas d'action",														// NO_ACTION
-	"Probléme de la fonction recv, lors de la recpetion des données",	// ERROR_RECV_DATA
-	"Fermeture du serveur. On eteint le serveur",						// SHUTDOWN
-	"Déconexion d'un client",											// DISCONNECT
+	"Pas d'action",																	// NO_ACTION
+	"Probléme de la fonction recv, lors de la recpetion des données",				// ERROR_RECV_DATA
+	"Fermeture du serveur. On eteint le serveur",									// SHUTDOWN
+	"Déconexion d'un client et la supression de l'utilisateur de la bdd",			// DISCONNECT
 	"Capacite du serveur, voir argument",								// CAP == Capablities
-	"Set le nom de l'utilisateur",										// NICK
+	"Set le nom de l'utilisateur",													// NICK
 	"Identification de l'utilisateur aupres du serveur",				// USER
 	"definit comment est percu/definit user/channel",					// MODE
-	"Demande si la connexion est toujour etablie",						// PING
+	"Demande si la connexion est toujour etablie",									// PING
 	"Demande les infos de l'utilisateur spécifié",						// WHOIS
-	"Je ne sais pas quoi faire avec QUIT",
+	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",	// QUIT
 	"Je ne sais pas quoi faire avec JOIN",
-	"... Action non reconnus",											// IDK
+	"... Action non reconnus",														// IDK
 };
 
 const char* getActionString(Action current_action)
