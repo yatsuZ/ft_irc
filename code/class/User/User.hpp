@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/09 17:09:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/11 19:24:56 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ protected:
 	std::string		_servername;
 	Mode			_droit_user;
 	bool			_set_user;
+
 public:
 	User();
 	~User();
@@ -34,13 +35,12 @@ public:
 	void		setRealname(const std::string &);
 	void		setting_User(void){this->_set_user = true;}
 
-
-	std::string	getNick() const;
-	std::string	getName();
-	std::string	getHostname();
-	std::string	getRealname();
-	std::string	getServername();
-	bool		getSet_User() const {return this->_set_user;}
+	std::string	getNick() 		const {return this->_nick;}
+	std::string	getName() 		const {return this->_name;}
+	std::string	getHostname()	const {return this->_hostname;}
+	std::string	getRealname()	const {return this->_real_name;}
+	std::string	getServername()	const {return this->_servername;}
+	bool		getSet_User() 	const {return this->_set_user;}
 
 };
 

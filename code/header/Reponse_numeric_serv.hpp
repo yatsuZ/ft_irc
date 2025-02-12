@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 15:40:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/11 19:05:06 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 #define RPL_YOURHOST(server_name, nick, version) (":" + server_name + " 002 " + nick + " :Your host is " + server_name + ", running version " + version + CRLF)
 //RPL_USER (custoisé par sam pour reponse de cmd user)
 #define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
+//RPL_MODE
+#define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
+//RPL_WHOISUSER
+#define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick  + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
+// #RPL_ENDOFWHOIS
+#define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS list" + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
@@ -31,17 +37,17 @@
 // ERR_INVALIDCAPCMD
 #define ERR_INVALIDCAPCMD(server_name, subcommand) (":" + server_name + " 410 " + subcommand + " :Invalid CAP command" + CRLF)
 // ERR_UNKNOWNCOMMAND
-#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown the command \"" + command + "\"" + CRLF)
+#define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown command \"" + command + "\"" + CRLF)
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
-// ERR_ERRONEUSNICKNAME
+// ERR_ERRONEUSNI CKNAME
 #define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
-#define ERR_ALREADYREGISTRED(command) (command + ":Unauthorized command (already registered)" + CRLF)
+#define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
 
 
 ///////////////////////////////////////////////////////////////////// 

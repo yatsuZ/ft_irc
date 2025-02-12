@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   User.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/09 16:30:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/11 19:24:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "User.hpp"
 
-User::User(void): _nick("*"), _name("guest"), _droit_user(NONE_MODE), _set_user(false)
+User::User(void):
+ _nick("*"), _name("guest"), _hostname(""), _real_name("Guest"),
+  _servername(SERVER_NAME), _droit_user(NONE_MODE), _set_user(false) 
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }
@@ -23,23 +25,6 @@ User::User(std::string & nick): _nick(nick), _name("guest"), _droit_user(NONE_MO
 }
 
 User::~User(){}
-
-
-// --- GETTERS
-std::string User::getNick() const
-{return _nick;}
-
-std::string User::getName()
-{return _name;}
-
-std::string User::getHostname()
-{return _hostname;}
-
-std::string User::getRealname()
-{return _real_name;}
-
-std::string User::getServername()
-{return _servername;}
 
 // --- SETTERS ---
 void	User::setName(const std::string & n)
