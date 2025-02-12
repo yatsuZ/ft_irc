@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/10 23:11:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 12:45:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 class Irssi_serv: public Server
 {
 private:
-	std::vector<Client>		_all_Client;
 	std::vector<UserHuman>	_all_User;
 	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);
 	
@@ -46,12 +45,10 @@ private:
 	void	connect(void);
 	int		send_message(std::string message, pollfd &current_pollfd);
 
-	Client		* _get_client_by_index_of_pollfd(ssize_t i);
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
 
 	bool	_nick_already_used(std::string nick) const;
 
-	void	_errase_client_from_tab(pollfd &current_pollfd);
 	void	_errase_user_from_tab(pollfd &current_pollfd);
 
 public:

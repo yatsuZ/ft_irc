@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 20:10:53 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:10:54 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,7 @@ nc <ip> <port> <message>
 	exemple :
 	nc 127.0.0.1 8080 exit
 */
+
+
+// /connect irc.libera.chat
+// /rawlog open irc_raw.log

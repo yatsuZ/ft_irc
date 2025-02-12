@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 17:13:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 12:44:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,16 @@ void	Irssi_serv::connect(void)
 	// Ajouter le nouveau client à la liste
 	pollfd client_pollfd = {client_fd, POLLIN | POLLOUT | POLLHUP, 0};
 	this->_all_pollfd.push_back(client_pollfd);
+	ssize_t index_pollfd = this->_all_pollfd.size() - 1;
 	std::cout << this->_all_pollfd << std::endl;
 	Client new_client(this->_all_pollfd.size() - 1, client_addr, client_len);
 	std::cout << YELLOW << "New Client :\t" << NOCOLOR << new_client << std::endl;
 
-	this->_all_Client.push_back(new_client);
-
 	// cree un user par defaut
-	Client * last_client = _get_client_by_index_of_pollfd(this->_all_pollfd.size() - 1);
-	std::cout << YELLOW << "last_client  :\t" << NOCOLOR << *last_client << std::endl;
-	ssize_t index = last_client->get_index_pollfd();
-	std::cout << YELLOW << "last_client->get_index_pollfd()  :\t" << NOCOLOR << index << std::endl;
-
-	UserHuman * exist = this->_get_userhuman_by_index_of_pollfd(index);
+	UserHuman * exist = this->_get_userhuman_by_index_of_pollfd(index_pollfd);
 	if (exist == NULL)
 	{
-		UserHuman new_user(*last_client);
+		UserHuman new_user(new_client);
 		this->_all_User.push_back(new_user);// cree un nouveaux user par defaut
 	}
 }
@@ -56,18 +50,6 @@ int	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
 
 	send(current_pollfd.fd, message.c_str(), message.size(), 0);
 	return (0);
-}
-
-Client * Irssi_serv::_get_client_by_index_of_pollfd(ssize_t i)
-{
-	if (i == -1)
-		return (NULL);
-	for (size_t j = 0; j < this->_all_Client.size(); j++)
-	{
-		if (this->_all_Client[j].get_index_pollfd() == i)
-			return (&(this->_all_Client[j]));
-	}
-	return (NULL);
 }
 
 UserHuman * Irssi_serv::_get_userhuman_by_index_of_pollfd(ssize_t i)
