@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:13:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:42:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,13 @@ enum Fonctionalite_du_serveur {
 extern const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV];
 
 
-enum Mode
+enum Mode_User
 {
+	I,		//modifie la visibilité des informations (WHO) hors chan
 	NONE_MODE
 };
+
+enum Mode_Chan
+{
+	
+}

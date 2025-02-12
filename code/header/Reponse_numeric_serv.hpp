@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 02:18:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 14:05:57 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@
 //RPL_USER (custoisé par sam pour reponse de cmd user)
 #define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
 //RPL_MODE
-#define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
+// #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
 //RPL_WHOISUSER
 #define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
 // #RPL_ENDOFWHOIS
-#define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS list" + CRLF)
+#define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS" + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
-#define ERR_NOSUCHNICK(server_name, targetnick) (":" + server_name + " 401 " + targetnick + " :No such nick/channel" + CRLF)
+#define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
 // ERR_NOORIGIN
 #define ERR_NOORIGIN(server_name, nickname) (":" + server_name + " 409 " + nickname + " :No origin specified" + CRLF)
 // ERR_INVALIDCAPCMD

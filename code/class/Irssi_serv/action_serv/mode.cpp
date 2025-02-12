@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/11 19:37:40 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/12 18:37:42 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, pollfd &current_pollfd
 	
 	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << std::endl;
 	
-	// std::vector<std::string> cmd_args = current_cmd.get_arg();
+	std::vector<std::string> cmd_args = current_cmd.get_arg();
 	//USER MODE
 
-	//check si 2 args
+	//max args MODE [chan][mod][target] || MODE [chan][]
 	//check nickname puis si arg[1] == mode valide/connu
 	//appliquer le mode
 		

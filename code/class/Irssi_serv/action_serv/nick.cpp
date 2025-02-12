@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nick.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 13:12:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/12 17:14:01 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, pollfd &current_pollfd
 	else if (nick_user == "*")
 		send_message(CRLF, current_pollfd);
 	else
+	{
 		send_message(":" + nick_user + "!~" + currentuser->getName() + "@" + this->get_name() + " NICK :" + currentuser->getNick() + CRLF, current_pollfd);
+		send_message(":" + get_name() + " : Hostname ->" + currentuser->get_ip_to_string() + CRLF, current_pollfd);
+	}
 	
 	return (NONE);
 }
