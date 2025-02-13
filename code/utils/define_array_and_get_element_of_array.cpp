@@ -63,3 +63,8 @@ const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV] =
 	"NICK",	// NICK
 	"USER",	// USER
 };
+
+// const char* user_mode()
+// {
+// 	"i", //invisible
+// };

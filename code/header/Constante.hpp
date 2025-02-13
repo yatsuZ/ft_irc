@@ -84,11 +84,20 @@ extern const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV];
 
 enum Mode_User
 {
-	I,		//modifie la visibilité des informations (WHO) hors chan
+	I,		//modifie la visibilité des informations (WHOIS) hors chan
 	NONE_MODE
 };
 
-enum Mode_Chan
-{
-	
-}
+// extern const char* user_mode[NONE_MODE];
+
+// enum Mode_Channel
+// {
+// 	I,		// modifie la visibilité des informations (WHO) hors chan
+// 	T,		// restrictions cmd TOPIC
+// 	K,		// ajoute/supprime clé du canal
+// 	O,		// donne/supprime privilege operator canal a un user
+// 	L,		// definit/supprime limite d'utilisateur dans le canal
+// 	NONE_MODE
+// };
+
+extern const char* channel_mode[NONE_MODE];

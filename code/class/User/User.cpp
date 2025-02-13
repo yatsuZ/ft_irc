@@ -14,7 +14,7 @@
 
 User::User(void):
  _nick("*"), _name("guest"), _hostname(""), _real_name("Guest"),
-  _servername(SERVER_NAME), _droit_user(NONE_MODE), _set_user(false) 
+  _servername(SERVER_NAME), _droit_user(NONE_MODE), _set_user(false), _mode(false)
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }
@@ -41,3 +41,6 @@ void	User::setRealname(const std::string & n)
 
 void	User::setServername(const std::string & s)
 {_servername = s;}
+
+void	User::setMode(void)
+{_mode = !(_mode);}

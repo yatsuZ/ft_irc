@@ -20,8 +20,9 @@ protected:
 	std::string 	_hostname;
 	std::string		_real_name;
 	std::string		_servername;
-	Mode			_droit_user;
+	Mode_User		_droit_user;
 	bool			_set_user;
+	bool			_mode;
 
 public:
 	User();
@@ -34,14 +35,15 @@ public:
 	void		setServername(const std::string &);
 	void		setRealname(const std::string &);
 	void		setting_User(void){this->_set_user = true;}
-
+	void		setMode(void);
+	
 	std::string	getNick() 		const {return this->_nick;}
 	std::string	getName() 		const {return this->_name;}
 	std::string	getHostname()	const {return this->_hostname;}
 	std::string	getRealname()	const {return this->_real_name;}
 	std::string	getServername()	const {return this->_servername;}
 	bool		getSet_User() 	const {return this->_set_user;}
-
+	bool		getMode()		const {return this->_mode;}
 };
 
 std::ostream & operator<<( std::ostream & o, User const & user);
