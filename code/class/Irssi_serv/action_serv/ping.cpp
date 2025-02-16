@@ -6,14 +6,15 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:52 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 13:17:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 13:10:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
 
-Reaction_Serv	Irssi_serv::ft_ping(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::ft_ping(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
+	(void)	current_user;
 	bool	parametre_avec_espace = false;
 	std::vector<std::string> list_args = current_cmd.get_arg();
 	std::cout << PINK << "-------- PING -----------" << NOCOLOR << std::endl;

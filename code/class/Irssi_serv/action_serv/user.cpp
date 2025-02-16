@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   user.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/10 23:17:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 13:44:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,23 @@
 	[username]
 
 */
-Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << PINK << "-------- USER -----------" << NOCOLOR << std::endl;
-
+	(void)	index_of_current_pollfd;
 	std::string	real_name;
 	std::vector<std::string>	l_args = current_cmd.get_arg();
-	UserHuman *					human = _get_userhuman_by_index_of_pollfd(index_of_current_pollfd);
-	std::string nick;
-	if (human == NULL)
-		nick= "*";
-	else
-		nick = human->getNick();
 
-	if (human == NULL)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), nick), current_pollfd), (NONE));
+	std::cout << PINK << "-------- USER -----------" << NOCOLOR << std::endl;
+
+	if (current_user == NULL)
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
 	else if (l_args.size() < 4)
 	{
-		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), nick, current_cmd.get_cmd()), current_pollfd);
+		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->getNick(), current_cmd.get_cmd()), current_pollfd);
 		return (NONE);
 	}
 
-	if (human->getSet_User())
+	if (current_user->getSet_User())
 		return (send_message(ERR_ALREADYREGISTRED(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
 	
 	real_name = l_args[3];
@@ -47,16 +42,14 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, pollfd &current_pollfd
 		real_name.erase(0,1);
 	for (size_t i=4;i<l_args.size(); i++)
 		real_name += " " + l_args[i];
-	human->setName(l_args[0]);
-	human->setHostname(l_args[1]);
-	human->setServername(l_args[2]);
-	human->setRealname(real_name);
+	current_user->setName(l_args[0]);	
+	current_user->setHostname(l_args[1]);
+	current_user->setServername(l_args[2]);
+	current_user->setRealname(real_name);
 
-	send_message(RPL_USER(get_name(), human->getNick(), human->getName(), human->getRealname()), current_pollfd);
-	send_message(RPL_WELCOME(this->get_name(), human->getNick(), human->getName(), human->get_ip_to_string()), current_pollfd);
-	send_message(RPL_YOURHOST(this->get_name(), human->getNick(), "<" + CYAN + "Yassine " + PINK + "Samira " + YELLOW +"Comme"+NOCOLOR+"> 0.1"), current_pollfd);
+	send_message(RPL_USER(get_name(), current_user->getNick(), current_user->getName(), current_user->getRealname()), current_pollfd);
+	current_user->get_welcolm(get_name(), current_cmd.get_action() ,current_pollfd);
 
-	human->setting_User();
 
 	return (NONE);
 }

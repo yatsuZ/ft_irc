@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/11 19:24:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:46:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 User::User(void):
  _nick("*"), _name("guest"), _hostname(""), _real_name("Guest"),
-  _servername(SERVER_NAME), _droit_user(NONE_MODE), _set_user(false), _mode(false)
+  _servername(SERVER_NAME), _droit_user(NONE_MODE), _mode(false), _is_init(0)
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }
 
-User::User(std::string & nick): _nick(nick), _name("guest"), _droit_user(NONE_MODE), _set_user(false)
+User::User(std::string & nick): _nick(nick), _name("guest"), _droit_user(NONE_MODE), _is_init(0)
 {
 	// std::cout << "A Parametrick User with nick " << PINK << nick << NOCOLOR << " is joining" << std::endl;
 }

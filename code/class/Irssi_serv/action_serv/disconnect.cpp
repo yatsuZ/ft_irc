@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 12:46:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 13:43:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void	Irssi_serv::_errase_user_from_tab(pollfd &current_pollfd)
 
 
 /// @brief Quand pc se deconnecte aux serveur
-Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
+	(void)	current_user;
 	(void)	current_cmd;
 	std::cout << RED << "◐◐◐◐◐◐◐◐◐◐◐ DISCONNECT ◑◑◑◑◑◑◑◑◑◑◑" << NOCOLOR << std::endl;// surpimer le client
 	

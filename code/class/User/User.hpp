@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/11 19:24:56 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:46:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ protected:
 	std::string		_real_name;
 	std::string		_servername;
 	Mode_User		_droit_user;
-	bool			_set_user;
 	bool			_mode;
+	int				_is_init;
 
 public:
 	User();
@@ -34,7 +34,6 @@ public:
 	void		setHostname(const std::string &);
 	void		setServername(const std::string &);
 	void		setRealname(const std::string &);
-	void		setting_User(void){this->_set_user = true;}
 	void		setMode(void);
 	
 	std::string	getNick() 		const {return this->_nick;}
@@ -42,7 +41,8 @@ public:
 	std::string	getHostname()	const {return this->_hostname;}
 	std::string	getRealname()	const {return this->_real_name;}
 	std::string	getServername()	const {return this->_servername;}
-	bool		getSet_User() 	const {return this->_set_user;}
+	bool		getSet_User() 	const {return (_is_init == 2 || _is_init == -1);}
+	bool		getSet_Nick()	const {return (_is_init == 1 || _is_init == -1);}
 	bool		getMode()		const {return this->_mode;}
 };
 

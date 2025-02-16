@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whois.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:53:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 13:53:52 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:44:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 	[nick]		: utilisateur cible dont on veut les infos
 */
 
-Reaction_Serv	Irssi_serv::ft_whois(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::ft_whois(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << PINK <<  "-------- WHOIS -----------" << NOCOLOR << std::endl;
-
+	(void)	index_of_current_pollfd;
 	size_t i = 0;
 	std::vector<std::string> c_args = current_cmd.get_arg();
-	UserHuman * current_user = _get_userhuman_by_index_of_pollfd(index_of_current_pollfd);
 	UserHuman * who = NULL; //utilisateur cible
+
+	std::cout << PINK <<  "-------- WHOIS -----------" << NOCOLOR << std::endl;
 
 	//check si parametre [nick] renseigné
 	if (c_args.size() != 1)

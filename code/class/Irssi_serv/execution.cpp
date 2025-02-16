@@ -6,18 +6,19 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 23:23:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 13:42:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Irssi_serv.hpp"
 
-Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
 	std::cout << current_cmd << std::endl;
 	Action act = current_cmd.get_action();
-	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_pollfd, index_of_current_pollfd);
+	current_user->get_msg_by_step(this->get_name(), current_pollfd);
+	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
 	std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;
 	return (res);
 }
@@ -51,7 +52,7 @@ void	Irssi_serv::exec(void)
 				for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
 				{
 					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
-					Reaction_Serv reaction = do_action(iter_cmd_irssi, current_pollfd, i);
+					Reaction_Serv reaction = do_action(iter_cmd_irssi, _get_userhuman_by_index_of_pollfd(i), current_pollfd, i);
 					if (reaction == PASS)
 						break;
 					else if (reaction == STOP)

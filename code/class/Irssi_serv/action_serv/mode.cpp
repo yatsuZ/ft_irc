@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/13 13:27:44 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 13:44:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,16 @@
  	>l: def/supp limite d'utilisateurs pour le canal
 */
 
-Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	// (void)	current_cmd;
-	// (void)	current_pollfd;
 	(void)	index_of_current_pollfd;
-	
-	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << std::endl;
-	size_t i = 0;
 	std::vector<std::string> cmd_args = current_cmd.get_arg();
-	UserHuman *current_user = _get_userhuman_by_index_of_pollfd(index_of_current_pollfd);
-	UserHuman *target = NULL;
+	UserHuman *target = this->_get_userhuman_by_nick(cmd_args[0]);
+
+	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << std::endl;
 	//USER MODE
 	if (cmd_args.size() <= 1)
 		return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->getNick(), "MODE"), current_pollfd), (NONE));
-
-	//check si nick existe (TO DO: creer fonction getUserByNick pour alleger le code)
-	if (cmd_args.size() > 2)
-	{
-		while (i < _all_User.size())
-		{
-			if (_all_User[i].getNick() == cmd_args[0])
-			{
-				
-				target = &_all_User[i];
-				break;
-			}
-			i++;
-		}	
-	}
 
 	if (target == NULL)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), cmd_args[0]), current_pollfd), NONE);
@@ -65,7 +46,7 @@ Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, pollfd &current_pollfd
 		(cmd_args[1] == "-i" && current_user->getMode()))
 	{
 		target->setMode();
-		return (send_message(":" + current_user->getNick() + " MODE " + cmd_args[0] + " :" + cmd_args[1] + CRLF, current_pollfd), NONE);
+		return (send_message(":" + current_user->getNick() + " MODE " + target->getName() + " :" + cmd_args[1] + CRLF, current_pollfd), NONE);
 	}
 	//max args MODE [chan][mod][target] || MODE [chan][mode] <= a faire apres class chan
 	//check nickname puis si arg[1] == mode valide/connu

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/12 12:44:21 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 12:16:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,6 @@ void	Irssi_serv::connect(void)
 	}
 }
 
-/// envoye un message aux client
-int	Irssi_serv::send_message(std::string message, pollfd &current_pollfd)
-{
-	std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : " << GREEN << "\"" << NOCOLOR << message << GREEN << "\"" << NOCOLOR << std::endl;
-
-	send(current_pollfd.fd, message.c_str(), message.size(), 0);
-	return (0);
-}
-
 UserHuman * Irssi_serv::_get_userhuman_by_index_of_pollfd(ssize_t i)
 {
 	if (i == -1)
@@ -60,6 +51,17 @@ UserHuman * Irssi_serv::_get_userhuman_by_index_of_pollfd(ssize_t i)
 	{
 		if (this->_all_User[j].get_index_pollfd() == i)
 			return (&(this->_all_User[j]));
+	}
+	return (NULL);
+}
+
+
+UserHuman	* Irssi_serv::_get_userhuman_by_nick(const std::string & nick)
+{
+	for (size_t i = 0; i < this->_all_User.size(); i++)
+	{
+		if (this->_all_User[i].getNick() == nick)
+			return (&(this->_all_User[i]));
 	}
 	return (NULL);
 }

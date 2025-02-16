@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ft_irc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/06 20:12:08 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 12:17:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	Message_de_sam(void);
 void	Message_de_yaya(void);
 void	afficher_texte_progressivement(std::string texte, int delai_s);
 void	TO_DO(void);
+int		send_message(std::string message, pollfd &current_pollfd);
 
 std::string operator+(Color const& color, std::string const& str);
 std::string operator+(std::string const& str, Color const& color);
