@@ -14,6 +14,9 @@ public:
 	socklen_t		get_client_len(void) const {return this->_client_len;}
 	bool			get_is_connect(void) const {return this->_is_connect;}
 	std::string		get_ip_to_string(void) const;
+	uint16_t		get_port(void) const;
+	std::string		get_port_to_string(void) const;
+
 
 protected:
 	ssize_t			_index_pollfd;

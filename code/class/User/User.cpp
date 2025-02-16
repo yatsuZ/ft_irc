@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/16 12:46:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:11:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ User::User(std::string & nick): _nick(nick), _name("guest"), _droit_user(NONE_MO
 User::~User(){}
 
 // --- SETTERS ---
-void	User::setName(const std::string & n)
+void	User::set_name(const std::string & n)
 {_name = n;}
 
-void	User::setNick(const std::string & n)
+void	User::set_nick(const std::string & n)
 {_nick = n;}
 
-void	User::setHostname(const std::string & h)
+void	User::set_hostname(const std::string & h)
 {_hostname = h;}
 
-void	User::setRealname(const std::string & n)
+void	User::set_Realname(const std::string & n)
 {_real_name = n;}
 
-void	User::setServername(const std::string & s)
+void	User::set_servername(const std::string & s)
 {_servername = s;}
 
-void	User::setMode(void)
+void	User::set_mode(void)
 {_mode = !(_mode);}

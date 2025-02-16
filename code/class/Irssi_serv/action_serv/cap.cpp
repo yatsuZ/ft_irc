@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:10:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 18:31:20 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd,
 Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	(void)	current_user;
-	(void)	index_of_current_pollfd;
-	std::cout << PINK << "-------- CAPABILITY -----------" << NOCOLOR << std::endl;
+
+	std::cout << PINK << "-------- CAPABILITY -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	return (send_message(ERR_UNKNOWNCOMMAND(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:41:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:21:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ public:
 	~UserHuman();
 	void	get_msg_by_step(const std::string & server_name, pollfd &pollfd);
 	void	get_welcolm(const std::string & server_name, Action from_this_action, pollfd &pollfd);
-
 };
 
 std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman);

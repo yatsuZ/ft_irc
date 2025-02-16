@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:11:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 18:27:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ Reaction_Serv	Irssi_serv::ft_shutdown(Cmd_irssi &current_cmd, UserHuman * curren
 	(void)	current_cmd;
 	(void)	current_user;
 	(void)	current_pollfd;
-	(void)	index_of_current_pollfd;
-	std::cout << "-------- SHUTDOWN -----------" << std::endl;
+	std::cout << "-------- SHUTDOWN -----------" << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	return (STOP);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 12:16:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 18:57:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ std::vector<std::string> ft_split(const std::string & str, const std::string & s
 	return (split);
 }
 
+
 // Définition de l'opérateur + pour Color + std::string
 std::string operator+(Color const& color, std::string const& str)
 {
@@ -153,7 +154,7 @@ std::string operator+(const char * str, Color const& color)
 /// envoye un message aux client
 int	send_message(std::string message, pollfd &current_pollfd)
 {
-	std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : " << GREEN << "\"" << NOCOLOR << message << GREEN << "\"" << NOCOLOR << std::endl;
+	// std::cout << BLUE << "Message envoyé aux pollfd" << NOCOLOR << "(" << current_pollfd.fd << ") : " << GREEN << "\"" << NOCOLOR << message << GREEN << "\"" << NOCOLOR << std::endl;
 
 	send(current_pollfd.fd, message.c_str(), message.size(), 0);
 	return (0);

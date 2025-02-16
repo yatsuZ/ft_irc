@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:42:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 16:54:23 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
-	std::cout << current_cmd << std::endl;
+	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
+	// std::cout << current_cmd << std::endl;
 	Action act = current_cmd.get_action();
 	current_user->get_msg_by_step(this->get_name(), current_pollfd);
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
-	std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;
+	// std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;
 	return (res);
 }
-
 
 /// @brief Methode qui est le coeur du programme
 void	Irssi_serv::exec(void)
@@ -65,6 +64,15 @@ void	Irssi_serv::exec(void)
 	}
 }
 
+/*
+static void	show_message_recu(Data_buffer<char> buff)
+{
+	std::cout << BLUE << "V-✉-✉-✉-✉-✉-✉ Message recu ✉-✉-✉-✉-✉-✉-V" << NOCOLOR << std::endl;
+
+	std::cout << RED << "\"" << NOCOLOR << buff.get_data_in_string() << RED << "\"" << NOCOLOR << std::endl;
+}
+*/
+
 /// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
 std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 {
@@ -73,9 +81,9 @@ std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
 	Action action = NO_ACTION;
 
 	Data_buffer<char>	buff(current_pollfd.fd, &action);
-	std::cout << BLUE << "V-✉-✉-✉-✉-✉-✉ Message recu ✉-✉-✉-✉-✉-✉-V" << NOCOLOR << std::endl;
 
-	std::cout << RED << "\"" << NOCOLOR << buff.get_data_in_string() << RED << "\"" << NOCOLOR << std::endl;
+
+	// show_message_recu(buff);
 
 	if (action != NO_ACTION)
 	{

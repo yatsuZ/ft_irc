@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 12:30:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:11:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,8 @@
 // ERR_UNKNOWNMODE
 #define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
 // ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(nickname, targetnick, channelname) (": 441 " + nickname + " " + targetnick + " #" + channelname + " :They aren't on that channel" + CRLF)
+#define ERR_USERNOTINCHANNEL(nickname, target_nick, channelname) (": 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
 // ERR_USERONCHANNEL
-#define ERR_USERONCHANNEL(nickname, targetnick, channelname) (": 443 " + nickname + " " + targetnick + " #" + channelname + " :is already on channel" + CRLF)
+#define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " #" + channelname + " :is already on channel" + CRLF)
 // ERR_WILDTOPLEVEL
 #define ERR_WILDTOPLEVEL(nickname, mask) (": 414 " + nickname + " " + mask + " :Wildcard in toplevel domain" + CRLF)

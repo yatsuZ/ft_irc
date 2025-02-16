@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/16 12:46:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:40:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,24 @@ public:
 	~User();
 	User(std::string & nick);
 
-	void		setNick(const std::string &);
-	void		setName(const std::string &);
-	void		setHostname(const std::string &);
-	void		setServername(const std::string &);
-	void		setRealname(const std::string &);
-	void		setMode(void);
-	
-	std::string	getNick() 		const {return this->_nick;}
-	std::string	getName() 		const {return this->_name;}
-	std::string	getHostname()	const {return this->_hostname;}
-	std::string	getRealname()	const {return this->_real_name;}
-	std::string	getServername()	const {return this->_servername;}
-	bool		getSet_User() 	const {return (_is_init == 2 || _is_init == -1);}
-	bool		getSet_Nick()	const {return (_is_init == 1 || _is_init == -1);}
-	bool		getMode()		const {return this->_mode;}
+	void		set_nick(const std::string &);
+	void		set_name(const std::string &);
+	void		set_hostname(const std::string &);
+	void		set_servername(const std::string &);
+	void		set_Realname(const std::string &);
+	void		set_mode(void);
+
+	std::string	get_nick() 			const {return this->_nick;}
+	std::string	get_name() 			const {return this->_name;}
+	std::string	get_hostname()		const {return this->_hostname;}
+	std::string	get_realname()		const {return this->_real_name;}
+	std::string	get_servername()	const {return this->_servername;}
+	Mode_User	get_droituser()		const {return this->_droit_user;}
+	bool		get_Set_User() 		const {return (_is_init == 2 || _is_init == -1);}
+	bool		get_Set_Nick()		const {return (_is_init == 1 || _is_init == -1);}
+	bool		get_is_init()		const {return (_is_init == -1);}
+	bool		getMode()			const {return this->_mode;}
 };
 
 std::ostream & operator<<( std::ostream & o, User const & user);
+std::ostream & operator<<( std::ostream & o, Mode_User const modeu);

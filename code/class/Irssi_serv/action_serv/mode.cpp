@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:44:41 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 18:28:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@
 
 Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	(void)	index_of_current_pollfd;
 	std::vector<std::string> cmd_args = current_cmd.get_arg();
 	UserHuman *target = this->_get_userhuman_by_nick(cmd_args[0]);
 
-	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << std::endl;
+	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 	//USER MODE
 	if (cmd_args.size() <= 1)
-		return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->getNick(), "MODE"), current_pollfd), (NONE));
+		return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->get_nick(), "MODE"), current_pollfd), (NONE));
 
 	if (target == NULL)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), cmd_args[0]), current_pollfd), NONE);
@@ -45,8 +44,8 @@ Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_us
 	if ((cmd_args[1] == "+i" && !current_user->getMode()) ||
 		(cmd_args[1] == "-i" && current_user->getMode()))
 	{
-		target->setMode();
-		return (send_message(":" + current_user->getNick() + " MODE " + target->getName() + " :" + cmd_args[1] + CRLF, current_pollfd), NONE);
+		target->set_mode();
+		return (send_message(":" + current_user->get_nick() + " MODE " + target->get_name() + " :" + cmd_args[1] + CRLF, current_pollfd), NONE);
 	}
 	//max args MODE [chan][mod][target] || MODE [chan][mode] <= a faire apres class chan
 	//check nickname puis si arg[1] == mode valide/connu

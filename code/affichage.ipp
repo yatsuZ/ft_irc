@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/10 23:22:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/16 17:53:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,20 +143,72 @@ std::ostream & operator<<( std::ostream & o, Client const & client)
 	return o;
 }
 
-std::ostream & operator<<( std::ostream & o, User const & user)
+std::ostream & operator<<( std::ostream & o, Mode_User const modeu)
 {
-	(void)	user;
+	if (modeu == NONE_MODE)
+		o << "NONE_MODE";
+	else if (modeu == I)
+		o << "Invisible";
+	return o;
+}
+
+std::ostream & operator<<(std::ostream & o, User const & user)
+{
+	o << "| " << YELLOW << "Nick: " << NOCOLOR << user.get_nick() << " | "
+	  << YELLOW << "Name: " << NOCOLOR << user.get_name() << " | "
+	  << YELLOW << "Hostname: " << NOCOLOR << user.get_hostname() << " | "
+	  << YELLOW << "Real Name: " << NOCOLOR << user.get_realname() << " | "
+	  << YELLOW << "Servername: " << NOCOLOR << user.get_servername() << " | "
+	  << YELLOW << "Is Init: " << NOCOLOR << (user.get_is_init() ? "true" : "false");
 	return o;
 }
 
 std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman)
 {
-	o << "| " << "index pollfd = "	<< CYAN << userhuman.get_index_pollfd() << NOCOLOR << " |" << RED << " et dautre truc a afficher pour userhuman" << NOCOLOR;
+	o << static_cast<Client>(userhuman) << " " << static_cast<User>(userhuman);
 	return o;
 }
 
-std::ostream & operator<<( std::ostream & o, std::vector<UserHuman> const & userhumans)
+std::ostream & operator<<(std::ostream & o, std::vector<UserHuman> const & userhumans)
 {
-	(void)	userhumans;
+	if (userhumans.empty())
+	{
+		o << "Aucun utilisateur." << std::endl;
+		return o;
+	}
+
+	// En-tête du tableau
+	o << std::left << std::setw(10) << "Index"
+	  << std::setw(18) << "IP:Port"
+	  << std::setw(18)  << "index POLLFD"
+	  << std::setw(15) << "Nick"
+	  << std::setw(15) << "Name"
+	  << std::setw(20) << "Hostname"
+	  << std::setw(20) << "Real Name"
+	  << std::setw(15) << "Servername"
+	  << std::setw(10) << "Is Init" 
+	  << std::endl;
+
+	o << std::string(148, '-') << std::endl;
+
+	// Affichage des utilisateurs
+	for (size_t i = 0; i < userhumans.size(); ++i)
+	{
+		const UserHuman & userhuman = userhumans[i];
+
+		// Récupération des informations de connexion
+
+		o << std::left << std::setw(10) << i
+		  << std::setw(18) << userhuman.get_ip_to_string() + ":" + userhuman.get_port_to_string()
+		  << std::setw(18)  << userhuman.get_index_pollfd()
+		  << std::setw(15) << userhuman.get_nick()
+		  << std::setw(15) << userhuman.get_name()
+		  << std::setw(20) << userhuman.get_hostname()
+		  << std::setw(20) << userhuman.get_realname()
+		  << std::setw(15) << userhuman.get_servername()
+		  << std::setw(10) << (userhuman.get_is_init() ? "true" : "false")
+		  << std::endl;
+	}
+
 	return o;
 }
