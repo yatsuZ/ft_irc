@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/11 17:24:54 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/16 10:33:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ const char* action_tab[IDK + 1] =
 	"Probléme de la fonction recv, lors de la recpetion des données",				// ERROR_RECV_DATA
 	"Fermeture du serveur. On eteint le serveur",									// SHUTDOWN
 	"Déconexion d'un client et la supression de l'utilisateur de la bdd",			// DISCONNECT
-	"Capacite du serveur, voir argument",								// CAP == Capablities
+	"Capacite du serveur, voir argument",											// CAP == Capablities
 	"Set le nom de l'utilisateur",													// NICK
-	"Identification de l'utilisateur aupres du serveur",				// USER
-	"definit comment est percu/definit user/channel",					// MODE
+	"Identification de l'utilisateur aupres du serveur",							// USER
+	"definit comment est percu/definit user/channel",								// MODE
 	"Demande si la connexion est toujour etablie",									// PING
-	"Demande les infos de l'utilisateur spécifié",						// WHOIS
+	"Demande les infos de l'utilisateur spécifié",									// WHOIS
 	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",	// QUIT
 	"Je ne sais pas quoi faire avec JOIN",
 	"... Action non reconnus",														// IDK
