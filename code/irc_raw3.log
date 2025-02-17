@@ -1,0 +1,135 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :bitcoin.uk.eu.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :bitcoin.uk.eu.dal.net NOTICE AUTH :*** Found your hostname
+>> :bitcoin.uk.eu.dal.net 001 Kurps :Welcome to the DALnet IRC Network Kurps!~smlamali@62.210.33.79
+<< MODE Kurps +i
+>> :bitcoin.uk.eu.dal.net 002 Kurps :Your host is bitcoin.uk.eu.dal.net, running version bahamut-2.2.4
+>> :bitcoin.uk.eu.dal.net 003 Kurps :This server was created Fri 22 Nov 2024 at 04:12:23 GMT
+>> :bitcoin.uk.eu.dal.net 004 Kurps bitcoin.uk.eu.dal.net bahamut-2.2.4 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :bitcoin.uk.eu.dal.net 005 Kurps NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=50 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:50 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :bitcoin.uk.eu.dal.net 005 Kurps CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :bitcoin.uk.eu.dal.net 251 Kurps :There are 64 users and 6689 invisible on 39 servers
+>> :bitcoin.uk.eu.dal.net 252 Kurps 78 :IRC Operators online
+>> :bitcoin.uk.eu.dal.net 254 Kurps 3418 :channels formed
+>> :bitcoin.uk.eu.dal.net 255 Kurps :I have 352 clients and 1 servers
+>> :bitcoin.uk.eu.dal.net 265 Kurps :Current local users: 352 Max: 4001
+>> :bitcoin.uk.eu.dal.net 266 Kurps :Current global users: 6753 Max: 12809
+>> :bitcoin.uk.eu.dal.net NOTICE Kurps :*** Notice -- motd was last changed at 9/11/2017 12:51
+>> :bitcoin.uk.eu.dal.net 375 Kurps :- bitcoin.uk.eu.dal.net Message of the Day - 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-9/11/2017 12:51
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-                 [ bitcoin.uk.eu.dal.net    ]
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-                 [ Accessible via...        ]
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-                 [ ipv4: bitcoin.dal.net    ]
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Thank you to Private Internet Access (https://www.privateinternetaccess.com) 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- for sponsoring this server.
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Welcome to DALnet!  By connecting to this network, you agree to abide
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- by its acceptable use policy, available here: http://www.dal.net/aup
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Server Policies:
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   We reserve the right to deny access to this server without
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-        warning or explanation
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   No malicious bots, including flood and nick/channel chasers
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   No channel filler bots/clients/psybncs
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-          - A channel filler is a client, bnc, or bot which is
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-            connected just to fill a channel and make it look
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-            bigger
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   Operator impersonation, spamming, or any other abuse will
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-        cause you to be banned from this server
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   Abide by DALnet's AUP (www.dal.net/aup)
+>> :bitcoin.uk.eu.dal.net 372 Kurps :-    *   Please have fun and enjoy DALnet!
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Server Administrator: tyler
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Thank you to Private Internet Access (https://www.privateinternetaccess.com) for sponsori
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- ng this server.
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- For IRCop assistance, please /join #operhelp or message one of our
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- friendly server staff listed above.
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- For multilingual information:  <http://docs.dal.net/>
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- 
+>> :bitcoin.uk.eu.dal.net 372 Kurps :- Thank you for using DALnet!  We hope you have a pleasant day.
+>> :bitcoin.uk.eu.dal.net 376 Kurps :End of /MOTD command.
+>> :Kurps MODE Kurps :+iH
+<< PING bitcoin.uk.eu.dal.net
+>> :bitcoin.uk.eu.dal.net PONG bitcoin.uk.eu.dal.net :Kurps
+--> lag pong
+<< JOIN #lobA,#lobB keyA,keyB
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip JOIN :#lobA
+>> :bitcoin.uk.eu.dal.net 353 Kurps = #lobA :@Kurps 
+>> :bitcoin.uk.eu.dal.net 366 Kurps #lobA :End of /NAMES list.
+<< MODE #lobA
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip JOIN :#lobB
+>> :bitcoin.uk.eu.dal.net 353 Kurps = #lobB :@Kurps 
+>> :bitcoin.uk.eu.dal.net 366 Kurps #lobB :End of /NAMES list.
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobA + 
+--> chanquery mode
+<< MODE #lobB
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobA 1739809804
+--> event 329
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobB + 
+--> chanquery mode
+<< WHO #lobA
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobB 1739809804
+--> event 329
+>> :bitcoin.uk.eu.dal.net 352 Kurps #lobA ~smlamali 24ec-36af-be74-7610-f6b7.210.62.ip bitcoin.uk.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :bitcoin.uk.eu.dal.net 315 Kurps #lobA :End of /WHO list.
+--> chanquery who end
+<< WHO #lobB
+>> :bitcoin.uk.eu.dal.net 352 Kurps #lobB ~smlamali 24ec-36af-be74-7610-f6b7.210.62.ip bitcoin.uk.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :bitcoin.uk.eu.dal.net 315 Kurps #lobB :End of /WHO list.
+--> chanquery who end
+<< MODE #lobA b
+>> :bitcoin.uk.eu.dal.net 368 Kurps #lobA :End of Channel Ban List
+--> chanquery ban end
+<< MODE #lobB b
+>> :bitcoin.uk.eu.dal.net 368 Kurps #lobB :End of Channel Ban List
+--> chanquery ban end
+<< MODE #lobB
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobB + 
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobB 1739809804
+<< PART #lobB
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip PART #lobB
+<< PART #lobA
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip PART #lobA
+<< JOIN #lobbyDsam lemdp
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip JOIN :#lobbyDsam
+>> :bitcoin.uk.eu.dal.net 353 Kurps = #lobbyDsam :@Kurps 
+>> :bitcoin.uk.eu.dal.net 366 Kurps #lobbyDsam :End of /NAMES list.
+<< MODE #lobbyDsam
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobbyDsam + 
+--> chanquery mode
+<< WHO #lobbyDsam
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobbyDsam 1739809850
+--> event 329
+>> :bitcoin.uk.eu.dal.net 352 Kurps #lobbyDsam ~smlamali 24ec-36af-be74-7610-f6b7.210.62.ip bitcoin.uk.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :bitcoin.uk.eu.dal.net 315 Kurps #lobbyDsam :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbyDsam b
+>> :bitcoin.uk.eu.dal.net 368 Kurps #lobbyDsam :End of Channel Ban List
+--> chanquery ban end
+<< PING bitcoin.uk.eu.dal.net
+>> :bitcoin.uk.eu.dal.net PONG bitcoin.uk.eu.dal.net :Kurps
+--> lag pong
+<< MODE #lobbyDsam
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobbyDsam + 
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobbyDsam 1739809850
+<< MODE #lobbyDsam +k
+<< MODE #lobbyDsam +k
+<< MODE #lobbyDsam +k lemd
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip MODE #lobbyDsam +k lemd
+<< PART #lobbyDsam
+>> :Kurps!~smlamali@24ec-36af-be74-7610-f6b7.210.62.ip PART #lobbyDsam
+<< PING bitcoin.uk.eu.dal.net
+>> :bitcoin.uk.eu.dal.net PONG bitcoin.uk.eu.dal.net :Kurps
+--> lag pong
+<< QUIT :leaving

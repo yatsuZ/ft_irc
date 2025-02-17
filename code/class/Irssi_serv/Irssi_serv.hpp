@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 13:03:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/17 19:55:57 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "./../Server/Server.hpp"
+#include "./../Channel/Channel.hpp"
+
+class	Channel;
 
 class Irssi_serv: public Server
 {
 private:
-	std::vector<UserHuman>	_all_User;
-	std::vector<Cmd_irssi>	link(pollfd &current_pollfd);
+	std::vector<UserHuman>		_all_User;
+	std::vector<Channel>		_all_Channel;			// liste des channels existants
+	std::vector<Cmd_irssi>		link(pollfd &current_pollfd);
 	
 	Reaction_Serv	do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 
@@ -46,7 +50,7 @@ private:
 
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
 	UserHuman	* _get_userhuman_by_nick(const std::string & nick);
-
+	Channel		* _get_channel_by_name(const std::string & name);
 	bool	_nick_already_used(std::string nick) const;
 
 	void	_errase_user_from_tab(pollfd &current_pollfd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 17:38:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/17 20:01:01 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,17 @@ bool	Irssi_serv::_nick_already_used(std::string nick) const
 			return (true);
 	}
 	return (false);
+}
+
+Channel	*	Irssi_serv::_get_channel_by_name(const std::string & name)
+{
+	if (_all_Channel.empty())
+		return (NULL);
+
+	for (size_t i=0; i<_all_Channel.size(); i++)
+	{
+		if (_all_Channel[i].get_name() == name)
+			return (&(this->_all_Channel[i])); 
+	}
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/16 17:40:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/17 18:59:34 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ protected:
 	bool			_mode;
 	int				_is_init;
 
+	std::vector<std::string>	l_chans;
 public:
 	User();
 	~User();
