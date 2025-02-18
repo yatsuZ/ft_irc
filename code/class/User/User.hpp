@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/17 18:59:34 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:24:40 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ protected:
 	bool			_mode;
 	int				_is_init;
 
-	std::vector<std::string>	l_chans;
+	// std::vector<Channel>	_channels;
+
 public:
 	User();
 	~User();
@@ -36,6 +37,7 @@ public:
 	void		set_servername(const std::string &);
 	void		set_Realname(const std::string &);
 	void		set_mode(void);
+	// void		add_channel(Channel *);
 
 	std::string	get_nick() 			const {return this->_nick;}
 	std::string	get_name() 			const {return this->_name;}

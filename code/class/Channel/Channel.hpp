@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/17 19:09:30 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:54:42 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ public:
 	std::string get_name(void)const {return this->_name;}
 
 	void		set_name(const std::string & n){_name = n;}
+
 private:
 	std::string					_name;
 	std::string					_key;

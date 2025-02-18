@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 18:57:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/18 18:02:25 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,34 @@ std::vector<std::string> ft_split(const std::string & str, const std::string & s
 	return (split);
 }
 
+std::vector<std::string> ft_split2(const std::string & str, const std::string & sep)
+{
+	size_t						i;
+	std::string					word;
+	std::vector<std::string>	split;
+
+	if (str.empty())
+		return split;
+
+	i=0;
+	while (i < str.size())
+	{
+		if (is_sep(str[i], sep) != -1)
+		{
+			split.push_back(word);
+			word.clear();
+		}
+		else
+			word.push_back(str[i]);
+		i++;
+	}
+	if (word.size() != 0)
+	{
+		split.push_back(word);
+		word.clear();
+	}
+	return (split);
+}
 
 // Définition de l'opérateur + pour Color + std::string
 std::string operator+(Color const& color, std::string const& str)

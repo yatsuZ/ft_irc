@@ -1,0 +1,35 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mComme[0m> 0.1
+>> :Kurps MODE smlamali :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #lobbyA,#lobbyB
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobbyA,#lobbyB
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< QUIT :leaving
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mComme[0m> 0.1
+>> :Kurps MODE smlamali :+i
+<< JOIN #lobbyA,#lobbyB,#lobbyC keyA,keyB,x
+>> :YASACO 461 Kurps JOIN :Not enough parameters
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< QUIT :leaving

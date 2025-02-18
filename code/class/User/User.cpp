@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/16 17:11:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/18 19:24:18 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,6 @@ void	User::set_servername(const std::string & s)
 
 void	User::set_mode(void)
 {_mode = !(_mode);}
+
+// void		User::add_channel(Channel *c)
+// {_channels.push_back(c);}

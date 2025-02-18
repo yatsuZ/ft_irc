@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/17 19:55:57 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:16:25 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ private:
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
+
 	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 	MethodeActionIrc action_table[IDK + 1];
 
@@ -54,7 +55,6 @@ private:
 	bool	_nick_already_used(std::string nick) const;
 
 	void	_errase_user_from_tab(pollfd &current_pollfd);
-
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);
