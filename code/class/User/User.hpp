@@ -6,11 +6,15 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/18 19:24:40 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:08:38 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "./../../header/Ft_irc.hpp"
+#include "./../Channel/Channel.hpp"
+// class Channel;
 
 class User
 {
@@ -24,7 +28,7 @@ protected:
 	bool			_mode;
 	int				_is_init;
 
-	// std::vector<Channel>	_channels;
+	std::vector<Channel>	_channels;
 
 public:
 	User();
@@ -37,7 +41,7 @@ public:
 	void		set_servername(const std::string &);
 	void		set_Realname(const std::string &);
 	void		set_mode(void);
-	// void		add_channel(Channel *);
+	void		add_channel(const Channel c);
 
 	std::string	get_nick() 			const {return this->_nick;}
 	std::string	get_name() 			const {return this->_name;}

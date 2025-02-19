@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/18 19:24:18 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:08:48 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	User::set_servername(const std::string & s)
 void	User::set_mode(void)
 {_mode = !(_mode);}
 
-// void		User::add_channel(Channel *c)
-// {_channels.push_back(c);}
+void		User::add_channel(const Channel c)
+{this->_channels.push_back(c);}

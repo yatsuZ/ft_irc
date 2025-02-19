@@ -6,16 +6,16 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:25 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:31:21 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "./../Server/Server.hpp"
-#include "./../Channel/Channel.hpp"
+// #include "./../Channel/Channel.hpp"
 
-class	Channel;
+// class	Channel;
 
 class Irssi_serv: public Server
 {
