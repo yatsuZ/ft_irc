@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/19 19:15:02 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/20 11:37:05 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 		Permet de rejoindre et creéer un ou plusieurs channels 
 */
 
-//TO DO: 	check si chan sur invit avant de join (ajouter mode channels)
+//TO DO: 	check si chan sur invit avant de join (donc ajouter les mode de channels)
 //			message d'infos sur le serv join  (optionnel)
 Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
@@ -24,7 +24,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::vector<std::string> chans;
 	std::vector<std::string> keys;
 
-	std::cout << PINK <<  "-------- JOIN ----------- (doit ecrire ce que sa fais)" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
+	std::cout << PINK <<  "-------- JOIN --------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 	
 	size_t	nb_key = 0;
 	cmd_args = current_cmd.get_arg();
@@ -46,19 +46,18 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 	for (size_t i=0; i<chans.size(); i++)
 	{
 		Channel * channel =_get_channel_by_name(chans[i]);
-		if (channel == NULL)
+		if (channel == NULL) //cas channel n'existe pas (on en crée un)
 		{
 			Channel new_chan(chans[i], "");
 			_all_Channel.push_back(new_chan);
-		
+			current_user->add_channel(new_chan);
 			send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 				"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] +  +CRLF, current_pollfd);
-			current_user->add_channel(new_chan);
-		}else
+		}else //cas channel existant
 		{
+			current_user->add_channel(*channel);
 			send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 				"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + keys[i] + CRLF, current_pollfd);
-			current_user->add_channel(*channel);
 		}
 	}
 

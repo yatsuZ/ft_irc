@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/17 15:31:40 by smlamali         ###   ########.fr        #
+#    Updated: 2025/02/20 15:23:24 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ ACTION_SERV_FILES =	cap.cpp				\
 					user.cpp			\
 					mode.cpp			\
 					ping.cpp			\
+					privmsg.cpp			\
 					whois.cpp			\
 					quit.cpp			\
 					join.cpp

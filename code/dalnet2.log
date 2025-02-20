@@ -1,0 +1,137 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :sakura.jp.as.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :sakura.jp.as.dal.net NOTICE AUTH :*** Checking Ident
+>> :sakura.jp.as.dal.net NOTICE AUTH :*** Couldn't look up your hostname
+>> :sakura.jp.as.dal.net NOTICE AUTH :*** No Ident response
+>> :sakura.jp.as.dal.net 433 * Kurps :Nickname is already in use.
+<< NICK Kurps_
+>> :sakura.jp.as.dal.net 001 Kurps_ :Welcome to the DALnet IRC Network Kurps_!~smlamali@62.210.33.235
+<< MODE Kurps_ +i
+<< WHOIS Kurps
+>> :sakura.jp.as.dal.net 002 Kurps_ :Your host is sakura.jp.as.dal.net, running version bahamut-2.2.4
+>> :sakura.jp.as.dal.net 003 Kurps_ :This server was created Sat Nov 23 2024 at 20:05:50 UTC
+>> :sakura.jp.as.dal.net 004 Kurps_ sakura.jp.as.dal.net bahamut-2.2.4 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :sakura.jp.as.dal.net 005 Kurps_ NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=50 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:50 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :sakura.jp.as.dal.net 005 Kurps_ CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :sakura.jp.as.dal.net 251 Kurps_ :There are 63 users and 6565 invisible on 39 servers
+>> :sakura.jp.as.dal.net 252 Kurps_ 76 :IRC Operators online
+>> :sakura.jp.as.dal.net 254 Kurps_ 3372 :channels formed
+>> :sakura.jp.as.dal.net 255 Kurps_ :I have 1777 clients and 1 servers
+>> :sakura.jp.as.dal.net 265 Kurps_ :Current local users: 1777 Max: 3677
+>> :sakura.jp.as.dal.net 266 Kurps_ :Current global users: 6628 Max: 12059
+>> :sakura.jp.as.dal.net NOTICE Kurps_ :*** Notice -- motd was last changed at 23/1/2024 15:37
+>> :sakura.jp.as.dal.net 375 Kurps_ :- sakura.jp.as.dal.net Message of the Day - 
+>> :sakura.jp.as.dal.net 372 Kurps_ :-23/1/2024 15:37
+>> :sakura.jp.as.dal.net 372 Kurps_ :- =====================================================================
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Server: sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Plaintext ports: 6660 - 6669, 7000
+>> :sakura.jp.as.dal.net 372 Kurps_ :- SSL/TLS port: 6697
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Both IPv4 and IPv6 are supported on this server
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Server Administrator: xPsycho (xpsycho@DAL.net)
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Operators: toolman (toolman@DAL.net)
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :-            __.--~~.,-.__
+>> :sakura.jp.as.dal.net 372 Kurps_ :-            `~-._.-(`-.__`-.
+>> :sakura.jp.as.dal.net 372 Kurps_ :-                    \    `~~`
+>> :sakura.jp.as.dal.net 372 Kurps_ :-               .--./ \ 
+>> :sakura.jp.as.dal.net 372 Kurps_ :-              /#   \  \.--.
+>> :sakura.jp.as.dal.net 372 Kurps_ :-              \    /  /#   \ 
+>> :sakura.jp.as.dal.net 372 Kurps_ :-          jgs  '--'   \    /
+>> :sakura.jp.as.dal.net 372 Kurps_ :-                       '--'
+>> :sakura.jp.as.dal.net 372 Kurps_ :-                                                                      
+>> :sakura.jp.as.dal.net 372 Kurps_ :- This server is proudly sponsored by DataPacket.com
+>> :sakura.jp.as.dal.net 372 Kurps_ :-       <https://www.datapacket.com/>
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- =====================================================================
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Welcome to DALnet!  By connecting to this network, you agree to abide
+>> :sakura.jp.as.dal.net 372 Kurps_ :- by its acceptable use policy available at: https://www.dal.net/aup
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- We reserve the right to deny access to this server to anyone at any
+>> :sakura.jp.as.dal.net 372 Kurps_ :- time without warning or explanation.
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- To help prevent abuse, this server will check your PC for open proxy
+>> :sakura.jp.as.dal.net 372 Kurps_ :- servers when you connect. If you do not want this test performed, do
+>> :sakura.jp.as.dal.net 372 Kurps_ :- not connect.
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- =====================================================================
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- If you need general IRC assistance or help with services commands,
+>> :sakura.jp.as.dal.net 372 Kurps_ :- please view our multilingual documentation at http://docs.dal.net/
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- If your question is not answered after reading our documention,
+>> :sakura.jp.as.dal.net 372 Kurps_ :- please /join #help for general questions or /join #OperHelp if you
+>> :sakura.jp.as.dal.net 372 Kurps_ :- require the immediate assistance of an IRC Operator.
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- =====================================================================
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- Thank you, and enjoy your day!
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 372 Kurps_ :- =====================================================================
+>> :sakura.jp.as.dal.net 372 Kurps_ :- 
+>> :sakura.jp.as.dal.net 376 Kurps_ :End of /MOTD command.
+>> :Kurps_ MODE Kurps_ :+iH
+>> :sakura.jp.as.dal.net 311 Kurps_ Kurps ~smlamali 192b-8360-6f9d-2134-ca58.210.62.ip * :Samira MLAMALI
+--> nickfind event whois
+>> :sakura.jp.as.dal.net 319 Kurps_ Kurps :@#nvx_chanelle 
+--> event empty
+>> :sakura.jp.as.dal.net 312 Kurps_ Kurps lion.tx.us.dal.net :bliss
+--> event empty
+>> :sakura.jp.as.dal.net 318 Kurps_ Kurps :End of /WHOIS list.
+--> event empty
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+<< JOIN #nvx_chanelle
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip JOIN :#nvx_chanelle
+>> :sakura.jp.as.dal.net 353 Kurps_ = #nvx_chanelle :Kurps_ @Kurps 
+>> :sakura.jp.as.dal.net 366 Kurps_ #nvx_chanelle :End of /NAMES list.
+<< MODE #nvx_chanelle
+>> :sakura.jp.as.dal.net 324 Kurps_ #nvx_chanelle + 
+--> chanquery mode
+<< WHO #nvx_chanelle
+>> :sakura.jp.as.dal.net 329 Kurps_ #nvx_chanelle 1740062063
+--> event 329
+>> :sakura.jp.as.dal.net 352 Kurps_ #nvx_chanelle ~smlamali 192b-8360-6f9d-2134-ca58.210.62.ip sakura.jp.as.dal.net Kurps_ H :0 Samira MLAMALI
+--> silent event who
+>> :sakura.jp.as.dal.net 352 Kurps_ #nvx_chanelle ~smlamali 192b-8360-6f9d-2134-ca58.210.62.ip lion.tx.us.dal.net Kurps H@ :5 Samira MLAMALI
+--> silent event who
+>> :sakura.jp.as.dal.net 315 Kurps_ #nvx_chanelle :End of /WHO list.
+--> chanquery who end
+<< MODE #nvx_chanelle b
+>> :sakura.jp.as.dal.net 368 Kurps_ #nvx_chanelle :End of Channel Ban List
+--> chanquery ban end
+<< PRIVMSG #nvx_chanelle :salut
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :je suis le client 1
+<< PRIVMSG #nvx_chanelle :et moi le client 2
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+<< PRIVMSG #nvx_chanelle :pourquoi on envoye les msg pas de la emem maniere mon reuf ?
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :ta guel
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+<< PRIVMSG #nvx_chanelle :ok
+<< PRIVMSG #nvx_chanelle :log
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps_
+--> lag pong
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :cest bon je sais pk cetais une question de POV comme tiktok
+<< PRIVMSG #nvx_chanelle :ah oui les pov
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :hahaha mdr
+<< PRIVMSG #nvx_chanelle :aller chao bon taff
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :mrc
+<< PRIVMSG #nvx_chanelle :chao
+<< QUIT :leaving

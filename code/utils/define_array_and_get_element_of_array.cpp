@@ -45,6 +45,7 @@ const char* action_tab[IDK + 1] =
 	"Demande les infos de l'utilisateur spécifié",									// WHOIS
 	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",	// QUIT
 	"Je ne sais pas quoi faire avec JOIN",
+	"Je ne sais pas quoi faire avec PRIVMSG",										// PRIVMSG
 	"... Action non reconnus",														// IDK
 };
 

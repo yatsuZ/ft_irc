@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:14:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/20 15:25:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ Action	Cmd_irssi::init_action(void) const
 		return (QUIT);
 	else if (this->get_cmd() == "JOIN")
 		return (JOIN);
+	else if (this->get_cmd() == "PRIVMSG")
+		return (PRIVMSG);
 
 	return (IDK);
 }

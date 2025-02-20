@@ -1,0 +1,220 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Checking Ident
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Found your hostname
+>> :lion.tx.us.dal.net NOTICE AUTH :*** No Ident response
+>> :lion.tx.us.dal.net 001 Kurps :Welcome to the DALnet IRC Network Kurps!~smlamali@62.210.33.235
+<< MODE Kurps +i
+>> :lion.tx.us.dal.net 002 Kurps :Your host is lion.tx.us.dal.net, running version bahamut-2.2.3
+>> :lion.tx.us.dal.net 003 Kurps :This server was created Tue Dec 19 2023 at 17:03:13 EST
+>> :lion.tx.us.dal.net 004 Kurps lion.tx.us.dal.net bahamut-2.2.3 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :lion.tx.us.dal.net 005 Kurps NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=50 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:50 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :lion.tx.us.dal.net 005 Kurps CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :lion.tx.us.dal.net 251 Kurps :There are 63 users and 6545 invisible on 39 servers
+>> :lion.tx.us.dal.net 252 Kurps 76 :IRC Operators online
+>> :lion.tx.us.dal.net 254 Kurps 3368 :channels formed
+>> :lion.tx.us.dal.net 255 Kurps :I have 604 clients and 1 servers
+>> :lion.tx.us.dal.net 265 Kurps :Current local users: 604 Max: 1812
+>> :lion.tx.us.dal.net 266 Kurps :Current global users: 6608 Max: 8222
+>> :lion.tx.us.dal.net NOTICE Kurps :*** Notice -- motd was last changed at 21/2/2024 4:48
+>> :lion.tx.us.dal.net 375 Kurps :- lion.tx.us.dal.net Message of the Day - 
+>> :lion.tx.us.dal.net 372 Kurps :-21/2/2024 4:48
+>> :lion.tx.us.dal.net 372 Kurps :-      Welcome to,
+>> :lion.tx.us.dal.net 372 Kurps :-       _ _
+>> :lion.tx.us.dal.net 372 Kurps :-      | (_)            
+>> :lion.tx.us.dal.net 372 Kurps :-      | |_  ___  _ __  
+>> :lion.tx.us.dal.net 372 Kurps :-      | | |/ _ \| '_ \ 
+>> :lion.tx.us.dal.net 372 Kurps :-      | | | (_) | | | |
+>> :lion.tx.us.dal.net 372 Kurps :-      |_|_|\___/|_| |_|.tx.us.dal.net 
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-       * Host..............: lion.dal.net | lion-v6.dal.net
+>> :lion.tx.us.dal.net 372 Kurps :-       * Ports.............: 6667 - 6669, 7000 | SSL - 6697
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    Welcome to DALnet, by connecting to this network you agree to 
+>> :lion.tx.us.dal.net 372 Kurps :-    abide by its acceptable use policy, visit : http://www.dal.net/aup
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-      "This server has been sponsored by Psychz Networks"
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-            ---===[https://www.psychz.net/]===---
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    -------------------------------------------------------------------
+>> :lion.tx.us.dal.net 372 Kurps :-    [%] Server Policies  =-
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    a. No spamming or advertising allowed, if found you will be banned 
+>> :lion.tx.us.dal.net 372 Kurps :-       from this server/network.
+>> :lion.tx.us.dal.net 372 Kurps :-    b. No malicious bots, including flood and nick/channel chasers
+>> :lion.tx.us.dal.net 372 Kurps :-    c. No channel filler bots/clients/psybncs
+>> :lion.tx.us.dal.net 372 Kurps :-       #  A channel filler is a client, bnc, or bot which is connected
+>> :lion.tx.us.dal.net 372 Kurps :-          just to fill a channel and make it look bigger
+>> :lion.tx.us.dal.net 372 Kurps :-    d. Operator impersonation will not be tolerated and cause you to be
+>> :lion.tx.us.dal.net 372 Kurps :-       banned from this server/network.
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-            "REMEMBER IRC IS A PRIVILEGE, NOT A RIGHT"
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    --------------------------------------------------------------------
+>> :lion.tx.us.dal.net 372 Kurps :-    For IRC Operator assistance /join #Operhelp
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    For DALnet and General IRC related help, goto #Help
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    For multi-lingual documentation - [http://docs.dal.net]
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    If you have any questions/issues related to this server,           
+>> :lion.tx.us.dal.net 372 Kurps :-    contact us using: lion-staff@dal.net
+>> :lion.tx.us.dal.net 372 Kurps :- 
+>> :lion.tx.us.dal.net 372 Kurps :-    Thank you, hope you enjoy your stay!
+>> :lion.tx.us.dal.net 376 Kurps :End of /MOTD command.
+>> :Kurps MODE Kurps :+iH
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< JOIN #nvx_chanelle
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip JOIN :#nvx_chanelle
+>> :lion.tx.us.dal.net 353 Kurps = #nvx_chanelle :@Kurps 
+>> :lion.tx.us.dal.net 366 Kurps #nvx_chanelle :End of /NAMES list.
+<< MODE #nvx_chanelle
+>> :lion.tx.us.dal.net 324 Kurps #nvx_chanelle + 
+--> chanquery mode
+<< WHO #nvx_chanelle
+>> :lion.tx.us.dal.net 329 Kurps #nvx_chanelle 1740062063
+--> event 329
+>> :lion.tx.us.dal.net 352 Kurps #nvx_chanelle ~smlamali 192b-8360-6f9d-2134-ca58.210.62.ip lion.tx.us.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 315 Kurps #nvx_chanelle :End of /WHO list.
+--> chanquery who end
+<< MODE #nvx_chanelle b
+>> :lion.tx.us.dal.net 368 Kurps #nvx_chanelle :End of Channel Ban List
+--> chanquery ban end
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PRIVMSG #nvx_chanelle :salut
+<< PRIVMSG #nvx_chanelle :??
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip JOIN :#nvx_chanelle
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :salut
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PRIVMSG #nvx_chanelle :je suis le client 1
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :et moi le client 2
+<< WHOIS Kurps
+>> :lion.tx.us.dal.net 311 Kurps Kurps ~smlamali 192b-8360-6f9d-2134-ca58.210.62.ip * :Samira MLAMALI
+--> whois event
+>> :lion.tx.us.dal.net 338 Kurps Kurps :is actually ~smlamali@62.210.33.235 [62.210.33.235]
+--> whois default event
+>> :lion.tx.us.dal.net 319 Kurps Kurps :@#nvx_chanelle 
+--> whois default event
+>> :lion.tx.us.dal.net 312 Kurps Kurps lion.tx.us.dal.net :bliss
+--> whois default event
+>> :lion.tx.us.dal.net 317 Kurps Kurps 22 1740061923 :seconds idle, signon time
+--> whois default event
+>> :lion.tx.us.dal.net 318 Kurps Kurps :End of /WHOIS list.
+--> whois end
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :pourquoi on envoye les msg pas de la emem maniere mon reuf ?
+<< PRIVMSG #nvx_chanelle :ta guel
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :ok
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :log
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PRIVMSG #nvx_chanelle :cest bon je sais pk cetais une question de POV comme tiktok
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :ah oui les pov
+<< PRIVMSG #nvx_chanelle :hahaha mdr
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :aller chao bon taff
+<< PRIVMSG #nvx_chanelle :mrc
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PRIVMSG #nvx_chanelle :chao
+>> :Kurps_!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip QUIT :Quit: leaving
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PART #nvx_chanelle
+>> :Kurps!~smlamali@192b-8360-6f9d-2134-ca58.210.62.ip PART #nvx_chanelle
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps
+--> lag pong
+<< QUIT :leaving

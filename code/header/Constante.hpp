@@ -55,6 +55,7 @@ enum Action {
 	WHOIS,
 	QUIT,
 	JOIN,
+	PRIVMSG,
 	IDK// derniere Action du tableau
 };
 

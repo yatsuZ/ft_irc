@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/19 16:31:21 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:53:38 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ private:
 	Reaction_Serv		ft_whois(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHOIS
 	Reaction_Serv		ft_quit(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// QUIT
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
+	Reaction_Serv		ft_privmsg(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// PRIVMSG
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
 
@@ -52,6 +53,7 @@ private:
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
 	UserHuman	* _get_userhuman_by_nick(const std::string & nick);
 	Channel		* _get_channel_by_name(const std::string & name);
+	ssize_t 	_get_index_of_userhuman_by_nick(const std::string & nick);
 	bool	_nick_already_used(std::string nick) const;
 
 	void	_errase_user_from_tab(pollfd &current_pollfd);

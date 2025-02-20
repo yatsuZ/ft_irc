@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/09 13:15:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/20 15:22:51 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[WHOIS] = &Irssi_serv::ft_whois;
 	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[JOIN] = &Irssi_serv::ft_join;
+	action_table[PRIVMSG] = &Irssi_serv::ft_privmsg;
 	action_table[IDK] = &Irssi_serv::ft_idk;
 }
 

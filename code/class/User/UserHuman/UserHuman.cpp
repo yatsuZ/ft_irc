@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UserHuman.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 17:12:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/20 15:24:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	UserHuman::get_welcolm(const std::string & server_name, Action from_this_ac
 	if (_is_init == 3)
 	{
 		send_message(RPL_WELCOME(server_name, get_nick(), get_name(), get_ip_to_string()), pollfd);
-		send_message(RPL_YOURHOST(server_name, get_nick(), "<" + CYAN + "Yassine " + PINK + "Samira " + YELLOW +"Comme"+NOCOLOR+"> 0.1"), pollfd);
+		send_message(RPL_YOURHOST(server_name, get_nick(), "<" + CYAN + "Yassine " + PINK + "Samira " + YELLOW +"Côme"+NOCOLOR+"> 0.1"), pollfd);
 		_is_init = -1;
 	}
 }

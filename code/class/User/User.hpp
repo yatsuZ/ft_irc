@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/19 18:08:38 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/20 15:46:43 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ protected:
 	bool			_mode;
 	int				_is_init;
 
-	std::vector<Channel>	_channels;
+	std::vector<Channel>	_channels; //modifier en ptr de chan
 
 public:
 	User();

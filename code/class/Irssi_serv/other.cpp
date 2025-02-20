@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:40 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:58:11 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ void	Irssi_serv::connect(void)
 
 	}
 }
+
+ssize_t  Irssi_serv::_get_index_of_userhuman_by_nick(const std::string & nick)
+{
+	for (size_t i = 0; i < this->_all_User.size(); i++)
+	{
+		if (this->_all_User[i].get_nick() == nick)
+			return (i);
+	}
+	return (-1);
+}
+
+
 
 UserHuman * Irssi_serv::_get_userhuman_by_index_of_pollfd(ssize_t i)
 {
