@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/20 15:23:24 by smlamali         ###   ########.fr        #
+#    Updated: 2025/02/21 19:46:46 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ CLASS_FILES =	./class/Server/Server.cpp				\
 				./class/User/User.cpp					\
 				./class/Client/Client.cpp				\
 				./class/User/UserHuman/UserHuman.cpp	\
-				./class/Channel/Channel.cpp\
+				./class/Channel/Channel.cpp				\
 				${addprefix ./class/Irssi_serv/action_serv/, ${ACTION_SERV_FILES}}
 
 

@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/20 15:46:43 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/21 19:47:22 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "./../../header/Ft_irc.hpp"
 #include "./../Channel/Channel.hpp"
-// class Channel;
+class Channel;
 
 class User
 {
@@ -29,7 +29,7 @@ protected:
 	int				_is_init;
 
 	std::vector<Channel>	_channels; //modifier en ptr de chan
-
+	std::vector<size_t>		_chans;	//tableau d'index de channels
 public:
 	User();
 	~User();
@@ -41,7 +41,8 @@ public:
 	void		set_servername(const std::string &);
 	void		set_Realname(const std::string &);
 	void		set_mode(void);
-	void		add_channel(const Channel c);
+	void		add_channel(const Channel *c);
+	void		add_chan(size_t idx_of_chan);
 
 	std::string	get_nick() 			const {return this->_nick;}
 	std::string	get_name() 			const {return this->_name;}
