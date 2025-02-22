@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:20 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/22 15:05:32 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,14 @@ enum Mode_User
 
 // extern const char* user_mode[NONE_MODE];
 
-// enum Mode_Channel
-// {
-// 	I,		// modifie la visibilité des informations (WHO) hors chan
-// 	T,		// restrictions cmd TOPIC
-// 	K,		// ajoute/supprime clé du canal
-// 	O,		// donne/supprime privilege operator canal a un user
-// 	L,		// definit/supprime limite d'utilisateur dans le canal
-// 	NONE_MODE
-// };
+enum Mode_Channel
+{
+	channel_i,		// modifie la visibilité des informations (WHO) hors chan
+	T,				// restrictions cmd TOPIC
+	K,				// ajoute/supprime clé du canal
+	O,				// donne/supprime privilege operator canal a un user
+	L,				// definit/supprime limite d'utilisateur dans le canal
+	NO_MODE_C
+};
 
 extern const char* channel_mode[NONE_MODE];

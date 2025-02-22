@@ -6,13 +6,13 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/21 19:48:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:53:32 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Channel.hpp"
 
-Channel::Channel(){}
+Channel::Channel() : _name("chan"), _key(""){}
 
 Channel::~Channel(){}
 
@@ -23,6 +23,32 @@ _key(k), _topic("")
 	std::cout << "Channel " + _name + " created" << std::endl;
 }
 
+// void	Channel::add_user(size_t idx_user)
+// {_users.push_back(idx_user);}
 
-void	Channel::add_user(size_t idx_user)
-{_users.push_back(idx_user);}
+void	Channel::add_user(User * u)
+{_users.push_back(*u);}
+
+std::string Channel::list_user(void)const
+{
+	std::string	list = "";
+	if (_users.empty())
+	{
+		std::cout << "no users found in channel" << std::endl;
+		return list;
+	}
+	for (size_t i=0; i<_users.size(); i++)
+	{
+		list += _users[i].get_name();
+		if (i + 1 < _users.size())
+			list += " ";
+	}
+	return list;
+}
+
+
+std::ostream & operator<<(std::ostream & o, const Channel & c)
+{
+	o << c.get_name() << std::endl;
+	return o;
+}
