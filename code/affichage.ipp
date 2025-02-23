@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 12:50:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 14:52:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,12 +143,32 @@ std::ostream & operator<<( std::ostream & o, Client const & client)
 	return o;
 }
 
-std::ostream & operator<<( std::ostream & o, Mode_User const modeu)
+std::ostream & operator<<( std::ostream & o, Mode const & mode)
 {
-	if (modeu == NONE_MODE)
-		o << "NONE_MODE";
-	else if (modeu == I)
-		o << "Invisible";
+	if (mode == I)
+		o << "I";
+	else if (mode == T)
+		o << "T";
+	else if (mode == K)
+		o << "K";
+	else if (mode == O)
+		o << "O";
+	else if (mode == L)
+		o << "L";
+	else
+		o << "NO_MODE";
+	return (o);
+}
+
+std::ostream & operator<<(std::ostream & o, std::vector<Mode> const & vec_of_mode)
+{
+	for (size_t i = 0; i < vec_of_mode.size(); i++)
+	{
+		if (i)
+			o << ", " << vec_of_mode[i];
+		else
+			o << vec_of_mode[i];
+	}
 	return o;
 }
 
@@ -159,6 +179,9 @@ std::ostream & operator<<(std::ostream & o, User const & user)
 	  << YELLOW << "Hostname: " << NOCOLOR << user.get_hostname() << " | "
 	  << YELLOW << "Real Name: " << NOCOLOR << user.get_realname() << " | "
 	  << YELLOW << "Servername: " << NOCOLOR << user.get_servername() << " | "
+	  << YELLOW << "Mode user: " << NOCOLOR << user.get_mode() << " | "
+	  << YELLOW << "Servername: " << NOCOLOR << user.get_servername() << " | " 
+	  << YELLOW << "the number of channels it has: " << NOCOLOR << user.get_chans().size() << " | "
 	  << YELLOW << "Is Init: " << NOCOLOR << (user.get_is_init() ? "true" : "false");
 	return o;
 }
@@ -187,6 +210,8 @@ std::ostream & operator<<(std::ostream & o, std::vector<UserHuman> const & userh
 	  << std::setw(20) << "Real Name"
 	  << std::setw(15) << "Servername"
 	  << std::setw(10) << "Is Init" 
+	  << std::setw(10) << "Mode" 
+	  << std::setw(10) << "Nbr chanelle" 
 	  << std::endl;
 
 	o << std::string(148, '-') << std::endl;
@@ -207,31 +232,82 @@ std::ostream & operator<<(std::ostream & o, std::vector<UserHuman> const & userh
 		  << std::setw(20) << userhuman.get_realname()
 		  << std::setw(15) << userhuman.get_servername()
 		  << std::setw(10) << (userhuman.get_is_init() ? "true" : "false")
+		  << std::setw(10) << userhuman.get_mode() 
+		  << std::setw(10) << userhuman.get_chans().size() 
 		  << std::endl;
 	}
 
 	return o;
 }
 
-	// std::string					_name;
-	// std::string					_key;
-	// std::string					_topic;
-	// std::vector<User> 			_users;
-	// size_t						_limit_user;
-
-	// std::vector<User>			_operators;
-	// std::vector<Mode_Channel>	_mode; //?
-
+std::ostream & operator<<( std::ostream & o, std::vector<size_t> const & vec_of_size_t)
+{
+	for (std::vector<size_t>::const_iterator i = vec_of_size_t.begin(); i != vec_of_size_t.end(); i++)
+	{
+		if (i != vec_of_size_t.begin())
+			o << ", " << *i;
+		else
+			o << *i;
+	}
+	return o;
+}
 
 std::ostream & operator<<(std::ostream & o, const Channel & c)
 {
 	o << c.get_name() << std::endl;
+	o << "| " << YELLOW << "Name_chanelle: " << NOCOLOR << c.get_name() << " | "
+	  << YELLOW << "Key: " << NOCOLOR << c.get_key() << " | "
+	  << YELLOW << "Topic: " << NOCOLOR << c.get_topic() << " | "
+	  << YELLOW << "Index user: " << NOCOLOR << c.get_index_users() << " | "
+	  << YELLOW << "Index operators: " << NOCOLOR << c.get_index_operators() << " | "
+	  << YELLOW << "nbr of user: " << NOCOLOR << c.get_nbr_of_user() << " / " << c.get_limit_user() << " | "
+	  << YELLOW << "All mode: " << NOCOLOR << c.get_mode() << " | ";
+
 	return o;
 }
 
 
 std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanelle_list)
 {
-	
-}
+	if (chanelle_list.empty())
+	{
+		o << "Aucun channel." << std::endl;
+		return o;
+	}
 
+	// Affichage du nombre total de channels
+	o << "Nombre total de channels : " << chanelle_list.size() << std::endl;
+
+	// En-tête du tableau
+	o << std::left << std::setw(10) << "Index"
+	  << std::setw(20) << "Nom"
+	  << std::setw(15) << "Clé"
+	  << std::setw(30) << "Topic"
+	  << std::setw(20) << "Index Users"
+	  << std::setw(20) << "Index Operators"
+	  << std::setw(15) << "Nbr Users"
+	  << std::setw(10) << "Limite"
+	  << std::setw(15) << "Mode"
+	  << std::endl;
+
+	o << std::string(140, '-') << std::endl;
+
+	// Affichage des channels
+	for (size_t i = 0; i < chanelle_list.size(); ++i)
+	{
+		const Channel & c = chanelle_list[i];
+
+		o << std::left << std::setw(10) << i
+		  << std::setw(20) << c.get_name()
+		  << std::setw(15) << c.get_key()
+		  << std::setw(30) << c.get_topic()
+		  << std::setw(20) << c.get_index_users()
+		  << std::setw(20) << c.get_index_operators()
+		  << std::setw(15) << c.get_nbr_of_user()
+		  << std::setw(10) << c.get_limit_user()
+		  << std::setw(15) << c.get_mode()
+		  << std::endl;
+	}
+
+	return o;
+}

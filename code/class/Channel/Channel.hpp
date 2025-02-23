@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/23 12:46:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 14:14:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,30 @@ public:
 	~Channel();
 	Channel(const std::string & n, const std::string & k);
 
-	std::string get_name(void)const {return this->_name;}
-	std::string	get_topic(void)const {return this->_topic;}
-	User*		get_user(const std::string & nick);
-	
+	std::string 				get_name(void)const {return this->_name;}
+	std::string					get_key(void)const {return this->_key;}
+	std::string					get_topic(void)const {return this->_topic;}
+	std::vector<size_t>			get_index_users(void)const {return this->_index_users;}
+	std::vector<size_t>			get_index_operators(void)const {return this->_index_operators;}
+	size_t						get_nbr_of_user(void)const {return this->_nbr_user;}
+	size_t						get_limit_user(void)const {return this->_limit_user;}
+	std::vector<Mode>			get_mode(void)const {return this->_mode;}
+
 
 	void		set_name(const std::string & n){_name = n;}
 	void		set_topic(const std::string & t){_topic = t;}
-	// void		add_user(size_t idx_user);
+	void		add_user(size_t idx_user);
 
-	std::string	list_user(void)const;
-	void		add_user(User * u);
 private:
+// cree un variable static le nombre dutilisateur actuelle
 	std::string					_name;
 	std::string					_key;
 	std::string					_topic;
-	std::vector<User> 			_users;
+	std::vector<size_t> 		_index_users;
+	std::vector<size_t>			_index_operators;
+	size_t						_nbr_user;
 	size_t						_limit_user;
-
-	std::vector<User>			_operators;
-	std::vector<Mode_Channel>	_mode; //?
+	std::vector<Mode>	_mode; //?
 
 	Channel();
 };
