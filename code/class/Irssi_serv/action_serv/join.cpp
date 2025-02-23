@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 20:19:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/24 00:05:15 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
+#include <sys/socket.h>
 
 /* ---> JOIN <channel>{,<channel>} [<key>{,<key>}]
 			/JOIN lobbyA,lobbyB Akey,Bkey
@@ -60,29 +61,24 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			current_user->add_chan(_all_Channel.size());
 			_all_Channel.push_back(new_chan);
 			if (keys[i].empty())
-				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
-					"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + CRLF, current_pollfd);
+				send_message(RPL_JOIN(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i]), current_pollfd);
 			else
-				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
-					"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
+				send_message(RPL_JOIN_K(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i], keys[i]), current_pollfd);
 			if (!new_chan.get_topic().empty())
 				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
-			send_message(":" + get_name() + " 353 " + current_user->get_nick() + " = " + new_chan.get_name() + " :" + get_all_user_nick_from_chan(new_chan) + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + new_chan.get_name() + " :End of /NAMES list" +  new_chan.get_name() + CRLF, current_pollfd);
+			send_message(RPL_NAMEREPLY(this->get_name(), current_user->get_nick(), new_chan.get_name(), get_all_user_nick_from_chan(new_chan)), current_pollfd);
+			send_message(RPL_ENDOFNAMES(this->get_name(), current_user->get_nick(), new_chan.get_name()), current_pollfd);
 			channel =_get_channel_by_name(chans[i]);
 		}else //cas channel existant
 		{
 			channel->add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
 			ssize_t index_channel = _get_index_channel_by_name(channel->get_name());
-			// std::cout << "INDEX DE CHANELLE == " << index_channel;
 			current_user->add_chan(index_channel);
-			send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
-				"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
+			send_message(RPL_JOIN(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i]), current_pollfd);
 			if (!channel->get_topic().empty())
 				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), channel->get_name(), channel->get_topic() + CRLF), current_pollfd);
-			send_message(":" + get_name() + " 353 " +current_user->get_nick() + " = " + channel->get_name() + " :" +
-				get_all_user_nick_from_chan(*channel) + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " +  channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
+			send_message(RPL_NAMEREPLY(this->get_name(), current_user->get_nick(), channel->get_name(), get_all_user_nick_from_chan(*channel)), current_pollfd);
+			send_message(RPL_ENDOFNAMES(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd);
 		}
 		std::cout << GREEN + "---- CHANELLE ----" + NOCOLOR << std::endl << *channel << std::endl;
 		std::cout << BLUE + "---- USER ----" + NOCOLOR << std::endl << static_cast<User>(*current_user) << std::endl;

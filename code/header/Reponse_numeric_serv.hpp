@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/22 19:29:21 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/24 00:04:52 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,17 @@
 #define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
 // #RPL_ENDOFWHOIS
 #define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS" + CRLF)
+// #RPL_JOIN
+#define RPL_JOIN(nick, hostname, ip, channel_name) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + CRLF)
+// #RPL_JOIN_K (avec clé)
+#define RPL_JOIN_K(nick, hostname, ip, channel_name, key) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + key + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
+// #RPL_NAMEREPLY
+#define RPL_NAMEREPLY(server_name, nick, channel_name, list_user) (":" + server_name + " 353 " + nick + " = " + channel_name + " :" + list_user + CRLF)
+// #RPL_ENDOFNAMES
+#define RPL_ENDOFNAMES(server_name, nick, channel_name) (":" + server_name + " 366 " + nick + " " + channel_name + " :End of /NAMES list" + CRLF)
+
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
@@ -62,8 +71,8 @@
 #define RPL_NAMREPLY(nickname, channelname, clientslist) (": 353 " + nickname + " @ #" + channelname + " :" + clientslist + CRLF)
 // RPL_TOPICIS
 #define RPL_TOPICIS(nickname, channelname, topic) (": 332 " + nickname + " #" +channelname + " :" + topic + "\r\n")
-// RPL_ENDOFNAMES
-#define RPL_ENDOFNAMES(nickname, channelname) (": 366 " + nickname + " #" + channelname + " :END of /NAMES list" + CRLF)
+// // RPL_ENDOFNAMES
+// #define RPL_ENDOFNAMES(nickname, channelname) (": 366 " + nickname + " #" + channelname + " :END of /NAMES list" + CRLF)
 // RPL_AWAY
 #define RPL_AWAY(nickname, awayMessage) (": 301 " + nickname + " :" + awayMessage + CRLF)
 // RPL_BANLIST
