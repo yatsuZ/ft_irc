@@ -6,6 +6,10 @@
 >> :irc.efnet.nl 333 Kurps #lobby Rein!~Rein@ec2-44-232-131-126.us-west-2.compute.amazonaws.com 1679671570
 >> :irc.efnet.nl 353 Kurps @ #lobby :Kurps @infro` Angelz LDa224 y @Physicist @Florist @Scientist @[maj] @wylde @monguse @maj darthbane @sum okidoki
 >> :irc.efnet.nl 366 Kurps #lobby :End of /NAMES list.
+===============================================================
+
+
+
 
 
 << JOIN #lobbyA
@@ -13,6 +17,13 @@
 >> :irc.efnet.nl MODE #lobbyA +nt
 >> :irc.efnet.nl 353 Kurps = #lobbyA :@Kurps
 >> :irc.efnet.nl 366 Kurps #lobbyA :End of /NAMES list.
+
+
+<< JOIN #lobbyA
+>> :Kurps!~smlamali@5cfe-3e61-45ea-bc48-51f0.210.62.ip JOIN :#lobbyA
+>> :serenity.fl.us.dal.net 353 Kurps = #lobbyA :@Kurps 
+>> :serenity.fl.us.dal.net 366 Kurps #lobbyA :End of /NAMES list.
+<< MODE #lobbyA
 
 //////////////////////////////////// Mes tests
 
@@ -37,6 +48,16 @@
 >> :YASACO 353 Kurps = #lobby :@smlamali 
 >> :YASACO 366 Kurps#lobby :End of /NAMES list  << CAP LS
 
+//////////////////
+                                                                     
+[19:22] ~~~Kurps [~smlamali@5cfe-3e61-45ea-bc48-51f0.210.62.ip] has 
+          joined #lobbyA
+[19:22] [Users #lobbyA]
+[19:22] [@Kurps] 
+[19:22] ~~~Irssi: #lobbyA: Total of 1 nicks [1 ops, 0 halfops, 0 
+          voices, 0 normal]
+[19:22] ~~~Channel #lobbyA created Sun Feb 23 19:22:34 2025
+[19:22] ~~~Irssi: Join to #lobbyA was synced in 0 secs
 
 =====fonctionnel (juste affiche [@smlamali][Kurps] 1 normal, 1op... a verifier)
 << JOIN #lobbyB
@@ -45,4 +66,29 @@
 >> :YASACO 366 Kurps #lobbyB :End of /NAMES list
 << MODE #lobbyB
 >> :YASACO 461 Kurps MODE :Not enough parameters
+<< QUIT :leaving
+
+
+
+
+<< JOIN #lobbyA
+>> :Kurps!~smlamali@5cfe-3e61-45ea-bc48-51f0.210.62.ip JOIN :#lobbyA
+>> :lair.nl.eu.dal.net 353 Kurps = #lobbyA :@Kurps 
+>> :lair.nl.eu.dal.net 366 Kurps #lobbyA :End of /NAMES list.
+<< MODE #lobbyA
+>> :lair.nl.eu.dal.net 324 Kurps #lobbyA + 
+--> chanquery mode
+<< WHO #lobbyA
+>> :lair.nl.eu.dal.net 329 Kurps #lobbyA 1740335275
+--> event 329
+>> :lair.nl.eu.dal.net 352 Kurps #lobbyA ~smlamali 5cfe-3e61-45ea-bc48-51f0.210.62.ip lair.nl.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :lair.nl.eu.dal.net 315 Kurps #lobbyA :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbyA b
+>> :lair.nl.eu.dal.net 368 Kurps #lobbyA :End of Channel Ban List
+--> chanquery ban end
+<< PING lair.nl.eu.dal.net
+>> :lair.nl.eu.dal.net PONG lair.nl.eu.dal.net :Kurps
+--> lag pong
 << QUIT :leaving
