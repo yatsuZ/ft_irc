@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/22 18:45:56 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:46:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,4 @@ private:
 };
 
 std::ostream & operator<<(std::ostream & o, const Channel & c);
+std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanelle_list);

@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/22 19:53:52 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:41:05 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
+
 /* ---> JOIN <channel>{,<channel>} [<key>{,<key>}]
 			/JOIN lobbyA,lobbyB Akey,Bkey
 		Permet de rejoindre et creéer un ou plusieurs channels 
@@ -25,7 +26,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::vector<std::string> keys;
 
 	std::cout << PINK <<  "-------- JOIN --------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
-	
+
 	size_t	nb_key = 0;
 	cmd_args = current_cmd.get_arg();
 	
@@ -33,6 +34,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd), (NONE));
 
 	chans = ft_split2(cmd_args[0], ","); //liste de noms de channels a rejoindre
+
 	if (cmd_args.size() > 1)
 	{
 		nb_key = keys.size();
@@ -40,9 +42,14 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 	}
 
 	// push une string vide dans keys[] pour cas de join channel avec/sans clé 
-	for (size_t	i=nb_key; i < chans.size(); i++)
+	for (size_t i = nb_key; i < chans.size(); i++)
 		keys.push_back("");
+
 	std::cout << "SIZE KEYS = " << keys.size() << std::endl;
+
+
+///////////////////////////////////////////////
+
 	for (size_t i=0; i<chans.size(); i++)
 	{
 		Channel * channel =_get_channel_by_name(chans[i]);

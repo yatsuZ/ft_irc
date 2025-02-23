@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 10:33:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 12:00:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ const char* getColorCode(Color color)
 
 const char* action_tab[IDK + 1] =
 {
-	"Pas d'action",																	// NO_ACTION
-	"Probléme de la fonction recv, lors de la recpetion des données",				// ERROR_RECV_DATA
-	"Fermeture du serveur. On eteint le serveur",									// SHUTDOWN
-	"Déconexion d'un client et la supression de l'utilisateur de la bdd",			// DISCONNECT
-	"Capacite du serveur, voir argument",											// CAP == Capablities
-	"Set le nom de l'utilisateur",													// NICK
-	"Identification de l'utilisateur aupres du serveur",							// USER
-	"definit comment est percu/definit user/channel",								// MODE
-	"Demande si la connexion est toujour etablie",									// PING
-	"Demande les infos de l'utilisateur spécifié",									// WHOIS
-	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",	// QUIT
-	"Je ne sais pas quoi faire avec JOIN",
-	"Je ne sais pas quoi faire avec PRIVMSG",										// PRIVMSG
-	"... Action non reconnus",														// IDK
+	"Pas d'action",																				// NO_ACTION
+	"Probléme de la fonction recv, lors de la recpetion des données",							// ERROR_RECV_DATA
+	"Fermeture du serveur. On eteint le serveur",												// SHUTDOWN
+	"Déconexion d'un client et la supression de l'utilisateur de la bdd",						// DISCONNECT
+	"Capacite du serveur, voir argument",														// CAP == Capablities
+	"Set le nom de l'utilisateur",																// NICK
+	"Identification de l'utilisateur aupres du serveur",										// USER
+	"definit comment est percu/definit user/channel",											// MODE
+	"Demande si la connexion est toujour etablie",												// PING
+	"Demande les infos de l'utilisateur spécifié",												// WHOIS
+	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",				// QUIT
+	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",						// JOIN
+	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",	// PRIVMSG
+	"... Action non reconnus",																	// IDK
 };
 
 const char* getActionString(Action current_action)
@@ -57,13 +57,6 @@ const char* getActionString(Action current_action)
 		return action_tab[index_in_tab];
 	return action_tab[IDK];
 }
-
-const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV] =
-{
-	"CAP",	// CAP
-	"NICK",	// NICK
-	"USER",	// USER
-};
 
 // const char* user_mode()
 // {

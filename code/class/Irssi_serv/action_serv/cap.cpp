@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:07 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 18:31:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 12:01:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd,
 	std::string msg;
 
 	msg += ":serveur ";
-	msg += current_cmd.get_cmd();// ou // msg += Fonctionalite_du_serveur_tab[CAP];
+	msg += current_cmd.get_cmd();
 	msg += " * ";
 	std::vector<std::string> list_dargument = current_cmd.get_arg();
 	if (list_dargument.size() == 1 && list_dargument[0] == "LS")
@@ -39,10 +39,10 @@ Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, pollfd &current_pollfd,
 		msg += "\r\n";
 		send_message(msg, current_pollfd);
 	}
-
 	return (NONE);
 }
 */
+
 
 //commande otpionelle
 Reaction_Serv	Irssi_serv::ft_cap(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)

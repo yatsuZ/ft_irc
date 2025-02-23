@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 17:53:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 12:50:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,3 +212,26 @@ std::ostream & operator<<(std::ostream & o, std::vector<UserHuman> const & userh
 
 	return o;
 }
+
+	// std::string					_name;
+	// std::string					_key;
+	// std::string					_topic;
+	// std::vector<User> 			_users;
+	// size_t						_limit_user;
+
+	// std::vector<User>			_operators;
+	// std::vector<Mode_Channel>	_mode; //?
+
+
+std::ostream & operator<<(std::ostream & o, const Channel & c)
+{
+	o << c.get_name() << std::endl;
+	return o;
+}
+
+
+std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanelle_list)
+{
+	
+}
+

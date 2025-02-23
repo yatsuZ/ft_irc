@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/22 19:53:32 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:43:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,4 @@ std::string Channel::list_user(void)const
 			list += " ";
 	}
 	return list;
-}
-
-
-std::ostream & operator<<(std::ostream & o, const Channel & c)
-{
-	o << c.get_name() << std::endl;
-	return o;
 }

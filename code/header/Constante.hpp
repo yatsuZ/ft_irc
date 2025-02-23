@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/22 15:05:32 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 12:00:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,6 @@ enum Reaction_Serv {
 
 #define SEPERATOR_WITHOUT_SPACE_AND_TAB "\n\v\f\r"
 #define SEPERATOR " \t\n\v\f\r"
-
-enum Fonctionalite_du_serveur {
-	CAP_SERV,
-	NICK_SERV,
-	USER_SERV,
-	NBR_DE_FONCTIONALITE_DU_SERV // dernier element
-};
-
-// Tableau associé avec leur valeur d'Fonctionalite_du_serveur
-extern const char* Fonctionalite_du_serveur_tab[NBR_DE_FONCTIONALITE_DU_SERV];
-
 
 enum Mode_User
 {
