@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 18:27:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 19:39:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, UserHuman * current_us
 		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd);
 		return (NONE);
 	}
-
+	// for (size_t i=0; i< l_args.size(); i++)
+	// 	std::cout << " l_args[" << i << "] =" << l_args[i] << std::endl;
+	
 	if (current_user->get_Set_User())
 		return (send_message(ERR_ALREADYREGISTRED(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
 	

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 15:11:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 19:48:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,11 @@ ssize_t  Irssi_serv::_get_index_channel_by_name(const std::string & name)
 {
 	for (size_t i = 0; i < this->_all_Channel.size(); i++)
 	{
-		ssize_t j = i;
-		if (this->_all_User[i].get_nick() == name)
-			return (j);
+		if (this->_all_Channel[i].get_name() == name)
+			return (i);
 	}
 	return (-1);
 }
-
 
 
 std::string Irssi_serv::get_all_chan_name_from_user(const UserHuman & user)
@@ -124,8 +122,9 @@ std::string Irssi_serv::get_all_chan_name_from_user(const UserHuman & user)
 	std::string	list = "";
 	if (list_of_index_chan.empty())
 		return list;
-	for (size_t i=0; i<list_of_index_chan.size(); i++)
+	for (size_t i = 0; i < list_of_index_chan.size(); i++)
 	{
+		
 		list += this->_all_Channel[list_of_index_chan[i]].get_name();
 		if (i + 1 < list_of_index_chan.size())
 			list += " ";

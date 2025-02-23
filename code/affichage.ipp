@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 14:52:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 19:26:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ std::ostream & operator<<(std::ostream & o, std::vector<UserHuman> const & userh
 	  << std::setw(10) << "Nbr chanelle" 
 	  << std::endl;
 
-	o << std::string(148, '-') << std::endl;
+	o << std::string(158, '-') << std::endl;
 
 	// Affichage des utilisateurs
 	for (size_t i = 0; i < userhumans.size(); ++i)
