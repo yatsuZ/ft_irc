@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 19:48:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:08:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ std::string Irssi_serv::get_all_chan_name_from_user(const UserHuman & user)
 
 }
 
-std::string Irssi_serv::get_all_user_nick_from_chan(const Channel & chan)
+std::string Irssi_serv::get_all_nick_from_chan(const Channel & chan)
 {
 	std::vector<size_t> list_of_index_user = chan.get_index_users();
 	std::vector<size_t> list_of_index_operator = chan.get_index_operators();
@@ -148,10 +148,27 @@ std::string Irssi_serv::get_all_user_nick_from_chan(const Channel & chan)
 		return list;
 	for (size_t i=0; i < list_of_index_all_user.size(); i++)
 	{
-		list += this->_all_User[list_of_index_all_user[i]].get_nick();
-		if (i + 1 < list_of_index_user.size())
+		list += "@" + this->_all_User[list_of_index_all_user[i]].get_nick();
+		if (i + 1 < list_of_index_all_user.size())
 			list += " ";
 	}
 	return list;
 }
+
+std::string Irssi_serv::get_all_user_nick_from_chan(const Channel & chan)
+{
+	std::vector<size_t> list_of_index_all_user = chan.get_index_users();
+
+	std::string	list = "";
+	if (list_of_index_all_user.empty())
+		return list;
+	for (size_t i=0; i < list_of_index_all_user.size(); i++)
+	{
+		list += "@" + this->_all_User[list_of_index_all_user[i]].get_nick();
+		if (i + 1 < list_of_index_all_user.size())
+			list += " ";
+	}
+	return list;
+}
+
 

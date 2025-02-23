@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 19:57:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:19:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,10 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			else
 				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 					"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
-			send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
+			if (!new_chan.get_topic().empty())
+				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
 			send_message(":" + get_name() + " 353 " + current_user->get_nick() + " = " + new_chan.get_name() + " :" + get_all_user_nick_from_chan(new_chan) + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + new_chan.get_name() + " :End of /NAMES list, chan name=" +  new_chan.get_name() + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + new_chan.get_name() + " :End of /NAMES list" +  new_chan.get_name() + CRLF, current_pollfd);
 			channel =_get_channel_by_name(chans[i]);
 		}else //cas channel existant
 		{
@@ -81,7 +82,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), channel->get_name(), channel->get_topic() + CRLF), current_pollfd);
 			send_message(":" + get_name() + " 353 " +current_user->get_nick() + " = " + channel->get_name() + " :" +
 				get_all_user_nick_from_chan(*channel) + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " +  channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
 		}
 		std::cout << GREEN + "---- CHANELLE ----" + NOCOLOR << std::endl << *channel << std::endl;
 		std::cout << BLUE + "---- USER ----" + NOCOLOR << std::endl << static_cast<User>(*current_user) << std::endl;

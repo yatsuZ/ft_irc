@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 19:25:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 20:05:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ private:
 	// LIST
 
 	std::string get_all_chan_name_from_user(const UserHuman & user);
+	std::string get_all_nick_from_chan(const Channel & chan);
 	std::string get_all_user_nick_from_chan(const Channel & chan);
 
 	void		show_all_chan_from_user(const UserHuman & user){std::cout << BLUE + user.get_nick() + PINK << " all his chanelle : " << GREEN + get_all_chan_name_from_user(user) << NOCOLOR << std::endl;}
-	void		show_all_user_from_chanelle(const Channel & chan){std::cout << GREEN + chan.get_name() + PINK << " all his user : " << BLUE + get_all_user_nick_from_chan(chan) << NOCOLOR << std::endl;}
+	void		show_all_user_from_chanelle(const Channel & chan){std::cout << GREEN + chan.get_name() + PINK << " all his user : " << BLUE + get_all_nick_from_chan(chan) << NOCOLOR << std::endl;}
 
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
