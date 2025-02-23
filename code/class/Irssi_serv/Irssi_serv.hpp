@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/21 19:25:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:25:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,19 @@ private:
 	UserHuman	* _get_userhuman_by_nick(const std::string & nick);
 	Channel		* _get_channel_by_name(const std::string & name);
 	ssize_t 	_get_index_of_userhuman_by_nick(const std::string & nick);
+	ssize_t		_get_index_channel_by_name(const std::string & name);
 	bool	_nick_already_used(std::string nick) const;
 
 	void	_errase_user_from_tab(pollfd &current_pollfd);
+
+	// LIST
+
+	std::string get_all_chan_name_from_user(const UserHuman & user);
+	std::string get_all_user_nick_from_chan(const Channel & chan);
+
+	void		show_all_chan_from_user(const UserHuman & user){std::cout << BLUE + user.get_nick() + PINK << " all his chanelle : " << GREEN + get_all_chan_name_from_user(user) << NOCOLOR << std::endl;}
+	void		show_all_user_from_chanelle(const Channel & chan){std::cout << GREEN + chan.get_name() + PINK << " all his user : " << BLUE + get_all_user_nick_from_chan(chan) << NOCOLOR << std::endl;}
+
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);

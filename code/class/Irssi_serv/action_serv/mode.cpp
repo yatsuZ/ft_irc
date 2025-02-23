@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mode.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/21 19:41:42 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:11:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,11 @@ Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_us
 	//si la cible est un user
 	if (target_user != NULL)
 	{	
-		if ((cmd_args[1] == "+i" && !current_user->getMode()) ||
-			(cmd_args[1] == "-i" && current_user->getMode()))
+	
+		if ((cmd_args[1] == "+i" && current_user->get_mode() != I) ||
+			(cmd_args[1] == "-i" && current_user->get_mode() == I))
 		{
-			target_user->set_mode();
+			target_user->set_mode(I);
 			return (send_message(":" + current_user->get_nick() + " MODE " + target_user->get_name() + " :" + cmd_args[1] + CRLF, current_pollfd), NONE);
 		}
 	}

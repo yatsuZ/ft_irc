@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 12:00:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 13:46:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ enum Action {
 // Tableau associé avec leur valeur d'action
 extern const char* action_tab[IDK + 1];
 
-//Important si changment apliquer dans le tableau action_tab
+// Comportement du serveur apres avoir executer une action
 enum Reaction_Serv {
 	NONE,
 	PASS,
@@ -72,22 +72,14 @@ enum Reaction_Serv {
 #define SEPERATOR_WITHOUT_SPACE_AND_TAB "\n\v\f\r"
 #define SEPERATOR " \t\n\v\f\r"
 
-enum Mode_User
-{
-	I,		//modifie la visibilité des informations (WHOIS) hors chan
-	NONE_MODE
-};
-
 // extern const char* user_mode[NONE_MODE];
 
-enum Mode_Channel
+enum Mode
 {
-	channel_i,		// modifie la visibilité des informations (WHO) hors chan
+	I,				// (user) modifie la visibilité des informations de l'utilisateur hors chan / (channel) rend l'acces au channel sur invitation uniquement
 	T,				// restrictions cmd TOPIC
 	K,				// ajoute/supprime clé du canal
-	O,				// donne/supprime privilege operator canal a un user
+	O,				// (user) network operator ? / (channel) donne/supprime privilege operator canal a un user
 	L,				// definit/supprime limite d'utilisateur dans le canal
-	NO_MODE_C
+	NO_MODE
 };
-
-extern const char* channel_mode[NONE_MODE];

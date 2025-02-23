@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ft_irc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/18 16:41:53 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:27:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ std::vector<std::string>	ft_split2(const std::string & str, const std::string & 
 
 std::ostream & operator<<( std::ostream & o, Action const & action);
 std::ostream & operator<<( std::ostream & o, Color const & color);
+std::ostream & operator<<( std::ostream & o, std::vector<size_t> const & vec_of_size_t);
+std::ostream & operator<<( std::ostream & o, Mode const & mode);
+std::ostream & operator<<( std::ostream & o, std::vector<Mode> const & vec_of_mode);
 
 /////////////////////////////////////// A SUPRIMER
 

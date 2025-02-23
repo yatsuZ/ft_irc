@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 14:29:15 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 19:57:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		if (channel == NULL) //cas channel n'existe pas (on en crée un)
 		{
 			Channel new_chan(chans[i], "");
-			new_chan.add_user(current_user);
-			current_user->add_channel(&new_chan);
+			new_chan.add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+			current_user->add_chan(_all_Channel.size());
 			_all_Channel.push_back(new_chan);
 			if (keys[i].empty())
 				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
@@ -65,23 +65,31 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			else
 				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 					"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
-			
-			// send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
-			send_message(":" + get_name() + " 353 " + current_user->get_nick() + " = " + new_chan.get_name() + " :" + new_chan.list_user() + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + new_chan.get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
+			send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
+			send_message(":" + get_name() + " 353 " + current_user->get_nick() + " = " + new_chan.get_name() + " :" + get_all_user_nick_from_chan(new_chan) + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + new_chan.get_name() + " :End of /NAMES list, chan name=" +  new_chan.get_name() + CRLF, current_pollfd);
+			channel =_get_channel_by_name(chans[i]);
 		}else //cas channel existant
 		{
-			channel->add_user(current_user);
-			current_user->add_channel(channel);
+			channel->add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+			ssize_t index_channel = _get_index_channel_by_name(channel->get_name());
+			// std::cout << "INDEX DE CHANELLE == " << index_channel;
+			current_user->add_chan(index_channel);
 			send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 				"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
 			if (!channel->get_topic().empty())
 				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), channel->get_name(), channel->get_topic() + CRLF), current_pollfd);
 			send_message(":" + get_name() + " 353 " +current_user->get_nick() + " = " + channel->get_name() + " :" +
-				channel->list_user() + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
+				get_all_user_nick_from_chan(*channel) + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
 		}
+		std::cout << GREEN + "---- CHANELLE ----" + NOCOLOR << std::endl << *channel << std::endl;
+		std::cout << BLUE + "---- USER ----" + NOCOLOR << std::endl << static_cast<User>(*current_user) << std::endl;
+		show_all_chan_from_user(*current_user);
+		show_all_user_from_chanelle(*channel);
 	}
+
+	// afficher tout les utilsature du chanelle et tout les chanelle de lutilisateur pour debeug
 	return (NONE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 12:00:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 14:52:45 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,3 @@ const char* getActionString(Action current_action)
 	return action_tab[IDK];
 }
 
-// const char* user_mode()
-// {
-// 	"i", //invisible
-// };
