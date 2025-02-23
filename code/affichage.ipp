@@ -232,6 +232,8 @@ std::ostream & operator<<(std::ostream & o, const Channel & c)
 
 std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanelle_list)
 {
-	
+	(void)chanelle_list;
+	o << "En cours (Yassine)" << std::endl;
+	return o;	
 }
 

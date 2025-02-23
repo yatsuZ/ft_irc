@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 12:41:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 14:29:15 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,21 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			else
 				send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 					"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
-			send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
+			
+			// send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), new_chan.get_name(), new_chan.get_topic()), current_pollfd);
 			send_message(":" + get_name() + " 353 " + current_user->get_nick() + " = " + new_chan.get_name() + " :" + new_chan.list_user() + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + new_chan.get_name() + " :End of /NAMES list, chan name=" +  new_chan.get_name() + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + new_chan.get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
 		}else //cas channel existant
 		{
 			channel->add_user(current_user);
 			current_user->add_channel(channel);
 			send_message(":" + current_user->get_nick() + "!~" + current_user->get_hostname() + 
 				"@" + current_user->get_ip_to_string() + " JOIN :" + chans[i] + " " + keys[i] + CRLF, current_pollfd);
+			if (!channel->get_topic().empty())
+				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), channel->get_name(), channel->get_topic() + CRLF), current_pollfd);
 			send_message(":" + get_name() + " 353 " +current_user->get_nick() + " = " + channel->get_name() + " :" +
 				channel->list_user() + CRLF, current_pollfd);
-			send_message(":" + get_name() + " 366 " + channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
+			send_message(":" + get_name() + " 366 " + current_user->get_nick() + " " + channel->get_name() + " :End of /NAMES list" + CRLF, current_pollfd);
 		}
 	}
 	return (NONE);

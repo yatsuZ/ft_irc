@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 18:46:43 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/22 18:50:04 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:14:21 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ std::string list_user(std::vector<std::string> _users)
 		return list;
 	for (size_t i=0; i<_users.size(); i++)
 	{
-		list += _users[i];
+		list += "@" + _users[i];
 		if (i + 1 < _users.size())
 			list += " ";
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/23 12:43:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/23 14:14:09 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ std::string Channel::list_user(void)const
 	}
 	for (size_t i=0; i<_users.size(); i++)
 	{
-		list += _users[i].get_name();
+		list += "@" + _users[i].get_name();
 		if (i + 1 < _users.size())
 			list += " ";
 	}
