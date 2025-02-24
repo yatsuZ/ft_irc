@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/23 14:27:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/25 00:02:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ public:
 
 	// std::vector<Channel>	get_channels()		const {return this->_channels;}
 	std::vector<size_t>		get_chans()			const {return this->_chans;}
+
+
+	// erase
+	void	errase_chan(size_t index_chan);
+	void	update_index_of_chan(size_t index_chan);
+	void	update_and_errase_index_of_chan(size_t index_chan);
+
 };
 
 std::ostream & operator<<( std::ostream & o, User const & user);

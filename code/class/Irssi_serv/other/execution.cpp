@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 20:12:45 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/24 23:20:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./Irssi_serv.hpp"
+#include "./../Irssi_serv.hpp"
 
 Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {

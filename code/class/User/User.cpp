@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/23 14:15:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/25 00:07:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,35 @@ void	User::set_mode(Mode newmode)
 void	User::add_chan(size_t idx_of_chan)
 {
 	_chans.push_back(idx_of_chan);
+}
+
+void	User::errase_chan(size_t index_chan)
+{
+	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
+	{
+		if (*i == index_chan)
+			this->_chans.erase(i);
+	}
+}
+
+void	User::update_index_of_chan(size_t index_chan)
+{
+	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
+	{
+		if (*i > index_chan)
+			*i = *i - 1;
+	}
+}
+
+/// @brief mets a jour lindex de chanelle superieur aux chanelle QUE JE DOIS SUPRIMER et suprimer si je trouve son index dans la liste de mon user
+/// @param index_chan index du chanelle dans irssi_serv->_all_Channel
+void	User::update_and_errase_index_of_chan(size_t index_chan)
+{
+	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
+	{
+		if (*i == index_chan)
+			this->_chans.erase(i);
+		if (*i > index_chan)
+			*i = *i - 1;
+	}
 }

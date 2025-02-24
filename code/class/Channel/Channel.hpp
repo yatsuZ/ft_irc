@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/23 14:14:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/25 00:02:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ public:
 	void		set_name(const std::string & n){_name = n;}
 	void		set_topic(const std::string & t){_topic = t;}
 	void		add_user(size_t idx_user);
+
+	// erase
+	void	errase_user(size_t index_user);
+	void	update_index_of_user(size_t index_user);
+	void	update_and_errase_index_of_user(size_t index_user);
 
 private:
 // cree un variable static le nombre dutilisateur actuelle

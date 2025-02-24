@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/23 19:59:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/25 00:09:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,53 @@ void	Channel::add_user(size_t idx_user)
 {
 	_nbr_user++;
 	_index_users.push_back(idx_user);
+}
+
+
+void	Channel::errase_user(size_t index_user)
+{
+	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
+	{
+		if (*i == index_user)
+			this->_index_users.erase(i);
+	}
+	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i == index_user)
+			this->_index_operators.erase(i);
+	}
+}
+
+void	Channel::update_index_of_user(size_t index_user)
+{
+	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
+	{
+		if (*i > index_user)
+			*i = *i - 1;
+	}
+	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i > index_user)
+			*i = *i - 1;
+	}
+}
+
+/// @brief mets a jour lindex des user / operateur superieur aux user QUE JE DOIS SUPRIMER et suprimer si je trouve son index dans la liste de mon chanelle
+/// @param index_user index du user dans irssi_serv->_all_User
+void	Channel::update_and_errase_index_of_user(size_t index_user)
+{
+	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
+	{
+		if (*i == index_user)
+			this->_index_operators.erase(i);
+		if (*i > index_user)
+			*i = *i - 1;
+	}
+	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i == index_user)
+			this->_index_operators.erase(i);
+		if (*i > index_user)
+			*i = *i - 1;
+	}
 }
