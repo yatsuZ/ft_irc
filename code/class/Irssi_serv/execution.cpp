@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 16:54:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/24 20:12:45 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 	return (res);
 }
 
+// void	Irssi_serv::do_mode(Channel *chan, UserHuman *user, std::vector<std::string> &args, pollfd & current_pollfd)
+// {
+// 	// std::cout << "---interpretation des modes ---" <<std::endl;
+// 	std::vector<std::string> cmd_args = current_cmd.get_arg();
+// 	if (cmd_args <= 2)
+// 		return ; 
+// 	//Mode m == arg[1].get_mode <=== +i devient i
+// 	//set un enum en accord avec le retour de cmd_args
+// 	//get msg du mode et l'output
+// 	//Mode mode = (this->*mode_table[m])(chan, user, args, current_pollfd); 
+	
+// }
 /// @brief Methode qui est le coeur du programme
 void	Irssi_serv::exec(void)
 {

@@ -1,4 +1,5 @@
-//////Test ede connexion au serv apres ajout des rpl sur join (aucune ligne de log n'a été supp...)
+//////Test de connexion au serv apres ajout des rpl sur join (aucune ligne de log n'a été supp...)
+
 << CAP LS 302
 << JOIN :
 >> :YASACO NOTICE * :*** We verify your nickname and user and the password ...

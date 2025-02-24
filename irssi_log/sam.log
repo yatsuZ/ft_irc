@@ -70,7 +70,7 @@
 
 
 
-
+////////////////////////dalnet
 << JOIN #lobbyA
 >> :Kurps!~smlamali@5cfe-3e61-45ea-bc48-51f0.210.62.ip JOIN :#lobbyA
 >> :lair.nl.eu.dal.net 353 Kurps = #lobbyA :@Kurps 
@@ -92,3 +92,11 @@
 >> :lair.nl.eu.dal.net PONG lair.nl.eu.dal.net :Kurps
 --> lag pong
 << QUIT :leaving
+
+
+
+
+
+
+get_all_user_from_nick:
+    - 

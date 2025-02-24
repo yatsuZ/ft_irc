@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 00:04:52 by kuro             ###   ########.fr       */
+/*   Updated: 2025/02/24 19:28:04 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 #define NOTICE(server_name, nick, msg) (":" + server_name + " NOTICE " + nick + " :*** " + msg + CRLF)
 
+
+#define nickmask(nick, username, ip) (nick + "!" + user + "@" + ip)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -40,10 +42,16 @@
 #define RPL_NAMEREPLY(server_name, nick, channel_name, list_user) (":" + server_name + " 353 " + nick + " = " + channel_name + " :" + list_user + CRLF)
 // #RPL_ENDOFNAMES
 #define RPL_ENDOFNAMES(server_name, nick, channel_name) (":" + server_name + " 366 " + nick + " " + channel_name + " :End of /NAMES list" + CRLF)
+// RPL_CHANNELMODEIS
+#define RPL_CHANNELMODEIS(server_name, nick, channel_name, list_mode) (":" + server_name + " 324 " + nick + " " + channel_name + " +" + list_mode + CRLF)
+// RPL_UMODEIS
+# define RPL_UMODEIS(server_name, nick, list_mode) (":" + server_name + " 221 " + nick + " +" + list_mode + CRLF)
 
 // ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
+// ERR_NOSUCHCHANNEL
+#define ERR_NOSUCHCHANNEL(server_name, nick, target) (":" + server_name + " 403 " + nick + " " + target + " :No such channel" + CRLF)
 // ERR_NOORIGIN
 #define ERR_NOORIGIN(server_name, nickname) (":" + server_name + " 409 " + nickname + " :No origin specified" + CRLF)
 // ERR_INVALIDCAPCMD
@@ -60,8 +68,10 @@
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
-
-
+//ERR_BADCHANNELKEY
+#define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
+//ERR_INVALIDMODEPARAM
+// #define ERR_INVALIDMODEPARM() j'arrive pas a voir comment il fonctionne
 ///////////////////////////////////////////////////////////////////// 
 
 // RPL (Réponses numériques)
@@ -100,7 +110,7 @@
 // RPL_YOUREOPER
 #define RPL_YOUREOPER (std::string(": 381 :You are now an IRC operator")) + CRLF
 // RPL_UMODEIS
-#define RPL_UMODEIS(nickname, mode) (std::string(": 221 ") + nickname + " " + mode + CRLF)
+// #define RPL_UMODEIS(nickname, mode) (std::string(": 221 ") + nickname + " " + mode + CRLF)
 // 	RPL_CHANGEMODE
 #define RPL_CHANGEMODE(hostname, channelname, mode, arguments) (":" + hostname + " MODE #" + channelname + " " + mode + " " + arguments + CRLF)
 
@@ -113,8 +123,8 @@
 // #define ERR_ALREADYREGISTRED(command) (command + " :Unauthorized command (already registered)" + CRLF)
 // ERR_BADCHANMASK
 #define ERR_BADCHANMASK(nickname, channelname) (": 476 " + nickname + " #" + channelname + " :Bad Channel Mask" + CRLF)
-// ERR_BADCHANNELKEY
-#define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
+// // ERR_BADCHANNELKEY
+// #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
 // ERR_BANNEDFROMCHAN
 #define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
 // ERR_CANNOTSENDTOCHAN
@@ -130,7 +140,7 @@
 // ERR_NEEDMODEPARM
 #define ERR_NEEDMODEPARM(channelname, mode) (": 696 #" + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
 // ERR_INVALIDMODEPARM
-#define ERR_INVALIDMODEPARM(channelname, mode) ": 696 #" + channelname + " Invalid mode parameter. " + mode + CRLF
+// #define ERR_INVALIDMODEPARM(channelname, mode) ": 696 #" + channelname + " Invalid mode parameter. " + mode + CRLF
 // ERR_NICKCOLLISION
 #define ERR_NICKCOLLISION(nickname) (": 436 " + nickname + " :Nickname collision KILL" + CRLF)
 // ERR_NOCHANMODES
@@ -139,8 +149,8 @@
 #define ERR_NOOPERHOST(nickname) (": 491 " + nickname + " :No O-lines for your host" + CRLF)
 // ERR_NORECIPIENT
 #define ERR_NORECIPIENT(command) (": 411 :No recipient given (" + command + ")" + CRLF)
-// ERR_NOSUCHCHANNEL
-#define ERR_NOSUCHCHANNEL(nickname, channelname) (": 403 " + nickname + " #" + channelname + " :No such channel" + CRLF)
+// // ERR_NOSUCHCHANNEL
+// #define ERR_NOSUCHCHANNEL(nickname, channelname) (": 403 " + nickname + " #" + channelname + " :No such channel" + CRLF)
 // ERR_NOTEXTTOSEND
 #define ERR_NOTEXTTOSEND (std::string(": 412 :No text to send")) + CRLF
 // ERR_NOTONCHANNEL

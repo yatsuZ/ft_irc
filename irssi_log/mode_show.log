@@ -1,0 +1,12 @@
+
+<< JOIN #LobbyA
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#LobbyA
+>> :YASACO 353 Kurps = #LobbyA :@Kurps
+>> :YASACO 366 Kurps #LobbyA :End of /NAMES list
+<< MODE #LobbyA
+>> :YASACO 324 Kurps #LobbyA +
+--> chanquery mode
+<< WHO #LobbyA
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #LobbyA
+>> :YASACO 324 Kurps #LobbyA +

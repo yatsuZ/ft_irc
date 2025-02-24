@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 14:52:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:16:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,21 @@ const char* getActionString(Action current_action)
 	return action_tab[IDK];
 }
 
+const char* mode_tab[NO_MODE + 1] =
+{
+	"USER: modifie la visibilité des informations hors channel / CHAN: rend l'accés au channel sur invitation.", //I
+	"Restricion sur la commande topic (limite aux opérateurs ou non).", 				//t
+	"Ajoute/supprime une clé au channel",												//k
+	"USER: operateur réseau / CHAN: donne/supprime le titre operateur a un utilisateur",	//o
+	"Ajoute/supprime une limite d'utilisateur dans le channel",							//l
+	"Mode inconnu",																		//NO_MODE
+};
+
+const char * getmodeString(Mode current_mode)
+{
+	int	len_tab = int(NO_MODE) + 1;
+	int	index_in_tab = int(current_mode);
+	if (index_in_tab >= 0 && index_in_tab < len_tab)
+		return mode_tab[index_in_tab];
+	return mode_tab[NO_MODE];
+}

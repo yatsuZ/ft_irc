@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/23 13:46:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/24 18:16:18 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ enum Reaction_Serv {
 
 enum Mode
 {
-	I,				// (user) modifie la visibilité des informations de l'utilisateur hors chan / (channel) rend l'acces au channel sur invitation uniquement
-	T,				// restrictions cmd TOPIC
+	I,				//  (channel) rend l'acces au channel sur invitation uniquement
+	T,				// restrictions sur la cmd TOPIC
 	K,				// ajoute/supprime clé du canal
 	O,				// (user) network operator ? / (channel) donne/supprime privilege operator canal a un user
 	L,				// definit/supprime limite d'utilisateur dans le canal
 	NO_MODE
 };
+
+/* ft_modes() {*/

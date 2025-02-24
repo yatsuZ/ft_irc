@@ -1,0 +1,13 @@
+TO DO:
+Cas d'err join
+	- mauvaise clé renseignées (créer mode k)
+	- chan full (créer mode l)
+	- chan sur invit (créer mode i)
+	- ban set (creer mode b + liste_ban)
+
+Reponse de JOIN manquante
+- << Mode #channel  <----- reponse faite, creer std::string get_modes pour user et chan et ajouter a mode  
+- << MODE #channel b <---- a faire apres creation mode b
+- << WHO #LobbyA	 <---- a faire
+
+
