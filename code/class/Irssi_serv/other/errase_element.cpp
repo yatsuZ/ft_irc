@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:23:51 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/25 00:42:56 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:33:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	Irssi_serv::_errase_user_from_tab(pollfd &current_pollfd)
 		if (index_pollfd != -1 && current_pollfd.fd == this->_all_pollfd[index_pollfd].fd)
 		{
 			std::cout << RED << "Client to erase :\t" << NOCOLOR << static_cast<Client>(*iteration_user) << std::endl;//modifier laffichage
-			_errase_user_by_index_from_tab(index_of_user);
+			_errase_user_by_index_from_tab(index_of_user - 1);
 			iteration_user = this->_all_User.erase(iteration_user);
 			if (iteration_user == this->_all_User.end())
 				break ;
@@ -66,25 +66,48 @@ void	Irssi_serv::_errase_chan_by_index_from_tab(size_t index_of_chan)
 // Suprime le user puis mets a jour tout les chanelle
 void	Irssi_serv::_errase_user_by_index_from_tab(size_t index_of_user)
 {
-	std::cout << "Supression du user, les chanelle doit etre mis a jour";
+	std::cout << "Supression du user, les chanelle doit etre mis a jour" << std::endl;
+	std::cout << "Voici son index : " << index_of_user << std::endl;
 	show_all_chan_from_user(_all_User[index_of_user]);
 
 
 	std::vector<size_t> all_chan_from_this_user = _all_User[index_of_user].get_chans();
 	for (std::vector<size_t>::iterator i = all_chan_from_this_user.begin(); i != all_chan_from_this_user.end(); i++)
 	{
+		std::cout << _all_User[index_of_user].get_nick() << " QUITE LE CHANELLE " << this->_all_Channel[*i].get_name() << std::endl;
 		this->_all_Channel[*i].update_and_errase_index_of_user(index_of_user);
 	}
 
-	std::vector<UserHuman>::iterator user_to_delet = this->_all_User.begin();
-	for (size_t i = 0; i < index_of_user; i++)
-	{
-		user_to_delet++;
-		if (user_to_delet == this->_all_User.end())
-			return ;
-	}
-	// this->_all_User.erase(user_to_delet);
-
 	// Metre un message si on shouaite dire qun user est suprimer
-	std::cout << "les chnaelle sont mis a jour" << std::endl;
+	std::cout << "les chanelle sont mis a jour" << std::endl;
+	if (this->_all_Channel.empty() == false)
+		show_all_user_from_chanelle(this->_all_Channel[0]);
+	this->_erase_empty_chanelle();
 }
+
+void	Irssi_serv::_erase_empty_chanelle(void)
+{
+	std::cout << "Verifier si des chanelle son vide " << std::endl;
+
+	std::vector<Channel>::iterator to_del = _all_Channel.begin();
+	for (size_t i = 0; i < _all_Channel.size(); i++)
+	{
+		if (_all_Channel[i].get_index_users().size() == 0)
+		{
+			std::cout << "Le chanelle est vide. je dois suprimer" << std::endl << _all_Channel[i] << std::endl;
+			to_del = this->_all_Channel.erase(to_del);
+			i--;
+		}
+		else
+			to_del++;
+	}
+	// Metre un message si on shouaite dire qun chanelle est suprimer
+	std::cout << "FIN de la verification" << std::endl;
+	std::cout << _all_Channel << std::endl;
+}
+
+/*
+/connect 127.0.0.1 8080
+/join #a
+/quit
+*/

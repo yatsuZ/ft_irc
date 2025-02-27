@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/25 00:07:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:04:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,24 @@ void	User::update_index_of_chan(size_t index_chan)
 /// @param index_chan index du chanelle dans irssi_serv->_all_Channel
 void	User::update_and_errase_index_of_chan(size_t index_chan)
 {
+	// std::cout << "L'index du chanelle a suprimer dans Irssi_serv::_all_Chanelle : " << index_chan << std::endl;
+
+	std::vector<size_t>::iterator to_del = this->_chans.end();
+	std::cout <<  this->_chans << std::endl;
 	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
 	{
+		// std::cout << *i << " =?= " << index_chan << std::endl;
 		if (*i == index_chan)
-			this->_chans.erase(i);
+		{
+			// std::cout << "Trouver" << std::endl;
+			to_del = i;
+		}
 		if (*i > index_chan)
 			*i = *i - 1;
+	}
+	if (to_del != this->_chans.end())
+	{
+		// std::cout << "TO DEL" << std::endl;
+		this->_chans.erase(to_del);
 	}
 }

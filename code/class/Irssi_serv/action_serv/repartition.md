@@ -14,7 +14,7 @@ SAMIRA
             no n-word D:
 
 RESTE:
-    - COMMANDES : KICK, TOPIC, INIVTE
+    - COMMANDES : KICK, TOPIC, INIVTE, WHO
 
         
 

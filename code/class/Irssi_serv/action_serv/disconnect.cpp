@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:22:31 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 23:24:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 00:30:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Reaction_Serv	Irssi_serv::ft_disconnect(Cmd_irssi &current_cmd, UserHuman * curr
 	close(current_pollfd.fd);
 
 	// std::cout << this->_all_pollfd << std::endl;
+	std::cout << RED << "◐◐◐◐◐◐◐◐◐◐◐ END DISCONNECT ◑◑◑◑◑◑◑◑◑◑◑" << NOCOLOR << std::endl;// surpimer le client
 	std::cout << this->_all_User << std::endl;
 
 	index_of_current_pollfd--;

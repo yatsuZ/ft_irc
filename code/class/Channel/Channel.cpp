@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/25 00:09:44 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 01:38:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,38 @@ void	Channel::update_index_of_user(size_t index_user)
 /// @param index_user index du user dans irssi_serv->_all_User
 void	Channel::update_and_errase_index_of_user(size_t index_user)
 {
-	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
+	// std::cout << "L'index de lutilisateur a suprimer dans Irssi_serv::_all_User : " << index_user << std::endl;
+
+	std::vector<size_t>::iterator to_del = this->_index_users.end();
+	std::cout <<  this->_index_users << std::endl;
+	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); ++i)
 	{
+		// std::cout << *i << " =?= " << index_user << std::endl;
 		if (*i == index_user)
-			this->_index_operators.erase(i);
+		{
+			// std::cout << "Trouver" << std::endl;
+			to_del = i;
+		}
 		if (*i > index_user)
 			*i = *i - 1;
 	}
+	if (to_del != this->_index_users.end())
+	{
+		// std::cout << "TO DEL" << std::endl;
+		this->_index_users.erase(to_del);
+	}
+	else
+		return;
+
+	to_del = this->_index_operators.end();
 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
 	{
 		if (*i == index_user)
-			this->_index_operators.erase(i);
+			to_del = i;
 		if (*i > index_user)
 			*i = *i - 1;
 	}
+	if (to_del != this->_index_operators.end())
+		this->_index_operators.erase(to_del);
+	this->_nbr_user--;
 }

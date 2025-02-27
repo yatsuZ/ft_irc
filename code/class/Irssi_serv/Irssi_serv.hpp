@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 23:25:54 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/26 23:51:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ private:
 
 	void	_errase_chan_by_index_from_tab(size_t index_of_chan);
 	void	_errase_user_by_index_from_tab(size_t index_of_user);
+	void	_erase_empty_chanelle(void);
 	void	_errase_user_from_tab(pollfd &current_pollfd);
 
 
