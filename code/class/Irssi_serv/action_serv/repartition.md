@@ -2,6 +2,7 @@ TO DO
 
 YASSINE
     - PRIVMSG
+    - KICK
 
 CÔME
     - Bonus file fd
@@ -13,7 +14,7 @@ SAMIRA
             no n-word D:
 
 RESTE:
-    - COMMANDES : KICK, TOPIC, INIVTE, WHO
+    - COMMANDES :  TOPIC, INIVTE, WHO
 
 
 
