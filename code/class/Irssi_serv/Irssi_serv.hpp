@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/26 23:51:11 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:16:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ private:
 	// OTHER
 	void	connect(void);
 	bool	_nick_already_used(std::string nick) const;
+	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg);
+	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 
 	// specefique get
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);

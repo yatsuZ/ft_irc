@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 19:28:04 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:01:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 #define CRLF "\r\n"
 
+// SPECIAL MSG
 #define NOTICE(server_name, nick, msg) (":" + server_name + " NOTICE " + nick + " :*** " + msg + CRLF)
+#define SELF_QUIT_MSG(msg) ("QUIT :" + msg + CRLF)
+#define OTHER_QUIT_MSG(nick, username, hostname, msg) (":" + nick + "!" + username + "@" + hostname + " QUIT :" + msg + CRLF)
+#define NICKMASK(nick, username, ip) (nick + "!" + user + "@" + ip)
 
-
-#define nickmask(nick, username, ip) (nick + "!" + user + "@" + ip)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME

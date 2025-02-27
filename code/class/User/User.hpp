@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/25 00:02:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:50:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ protected:
 	std::string 	_hostname;
 	std::string		_real_name;
 	std::string		_servername;
+	std::string		_msg_leave;
 	Mode			_mode;
 	int				_is_init;
 
@@ -38,6 +39,7 @@ public:
 	void		set_name(const std::string &);
 	void		set_hostname(const std::string &);
 	void		set_servername(const std::string &);
+	void		set_msg_leave(const std::string & new_msg) {this->_msg_leave = new_msg;}
 	void		set_Realname(const std::string &);
 	void		set_mode(Mode newmode);
 	// void		add_channel(const Channel *c);
@@ -48,6 +50,7 @@ public:
 	std::string				get_hostname()		const {return this->_hostname;}
 	std::string				get_realname()		const {return this->_real_name;}
 	std::string				get_servername()	const {return this->_servername;}
+	std::string				get_msg_leave()		const {return this->_msg_leave;}
 	Mode					get_mode()			const {return this->_mode;}
 	bool					get_Set_User() 		const {return (_is_init == 2 || _is_init == -1);}
 	bool					get_Set_Nick()		const {return (_is_init == 1 || _is_init == -1);}

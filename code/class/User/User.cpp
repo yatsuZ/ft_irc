@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/27 01:04:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 16:52:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 User::User(void):
  _nick("*"), _name("guest"), _hostname(""), _real_name("Guest"),
-  _servername(SERVER_NAME), _mode(NO_MODE), _is_init(0)
+  _servername(SERVER_NAME), _msg_leave(""), _mode(NO_MODE), _is_init(0)
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }
 
 User::User(std::string & nick):
  _nick(nick), _name("guest"), _hostname(""), _real_name("Guest"),
-  _servername(SERVER_NAME), _mode(NO_MODE), _is_init(0)
+  _servername(SERVER_NAME), _msg_leave(""), _mode(NO_MODE), _is_init(0)
 {
 	// std::cout << "A Parametrick User with nick " << PINK << nick << NOCOLOR << " is joining" << std::endl;
 }

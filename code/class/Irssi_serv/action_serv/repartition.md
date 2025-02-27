@@ -2,7 +2,6 @@ TO DO
 
 YASSINE
     - PRIVMSG
-    - affiche un msg dans les chanelle quand un user quite
 
 CÔME
     - Bonus file fd

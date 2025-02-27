@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:53:49 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 18:27:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 17:02:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Reaction_Serv	Irssi_serv::ft_quit(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::vector<std::string> list_arg = current_cmd.get_arg();
 
 	if (list_arg.empty())
-		msg_of_leaving = "default message leaving";
+		msg_of_leaving = current_user->get_msg_leave();
 	for (size_t i = 0; i < list_arg.size(); i++)
 	{
 		msg_of_leaving += (!i && list_arg[i][0] == ':') ? list_arg[i].substr(1) : list_arg[i];
@@ -33,7 +33,9 @@ Reaction_Serv	Irssi_serv::ft_quit(Cmd_irssi &current_cmd, UserHuman * current_us
 			msg_of_leaving += list_arg[i];
 	}
 	
-	std::string all_message = ":" + current_user->get_nick() + "!" + current_user->get_name() + "@" + this->get_name() + " " + current_cmd.get_cmd() + " :" + msg_of_leaving;
-	send_message(all_message, current_pollfd);
+	msg_of_leaving += "Quit: ";
+
+	send_message(SELF_QUIT_MSG(msg_of_leaving), current_pollfd);
+	this->_send_message_to_a_all_chanelle(*current_user, OTHER_QUIT_MSG(current_user->get_nick(), current_user->get_name(), current_user->get_hostname(), msg_of_leaving));
 	return (this->ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 }
