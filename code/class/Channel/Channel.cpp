@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/27 01:38:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:49:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	Channel::update_and_errase_index_of_user(size_t index_user)
 	// std::cout << "L'index de lutilisateur a suprimer dans Irssi_serv::_all_User : " << index_user << std::endl;
 
 	std::vector<size_t>::iterator to_del = this->_index_users.end();
-	std::cout <<  this->_index_users << std::endl;
+	// std::cout << this->_index_users << std::endl;
 	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); ++i)
 	{
 		// std::cout << *i << " =?= " << index_user << std::endl;

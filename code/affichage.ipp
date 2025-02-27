@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 01:35:29 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:50:49 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,7 @@ std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanell
 
 	// Affichage du nombre total de channels
 	o << "Nombre total de channels : " << chanelle_list.size() << std::endl;
-	o << "____TOUT_LES_CHANELLES___ " << chanelle_list.size() << std::endl;
+	o << "____TOUT_LES_CHANELLES___ " << std::endl;
 
 	for (size_t i = 0; i < chanelle_list.size(); ++i)
 	{

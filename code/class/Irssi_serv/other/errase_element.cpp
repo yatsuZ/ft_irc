@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:23:51 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 01:33:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/27 13:54:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ void	Irssi_serv::_errase_user_from_tab(pollfd &current_pollfd)
 		ssize_t index_pollfd = iteration_user->get_index_pollfd();
 		if (index_pollfd != -1 && current_pollfd.fd == this->_all_pollfd[index_pollfd].fd)
 		{
-			std::cout << RED << "Client to erase :\t" << NOCOLOR << static_cast<Client>(*iteration_user) << std::endl;//modifier laffichage
+			std::cout << RED << "Client to erase :\t  " << NOCOLOR << static_cast<Client>(*iteration_user) << std::endl;//modifier laffichage
 			_errase_user_by_index_from_tab(index_of_user - 1);
 			iteration_user = this->_all_User.erase(iteration_user);
+			if (this->_all_Channel.empty() == false)
+				show_all_user_from_chanelle(this->_all_Channel[0]);
 			if (iteration_user == this->_all_User.end())
 				break ;
 			find_user_associate_by_pollfd = true;
 		}
 		if (find_user_associate_by_pollfd)
 			iteration_user->set_index_pollfd(iteration_user->get_index_pollfd() - 1);
-		std::cout << "\t- " << static_cast<Client>(*iteration_user) << std::endl;
+		std::cout << "\t\t\t- " << static_cast<Client>(*iteration_user) << std::endl;
 	}
 }
 
@@ -66,10 +68,10 @@ void	Irssi_serv::_errase_chan_by_index_from_tab(size_t index_of_chan)
 // Suprime le user puis mets a jour tout les chanelle
 void	Irssi_serv::_errase_user_by_index_from_tab(size_t index_of_user)
 {
-	std::cout << "Supression du user, les chanelle doit etre mis a jour" << std::endl;
-	std::cout << "Voici son index : " << index_of_user << std::endl;
+	std::cout << PINK + "~~~~~~ Supression du user, les chanelle doit etre mis a jour" + NOCOLOR << std::endl;
+	std::cout << "Voici son index : " << index_of_user << ", ";
 	show_all_chan_from_user(_all_User[index_of_user]);
-
+	std::cout << std::endl;
 
 	std::vector<size_t> all_chan_from_this_user = _all_User[index_of_user].get_chans();
 	for (std::vector<size_t>::iterator i = all_chan_from_this_user.begin(); i != all_chan_from_this_user.end(); i++)
@@ -80,9 +82,10 @@ void	Irssi_serv::_errase_user_by_index_from_tab(size_t index_of_user)
 
 	// Metre un message si on shouaite dire qun user est suprimer
 	std::cout << "les chanelle sont mis a jour" << std::endl;
-	if (this->_all_Channel.empty() == false)
-		show_all_user_from_chanelle(this->_all_Channel[0]);
 	this->_erase_empty_chanelle();
+	// if (this->_all_Channel.empty() == false)
+	// 	show_all_user_from_chanelle(this->_all_Channel[0]);
+	std::cout << YELLOW << "~~~~~~ FIN du supression du user, les chanelle sont mis a jour" << NOCOLOR << std::endl;
 }
 
 void	Irssi_serv::_erase_empty_chanelle(void)
