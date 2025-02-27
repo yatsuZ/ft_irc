@@ -1,0 +1,34 @@
+<< JOIN #yayatest
+>> :yzaoui!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 JOIN #yayatest
+>> :Stockholm.SE.EU.GameSurge.net 353 yzaoui = #yayatest :@yzaoui
+>> :Stockholm.SE.EU.GameSurge.net 366 yzaoui #yayatest :End of /NAMES list.
+
+<< MODE #yayatest
+>> :Stockholm.SE.EU.GameSurge.net 324 yzaoui #yayatest + 
+--> chanquery mode
+
+<< WHO #yayatest
+>> :Stockholm.SE.EU.GameSurge.net 329 yzaoui #yayatest 1740661288
+--> event 329
+
+>> :Stockholm.SE.EU.GameSurge.net 352 yzaoui #yayatest ~yzaoui 98572ecc.abb706c6.df62afc3.IP4 *.GameSurge.net yzaoui H@x :0 Yassine ZAOUI
+--> silent event who
+
+>> :Stockholm.SE.EU.GameSurge.net 315 yzaoui #yayatest :End of /WHO list.
+--> chanquery who end
+
+<< MODE #yayatest b
+>> :Stockholm.SE.EU.GameSurge.net 368 yzaoui #yayatest :End of Channel Ban List
+--> chanquery ban end
+
+<< PING Stockholm.SE.EU.GameSurge.net
+>> :Stockholm.SE.EU.GameSurge.net PONG Stockholm.SE.EU.GameSurge.net :Stockholm.SE.EU.GameSurge.net
+--> lag pong
+
+>> :yzaoui_!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 JOIN #yayatest
+>> :yzaoui_!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 QUIT :Quit: leaving
+<< PING Stockholm.SE.EU.GameSurge.net
+>> :Stockholm.SE.EU.GameSurge.net PONG Stockholm.SE.EU.GameSurge.net :Stockholm.SE.EU.GameSurge.net
+--> lag pong
+
+<< QUIT :leaving

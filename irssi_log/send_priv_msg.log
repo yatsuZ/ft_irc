@@ -1,0 +1,27 @@
+<< JOIN #testyaya
+>> :yzaoui!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 JOIN #testyaya
+>> :Stockholm.SE.EU.GameSurge.net 353 yzaoui = #testyaya :@yzaoui
+>> :Stockholm.SE.EU.GameSurge.net 366 yzaoui #testyaya :End of /NAMES list.
+
+<< MODE #testyaya
+>> :Stockholm.SE.EU.GameSurge.net 324 yzaoui #testyaya + 
+--> chanquery mode
+
+<< WHO #testyaya
+>> :Stockholm.SE.EU.GameSurge.net 329 yzaoui #testyaya 1740661913
+--> event 329
+>> :Stockholm.SE.EU.GameSurge.net 352 yzaoui #testyaya ~yzaoui 98572ecc.abb706c6.df62afc3.IP4 *.GameSurge.net yzaoui H@x :0 Yassine ZAOUI
+--> silent event who
+>> :Stockholm.SE.EU.GameSurge.net 315 yzaoui #testyaya :End of /WHO list.
+--> chanquery who end
+
+<< MODE #testyaya b
+>> :Stockholm.SE.EU.GameSurge.net 368 yzaoui #testyaya :End of Channel Ban List
+--> chanquery ban end
+>> :yzaoui_!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 JOIN #testyaya
+
+<< PRIVMSG #testyaya :salut
+>> :yzaoui_!~yzaoui@98572ecc.abb706c6.df62afc3.IP4 PRIVMSG #testyaya :bonjour emeteur
+
+<< PRIVMSG #testyaya :aurevoire recepteur
+<< QUIT :leaving

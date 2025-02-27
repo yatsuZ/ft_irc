@@ -1,8 +1,8 @@
 TO DO
 
 YASSINE
-    - supression des user et chanelle 
     - PRIVMSG
+    - affiche un msg dans les chanelle quand un user quite
 
 CÔME
     - Bonus file fd
