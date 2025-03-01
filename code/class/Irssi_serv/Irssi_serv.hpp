@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 16:16:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:40:30 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ private:
 	// OTHER
 	void	connect(void);
 	bool	_nick_already_used(std::string nick) const;
-	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg);
+	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 
 	// specefique get
@@ -61,6 +61,8 @@ private:
 	Channel		* _get_channel_by_name(const std::string & name);
 	ssize_t 	_get_index_of_userhuman_by_nick(const std::string & nick);
 	ssize_t		_get_index_channel_by_name(const std::string & name);
+
+	Channel * _find_chan_in_user_by_name(UserHuman & emeteur, std::string & name_chan);
 	// LIST
 	std::string get_all_chan_name_from_user(const UserHuman & user);
 	std::string get_all_nick_from_chan(const Channel & chan);

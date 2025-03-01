@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:24:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 23:25:39 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/28 20:23:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,21 @@ ssize_t  Irssi_serv::_get_index_of_userhuman_by_nick(const std::string & nick)
 			return (j);
 	}
 	return (-1);
+}
+
+
+//////////////
+
+Channel * Irssi_serv::_find_chan_in_user_by_name(UserHuman & emeteur, std::string & name_chan)
+{
+	std::vector<size_t> list_of_index_chan = emeteur.get_chans();
+	if (list_of_index_chan.empty())
+		return (NULL);
+	for (size_t i = 0; i < list_of_index_chan.size(); i++)
+	{
+		if (this->_all_Channel[list_of_index_chan[i]].get_name() == name_chan)
+			return (&(this->_all_Channel[list_of_index_chan[i]]));
+	}
+	return (NULL);
+
 }

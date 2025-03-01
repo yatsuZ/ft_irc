@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/20 15:25:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:46:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,18 +82,19 @@ Action	Cmd_irssi::init_action(void) const
 
 //////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
-Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION)
+Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION), _all_line()
 {
 }
 
 Cmd_irssi::Cmd_irssi(std::string all_message_from_client):
 _cmd(this->init_cmd(all_message_from_client)),
 _arg(this->init_arg(all_message_from_client)),
-_action_to_do(this->init_action())
+_action_to_do(this->init_action()),
+_all_line(all_message_from_client)
 {
 }
 
-Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(action_to_do)
+Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(action_to_do), _all_line("")
 {
 	// this->_action_to_do = action_to_do;
 	// std::cout << "Construction par action" << std::endl;
@@ -101,7 +102,7 @@ Cmd_irssi::Cmd_irssi(Action action_to_do): _cmd(""), _arg(std::vector<std::strin
 
 }
 
-Cmd_irssi::Cmd_irssi(Cmd_irssi const & src): _cmd(src.get_cmd()), _arg(src.get_arg()), _action_to_do(src.get_action())
+Cmd_irssi::Cmd_irssi(Cmd_irssi const & src): _cmd(src.get_cmd()), _arg(src.get_arg()), _action_to_do(src.get_action()), _all_line(src.get_all_line())
 {
 }
 
@@ -118,4 +119,23 @@ Cmd_irssi	&Cmd_irssi::operator=(Cmd_irssi const & rf)
 
 Cmd_irssi::~Cmd_irssi()
 {
+}
+
+std::string	Cmd_irssi::get_message(void) const
+{
+	std::string str = _all_line;
+
+	// Supprimer '\r' et '\n' manuellement
+	for (std::string::iterator it = str.begin(); it != str.end(); ) {
+		if (*it == '\r' || *it == '\n')
+			it = str.erase(it); // erase retourne l'itérateur suivant
+		else
+			++it;
+	}
+
+	// Trouver ':' et supprimer tout ce qui est avant
+	std::string::size_type pos = str.find(':');
+	if (pos != std::string::npos)
+		str = str.substr(pos + 1); // Garde seulement ce qui est après ':'
+	return (str);
 }

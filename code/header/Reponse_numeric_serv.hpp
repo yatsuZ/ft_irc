@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 17:01:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/01 01:10:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 // SPECIAL MSG
 #define NOTICE(server_name, nick, msg) (":" + server_name + " NOTICE " + nick + " :*** " + msg + CRLF)
 #define SELF_QUIT_MSG(msg) ("QUIT :" + msg + CRLF)
-#define OTHER_QUIT_MSG(nick, username, hostname, msg) (":" + nick + "!" + username + "@" + hostname + " QUIT :" + msg + CRLF)
-#define NICKMASK(nick, username, ip) (nick + "!" + user + "@" + ip)
-
+#define OTHER_QUIT_MSG(nick, username, hostname, msg) (":" + nick + "!~" + username + "@" + hostname + " QUIT :" + msg + CRLF)
+#define PRIVMSG_REP(nick, username, hostname, target, msg) (":" + nick + "!~" + username + "@" + hostname + " PRIVMSG " + target + " :" + msg + CRLF)
+#define NICKMASK(nick, username, ip) (nick + "!~" + user + "@" + ip)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -54,6 +54,8 @@
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
 // ERR_NOSUCHCHANNEL
 #define ERR_NOSUCHCHANNEL(server_name, nick, target) (":" + server_name + " 403 " + nick + " " + target + " :No such channel" + CRLF)
+// ERR_CANNOTSENDTOCHAN
+#define ERR_CANNOTSENDTOCHAN(server_name, channelname) (":" + server_name + " 404 " + channelname + " :Cannot send to channel" + CRLF)
 // ERR_NOORIGIN
 #define ERR_NOORIGIN(server_name, nickname) (":" + server_name + " 409 " + nickname + " :No origin specified" + CRLF)
 // ERR_INVALIDCAPCMD
@@ -129,8 +131,6 @@
 // #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
 // ERR_BANNEDFROMCHAN
 #define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
-// ERR_CANNOTSENDTOCHAN
-#define ERR_CANNOTSENDTOCHAN(channelname) (": 404 " + channelname + " :Cannot send to channel" + CRLF)
 // ERR_CHANNELISFULL
 #define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
 // ERR_CHANOPRIVSNEEDED
@@ -151,8 +151,6 @@
 #define ERR_NOOPERHOST(nickname) (": 491 " + nickname + " :No O-lines for your host" + CRLF)
 // ERR_NORECIPIENT
 #define ERR_NORECIPIENT(command) (": 411 :No recipient given (" + command + ")" + CRLF)
-// // ERR_NOSUCHCHANNEL
-// #define ERR_NOSUCHCHANNEL(nickname, channelname) (": 403 " + nickname + " #" + channelname + " :No such channel" + CRLF)
 // ERR_NOTEXTTOSEND
 #define ERR_NOTEXTTOSEND (std::string(": 412 :No text to send")) + CRLF
 // ERR_NOTONCHANNEL

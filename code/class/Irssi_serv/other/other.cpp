@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 16:18:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/01 01:05:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,18 @@ bool	Irssi_serv::_nick_already_used(std::string nick) const
 /// @param emeteur celui qui envoye le msg
 /// @param chan le chanelle dans le quelle cest dis
 /// @param msg le message envoyer
-void	Irssi_serv::_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg)
+void	Irssi_serv::_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op)
 {
 	ssize_t emeteur_index_fd = emeteur.get_index_pollfd();
 	std::vector<size_t> all_user_from_this_chan = chan.get_index_users();
+	if (only_op)
+		all_user_from_this_chan = chan.get_index_operators();
 	for (std::vector<size_t>::iterator i = all_user_from_this_chan.begin(); i != all_user_from_this_chan.end(); i++)
 	{
 		ssize_t current_index_fd = this->_all_User[*i].get_index_pollfd();
 		if (current_index_fd > -1 && current_index_fd != emeteur_index_fd)
 			send_message(msg, this->_all_pollfd[current_index_fd]);
 	}
-	
 }
 
 /// @brief envoye un msg a tout les chanelles d'un user

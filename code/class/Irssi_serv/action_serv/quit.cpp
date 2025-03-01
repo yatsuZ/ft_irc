@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:53:49 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 19:15:58 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/01 01:19:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Reaction_Serv	Irssi_serv::ft_quit(Cmd_irssi &current_cmd, UserHuman * current_us
 
 	msg_of_leaving = "Quit: " + msg_of_leaving;
 
-	send_message(SELF_QUIT_MSG(msg_of_leaving), current_pollfd);
 	this->_send_message_to_a_all_chanelle(*current_user, OTHER_QUIT_MSG(current_user->get_nick(), current_user->get_name(), current_user->get_hostname(), msg_of_leaving));
+	send_message(SELF_QUIT_MSG(msg_of_leaving), current_pollfd);
 	return (this->ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 }

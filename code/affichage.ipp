@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 13:50:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/02/28 19:47:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ std::ostream & operator<<( std::ostream & o, Cmd_irssi const & cmd_irssi)
 		o << " ]";
 	}
 	o << " -> " << RED << act << NOCOLOR;
+	if (act == PRIVMSG)
+		o << "| the message : \"" << GREEN << cmd_irssi.get_message() << NOCOLOR << "\"";
 	return o;
 }
 
