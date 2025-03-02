@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/01 01:10:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 18:21:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,16 @@
 #define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
+// ERR_USERNOTINCHANNEL
+#define ERR_USERNOTINCHANNEL(server_name, nickname, target_nick, channelname) (":" + server_name + " 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
 //ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
+// ERR_CHANOPRIVSNEEDED
+#define ERR_CHANOPRIVSNEEDED(server_name, nickname, channelname) (":" + server_name + " 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
 //ERR_INVALIDMODEPARAM
 // #define ERR_INVALIDMODEPARM() j'arrive pas a voir comment il fonctionne
 ///////////////////////////////////////////////////////////////////// 
@@ -133,8 +137,6 @@
 #define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
 // ERR_CHANNELISFULL
 #define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
-// ERR_CHANOPRIVSNEEDED
-#define ERR_CHANOPRIVSNEEDED(nickname, channelname) (": 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
 // ERR_INVITEONLYCHAN
 #define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " #" + channelname + " :Cannot join channel (+i)" + CRLF)
 // ERR_KEYSET
@@ -167,8 +169,6 @@
 #define ERR_UNAVAILRESOURCE(nickname, resource) (": 437 " + nickname + " " + resource + " :Nick/channel is temporarily unavailable" + CRLF)
 // ERR_UNKNOWNMODE
 #define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
-// ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(nickname, target_nick, channelname) (": 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
 // ERR_USERONCHANNEL
 #define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " #" + channelname + " :is already on channel" + CRLF)
 // ERR_WILDTOPLEVEL

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 03:21:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/18 18:02:25 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:48:57 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,4 +186,13 @@ int	send_message(std::string message, pollfd &current_pollfd)
 
 	send(current_pollfd.fd, message.c_str(), message.size(), 0);
 	return (0);
+}
+
+bool target_is_chanelle(std::string & arg1)
+{
+	if (arg1.size() == 1 || (arg1.size() == 2 && arg1[0] == '@'))
+		return (false);
+	else if (arg1[0] == '#' || (arg1[0] == '@' && arg1[1] == '#'))
+		return (true);
+	return (false);
 }

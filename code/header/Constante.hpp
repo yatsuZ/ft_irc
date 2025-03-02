@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 16:37:15 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 17:24:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ enum Action {
 	JOIN,
 	PRIVMSG,
 	KICK,
-	INVINTE,
+	INVITE,
 	TOPIC,
 	IDK// derniere Action du tableau
 };

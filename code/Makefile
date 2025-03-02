@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/02 16:54:45 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/02 17:26:38 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ ACTION_SERV_FILES =	cap.cpp				\
 					disconnect.cpp		\
 					error_recv_data.cpp	\
 					idk.cpp				\
-					invinte.cpp			\
+					invite.cpp			\
 					join.cpp			\
 					kick.cpp			\
 					mode.cpp			\
