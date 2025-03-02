@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 18:21:31 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/03 00:39:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 #define SELF_QUIT_MSG(msg) ("QUIT :" + msg + CRLF)
 #define OTHER_QUIT_MSG(nick, username, hostname, msg) (":" + nick + "!~" + username + "@" + hostname + " QUIT :" + msg + CRLF)
 #define PRIVMSG_REP(nick, username, hostname, target, msg) (":" + nick + "!~" + username + "@" + hostname + " PRIVMSG " + target + " :" + msg + CRLF)
-#define NICKMASK(nick, username, ip) (nick + "!~" + user + "@" + ip)
+#define NICKMASK(nick, username, ip) (nick + "!~" + user + "@" + ip + CRLF)
+#define KICK_MSG_TARGET(chan_name, target_nick, msg) ("KICK " + chan_name + " " + target_nick + " :" + msg + CRLF)
+#define KICK_MSG_OTHER(nick, username, hostname, chan_name, target_name, msg) (":" + nick + "!~" + username + "@" + hostname + " KICK "+ chan_name + " " + target_name + " :" + msg + CRLF)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -76,6 +78,8 @@
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
 //ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
+// ERR_BADCHANMASK
+#define ERR_BADCHANMASK(server_name, nickname, channelname) (":" + server_name + " 476 " + nickname + " #" + channelname + " :Bad Channel Mask" + CRLF)
 // ERR_CHANOPRIVSNEEDED
 #define ERR_CHANOPRIVSNEEDED(server_name, nickname, channelname) (":" + server_name + " 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
 //ERR_INVALIDMODEPARAM
@@ -129,8 +133,6 @@
 
 // ERR_ALREADYREGISTRED
 // #define ERR_ALREADYREGISTRED(command) (command + " :Unauthorized command (already registered)" + CRLF)
-// ERR_BADCHANMASK
-#define ERR_BADCHANMASK(nickname, channelname) (": 476 " + nickname + " #" + channelname + " :Bad Channel Mask" + CRLF)
 // // ERR_BADCHANNELKEY
 // #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
 // ERR_BANNEDFROMCHAN

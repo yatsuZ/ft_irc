@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/27 13:49:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/03 00:36:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,18 @@ void	Channel::errase_user(size_t index_user)
 	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
 	{
 		if (*i == index_user)
+		{
 			this->_index_users.erase(i);
+			break ;
+		}
 	}
 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
 	{
 		if (*i == index_user)
+		{
 			this->_index_operators.erase(i);
+			return ;
+		}
 	}
 }
 

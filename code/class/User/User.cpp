@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/27 16:52:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/03 00:35:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ void	User::errase_chan(size_t index_chan)
 	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
 	{
 		if (*i == index_chan)
+		{
 			this->_chans.erase(i);
+			return ;
+		}
 	}
 }
 

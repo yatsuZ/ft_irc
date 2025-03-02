@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 18:03:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/03 00:25:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	Irssi_serv::_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::
 int		Irssi_serv::_is_op_in_chan(UserHuman &user, Channel &chan)
 {
 	bool is_inside = false;
-	ssize_t index_of_user = this->_get_index_of_userhuman_by_nick(user.get_nick());
+	ssize_t index_of_user_tmp = this->_get_index_of_userhuman_by_nick(user.get_nick());
 
-	if (index_of_user == -1)
+	if (index_of_user_tmp == -1)
 		return (-1); // on as pas trouver lutilisateur
-
+	size_t index_of_user = index_of_user_tmp;
 	std::vector<size_t> list_user_index = chan.get_index_users();
 
 	for (size_t i = 0; i < list_user_index.size() && is_inside == false; i++)

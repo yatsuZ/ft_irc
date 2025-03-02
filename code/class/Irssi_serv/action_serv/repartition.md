@@ -1,8 +1,8 @@
 TO DO
 
 YASSINE
-    - KICK
     - INIVTE
+    - TOPIC
     - Faire la diff entre irssi et nc
     - tester avec nc
 
@@ -17,7 +17,7 @@ SAMIRA
             no n-word D:
 
 RESTE:
-    - COMMANDES :  TOPIC
+    - COMMANDES :  
     - faire le mdp verifier
 
 
