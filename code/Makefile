@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/24 23:27:12 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/02 16:54:45 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,19 @@ ACTION_SERV_FILES =	cap.cpp				\
 					disconnect.cpp		\
 					error_recv_data.cpp	\
 					idk.cpp				\
+					invinte.cpp			\
+					join.cpp			\
+					kick.cpp			\
+					mode.cpp			\
 					nick.cpp			\
 					no_action.cpp		\
-					shutdown.cpp		\
-					user.cpp			\
-					mode.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
-					whois.cpp			\
 					quit.cpp			\
-					join.cpp
+					shutdown.cpp		\
+					topic.cpp			\
+					user.cpp			\
+					whois.cpp
 
 OTHER_FILE_FROM_IRSSI_SERV =	./class/Irssi_serv/other/execution.cpp		\
 								./class/Irssi_serv/other/other.cpp			\

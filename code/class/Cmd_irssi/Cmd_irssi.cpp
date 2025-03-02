@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/28 19:46:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 17:00:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@ Action	Cmd_irssi::init_action(void) const
 		return (JOIN);
 	else if (this->get_cmd() == "PRIVMSG")
 		return (PRIVMSG);
-
+	else if (this->get_cmd() == "KICK")
+		return (KICK);
+	else if (this->get_cmd() == "INVINTE")
+		return (INVINTE);
+	else if (this->get_cmd() == "TOPIC")
+		return (TOPIC);
 	return (IDK);
 }
 

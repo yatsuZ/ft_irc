@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 16:43:05 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:48:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[JOIN] = &Irssi_serv::ft_join;
 	action_table[PRIVMSG] = &Irssi_serv::ft_privmsg;
+	action_table[KICK] = &Irssi_serv::ft_kick;
+	action_table[INVINTE] = &Irssi_serv::ft_invinte;
+	action_table[TOPIC] = &Irssi_serv::ft_topic;	
 	action_table[IDK] = &Irssi_serv::ft_idk;
 }
 

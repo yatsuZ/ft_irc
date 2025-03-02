@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 18:16:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:42:25 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,22 @@ const char* getColorCode(Color color)
 
 const char* action_tab[IDK + 1] =
 {
-	"Pas d'action",																				// NO_ACTION
-	"Probléme de la fonction recv, lors de la recpetion des données",							// ERROR_RECV_DATA
-	"Fermeture du serveur. On eteint le serveur",												// SHUTDOWN
-	"Déconexion d'un client et la supression de l'utilisateur de la bdd",						// DISCONNECT
-	"Capacite du serveur, voir argument",														// CAP == Capablities
-	"Set le nom de l'utilisateur",																// NICK
-	"Identification de l'utilisateur aupres du serveur",										// USER
-	"definit comment est percu/definit user/channel",											// MODE
-	"Demande si la connexion est toujour etablie",												// PING
-	"Demande les infos de l'utilisateur spécifié",												// WHOIS
-	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",				// QUIT
-	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",						// JOIN
-	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",	// PRIVMSG
+	"Pas d'action",																																				// NO_ACTION
+	"Probléme de la fonction recv, lors de la recpetion des données",																							// ERROR_RECV_DATA
+	"Fermeture du serveur. On eteint le serveur",																												// SHUTDOWN
+	"Déconexion d'un client et la supression de l'utilisateur de la bdd",																						// DISCONNECT
+	"Capacite du serveur, voir argument",																														// CAP == Capablities
+	"Set le nom de l'utilisateur",																																// NICK
+	"Identification de l'utilisateur aupres du serveur",																										// USER
+	"Definit comment est percu/definit user/channel",																											// MODE
+	"Demande si la connexion est toujour etablie",																												// PING
+	"Demande les infos de l'utilisateur spécifié",																												// WHOIS
+	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																				// QUIT
+	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",																						// JOIN
+	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",																	// PRIVMSG
+	"Permet d'expulser un utilisateur d'un canal spécifique. Seuls les opérateurs du canal (@) ont le droit d'utiliser cette commande.",						// KICK
+	"Pour inviter un utilisateur à rejoindre un canal privé (+i). Si le canal n'est pas en mode privé, l'utilisateur peut y entrer sans invitation.",			// INVINTE
+	"Est utilisée pour afficher ou modifier le sujet (titre) d'un canal. Seuls les opérateurs du canal peuvent modifier le sujet si le mode +t est activé.",	// TOPIC
 	"... Action non reconnus",																	// IDK
 };
 

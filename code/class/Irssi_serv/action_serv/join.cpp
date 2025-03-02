@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 16:40:50 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 16:48:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
-#include <sys/socket.h>
 
 /* ---> JOIN <channel>{,<channel>} [<key>{,<key>}]
 			/JOIN lobbyA,lobbyB Akey,Bkey
