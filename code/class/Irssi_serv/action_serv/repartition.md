@@ -18,6 +18,7 @@ SAMIRA
 
 RESTE:
     - COMMANDES :  TOPIC
+    - faire le mdp verifier
 
 
 

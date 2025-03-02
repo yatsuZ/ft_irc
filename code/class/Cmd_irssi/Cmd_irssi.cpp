@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 17:00:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 17:08:28 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //////////////////////////////////////////////////////////// Methode pour defnir les attribut individuellement
 
-const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) const
+const std::string	Cmd_irssi::init_cmd(std::string const &all_message_from_client) const
 {
 	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	size_t	len_of_tokens = tokens.size();
@@ -29,7 +29,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 	return (std::string());
 }
 
-const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
+const std::vector<std::string>	Cmd_irssi::init_arg(std::string const &all_message_from_client) const
 {
 	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	std::vector<std::string> list_arg;
@@ -87,7 +87,7 @@ Action	Cmd_irssi::init_action(void) const
 
 //////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
-Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION), _all_line()
+Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION), _all_line("")
 {
 }
 
