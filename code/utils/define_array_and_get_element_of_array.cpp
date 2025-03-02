@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 18:16:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 13:29:40 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ const char* action_tab[IDK + 1] =
 	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",				// QUIT
 	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",						// JOIN
 	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",	// PRIVMSG
+	"Renvoie une liste d'users ou des infos sur un user specifique",							// WHO
 	"... Action non reconnus",																	// IDK
 };
 

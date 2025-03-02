@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/01 01:10:01 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 18:07:16 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,13 @@
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
-//ERR_ALREADYREGISTERED
+// ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
-//ERR_BADCHANNELKEY
+// ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
+// ERR_USERDONTMATCH
+#define ERR_USERSDONTMATCH(server_name, nick) (":" + server_name + " 502 " + nick + " :Cant change/view mode for other users" + CRLF)
+ 
 //ERR_INVALIDMODEPARAM
 // #define ERR_INVALIDMODEPARM() j'arrive pas a voir comment il fonctionne
 ///////////////////////////////////////////////////////////////////// 

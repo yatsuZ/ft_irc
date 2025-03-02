@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/27 13:49:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 19:24:22 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,27 @@ void	Channel::update_and_errase_index_of_user(size_t index_user)
 	if (to_del != this->_index_operators.end())
 		this->_index_operators.erase(to_del);
 	this->_nbr_user--;
+}
+
+std::string	Channel::mode_to_str(const Mode & m)const
+{
+	if (m == I)
+		return ("i");
+	if (m == T)
+		return ("t");
+	if (m == K)
+		return ("k");
+	if (m == O)
+		return ("o");
+	if (m == L)
+		return ("l");
+ 	return ("");
+}
+
+std::string	Channel::list_mode()const
+{
+	std::string	list = "";
+	for (size_t i=0; i<_mode.size(); i++)
+		list += mode_to_str(_mode[i]);
+	return list;
 }

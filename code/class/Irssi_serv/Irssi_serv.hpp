@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/28 20:40:30 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 19:45:15 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,27 @@ private:
 	Reaction_Serv		ft_quit(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// QUIT
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
 	Reaction_Serv		ft_privmsg(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// PRIVMSG
+	// Reaction_Serv		ft_who(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHO
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
 
 	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 	MethodeActionIrc action_table[IDK + 1];
+	
+	//MODE
+
+	typedef Mode (Irssi_serv::*MethodeModeIrc)(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, Channel *curent_chan);
+	MethodeModeIrc	mode_table[NO_MODE + 1];
+
+	Mode		init_mode(char & c);
+	Mode		get_mode(std::string & arg);
+
+	Mode		ft_mode_i(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	// Mode		ft_mode_t(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	// Mode		ft_mode_k(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	// Mode		ft_mode_o(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	// Mode		ft_mode_l(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	// Mode		ft_mode_none(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
 
 	// OTHER
 	void	connect(void);

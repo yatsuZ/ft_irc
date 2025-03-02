@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/02/24 23:27:12 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/02 19:45:33 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ ACTION_SERV_FILES =	cap.cpp				\
 					quit.cpp			\
 					join.cpp
 
+MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp
+
 OTHER_FILE_FROM_IRSSI_SERV =	./class/Irssi_serv/other/execution.cpp		\
 								./class/Irssi_serv/other/other.cpp			\
 								./class/Irssi_serv/other/errase_element.cpp	\
@@ -53,6 +55,7 @@ CLASS_FILES =	./class/Server/Server.cpp				\
 				./class/Cmd_irssi/Cmd_irssi.cpp			\
 				./class/Irssi_serv/Irssi_serv.cpp		\
 				${OTHER_FILE_FROM_IRSSI_SERV}			\
+				${MODE_FILES}							\
 				./class/User/User.cpp					\
 				./class/Client/Client.cpp				\
 				./class/User/UserHuman/UserHuman.cpp	\

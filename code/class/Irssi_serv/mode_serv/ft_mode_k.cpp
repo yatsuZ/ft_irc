@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.cpp                                            :+:      :+:    :+:   */
+/*   ft_mode_k.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 15:26:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/24 17:31:42 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:05:53 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ Mode	Irssi_serv::mode_key(std::vector<string> &cmd_args, Channel *chan, UserHuma
 	{
 		channel->set_key("");	
 	}
+	return (NO_MODE);
 }

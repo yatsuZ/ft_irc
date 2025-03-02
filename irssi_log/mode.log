@@ -1,0 +1,9 @@
+<< MODE brandon
+>> :halcyon.il.us.dal.net 502 Kurps :Can't change mode for other users
+
+<< MODE Kurps
+>> :halcyon.il.us.dal.net 221 Kurps +iH
+
+<< MODE #lobby
+>> :halcyon.il.us.dal.net 324 Kurps #lobby +tn 
+>> :halcyon.il.us.dal.net 329 Kurps #lobby 1738091841

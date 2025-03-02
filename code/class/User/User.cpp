@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/27 16:52:28 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 19:23:55 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,6 @@ void	User::set_mode(Mode newmode)
 	else
 		_mode = newmode;
 }
-
-// void		User::add_channel(const Channel *c)
-// {
-// 	for (size_t i=0; i<_channels.size(); i++)
-// 	{
-// 		if (_channels[i].get_name() == c->get_name())
-// 			return ; //TO DO : send message "channel already joined" ?
-// 	}
-// 	this->_channels.push_back(*c);
-// }
 
 void	User::add_chan(size_t idx_of_chan)
 {
@@ -109,4 +99,25 @@ void	User::update_and_errase_index_of_chan(size_t index_chan)
 		// std::cout << "TO DEL" << std::endl;
 		this->_chans.erase(to_del);
 	}
+}
+
+//retourne mode sous forme de charactère
+std::string	User::mode_to_str(const Mode & m)const
+{
+	if (m == I)
+		return ("i");
+	if (m == T)
+		return ("t");
+	if (m == K)
+		return ("k");
+	if (m == O)
+		return ("o");
+	if (m == L)
+		return ("l");
+ 	return ("");
+}
+std::string	User::list_mode()const
+{
+	std::string 	mode = mode_to_str(_mode);
+	return mode;
 }

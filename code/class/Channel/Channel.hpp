@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/25 00:02:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 19:24:19 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@ public:
 	std::vector<size_t>			get_index_operators(void)const {return this->_index_operators;}
 	size_t						get_nbr_of_user(void)const {return this->_nbr_user;}
 	size_t						get_limit_user(void)const {return this->_limit_user;}
-	std::vector<Mode>			get_mode(void)const {return this->_mode;}
 
 
 	void		set_name(const std::string & n){_name = n;}
 	void		set_topic(const std::string & t){_topic = t;}
+	void		set_mode(Mode m){_mode.push_back(m);}
+	
 	void		add_user(size_t idx_user);
+	std::string	list_mode(void)const;
+	std::string	mode_to_str(const Mode & m)const;
 
 	// erase
 	void	errase_user(size_t index_user);
@@ -50,7 +53,7 @@ private:
 	std::vector<size_t>			_index_operators;
 	size_t						_nbr_user;
 	size_t						_limit_user;
-	std::vector<Mode>	_mode; //?
+	std::vector<Mode>			_mode; 
 
 	Channel();
 };
