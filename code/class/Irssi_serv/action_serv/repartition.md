@@ -1,8 +1,8 @@
 TO DO
 
 YASSINE
-    - INIVTE
     - TOPIC
+    - verifier chaque cmd
     - Faire la diff entre irssi et nc
     - tester avec nc
 

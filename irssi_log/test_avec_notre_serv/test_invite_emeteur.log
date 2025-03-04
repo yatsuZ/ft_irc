@@ -1,0 +1,55 @@
+<< CAP LS
+<< NICK yatsu
+<< USER yatsu yatsu 127.0.0.1 :yatsu
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 433 *: yatsu Nickname is already in use
+<< NICK yatsu_
+>> :YASACO 003 * :you are now registered as yatsu, yatsu
+>> :YASACO 001 yatsu_ :Welcome to the Internet Relay Network yatsu_!yatsu@127.0.0.1
+<< MODE yatsu_ +i
+<< WHOIS yatsu
+>> :YASACO 002 yatsu_ :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :YASACO 403 yatsu_ yatsu_ :No such channel
+>> :YASACO 311 YASACO yatsu yatsu 127.0.0.1 * :yatsu
+--> nickfind event whois
+>> :YASACO 318 yatsu :End of /WHOIS
+--> event empty
+<< JOIN #a
+>> :yatsu_!~yatsu@127.0.0.1 JOIN :#a
+>> :YASACO 353 yatsu_ = #a :@yatsu_
+>> :YASACO 366 yatsu_ #a :End of /NAMES list
+<< MODE #a
+>> :YASACO 324 yatsu_ #a +
+--> chanquery mode
+<< WHO #a
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< INVITE yatsu_ #a
+>> :YASACO 443 yatsu_ #a :is already on channel
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< INVITE yatsu_ #a
+>> :YASACO 441 yatsu_ yatsu_ #a :They aren't on that channel
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #a
+--> lag pong
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #a b
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED mode b: chanquery abort
+<< MODE #a b
+--> lag pong
