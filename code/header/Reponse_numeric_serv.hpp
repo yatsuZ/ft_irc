@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/03 00:39:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/04 23:04:12 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(server_name, nickname, target_nick, channelname) (":" + server_name + " 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
+#define ERR_USERNOTINCHANNEL(server_name, nickname, target_nick, channelname) (":" + server_name + " 441 " + nickname + " " + target_nick + " " + channelname + " :They aren't on that channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
@@ -79,52 +79,52 @@
 //ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
 // ERR_BADCHANMASK
-#define ERR_BADCHANMASK(server_name, nickname, channelname) (":" + server_name + " 476 " + nickname + " #" + channelname + " :Bad Channel Mask" + CRLF)
+#define ERR_BADCHANMASK(server_name, nickname, channelname) (":" + server_name + " 476 " + nickname + " " + channelname + " :Bad Channel Mask" + CRLF)
 // ERR_CHANOPRIVSNEEDED
-#define ERR_CHANOPRIVSNEEDED(server_name, nickname, channelname) (":" + server_name + " 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
+#define ERR_CHANOPRIVSNEEDED(server_name, nickname, channelname) (":" + server_name + " 482 " + nickname + " " + channelname + " :You're not channel operator" + CRLF)
 //ERR_INVALIDMODEPARAM
 // #define ERR_INVALIDMODEPARM() j'arrive pas a voir comment il fonctionne
 ///////////////////////////////////////////////////////////////////// 
 
 // RPL (Réponses numériques)
 // RPL_JOINMSG
-#define RPL_JOINMSG(hostname, ipaddress, channelname) (":" + hostname + "@" + ipaddress + " JOIN #" + channelname + CRLF)
+#define RPL_JOINMSG(hostname, ipaddress, channelname) (":" + hostname + "@" + ipaddress + " JOIN " + channelname + CRLF)
 // RPL_NAMREPL
-#define RPL_NAMREPLY(nickname, channelname, clientslist) (": 353 " + nickname + " @ #" + channelname + " :" + clientslist + CRLF)
+#define RPL_NAMREPLY(nickname, channelname, clientslist) (": 353 " + nickname + " @ " + channelname + " :" + clientslist + CRLF)
 // RPL_TOPICIS
 #define RPL_TOPICIS(nickname, channelname, topic) (": 332 " + nickname + " #" +channelname + " :" + topic + "\r\n")
 // // RPL_ENDOFNAMES
-// #define RPL_ENDOFNAMES(nickname, channelname) (": 366 " + nickname + " #" + channelname + " :END of /NAMES list" + CRLF)
+// #define RPL_ENDOFNAMES(nickname, channelname) (": 366 " + nickname + " " + channelname + " :END of /NAMES list" + CRLF)
 // RPL_AWAY
 #define RPL_AWAY(nickname, awayMessage) (": 301 " + nickname + " :" + awayMessage + CRLF)
 // RPL_BANLIST
-#define RPL_BANLIST(nickname, channelname, bannedUser) (": 367 " + nickname + " #" + channelname + " " + bannedUser + CRLF)
+#define RPL_BANLIST(nickname, channelname, bannedUser) (": 367 " + nickname + " " + channelname + " " + bannedUser + CRLF)
 // RPL_ENDOFBANLIST
-#define RPL_ENDOFBANLIST(nickname, channelname) (": 368 " + nickname + " #" + channelname + " :End of channel ban list" + CRLF)
+#define RPL_ENDOFBANLIST(nickname, channelname) (": 368 " + nickname + " " + channelname + " :End of channel ban list" + CRLF)
 // RPL_ENDOFEXCEPTLIST
-#define RPL_ENDOFEXCEPTLIST(nickname, channelname) (": 349 " + nickname + " #" + channelname + " :End of exception list" + CRLF)
+#define RPL_ENDOFEXCEPTLIST(nickname, channelname) (": 349 " + nickname + " " + channelname + " :End of exception list" + CRLF)
 // RPL_ENDOFINVITELIST
-#define RPL_ENDOFINVITELIST(nickname, channelname) (": 347 " + nickname + " #" + channelname + " :End of invite list" + CRLF)
+#define RPL_ENDOFINVITELIST(nickname, channelname) (": 347 " + nickname + " " + channelname + " :End of invite list" + CRLF)
 // RPL_EXCEPTLIST
-#define RPL_EXCEPTLIST(nickname, channelname, exceptedUser) (": 348 " + nickname + " #" + channelname + " " + exceptedUser + CRLF)
+#define RPL_EXCEPTLIST(nickname, channelname, exceptedUser) (": 348 " + nickname + " " + channelname + " " + exceptedUser + CRLF)
 // RPL_INVITELIST
-#define RPL_INVITELIST(nickname, channelname, invitedUser) (": 346 " + nickname + " #" + channelname + " " + invitedUser + CRLF)
+#define RPL_INVITELIST(nickname, channelname, invitedUser) (": 346 " + nickname + " " + channelname + " " + invitedUser + CRLF)
 // RPL_INVITING
-#define RPL_INVITING(nickname, channelname, invitedUser) (": 341 " + nickname + " " + invitedUser + " #" + channelname + CRLF)
+#define RPL_INVITING(nickname, channelname, invitedUser) (": 341 " + nickname + " " + invitedUser + " " + channelname + CRLF)
 // RPL_CHANNELMODES
-#define RPL_CHANNELMODES(nickname, channelname, modes) (": 324 " + nickname + " #" + channelname + " " + modes + CRLF)
+#define RPL_CHANNELMODES(nickname, channelname, modes) (": 324 " + nickname + " " + channelname + " " + modes + CRLF)
 // RPL_NOTOPIC
-#define RPL_NOTOPIC(nickname, channelname) (": 331 " + nickname + " #" + channelname + " :No topic is set" + CRLF)
+#define RPL_NOTOPIC(nickname, channelname) (": 331 " + nickname + " " + channelname + " :No topic is set" + CRLF)
 // RPL_TOPIC
-// #define RPL_TOPIC(nickname, channelname, topic) (": 332 " + nickname + " #" + channelname + " :" + topic + CRLF)
+// #define RPL_TOPIC(nickname, channelname, topic) (": 332 " + nickname + " " + channelname + " :" + topic + CRLF)
 // RPL_TOPICWHOTIME
-#define RPL_TOPICWHOTIME(nickname, channelname, author, timestamp) (": 333 " + nickname + " #" + channelname + " " + author + " " + timestamp + CRLF)
+#define RPL_TOPICWHOTIME(nickname, channelname, author, timestamp) (": 333 " + nickname + " " + channelname + " " + author + " " + timestamp + CRLF)
 // RPL_YOUREOPER
 #define RPL_YOUREOPER (std::string(": 381 :You are now an IRC operator")) + CRLF
 // RPL_UMODEIS
 // #define RPL_UMODEIS(nickname, mode) (std::string(": 221 ") + nickname + " " + mode + CRLF)
 // 	RPL_CHANGEMODE
-#define RPL_CHANGEMODE(hostname, channelname, mode, arguments) (":" + hostname + " MODE #" + channelname + " " + mode + " " + arguments + CRLF)
+#define RPL_CHANGEMODE(hostname, channelname, mode, arguments) (":" + hostname + " MODE " + channelname + " " + mode + " " + arguments + CRLF)
 
 // PRIVMSG
 #define PRIVMSG(nick, user, host_ip, recipient, message) (":" + nick + "!~" + user + "@" + host_ip + " PRIVMSG " + recipient + " " + message + CRLF)
@@ -134,23 +134,23 @@
 // ERR_ALREADYREGISTRED
 // #define ERR_ALREADYREGISTRED(command) (command + " :Unauthorized command (already registered)" + CRLF)
 // // ERR_BADCHANNELKEY
-// #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
+// #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " " + channelname + " :Cannot join channel (+k)" + CRLF)
 // ERR_BANNEDFROMCHAN
-#define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
+#define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " " + channelname + " :You are banned from this channel" + CRLF)
 // ERR_CHANNELISFULL
-#define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
+#define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " " + channelname + " :Cannot join channel (+l)" + CRLF)
 // ERR_INVITEONLYCHAN
-#define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " #" + channelname + " :Cannot join channel (+i)" + CRLF)
+#define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " " + channelname + " :Cannot join channel (+i)" + CRLF)
 // ERR_KEYSET
-#define ERR_KEYSET(channelname) (": 467 #" + channelname + " :Channel key already set" + CRLF)
+#define ERR_KEYSET(channelname) (": 467 " + channelname + " :Channel key already set" + CRLF)
 // ERR_NEEDMODEPARM
-#define ERR_NEEDMODEPARM(channelname, mode) (": 696 #" + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
+#define ERR_NEEDMODEPARM(channelname, mode) (": 696 " + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
 // ERR_INVALIDMODEPARM
-// #define ERR_INVALIDMODEPARM(channelname, mode) ": 696 #" + channelname + " Invalid mode parameter. " + mode + CRLF
+// #define ERR_INVALIDMODEPARM(channelname, mode) ": 696 " + channelname + " Invalid mode parameter. " + mode + CRLF
 // ERR_NICKCOLLISION
 #define ERR_NICKCOLLISION(nickname) (": 436 " + nickname + " :Nickname collision KILL" + CRLF)
 // ERR_NOCHANMODES
-#define ERR_NOCHANMODES(nickname, channelname) (": 477 " + nickname + " #" + channelname + " :Channel doesn't support modes" + CRLF)
+#define ERR_NOCHANMODES(nickname, channelname) (": 477 " + nickname + " " + channelname + " :Channel doesn't support modes" + CRLF)
 // ERR_NOOPERHOST
 #define ERR_NOOPERHOST(nickname) (": 491 " + nickname + " :No O-lines for your host" + CRLF)
 // ERR_NORECIPIENT
@@ -158,13 +158,13 @@
 // ERR_NOTEXTTOSEND
 #define ERR_NOTEXTTOSEND (std::string(": 412 :No text to send")) + CRLF
 // ERR_NOTONCHANNEL
-#define ERR_NOTONCHANNEL(nickname, channelname) (": 442 " + nickname + " #" + channelname + " :You're not on that channel" + CRLF)
+#define ERR_NOTONCHANNEL(nickname, channelname) (": 442 " + nickname + " " + channelname + " :You're not on that channel" + CRLF)
 // ERR_PASSWDMISMATCH
 #define ERR_PASSWDMISMATCH (std::string(":464 :Password incorrect") + CRLF)
 // ERR_RESTRICTED
 #define ERR_RESTRICTED(nickname) (": 484 " + nickname + " :Your connection is restricted!" + CRLF)
 // ERR_TOOMANYCHANNELS
-#define ERR_TOOMANYCHANNELS(nickname, channelname) (": 405 " + nickname + " #" + channelname + " :You have joined too many channels" + CRLF)
+#define ERR_TOOMANYCHANNELS(nickname, channelname) (": 405 " + nickname + " " + channelname + " :You have joined too many channels" + CRLF)
 // ERR_TOOMANYTARGETS
 #define ERR_TOOMANYTARGETS(nickname, target) (": 407 " + nickname + " " + target + " :Too many recipients" + CRLF)
 // ERR_UNAVAILRESOURCE
@@ -172,6 +172,6 @@
 // ERR_UNKNOWNMODE
 #define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
 // ERR_USERONCHANNEL
-#define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " #" + channelname + " :is already on channel" + CRLF)
+#define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " " + channelname + " :is already on channel" + CRLF)
 // ERR_WILDTOPLEVEL
 #define ERR_WILDTOPLEVEL(nickname, mask) (": 414 " + nickname + " " + mask + " :Wildcard in toplevel domain" + CRLF)

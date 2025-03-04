@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 23:39:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/04 23:30:43 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ private:
 	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 	int		_is_op_in_chan(UserHuman &user, Channel &chan);
+
+	// specefique cmd
+	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
 
 	// specefique get
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);

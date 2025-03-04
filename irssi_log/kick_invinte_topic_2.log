@@ -1,0 +1,60 @@
+>> :yatsu!~yatsu@gamesurge-76bf7f21.w90-7.abo.wanadoo.fr INVITE yatsu_ #a
+
+<< PING NuclearFallout.WA.US.GameSurge.net
+>> :NuclearFallout.WA.US.GameSurge.net PONG NuclearFallout.WA.US.GameSurge.net :NuclearFallout.WA.US.GameSurge.net
+--> lag pong
+
+<< JOIN #a
+>> :yatsu_!~yatsu@gamesurge-76bf7f21.w90-7.abo.wanadoo.fr JOIN #a
+>> :NuclearFallout.WA.US.GameSurge.net 353 yatsu_ = #a :yatsu_ @yatsu
+>> :NuclearFallout.WA.US.GameSurge.net 366 yatsu_ #a :End of /NAMES list.
+
+<< MODE #a
+>> :NuclearFallout.WA.US.GameSurge.net 324 yatsu_ #a + 
+--> chanquery mode
+
+<< WHO #a
+>> :NuclearFallout.WA.US.GameSurge.net 329 yatsu_ #a 1741113774
+--> event 329
+>> :NuclearFallout.WA.US.GameSurge.net 352 yatsu_ #a ~yatsu gamesurge-76bf7f21.w90-7.abo.wanadoo.fr *.GameSurge.net yatsu_ Hx :0 yatsu
+--> silent event who
+>> :NuclearFallout.WA.US.GameSurge.net 352 yatsu_ #a ~yatsu gamesurge-76bf7f21.w90-7.abo.wanadoo.fr *.GameSurge.net yatsu H@x :3 yatsu
+--> silent event who
+>> :NuclearFallout.WA.US.GameSurge.net 315 yatsu_ #a :End of /WHO list.
+--> chanquery who end
+
+<< MODE #a b
+>> :NuclearFallout.WA.US.GameSurge.net 368 yatsu_ #a :End of Channel Ban List
+--> chanquery ban end
+>> :yatsu!~yatsu@gamesurge-76bf7f21.w90-7.abo.wanadoo.fr KICK #a yatsu_ :yatsu
+
+<< PING NuclearFallout.WA.US.GameSurge.net
+>> :NuclearFallout.WA.US.GameSurge.net PONG NuclearFallout.WA.US.GameSurge.net :NuclearFallout.WA.US.GameSurge.net
+--> lag pong
+
+<< JOIN #a
+>> :yatsu_!~yatsu@gamesurge-76bf7f21.w90-7.abo.wanadoo.fr JOIN #a
+>> :NuclearFallout.WA.US.GameSurge.net 332 yatsu_ #a :"test du chanelle a"
+>> :NuclearFallout.WA.US.GameSurge.net 333 yatsu_ #a yatsu 1741113840
+>> :NuclearFallout.WA.US.GameSurge.net 353 yatsu_ = #a :yatsu_ @yatsu
+>> :NuclearFallout.WA.US.GameSurge.net 366 yatsu_ #a :End of /NAMES list.
+
+<< MODE #a
+>> :NuclearFallout.WA.US.GameSurge.net 324 yatsu_ #a + 
+--> chanquery mode
+
+<< WHO #a
+>> :NuclearFallout.WA.US.GameSurge.net 329 yatsu_ #a 1741113774
+--> event 329
+>> :NuclearFallout.WA.US.GameSurge.net 352 yatsu_ #a ~yatsu gamesurge-76bf7f21.w90-7.abo.wanadoo.fr *.GameSurge.net yatsu_ Hx :0 yatsu
+--> silent event who
+>> :NuclearFallout.WA.US.GameSurge.net 352 yatsu_ #a ~yatsu gamesurge-76bf7f21.w90-7.abo.wanadoo.fr *.GameSurge.net yatsu H@x :3 yatsu
+--> silent event who
+>> :NuclearFallout.WA.US.GameSurge.net 315 yatsu_ #a :End of /WHO list.
+--> chanquery who end
+
+<< MODE #a b
+>> :NuclearFallout.WA.US.GameSurge.net 368 yatsu_ #a :End of Channel Ban List
+--> chanquery ban end
+
+<< QUIT :leaving
