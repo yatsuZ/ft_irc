@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 18:07:16 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:10:46 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,22 @@
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 // ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
+// ERR_KEYSET
+#define ERR_KEYSET(server_name, nick, channel_name) (":" + server_name + " 467 " + nick + " " + channel_name + " :Channel key already set" + CRLF)
+// ERR_CHANNELISFULL
+#define ERR_CHANNELISFULL(server_name, nick, channel_name) (":" + server_name + " 471 " + nick + " " + channel_name + " :Cannot join channel (+l)" + CRLF)
+// ERR_UNKNOWNMODE 
+#define ERR__UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + "" + character + " :is unknown mode char to me" + CRLF)
+// ERR_INVITEONLYCHAN
+#define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " "  + channel_name + " :Cannot join channel (+i)" + CRLF)
+// ERR_BANNEDFROMCHAN
+#define ERR_BANNEDFROMCHAN(server_name, nick, channel_name) (":" + server_name + " 474 " + nick + " " + channel_name + " :cannot join channel (+b)" + CRLF)
 // ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
+// ERR_NOPRIVILEGES
+#define ERR_NOPRIVILEGE(server_name, nick, command) (":" + server_name + " 481 " + nick + " " + command + " :Permission Denied- You're not an IRC operator" + CRLF)
+// ERR_CHANOPRIVSNEEDED
+#define ERR_CHANOPRIVSNEEDED(server_name, nick, channel_name) (":" + server_name + " 482 " + nick + " " + channel_name + " :You're not channel operator" + CRLF)// ERR_USERDONTMATCH
 // ERR_USERDONTMATCH
 #define ERR_USERSDONTMATCH(server_name, nick) (":" + server_name + " 502 " + nick + " :Cant change/view mode for other users" + CRLF)
  
@@ -133,15 +147,15 @@
 // // ERR_BADCHANNELKEY
 // #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " #" + channelname + " :Cannot join channel (+k)" + CRLF)
 // ERR_BANNEDFROMCHAN
-#define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
-// ERR_CHANNELISFULL
-#define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
+// #define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " #" + channelname + " :You are banned from this channel" + CRLF)
+// // ERR_CHANNELISFULL
+// #define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " #" + channelname + " :Cannot join channel (+l)" + CRLF)
 // ERR_CHANOPRIVSNEEDED
-#define ERR_CHANOPRIVSNEEDED(nickname, channelname) (": 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
+// #define ERR_CHANOPRIVSNEEDED(nickname, channelname) (": 482 " + nickname + " #" + channelname + " :You're not channel operator" + CRLF)
 // ERR_INVITEONLYCHAN
-#define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " #" + channelname + " :Cannot join channel (+i)" + CRLF)
-// ERR_KEYSET
-#define ERR_KEYSET(channelname) (": 467 #" + channelname + " :Channel key already set" + CRLF)
+// #define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " #" + channelname + " :Cannot join channel (+i)" + CRLF)
+// // ERR_KEYSET
+// #define ERR_KEYSET(channelname) (": 467 #" + channelname + " :Channel key already set" + CRLF)
 // ERR_NEEDMODEPARM
 #define ERR_NEEDMODEPARM(channelname, mode) (": 696 #" + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
 // ERR_INVALIDMODEPARM

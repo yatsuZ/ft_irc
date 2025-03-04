@@ -1,0 +1,97 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :atw.hu.eu.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :atw.hu.eu.dal.net NOTICE AUTH :*** Checking Ident
+>> :atw.hu.eu.dal.net NOTICE AUTH :*** Found your hostname
+>> :atw.hu.eu.dal.net NOTICE AUTH :*** No Ident response
+>> :atw.hu.eu.dal.net 001 Kurps :Welcome to the DALnet IRC Network Kurps!~smlamali@62.210.32.137
+<< MODE Kurps +i
+>> :atw.hu.eu.dal.net 002 Kurps :Your host is atw.hu.eu.dal.net, running version bahamut-2.2.3
+>> :atw.hu.eu.dal.net 003 Kurps :This server was created Tue Dec 12 2023 at 01:47:04 AM CET
+>> :atw.hu.eu.dal.net 004 Kurps atw.hu.eu.dal.net bahamut-2.2.3 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :atw.hu.eu.dal.net 005 Kurps NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=50 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:50 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :atw.hu.eu.dal.net 005 Kurps CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :atw.hu.eu.dal.net 251 Kurps :There are 62 users and 6476 invisible on 39 servers
+>> :atw.hu.eu.dal.net 252 Kurps 77 :IRC Operators online
+>> :atw.hu.eu.dal.net 254 Kurps 3367 :channels formed
+>> :atw.hu.eu.dal.net 255 Kurps :I have 1827 clients and 1 servers
+>> :atw.hu.eu.dal.net 265 Kurps :Current local users: 1827 Max: 2113
+>> :atw.hu.eu.dal.net 266 Kurps :Current global users: 6538 Max: 12060
+>> :atw.hu.eu.dal.net NOTICE Kurps :*** Notice -- motd was last changed at 20/1/2021 6:02
+>> :atw.hu.eu.dal.net 375 Kurps :- atw.hu.eu.dal.net Message of the Day - 
+>> :atw.hu.eu.dal.net 372 Kurps :-20/1/2021 6:02
+>> :atw.hu.eu.dal.net 372 Kurps :- Welcome to DALnet!  By connecting to this network, you agree to abide
+>> :atw.hu.eu.dal.net 372 Kurps :- by its acceptable use policy, available here: http://www.dal.net/aup
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :- Server Policies:
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   We reserve the right to deny access to this server without
+>> :atw.hu.eu.dal.net 372 Kurps :-        warning or explanation
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   No malicious bots, including flood and nick/channel chasers
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   No channel filler bots/clients/psybncs
+>> :atw.hu.eu.dal.net 372 Kurps :-          - A channel filler is a client, bnc, or bot which is
+>> :atw.hu.eu.dal.net 372 Kurps :-            connected just to fill a channel and make it look
+>> :atw.hu.eu.dal.net 372 Kurps :-            bigger
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   Operator impersonation, spamming, or any other abuse will
+>> :atw.hu.eu.dal.net 372 Kurps :-        cause you to be banned from this server
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   Abide by DALnet's AUP (www.dal.net/aup)
+>> :atw.hu.eu.dal.net 372 Kurps :-    *   Please have fun and enjoy DALnet!
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :-      ///admins////////////////////////////////////////
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             //
+>> :atw.hu.eu.dal.net 372 Kurps :-      //  [ Hidden  - administrator             ]    //
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             // 
+>> :atw.hu.eu.dal.net 372 Kurps :-      //  [ koszik  - assistant administrator   ]    //
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             //
+>> :atw.hu.eu.dal.net 372 Kurps :-      ///operators/////////////////////////////////////
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             //
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             //
+>> :atw.hu.eu.dal.net 372 Kurps :-      //                                             //
+>> :atw.hu.eu.dal.net 372 Kurps :-      /////////////////////////////////////////////////
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :- For IRCop assistance, please /join #operhelp or message one of our
+>> :atw.hu.eu.dal.net 372 Kurps :- friendly server staff listed above.
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :- For multilingual information:  <http://docs.dal.net/>
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 372 Kurps :- Thank you for using DALnet!  We hope you have a pleasant day.
+>> :atw.hu.eu.dal.net 372 Kurps :- 
+>> :atw.hu.eu.dal.net 376 Kurps :End of /MOTD command.
+>> :Kurps MODE Kurps :+iH
+<< PING atw.hu.eu.dal.net
+>> :atw.hu.eu.dal.net PONG atw.hu.eu.dal.net :Kurps
+--> lag pong
+<< JOIN #lobby
+>> :Kurps!~smlamali@fb88-ee76-896b-dbf4-f272.210.62.ip JOIN :#lobby
+>> :atw.hu.eu.dal.net 332 Kurps #lobby :11,1Welcome to #Lobby ;)
+>> :atw.hu.eu.dal.net 333 Kurps #lobby ChattingKing!~Lone@876b-98a2-d29e-db4e-d485.77.178.ip 1734072739
+>> :atw.hu.eu.dal.net 353 Kurps = #lobby :Kurps @Sin +LDa224 
+>> :atw.hu.eu.dal.net 366 Kurps #lobby :End of /NAMES list.
+<< MODE #lobby
+>> :atw.hu.eu.dal.net 324 Kurps #lobby +tn 
+--> chanquery mode
+<< WHO #lobby
+>> :atw.hu.eu.dal.net 329 Kurps #lobby 1738091841
+--> event 329
+>> :atw.hu.eu.dal.net 352 Kurps #lobby ~smlamali fb88-ee76-896b-dbf4-f272.210.62.ip atw.hu.eu.dal.net Kurps H :0 Samira MLAMALI
+--> silent event who
+>> :atw.hu.eu.dal.net 352 Kurps #lobby ~Gentoo a7e3-3450-d99e-8cf2-645f.112.97.ip serenity.fl.us.dal.net Sin H@ :5 ...
+--> silent event who
+>> :atw.hu.eu.dal.net 352 Kurps #lobby sid678542 db23-2969-a31a-9022-3e35.hampstead.irccloud.com atw.hu.eu.dal.net LDa224 G+ :0 NTA
+--> silent event who
+>> :atw.hu.eu.dal.net 315 Kurps #lobby :End of /WHO list.
+--> chanquery who end
+<< MODE #lobby b
+>> :atw.hu.eu.dal.net 368 Kurps #lobby :End of Channel Ban List
+--> chanquery ban end
+<< MODE #lobby +k
+>> :atw.hu.eu.dal.net 482 Kurps #lobby :You're not channel operator
+<< MODE #lobby +k ploup
+>> :atw.hu.eu.dal.net 482 Kurps #lobby :You're not channel operator
+<< MODE #lobby -t
+>> :atw.hu.eu.dal.net 482 Kurps #lobby :You're not channel operator
+<< MODE #lobby -i
+>> :atw.hu.eu.dal.net 482 Kurps #lobby :You're not channel operator
+<< QUIT :leaving

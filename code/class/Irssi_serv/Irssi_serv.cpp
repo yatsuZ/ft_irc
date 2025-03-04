@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 19:45:12 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/04 19:21:02 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[IDK] = &Irssi_serv::ft_idk;
 
 	/////
-	mode_table[I]			= 	&Irssi_serv::ft_mode_i;
+	mode_table[I]		= 	&Irssi_serv::ft_mode_i;
 	// mode_table[T]		= 	&Irssi_serv::ft_mode_t;
-	// mode_table[K]		= 	&Irssi_serv::ft_mode_k;
+	mode_table[K]		= 	&Irssi_serv::ft_mode_k;
 	// mode_table[O]		= 	&Irssi_serv::ft_mode_o;
 	// mode_table[L]		= 	&Irssi_serv::ft_mode_l;
 	// mode_table[NO_MODE]	= 	&Irssi_serv::ft_mode_none;
+
 }
 
 Irssi_serv::~Irssi_serv()
