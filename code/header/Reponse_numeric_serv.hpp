@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/04 23:04:12 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/05 00:10:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #define NICKMASK(nick, username, ip) (nick + "!~" + user + "@" + ip + CRLF)
 #define KICK_MSG_TARGET(chan_name, target_nick, msg) ("KICK " + chan_name + " " + target_nick + " :" + msg + CRLF)
 #define KICK_MSG_OTHER(nick, username, hostname, chan_name, target_name, msg) (":" + nick + "!~" + username + "@" + hostname + " KICK "+ chan_name + " " + target_name + " :" + msg + CRLF)
+#define INVIT_MSG_TARGET(nick, username, hostname, target, chan_name) (":" + nick + "!~" + username + "@" + hostname + " INVITE " + target + " " + chan_name + CRLF)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -42,6 +43,8 @@
 #define RPL_JOIN_K(nick, hostname, ip, channel_name, key) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + key + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
+// RPL_INVITING
+#define RPL_INVITING(server_name, nickname, target, channelname) (":" + server_name + " 341 " + nickname + " " + target + " " + channelname + CRLF)
 // #RPL_NAMEREPLY
 #define RPL_NAMEREPLY(server_name, nick, channel_name, list_user) (":" + server_name + " 353 " + nick + " = " + channel_name + " :" + list_user + CRLF)
 // #RPL_ENDOFNAMES
@@ -71,7 +74,9 @@
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(server_name, nickname, target_nick, channelname) (":" + server_name + " 441 " + nickname + " " + target_nick + " " + channelname + " :They aren't on that channel" + CRLF)
+#define ERR_USERNOTINCHANNEL(server_name, nickname, channelname) (":" + server_name + " 441 " + nickname + + " " + channelname + " :They aren't on that channel" + CRLF)
+// ERR_USERONCHANNEL
+#define ERR_USERONCHANNEL(server_name, target_nick, channelname) (":" + server_name + " 443 " + target_nick + " " + channelname + " :is already on channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 //ERR_ALREADYREGISTERED
@@ -109,8 +114,6 @@
 #define RPL_EXCEPTLIST(nickname, channelname, exceptedUser) (": 348 " + nickname + " " + channelname + " " + exceptedUser + CRLF)
 // RPL_INVITELIST
 #define RPL_INVITELIST(nickname, channelname, invitedUser) (": 346 " + nickname + " " + channelname + " " + invitedUser + CRLF)
-// RPL_INVITING
-#define RPL_INVITING(nickname, channelname, invitedUser) (": 341 " + nickname + " " + invitedUser + " " + channelname + CRLF)
 // RPL_CHANNELMODES
 #define RPL_CHANNELMODES(nickname, channelname, modes) (": 324 " + nickname + " " + channelname + " " + modes + CRLF)
 // RPL_NOTOPIC
@@ -171,7 +174,5 @@
 #define ERR_UNAVAILRESOURCE(nickname, resource) (": 437 " + nickname + " " + resource + " :Nick/channel is temporarily unavailable" + CRLF)
 // ERR_UNKNOWNMODE
 #define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
-// ERR_USERONCHANNEL
-#define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " " + channelname + " :is already on channel" + CRLF)
 // ERR_WILDTOPLEVEL
 #define ERR_WILDTOPLEVEL(nickname, mask) (": 414 " + nickname + " " + mask + " :Wildcard in toplevel domain" + CRLF)
