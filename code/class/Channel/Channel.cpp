@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/02 19:24:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:02:45 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,38 @@ std::string	Channel::mode_to_str(const Mode & m)const
 std::string	Channel::list_mode()const
 {
 	std::string	list = "";
+	if (_mode.empty())
+		return list;
 	for (size_t i=0; i<_mode.size(); i++)
 		list += mode_to_str(_mode[i]);
 	return list;
+}
+
+bool	Channel::is_operator(size_t	idx_user)
+{
+	for(size_t i=0; i<_index_operators.size(); i++)
+	{
+		if (idx_user == _index_operators[i])
+			return 1;
+	}
+	return 0;
+}
+
+void	Channel::set_mode(Mode m)
+{
+	for (size_t i=0; i<_mode.size(); i++)
+	{
+		if (_mode[i] == m)
+			return;
+	}	
+	_mode.push_back(m);
+}
+
+void	Channel::erase_mode(Mode m)
+{
+	for (size_t i=0; i<_mode.size(); i++)
+	{
+		if (_mode[i] == m)
+			_mode.erase(_mode.begin() + i);
+	}
 }

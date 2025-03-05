@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/04 14:41:52 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:10:25 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,17 @@ public:
 
 	void		set_name(const std::string & n){_name = n;}
 	void		set_topic(const std::string & t){_topic = t;}
-	void		set_mode(Mode m){_mode.push_back(m);}
-	void		set_operator(size_t idx_user);
+	void		set_mode(Mode m);
+	void		set_operator(size_t idx_user){_index_operators.push_back(idx_user);}
 	void		add_user(size_t idx_user);
+
+	bool		is_operator(size_t idx_user);
 	std::string	list_mode(void)const;
 	std::string	mode_to_str(const Mode & m)const;
 
+
 	// erase
+	void	erase_mode(Mode m);
 	void	errase_user(size_t index_user);
 	void	update_index_of_user(size_t index_user);
 	void	update_and_errase_index_of_user(size_t index_user);

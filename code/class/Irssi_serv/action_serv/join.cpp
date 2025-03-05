@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 16:40:50 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:03:05 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		{
 			Channel new_chan(chans[i], "");
 			new_chan.add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+			new_chan.set_operator(_get_index_of_userhuman_by_nick(current_user->get_nick()));
 			current_user->add_chan(_all_Channel.size());
 			_all_Channel.push_back(new_chan);
 			send_message(RPL_JOIN(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i]), current_pollfd);

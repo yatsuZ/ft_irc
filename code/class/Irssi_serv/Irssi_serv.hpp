@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/04 19:12:47 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:28:27 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ private:
 	Mode		ft_mode_l(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
 	Mode		ft_mode_none(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
 
+	void		do_mode(Cmd_irssi &,  UserHuman *, pollfd &, Channel *);
 	// OTHER
 	void	connect(void);
 	bool	_nick_already_used(std::string nick) const;

@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/04 19:10:46 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/05 19:16:33 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #define SELF_QUIT_MSG(msg) ("QUIT :" + msg + CRLF)
 #define OTHER_QUIT_MSG(nick, username, hostname, msg) (":" + nick + "!~" + username + "@" + hostname + " QUIT :" + msg + CRLF)
 #define PRIVMSG_REP(nick, username, hostname, target, msg) (":" + nick + "!~" + username + "@" + hostname + " PRIVMSG " + target + " :" + msg + CRLF)
-#define NICKMASK(nick, username, ip) (nick + "!~" + user + "@" + ip)
+#define NICKMASK(nick, hostname, ip) (nick + "!~" + hostname + "@" + ip)
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -48,8 +48,12 @@
 #define RPL_CHANNELMODEIS(server_name, nick, channel_name, list_mode) (":" + server_name + " 324 " + nick + " " + channel_name + " +" + list_mode + CRLF)
 // RPL_UMODEIS
 # define RPL_UMODEIS(server_name, nick, list_mode) (":" + server_name + " 221 " + nick + " +" + list_mode + CRLF)
+// RPL_CHANONINVITE
+#define RPL_CHANONINVITE(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + arg + CRLF)
+// RPL_INVISIBLE
+#define RPL_INVISIBLE(nick, target, arg) (":" + nick + " MODE " + target + " :" + arg)
 
-// ERR (Erreurs numériques)
+//--------------------- ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
 // ERR_NOSUCHCHANNEL

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 23:20:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/05 19:53:48 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,22 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 	return (res);
 }
 
-// void	Irssi_serv::do_mode(Channel *chan, UserHuman *user, std::vector<std::string> &args, pollfd & current_pollfd)
-// {
-// 	// std::cout << "---interpretation des modes ---" <<std::endl;
-// 	std::vector<std::string> cmd_args = current_cmd.get_arg();
-// 	if (cmd_args <= 2)
-// 		return ; 
-// 	//Mode m == arg[1].get_mode <=== +i devient i
-// 	//set un enum en accord avec le retour de cmd_args
-// 	//get msg du mode et l'output
-// 	//Mode mode = (this->*mode_table[m])(chan, user, args, current_pollfd); 
-	
-// }
+void	Irssi_serv::do_mode( Cmd_irssi &current_cmd, UserHuman *user, pollfd & current_pollfd, Channel *chan)
+{
+	// (void)user;
+	// (void)current_pollfd;
+	// (void)chan;
+	std::cout << "---interpretation des modes ---" <<std::endl;
+	std::vector<std::string> cmd_args = current_cmd.get_arg();
+	if (cmd_args.size() < 2)
+		return ; 
+	Mode m = get_mode(cmd_args[1]); // "+i" devient I
+	std::cout << "Mode " << cmd_args[1] << " " << m << std::endl;
+	//get msg du mode et l'afficher
+	Mode mode = (this->*mode_table[m])(current_cmd, user, current_pollfd, chan); 
+	(void)mode;
+}
+
 /// @brief Methode qui est le coeur du programme
 void	Irssi_serv::exec(void)
 {
