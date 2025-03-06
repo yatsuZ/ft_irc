@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:48:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/05 00:11:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 14:33:07 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ Reaction_Serv	Irssi_serv::ft_kick(Cmd_irssi &current_cmd, UserHuman * current_us
 		return (send_message(ERR_CHANOPRIVSNEEDED(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// else if ()// VERIFIER QUIL EST PAS BANN // SAMIRA ici
 
-	for (std::vector<std::string>::iterator i = current_cmd.get_arg().begin(); i != current_cmd.get_arg().end(); i++)
+	std::vector<std::string> list_of_user = current_cmd.get_arg();
+
+	for (std::vector<std::string>::iterator i = (list_of_user.begin() + 1); i != list_of_user.end(); i++)
 	{
 		if ((*i)[0] == ':')
 			break;

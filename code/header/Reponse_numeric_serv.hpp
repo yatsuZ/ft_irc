@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/05 00:10:48 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 15:08:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define KICK_MSG_TARGET(chan_name, target_nick, msg) ("KICK " + chan_name + " " + target_nick + " :" + msg + CRLF)
 #define KICK_MSG_OTHER(nick, username, hostname, chan_name, target_name, msg) (":" + nick + "!~" + username + "@" + hostname + " KICK "+ chan_name + " " + target_name + " :" + msg + CRLF)
 #define INVIT_MSG_TARGET(nick, username, hostname, target, chan_name) (":" + nick + "!~" + username + "@" + hostname + " INVITE " + target + " " + chan_name + CRLF)
+
 // RPL (Réponses numériques)
 
 // RPL_WELCOME
@@ -43,6 +44,8 @@
 #define RPL_JOIN_K(nick, hostname, ip, channel_name, key) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + key + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
+// RPL_TOPICWHOTIME
+#define RPL_TOPICWHOTIME(server_name, nickname, channelname, author, timestamp) (":" + server_name + " 333 " + nickname + " " + channelname + " " + author + " " + timestamp + CRLF)
 // RPL_INVITING
 #define RPL_INVITING(server_name, nickname, target, channelname) (":" + server_name + " 341 " + nickname + " " + target + " " + channelname + CRLF)
 // #RPL_NAMEREPLY
@@ -96,8 +99,6 @@
 #define RPL_JOINMSG(hostname, ipaddress, channelname) (":" + hostname + "@" + ipaddress + " JOIN " + channelname + CRLF)
 // RPL_NAMREPL
 #define RPL_NAMREPLY(nickname, channelname, clientslist) (": 353 " + nickname + " @ " + channelname + " :" + clientslist + CRLF)
-// RPL_TOPICIS
-#define RPL_TOPICIS(nickname, channelname, topic) (": 332 " + nickname + " #" +channelname + " :" + topic + "\r\n")
 // // RPL_ENDOFNAMES
 // #define RPL_ENDOFNAMES(nickname, channelname) (": 366 " + nickname + " " + channelname + " :END of /NAMES list" + CRLF)
 // RPL_AWAY
@@ -118,10 +119,6 @@
 #define RPL_CHANNELMODES(nickname, channelname, modes) (": 324 " + nickname + " " + channelname + " " + modes + CRLF)
 // RPL_NOTOPIC
 #define RPL_NOTOPIC(nickname, channelname) (": 331 " + nickname + " " + channelname + " :No topic is set" + CRLF)
-// RPL_TOPIC
-// #define RPL_TOPIC(nickname, channelname, topic) (": 332 " + nickname + " " + channelname + " :" + topic + CRLF)
-// RPL_TOPICWHOTIME
-#define RPL_TOPICWHOTIME(nickname, channelname, author, timestamp) (": 333 " + nickname + " " + channelname + " " + author + " " + timestamp + CRLF)
 // RPL_YOUREOPER
 #define RPL_YOUREOPER (std::string(": 381 :You are now an IRC operator")) + CRLF
 // RPL_UMODEIS

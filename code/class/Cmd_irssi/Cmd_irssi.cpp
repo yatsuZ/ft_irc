@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 17:47:45 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 14:57:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@ std::string	Cmd_irssi::get_message(void) const
 	std::string::size_type pos = str.find(':');
 	if (pos != std::string::npos)
 		str = str.substr(pos + 1); // Garde seulement ce qui est après ':'
+	else
+		return ("");
 	return (str);
 }
