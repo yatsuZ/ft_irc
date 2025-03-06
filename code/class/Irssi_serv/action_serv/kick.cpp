@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:48:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 14:33:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 17:38:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ Reaction_Serv Irssi_serv::multiple_kick(UserHuman * target_user, std::string & t
 	target_user->errase_chan(static_cast<size_t>(index_c));
 	send_message(KICK_MSG_TARGET(current_chan->get_name(), target_user->get_nick(), current_cmd.get_message()), this->_all_pollfd[target_user->get_index_pollfd()]);
 	std::vector<size_t> list_of_index_u = current_chan->get_index_users();
-	for (size_t i = 0; i < list_of_index_u.size(); i++)
-	{
-		size_t curent_index_u = list_of_index_u[i];
-		UserHuman & c_u(this->_all_User[curent_index_u]);
-		send_message(KICK_MSG_OTHER(c_u.get_nick(), c_u.get_name(), c_u.get_hostname(), current_chan->get_name(), target_user->get_nick(), current_cmd.get_message()), this->_all_pollfd[c_u.get_index_pollfd()]);
-	}
+	send_message(KICK_MSG_OTHER(current_user->get_nick(), current_user->get_name(), current_user->get_hostname(), current_chan->get_name(), target_user->get_nick(), current_cmd.get_message()), current_pollfd );
+	_send_message_to_a_chanelle(*current_user, *current_chan, KICK_MSG_OTHER(current_user->get_nick(), current_user->get_name(), current_user->get_hostname(), current_chan->get_name(), target_user->get_nick(), current_cmd.get_message()));
 	return (NONE);
 }

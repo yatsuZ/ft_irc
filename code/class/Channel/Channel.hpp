@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/02/25 00:02:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 16:13:04 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ public:
 	std::string 				get_name(void)const {return this->_name;}
 	std::string					get_key(void)const {return this->_key;}
 	std::string					get_topic(void)const {return this->_topic;}
+	std::string					get_autor_topic(void)const {return this->_autor_topic;}
+	time_t						get_creation_topic(void)const {return this->_creation_topic;}
 	std::vector<size_t>			get_index_users(void)const {return this->_index_users;}
 	std::vector<size_t>			get_index_operators(void)const {return this->_index_operators;}
 	size_t						get_nbr_of_user(void)const {return this->_nbr_user;}
@@ -34,7 +36,10 @@ public:
 
 	void		set_name(const std::string & n){_name = n;}
 	void		set_topic(const std::string & t){_topic = t;}
+	void		set_autor_topic(const std::string & at){_autor_topic = at;}
+	void		set_creation_topic(const time_t & ct){_creation_topic = ct;}
 	void		add_user(size_t idx_user);
+	std::string	time_creation_in_string(void) const;
 
 	// erase
 	void	errase_user(size_t index_user);
@@ -46,6 +51,8 @@ private:
 	std::string					_name;
 	std::string					_key;
 	std::string					_topic;
+	std::string					_autor_topic;
+	time_t						_creation_topic;
 	std::vector<size_t> 		_index_users;
 	std::vector<size_t>			_index_operators;
 	size_t						_nbr_user;

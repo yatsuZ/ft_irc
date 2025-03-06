@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/03 00:36:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 16:14:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ Channel::Channel() :
 _name("default_name"), 
 _key(""), 
 _topic(""), 
+_autor_topic(""), 
+_creation_topic(0), 
 _index_users(), 
 _index_operators(), 
 _nbr_user(0),
@@ -38,7 +40,9 @@ Channel::~Channel(){}
 Channel::Channel(const std::string & n, const std::string & k) : 
 _name(n), 
 _key(k), 
-_topic("")
+_topic(""),
+_autor_topic(""),
+_creation_topic(0)
 {
 	_limit_user = 0;
 	_nbr_user = 0;
@@ -124,4 +128,12 @@ void	Channel::update_and_errase_index_of_user(size_t index_user)
 	if (to_del != this->_index_operators.end())
 		this->_index_operators.erase(to_del);
 	this->_nbr_user--;
+}
+
+
+std::string Channel::time_creation_in_string(void) const
+{
+	std::ostringstream oss;
+	oss << this->_creation_topic;
+	return oss.str();
 }

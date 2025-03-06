@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 15:08:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 16:39:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define KICK_MSG_TARGET(chan_name, target_nick, msg) ("KICK " + chan_name + " " + target_nick + " :" + msg + CRLF)
 #define KICK_MSG_OTHER(nick, username, hostname, chan_name, target_name, msg) (":" + nick + "!~" + username + "@" + hostname + " KICK "+ chan_name + " " + target_name + " :" + msg + CRLF)
 #define INVIT_MSG_TARGET(nick, username, hostname, target, chan_name) (":" + nick + "!~" + username + "@" + hostname + " INVITE " + target + " " + chan_name + CRLF)
+#define NEW_TOPIC(nick, username, hostname, chan_name, msg) (":" + nick + "!~" + username + "@" + hostname + " TOPIC " + chan_name + " :" + msg + CRLF)
 
 // RPL (Réponses numériques)
 
@@ -42,6 +43,8 @@
 #define RPL_JOIN(nick, hostname, ip, channel_name) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + CRLF)
 // #RPL_JOIN_K (avec clé)
 #define RPL_JOIN_K(nick, hostname, ip, channel_name, key) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + key + CRLF)
+// RPL_NOTOPIC
+#define RPL_NOTOPIC(server_name, nickname, channelname) (":" + server_name + " 331 " + nickname + " " + channelname + " :No topic is set" + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
 // RPL_TOPICWHOTIME
@@ -117,8 +120,6 @@
 #define RPL_INVITELIST(nickname, channelname, invitedUser) (": 346 " + nickname + " " + channelname + " " + invitedUser + CRLF)
 // RPL_CHANNELMODES
 #define RPL_CHANNELMODES(nickname, channelname, modes) (": 324 " + nickname + " " + channelname + " " + modes + CRLF)
-// RPL_NOTOPIC
-#define RPL_NOTOPIC(nickname, channelname) (": 331 " + nickname + " " + channelname + " :No topic is set" + CRLF)
 // RPL_YOUREOPER
 #define RPL_YOUREOPER (std::string(": 381 :You are now an IRC operator")) + CRLF
 // RPL_UMODEIS

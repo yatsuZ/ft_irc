@@ -1,7 +1,6 @@
 TO DO
 
 YASSINE
-    - TOPIC
     - verifier chaque cmd
     - Faire la diff entre irssi et nc
     - tester avec nc
@@ -12,7 +11,7 @@ CÔME
 SAMIRA
     - WHO
     -   MODE:
-            - chaque mode de channel (i, t, k, o, l <=)
+        -  mode de channel (b, k <=)
     -   BOT
             no n-word D:
 
