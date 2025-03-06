@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/05 19:48:43 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:41:48 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ cas 3 	: /mode [target][mode op][parametre] <===>	/mode #lobby +k secret
 Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	(void)index_of_current_pollfd;
-	std::cout << "------------- MODE -------------" << std::endl;
+	std::cout << PINK <<  "-------- MODE --------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	std::vector<std::string>	args = current_cmd.get_arg();
 

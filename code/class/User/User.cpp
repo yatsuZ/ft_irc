@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/05 18:30:00 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:38:26 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ void	User::set_servername(const std::string & s)
 
 void	User::set_mode(Mode newmode)
 {
-	if (_mode == newmode)
-		_mode = NO_MODE;
-	else
-		_mode = newmode;
+	_mode = newmode;
 }
 
+void	User::erase_mode(Mode newmode)
+{
+	if (_mode == newmode)
+		_mode = NO_MODE;
+}
 void	User::add_chan(size_t idx_of_chan)
 {
 	_chans.push_back(idx_of_chan);

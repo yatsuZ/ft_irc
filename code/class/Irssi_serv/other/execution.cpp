@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/05 19:53:48 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:04:05 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ void	Irssi_serv::do_mode( Cmd_irssi &current_cmd, UserHuman *user, pollfd & curr
 	// (void)user;
 	// (void)current_pollfd;
 	// (void)chan;
-	std::cout << "---interpretation des modes ---" <<std::endl;
+	std::cout << PINK <<  "...interpretation des modes..." << NOCOLOR << std::endl;
 	std::vector<std::string> cmd_args = current_cmd.get_arg();
 	if (cmd_args.size() < 2)
 		return ; 
 	Mode m = get_mode(cmd_args[1]); // "+i" devient I
-	std::cout << "Mode " << cmd_args[1] << " " << m << std::endl;
 	//get msg du mode et l'afficher
 	Mode mode = (this->*mode_table[m])(current_cmd, user, current_pollfd, chan); 
 	(void)mode;

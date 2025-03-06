@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/05 19:16:33 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:58:22 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,14 @@
 // RPL_CHANONINVITE
 #define RPL_CHANONINVITE(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + arg + CRLF)
 // RPL_INVISIBLE
-#define RPL_INVISIBLE(nick, target, arg) (":" + nick + " MODE " + target + " :" + arg)
+#define RPL_INVISIBLE(nick, target, arg) (":" + nick + " MODE " + target + " :" + arg + CRLF)
+// RPL_MODE_T
+#define RPL_MODE_T(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + CRLF)
+// RPL_MODE_O
+#define RPL_MODE_O(nick, hostname, ip, channel_name, arg, target) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + " " + target + CRLF)
 
-//--------------------- ERR (Erreurs numériques)
+
+//######################ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
 // ERR_NOSUCHCHANNEL
@@ -81,7 +86,7 @@
 // ERR_CHANNELISFULL
 #define ERR_CHANNELISFULL(server_name, nick, channel_name) (":" + server_name + " 471 " + nick + " " + channel_name + " :Cannot join channel (+l)" + CRLF)
 // ERR_UNKNOWNMODE 
-#define ERR__UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + "" + character + " :is unknown mode char to me" + CRLF)
+#define ERR_UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + "" + character + " :is unknown mode char to me" + CRLF)
 // ERR_INVITEONLYCHAN
 #define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " "  + channel_name + " :Cannot join channel (+i)" + CRLF)
 // ERR_BANNEDFROMCHAN
@@ -187,9 +192,9 @@
 // ERR_UNAVAILRESOURCE
 #define ERR_UNAVAILRESOURCE(nickname, resource) (": 437 " + nickname + " " + resource + " :Nick/channel is temporarily unavailable" + CRLF)
 // ERR_UNKNOWNMODE
-#define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
+// #define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
 // ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(nickname, target_nick, channelname) (": 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
+// #define ERR_USERNOTINCHANNEL(nickname, target_nick, channelname) (": 441 " + nickname + " " + target_nick + " #" + channelname + " :They aren't on that channel" + CRLF)
 // ERR_USERONCHANNEL
 #define ERR_USERONCHANNEL(nickname, target_nick, channelname) (": 443 " + nickname + " " + target_nick + " #" + channelname + " :is already on channel" + CRLF)
 // ERR_WILDTOPLEVEL

@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/05 18:00:49 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 14:38:56 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ public:
 	std::string				mode_to_str(const Mode & m)const;
 
 	// erase
+	void	erase_mode(Mode newmode);
 	void	errase_chan(size_t index_chan);
 	void	update_index_of_chan(size_t index_chan);
 	void	update_and_errase_index_of_chan(size_t index_chan);

@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/05 19:02:45 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/06 17:42:07 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,15 @@ bool	Channel::is_operator(size_t	idx_user)
 	return 0;
 }
 
+bool	Channel::is_in_chan(size_t idx_user)
+{
+	for(size_t i=0; i<_index_users.size(); i++)
+	{
+		if (_index_users[i] == idx_user)
+			return 1;
+	}
+	return 0;
+}
 void	Channel::set_mode(Mode m)
 {
 	for (size_t i=0; i<_mode.size(); i++)
@@ -173,3 +182,4 @@ void	Channel::erase_mode(Mode m)
 			_mode.erase(_mode.begin() + i);
 	}
 }
+

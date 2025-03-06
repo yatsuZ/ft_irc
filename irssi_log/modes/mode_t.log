@@ -1,0 +1,159 @@
+<< JOIN #irssi
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip JOIN :#irssi
+>> :choopa.nj.us.dal.net 332 Kurps #irssi :Irssi v1.4.5 has been released - https://irssi.org/download/ | Irssi Scripts available at - https://scripts.irssi.org | If you have a question, please ask here and wait patiently.
+>> :choopa.nj.us.dal.net 333 Kurps #irssi hacktor!~null@d115-961-aad-9363-37b0.41.206.ip 1706967464
+>> :choopa.nj.us.dal.net 353 Kurps = #irssi :Kurps @burnout skylitez @Nando @twkm United_Snakes 
+>> :choopa.nj.us.dal.net 366 Kurps #irssi :End of /NAMES list.
+<< MODE #irssi
+>> :choopa.nj.us.dal.net 324 Kurps #irssi +tnj 3:10
+--> chanquery mode
+<< WHO #irssi
+>> :choopa.nj.us.dal.net 329 Kurps #irssi 1498915123
+--> event 329
+>> :choopa.nj.us.dal.net 352 Kurps #irssi ~smlamali 40ba-4c8-ff95-d0ca-f755.210.62.ip choopa.nj.us.dal.net Kurps H :0 Samira MLAMALI
+--> silent event who
+>> :choopa.nj.us.dal.net 352 Kurps #irssi ~burnout 0fucks.com sakura.jp.as.dal.net burnout H@ :2 burnout
+--> silent event who
+>> :choopa.nj.us.dal.net 352 Kurps #irssi kiky ddb2-4339-c711-9b23-2867.skyz.biz.id lair.nl.eu.dal.net skylitez H :5 𝓢𝓲𝓰𝓶𝓪𝓕𝓜*
+--> silent event 
+who
+>> :choopa.nj.us.dal.net 352 Kurps #irssi nando dalnet lion.tx.us.dal.net Nando H*@ :5 Keep calm and let Nando handle it
+--> silent event who
+>> :choopa.nj.us.dal.net 352 Kurps #irssi twkm rfc1459.net bifrost.ca.us.dal.net twkm G@ :2 "those who know me have no need of my name"
+--> silent event who
+>> :choopa.nj.us.dal.net 352 Kurps #irssi invictus 9e71-a0f2-1770-3621-8c2.sdf.org bifrost.ca.us.dal.net United_Snakes G :2 Ian
+--> silent event who
+>> :choopa.nj.us.dal.net 315 Kurps #irssi :End of /WHO list.
+--> chanquery who end
+<< MODE #irssi b
+>> :choopa.nj.us.dal.net 368 Kurps #irssi :End of Channel Ban List
+--> chanquery ban end
+
+<< MODE #irssi +t
+>> :choopa.nj.us.dal.net 482 Kurps #irssi :You're not channel operator
+<< MODE #irssi -t
+>> :choopa.nj.us.dal.net 482 Kurps #irssi :You're not channel operator
+
+////////////////////////////////////////////////////////////////////
+<< PART #irssi													 ///
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip PART #irssi///
+////////////////////////////////////////////////////////////////////
+
+
+
+<< JOIN #LobbySam
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip JOIN :#LobbySam
+>> :choopa.nj.us.dal.net 353 Kurps = #LobbySam :@Kurps 
+>> :choopa.nj.us.dal.net 366 Kurps #LobbySam :End of /NAMES list.
+<< MODE #LobbySam
+>> :choopa.nj.us.dal.net 324 Kurps #LobbySam + 
+--> chanquery mode
+<< WHO #LobbySam
+>> :choopa.nj.us.dal.net 329 Kurps #LobbySam 1741271935
+--> event 329
+>> :choopa.nj.us.dal.net 352 Kurps #LobbySam ~smlamali 40ba-4c8-ff95-d0ca-f755.210.62.ip choopa.nj.us.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :choopa.nj.us.dal.net 315 Kurps #LobbySam :End of /WHO list.
+--> chanquery who end
+<< MODE #LobbySam b
+>> :choopa.nj.us.dal.net 368 Kurps #LobbySam :End of Channel Ban List
+--> chanquery ban end
+
+<< MODE #LobbySam +t
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LobbySam +t 
+<< MODE #LobbySam +t
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LobbySam +t 
+<< MODE #LobbySam +thuh
+>> :choopa.nj.us.dal.net 472 Kurps u :is unknown mode char to me
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LobbySam +t 
+<< QUIT :leaving
+
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby +y
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby +t
+>> :YASACO 461 smlamali MODE :Not enough parameters
+<< MODE #lobby -t
+>> :YASACO 461 smlamali MODE :Not enough parameters
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+<< MODE #lobby +i
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby +i
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +i
+
+
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby +t
+>> :Kurps!~smlamali@127.0.0.1 MODE +t
+<< MODE #lobby +i
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby +i
+<< MODE #lobby +t
+>> :Kurps!~smlamali@127.0.0.1 MODE +t
+<< MODE #lobby -t
+>> :Kurps!~smlamali@127.0.0.1 MODE -t
+<< QUIT :leaving
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby +t
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby +t
+<< MODE #lobby -t
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby -t
+<< QUIT :leaving

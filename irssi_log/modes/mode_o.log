@@ -1,0 +1,23 @@
+<< MODE #lobby +o Kurps
+>> :bifrost.ca.us.dal.net 482 Kurps #lobby :You're not channel operator
+
+<< MODE #lobby +o
+>> :bifrost.ca.us.dal.net 482 Kurps #lobby :You're not channel operator
+
+<< JOIN #LOBBYSAM
+<< MODE #LOBBYSAM +o
+
+<< MODE #lobby +o Kurps
+>> :bifrost.ca.us.dal.net 482 Kurps #lobby :You're not channel operator
+
+>> :Kurps_!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip JOIN :#LOBBYSAM
+
+<< MODE #LOBBYSAM +o Kurps_
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LOBBYSAM +o Kurps_
+
+<< MODE #LOBBYSAM -o Kurps
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LOBBYSAM -o Kurps
+
+<< MODE #LOBBYSAM +o puro
+>> :halcyon.il.us.dal.net 482 Kurps #LOBBYSAM :You're not channel operator
+
