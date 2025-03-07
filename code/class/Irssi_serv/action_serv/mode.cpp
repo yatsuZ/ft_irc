@@ -6,19 +6,19 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:41:48 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/07 11:27:43 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
 
 /*
- MODE [nickname] {[+|-] | i | w | s | o} 
+ MODE [nickname] {[+|-] | i} 
 	Definit la maniere dont est percu l'utilisatuer par les autres
 	> i: invisible
 	> o: operator
  
- MODE [channel] {[+|-]|o|p|s|i|t|n|b|v} [<limit>] [<user>] [ban mask>]
+ MODE [#channel] {[+|-] | i | t | k | o | l} [parametre]
  	>i: definir/supp canal sur invitation
  	>t: def/supp restriction TOPIC (pour op de cannaux)
  	>k: def/supp clé du canal (mdp)
@@ -26,7 +26,7 @@
  	>l: def/supp limite d'utilisateurs pour le canal
 */
 
-// mode [target][mode][parametre] 
+// MODE [target][mode][parametre] 
 /*
 cas 1	: /mode [target]					 <===>	/mode #lobby 	 /mode user
 cas 2 	: /mode [target][mode op]			 <===>	/mode #lobby +i  /mode user -i 

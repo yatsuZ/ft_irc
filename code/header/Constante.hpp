@@ -84,5 +84,3 @@ enum Mode
 	L,				// definit/supprime limite d'utilisateur dans le canal
 	NO_MODE
 };
-
-/* ft_modes() {*/

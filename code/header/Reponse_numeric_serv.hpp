@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:58:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/07 18:00:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@
 //RPL_USER (custoisé par sam pour reponse de cmd user)
 #define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
 //RPL_MODE
-// #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
-//RPL_WHOISUSER
+#define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
+// RPL_WHOISUSER
 #define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
+// RPL_ENDOFWHO
+#define RPL_ENDOFWHO(server_name, nick, target) (":" + server_name + " 315 " + nick + " " + target + " :End of /WHO list" + CRLF)
 // #RPL_ENDOFWHOIS
 #define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS" + CRLF)
 // #RPL_JOIN
@@ -40,6 +42,8 @@
 #define RPL_JOIN_K(nick, hostname, ip, channel_name, key) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + key + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
+// #RPL_WHOREPLY
+#define RPL_WHOREPLY(server_name, nick, channel, hostname, ip, target_nick, realname) (":" + server_name + " 352 " + nick + " " + channel + " ~" + hostname + " " + ip + " " + server_name + " " + target_nick + " H :0 " + realname + CRLF)
 // #RPL_NAMEREPLY
 #define RPL_NAMEREPLY(server_name, nick, channel_name, list_user) (":" + server_name + " 353 " + nick + " = " + channel_name + " :" + list_user + CRLF)
 // #RPL_ENDOFNAMES
@@ -56,6 +60,12 @@
 #define RPL_MODE_T(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + CRLF)
 // RPL_MODE_O
 #define RPL_MODE_O(nick, hostname, ip, channel_name, arg, target) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + " " + target + CRLF)
+// RPL_MODE_K
+#define RPL_MODE_K(nick, hostname, ip, channel_name, arg, key) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + " " + key + CRLF)
+// RPL_MODE_L
+#define RPL_MODE_L(nick, hostname, ip, channel_name, mode, param) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + mode + " " + param + CRLF)
+// RPL_RMV_L
+#define RPL_RMV_L(nick, hostname, ip, channel_name, mode) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + mode + CRLF)
 
 
 //######################ERR (Erreurs numériques)
@@ -77,6 +87,8 @@
 #define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
+// ERR_USERNOTINCHANNEL
+#define ERR_USERNOTINCHANNEL(server_name, nick, target, channel_name) (":" + server_name + " 441 " + nick + " " + target + " " + channel_name + " :They aren't on that channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 // ERR_ALREADYREGISTERED
@@ -86,7 +98,7 @@
 // ERR_CHANNELISFULL
 #define ERR_CHANNELISFULL(server_name, nick, channel_name) (":" + server_name + " 471 " + nick + " " + channel_name + " :Cannot join channel (+l)" + CRLF)
 // ERR_UNKNOWNMODE 
-#define ERR_UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + "" + character + " :is unknown mode char to me" + CRLF)
+#define ERR_UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + " " + character + " :is unknown mode char to me" + CRLF)
 // ERR_INVITEONLYCHAN
 #define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " "  + channel_name + " :Cannot join channel (+i)" + CRLF)
 // ERR_BANNEDFROMCHAN

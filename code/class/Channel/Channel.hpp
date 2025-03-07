@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/06 17:42:10 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/07 17:55:54 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ public:
 	void		set_topic(const std::string & t){_topic = t;}
 	void		set_mode(Mode m);
 	void		set_operator(size_t idx_user){_index_operators.push_back(idx_user);}
+	void		set_limit(size_t l) {_limit_user = l;}
+	void		set_key(std::string k) {_key = k;}
 	void		add_user(size_t idx_user);
 
 	bool		is_operator(size_t idx_user);

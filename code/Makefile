@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/06 16:47:28 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/07 17:03:44 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,17 @@ ACTION_SERV_FILES =	cap.cpp				\
 					mode.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
+					who.cpp				\
 					whois.cpp			\
 					quit.cpp			\
 					join.cpp
 
-MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp	\
-			 ./class/Irssi_serv/mode_serv/ft_mode_t.cpp	\
-			 ./class/Irssi_serv/mode_serv/ft_mode_k.cpp	\
-			 ./class/Irssi_serv/mode_serv/ft_mode_o.cpp	
+MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_t.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_k.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_o.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_l.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_none.cpp
 
 OTHER_FILE_FROM_IRSSI_SERV =	./class/Irssi_serv/other/execution.cpp		\
 								./class/Irssi_serv/other/other.cpp			\

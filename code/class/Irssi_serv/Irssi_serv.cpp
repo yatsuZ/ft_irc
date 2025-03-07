@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 16:47:18 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:52:15 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[JOIN] = &Irssi_serv::ft_join;
 	action_table[PRIVMSG] = &Irssi_serv::ft_privmsg;
-	// action_table[WHO] = &Irssi_serv::ft_who;
+	action_table[WHO] = &Irssi_serv::ft_who;
 	action_table[IDK] = &Irssi_serv::ft_idk;
 
 	/////
@@ -35,8 +35,8 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	mode_table[T]		= 	&Irssi_serv::ft_mode_t;
 	mode_table[K]		= 	&Irssi_serv::ft_mode_k;
 	mode_table[O]		= 	&Irssi_serv::ft_mode_o;
-	// mode_table[L]		= 	&Irssi_serv::ft_mode_l;
-	// mode_table[NO_MODE]	= 	&Irssi_serv::ft_mode_none;
+	mode_table[L]		= 	&Irssi_serv::ft_mode_l;
+	mode_table[NO_MODE]	= 	&Irssi_serv::ft_mode_none;
 
 }
 
