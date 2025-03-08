@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:11 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/07 15:38:24 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:29:48 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ Reaction_Serv	Irssi_serv::ft_who(Cmd_irssi &current_cmd, UserHuman *current_user
 				user->get_realname()), current_pollfd);
 			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), user->get_nick()), current_pollfd), NONE);
 		}
+		if (user->get_mode() == I)
+			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), user->get_nick()), current_pollfd), NONE);
 	}
 
 	if (chan != NULL)
@@ -63,5 +65,7 @@ Reaction_Serv	Irssi_serv::ft_who(Cmd_irssi &current_cmd, UserHuman *current_user
 				user->get_realname()), current_pollfd);
 			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), user->get_nick()), current_pollfd), NONE);
 	}
+
+	send_message(ERR_NOSUCHCHANNEL(this->get_name(), current_user->get_name(), cmd_args[0]), current_pollfd);
 	return (NONE);
 }

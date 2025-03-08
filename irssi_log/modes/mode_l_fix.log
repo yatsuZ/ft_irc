@@ -1,0 +1,66 @@
+<< JOIN #sambby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#sambby
+>> :YASACO 353 Kurps = #sambby :@Kurps
+>> :YASACO 366 Kurps #sambby :End of /NAMES list
+<< MODE #sambby
+>> :YASACO 324 Kurps #sambby +
+--> chanquery mode
+<< WHO #sambby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #sambby +l 1
+>> :Kurps!~smlamali@127.0.0.1 MODE #sambby +l 1
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< WHO #sambby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< WHO #sammby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #sambby +k key
+>> :Kurps!~smlamali@127.0.0.1 MODE #sambby +k key
+>> :k!~smlamali@smlamali QUIT :Quit: Lostterminalterminal
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #sambby
+--> lag pong
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #sambby b
+--> lag pong
+>> :YASACO 472 Kurps b :is unknown mode char to me
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED mode b: chanquery abort
+<< MODE #sambby b
+--> lag pong
+>> :YASACO 472 Kurps b :is unknown mode char to me
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED mode b: chanquery abort
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+>> :Kurps_!~smlamali@smlamali QUIT :Quit: leaving
+<< QUIT :leaving

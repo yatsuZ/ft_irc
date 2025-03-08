@@ -1,0 +1,37 @@
+<< JOIN #lobbysam
+
+<< MODE #lobbysam +l
+>> :serenity.fl.us.dal.net 461 Kurps MODE +l :Not enough parameters
+
+<< MODE #lobbysam -l
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -l 
+
+<< MODE #lobbysam +l 0
+<< MODE #lobbysam +l -1
+<< MODE #lobbysam +l 10
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam +l 10
+
+
+<< MODE #lobbysam +l sasd
+<< MODE #lobbysam +l 12
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam +l 12
+<< MODE #lobbysam -l
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -l 
+<< MODE #lobbysam +l 12
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam +l 12
+<< MODE #lobbysam -l12
+>> :nibiru.ix.eu.dal.net 472 Kurps 1 :is unknown mode char to me
+>> :nibiru.ix.eu.dal.net 472 Kurps 2 :is unknown mode char to me
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -l 
+<< PING nibiru.ix.eu.dal.net
+>> :nibiru.ix.eu.dal.net PONG nibiru.ix.eu.dal.net :Kurps
+--> lag pong
+<< MODE #lobbysam +l 12
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam +l 12
+<< MODE #lobbysam -l12
+>> :nibiru.ix.eu.dal.net 472 Kurps 1 :is unknown mode char to me
+>> :nibiru.ix.eu.dal.net 472 Kurps 2 :is unknown mode char to me
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -l 
+<< MODE #lobbysam -li
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -li 
+<< QUIT :leaving

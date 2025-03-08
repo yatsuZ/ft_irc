@@ -1,9 +1,0 @@
-<< MODE #LOBBYSAM +o SAM
->> :choopa.nj.us.dal.net 401 Kurps SAM :No such nick/channel
->> :choopa.nj.us.dal.net 441 Kurps SAM #LOBBYSAM :They aren't on that channel
-
-<< MODE #LOBBYSAM -o Kurps
->> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LOBBYSAM -o Kurps
-
-<< MODE #LOBBYSAM +i
->> :choopa.nj.us.dal.net 482 Kurps #LOBBYSAM :You're not channel operator

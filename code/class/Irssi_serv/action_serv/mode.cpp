@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:46:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/07 11:27:43 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/08 13:29:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ Reaction_Serv	Irssi_serv::ft_mode(Cmd_irssi &current_cmd, UserHuman * current_us
 	{
 		if (args.size() == 1) //ajouter list_mode
 			return (send_message(RPL_CHANNELMODEIS(this->get_name(), current_user->get_nick(), target_channel->get_name(), target_channel->list_mode()),current_pollfd), NONE);
+		if (!target_channel->is_operator(_get_index_of_userhuman_by_nick(current_user->get_nick())))
+			return(send_message(ERR_CHANOPRIVSNEEDED(this->get_name(), current_user->get_nick(), target_channel->get_name()), current_pollfd), NONE);
 		do_mode(current_cmd, current_user, current_pollfd, target_channel);
 	}
 	
 	//----------------- USER MODE
 	else if (target_user != NULL)
 	{
-		if (args.size() == 1) //ajouter user->liste_mode au lieu de ""
+		if (args.size() == 1)
 			return (send_message(RPL_UMODEIS(this->get_name(), current_user->get_nick(), target_user->list_mode()), current_pollfd), NONE);
 		if (current_user->get_nick() != target_user->get_nick())
 			return (send_message(ERR_USERSDONTMATCH(this->get_name(), current_user->get_nick()), current_pollfd), NONE);

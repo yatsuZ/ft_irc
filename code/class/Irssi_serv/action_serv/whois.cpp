@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:53:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/01 16:59:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/08 12:33:28 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ Reaction_Serv	Irssi_serv::ft_whois(Cmd_irssi &current_cmd, UserHuman * current_u
 	while (i < _all_User.size())
 	{
 		if (_all_User[i].get_nick() == c_args[0])
-		{
-			
+		{	
 			who = &_all_User[i];
 			break;
 		}

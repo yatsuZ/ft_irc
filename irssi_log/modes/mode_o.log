@@ -1,3 +1,14 @@
+
+<< MODE #LOBBYSAM +o SAM
+>> :choopa.nj.us.dal.net 401 Kurps SAM :No such nick/channel
+>> :choopa.nj.us.dal.net 441 Kurps SAM #LOBBYSAM :They aren't on that channel
+
+<< MODE #LOBBYSAM -o Kurps
+>> :Kurps!~smlamali@40ba-4c8-ff95-d0ca-f755.210.62.ip MODE #LOBBYSAM -o Kurps
+
+<< MODE #LOBBYSAM +i
+>> :choopa.nj.us.dal.net 482 Kurps #LOBBYSAM :You're not channel operator
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 << MODE #lobby +o Kurps
 >> :bifrost.ca.us.dal.net 482 Kurps #lobby :You're not channel operator
 
@@ -21,3 +32,59 @@
 << MODE #LOBBYSAM +o puro
 >> :halcyon.il.us.dal.net 482 Kurps #LOBBYSAM :You're not channel operator
 
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+
+//// err -> Total of 2 nicks [2 ops,
+
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+
+<< MODE #lobby -o Kuro
+>> :YASACO 472 Kurps-o :is unknown mode char to me
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #lobby
+--> lag pong
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby -i#lobby
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #lobby
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 Kurps = #lobby :@Kurps
+>> :YASACO 366 Kurps #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 Kurps #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #lobby +i
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby +i
+<< MODE #lobby -o Kurps
+>> :YASACO 472 Kurps-o :is unknown mode char to me
+<< MODE #lobby -i
+>> :Kurps!~smlamali@127.0.0.1 MODE #lobby -i
+<< QUIT :leaving

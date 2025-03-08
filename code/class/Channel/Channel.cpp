@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/06 17:42:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/08 14:19:33 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,3 +183,10 @@ void	Channel::erase_mode(Mode m)
 	}
 }
 
+void	Channel::set_limit(std::string l)
+{
+	std::stringstream sstream(l);
+	size_t	rslt;
+	sstream >> rslt;
+	_limit_user = rslt;
+}
