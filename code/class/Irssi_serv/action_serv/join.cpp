@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 16:48:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 18:29:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			current_user->add_chan(index_channel);
 			if (keys[i] != channel->get_key())
 				send_message(ERR_BADCHANNELKEY(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd);
+			_send_message_to_a_chanelle(*current_user, *channel, RPL_JOIN_K(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i], keys[i]));
 			send_message(RPL_JOIN_K(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i], keys[i]), current_pollfd);
 			if (!channel->get_topic().empty())
 				send_message(RPL_TOPIC(this->get_name(), current_user->get_nick(), channel->get_name(), channel->get_topic() + CRLF), current_pollfd);
