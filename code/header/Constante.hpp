@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:45:41 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ enum Action {
 	JOIN,
 	PRIVMSG,
 	WHO,
+	KICK,
+	INVITE,
+	TOPIC,
+	PART,
 	IDK// derniere Action du tableau
 };
 

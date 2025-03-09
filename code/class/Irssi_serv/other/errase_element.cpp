@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:23:51 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/27 13:54:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 23:40:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,3 @@ void	Irssi_serv::_erase_empty_chanelle(void)
 	std::cout << "FIN de la verification" << std::endl;
 	std::cout << _all_Channel << std::endl;
 }
-
-/*
-/connect 127.0.0.1 8080
-/join #a
-/quit
-*/

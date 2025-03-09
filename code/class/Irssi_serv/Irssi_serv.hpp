@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 16:34:32 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:46:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@ private:
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
 	Reaction_Serv		ft_privmsg(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// PRIVMSG
 	Reaction_Serv		ft_who(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHO
+	Reaction_Serv		ft_kick(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// KICK
+	Reaction_Serv		ft_invite(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// INVITE
+	Reaction_Serv		ft_topic(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// TOPIC
+	Reaction_Serv		ft_part(Cmd_irssi &, UserHuman * , pollfd &, size_t &);				// PART
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
 
@@ -71,6 +75,11 @@ private:
 	bool	_nick_already_used(std::string nick) const;
 	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
+	int		_is_op_in_chan(UserHuman &user, Channel &chan);
+
+	// specefique cmd
+	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
+	Reaction_Serv multiple_part(pollfd &current_pollfd, UserHuman & current_user, std::string & chan_name, Cmd_irssi &current_cmd);
 
 	// specefique get
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
@@ -91,7 +100,6 @@ private:
 	void	_errase_user_by_index_from_tab(size_t index_of_user);
 	void	_erase_empty_chanelle(void);
 	void	_errase_user_from_tab(pollfd &current_pollfd);
-
 
 	// debug
 	void		show_all_chan_from_user(const UserHuman & user){std::cout << BLUE + user.get_nick() + PINK << " all his chanelle : " << GREEN + get_all_chan_name_from_user(user) << NOCOLOR << std::endl;}

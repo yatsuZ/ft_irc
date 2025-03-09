@@ -64,7 +64,10 @@ void	User::errase_chan(size_t index_chan)
 	for (std::vector<size_t>::iterator i = this->_chans.begin(); i != this->_chans.end(); i++)
 	{
 		if (*i == index_chan)
+		{
 			this->_chans.erase(i);
+			return ;
+		}
 	}
 }
 

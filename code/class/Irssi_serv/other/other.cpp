@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 19:10:32 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/03 00:25:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,35 @@ Mode	Irssi_serv::init_mode(char & c)
  	return (NO_MODE);
 }
 
+/// @brief verifier qu'un user est un operateur dans un chanelle
+/// @param user luser quon shouaite verifier
+/// @param chan dans ce chanelle
+/// @return -1 si on ne trouve pas lindex du user, -2 si il n'est pas dans le channelle, -3 si il nest pas operator et 0 si il est operator
+int		Irssi_serv::_is_op_in_chan(UserHuman &user, Channel &chan)
+{
+	bool is_inside = false;
+	ssize_t index_of_user_tmp = this->_get_index_of_userhuman_by_nick(user.get_nick());
+
+	if (index_of_user_tmp == -1)
+		return (-1); // on as pas trouver lutilisateur
+	size_t index_of_user = index_of_user_tmp;
+	std::vector<size_t> list_user_index = chan.get_index_users();
+
+	for (size_t i = 0; i < list_user_index.size() && is_inside == false; i++)
+	{
+		if (index_of_user == list_user_index[i])
+			is_inside = true;
+	}
+	if (is_inside == false)
+		return (-2);
+
+	is_inside = false;
+	std::vector<size_t> list_op_index = chan.get_index_operators();
+
+	for (size_t i = 0; i < list_op_index.size() && is_inside == false; i++)
+	{
+		if (index_of_user == list_op_index[i])
+			is_inside = true;
+	}
+	return (is_inside?(0):(-3));
+}

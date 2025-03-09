@@ -6,21 +6,11 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/01 01:05:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/02 17:48:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
-
-
-static bool target_is_chanelle(std::string & arg1)
-{
-	if (arg1.size() == 1 || (arg1.size() == 2 && arg1[0] == '@'))
-		return (false);
-	else if (arg1[0] == '#' || (arg1[0] == '@' && arg1[1] == '#'))
-		return (true);
-	return (false);
-}
 
 // message envoyer : :<nick>!~<username>@<hostname> PRIVMSG <CIBLE> :<msg>
 // message recu    : PRIVMSG <cible> :<msg>

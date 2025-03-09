@@ -1,20 +1,24 @@
 TO DO
 
 YASSINE
-    - KICK
-    - INIVTE
+    - leave
+    - verifier chaque cmd
+    - Faire la diff entre irssi et nc
+    - tester avec nc
 
 CÔME
     - Bonus file fd
 
 SAMIRA
+    - WHO
     -   MODE:
-            - chaque mode de channel (i, t, k, o, l <=)
+        -  mode de channel (b, k <=)
     -   BOT
             no n-word D:
 
 RESTE:
-    - COMMANDES :  TOPIC, WHO
+    - COMMANDES :  
+    - faire le mdp verifier
 
 
 

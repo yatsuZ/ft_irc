@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 16:34:58 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:28:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //////////////////////////////////////////////////////////// Methode pour defnir les attribut individuellement
 
-const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) const
+const std::string	Cmd_irssi::init_cmd(std::string const &all_message_from_client) const
 {
 	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	size_t	len_of_tokens = tokens.size();
@@ -29,7 +29,7 @@ const std::string	Cmd_irssi::init_cmd(std::string &all_message_from_client) cons
 	return (std::string());
 }
 
-const std::vector<std::string>	Cmd_irssi::init_arg(std::string &all_message_from_client) const
+const std::vector<std::string>	Cmd_irssi::init_arg(std::string const &all_message_from_client) const
 {
 	std::vector<std::string> tokens = ft_split(all_message_from_client, SEPERATOR);
 	std::vector<std::string> list_arg;
@@ -78,13 +78,20 @@ Action	Cmd_irssi::init_action(void) const
 		return (PRIVMSG);
 	else if (this->get_cmd() == "WHO")
 		return (WHO);
-
+	else if (this->get_cmd() == "KICK")
+		return (KICK);
+	else if (this->get_cmd() == "INVITE")
+		return (INVITE);
+	else if (this->get_cmd() == "TOPIC")
+		return (TOPIC);
+	else if (this->get_cmd() == "PART")
+		return (PART);
 	return (IDK);
 }
 
 //////////////////////////////////////////////////////////// Constructeur Destructeur de la class
 
-Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION), _all_line()
+Cmd_irssi::Cmd_irssi(): _cmd(""), _arg(std::vector<std::string>()), _action_to_do(NO_ACTION), _all_line("")
 {
 }
 
@@ -139,5 +146,7 @@ std::string	Cmd_irssi::get_message(void) const
 	std::string::size_type pos = str.find(':');
 	if (pos != std::string::npos)
 		str = str.substr(pos + 1); // Garde seulement ce qui est après ':'
+	else
+		return ("");
 	return (str);
 }

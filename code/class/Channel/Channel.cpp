@@ -26,6 +26,8 @@ Channel::Channel() :
 _name("default_name"), 
 _key(""), 
 _topic(""), 
+_autor_topic(""), 
+_creation_topic(0), 
 _index_users(), 
 _index_operators(), 
 _nbr_user(0),
@@ -38,7 +40,9 @@ Channel::~Channel(){}
 Channel::Channel(const std::string & n, const std::string & k) : 
 _name(n), 
 _key(k), 
-_topic("")
+_topic(""),
+_autor_topic(""),
+_creation_topic(0)
 {
 	_limit_user = 0;
 	_nbr_user = 0;
@@ -57,12 +61,18 @@ void	Channel::errase_user(size_t index_user)
 	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
 	{
 		if (*i == index_user)
+		{
 			this->_index_users.erase(i);
+			break ;
+		}
 	}
 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
 	{
 		if (*i == index_user)
+		{
 			this->_index_operators.erase(i);
+			return ;
+		}
 	}
 }
 
@@ -189,4 +199,11 @@ void	Channel::set_limit(std::string l)
 	size_t	rslt;
 	sstream >> rslt;
 	_limit_user = rslt;
+}
+
+std::string Channel::time_creation_in_string(void) const
+{
+	std::ostringstream oss;
+	oss << this->_creation_topic;
+	return oss.str();
 }

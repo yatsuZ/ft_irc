@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/07 17:03:44 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/09 17:30:08 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,17 +33,22 @@ ACTION_SERV_FILES =	cap.cpp				\
 					disconnect.cpp		\
 					error_recv_data.cpp	\
 					idk.cpp				\
+					invite.cpp			\
+					join.cpp			\
+					kick.cpp			\
+					mode.cpp			\
 					nick.cpp			\
 					no_action.cpp		\
-					shutdown.cpp		\
-					user.cpp			\
-					mode.cpp			\
+					part.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
 					who.cpp				\
 					whois.cpp			\
 					quit.cpp			\
-					join.cpp
+					shutdown.cpp		\
+					topic.cpp			\
+					user.cpp			\
+					whois.cpp
 
 MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp		\
 			 ./class/Irssi_serv/mode_serv/ft_mode_t.cpp		\
