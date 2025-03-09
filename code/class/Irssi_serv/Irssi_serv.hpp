@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 17:29:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:46:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ private:
 
 	// specefique cmd
 	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
+	Reaction_Serv multiple_part(pollfd &current_pollfd, UserHuman & current_user, std::string & chan_name, Cmd_irssi &current_cmd);
 
 	// specefique get
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);
@@ -82,7 +83,6 @@ private:
 	void	_errase_user_by_index_from_tab(size_t index_of_user);
 	void	_erase_empty_chanelle(void);
 	void	_errase_user_from_tab(pollfd &current_pollfd);
-	void	_user_quit_chan(size_t index_user, size_t index_chan);
 
 	// debug
 	void		show_all_chan_from_user(const UserHuman & user){std::cout << BLUE + user.get_nick() + PINK << " all his chanelle : " << GREEN + get_all_chan_name_from_user(user) << NOCOLOR << std::endl;}
