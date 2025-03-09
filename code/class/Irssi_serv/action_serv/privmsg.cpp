@@ -23,14 +23,13 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 	// 1. verifier si le user existe ou est ban
 	if (!current_user)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
-	// else if ()// VERIFIER QUIL EST PAS BANN // SAMIRA ici
 
 	if (current_cmd.get_arg().size() < 1)
 	{
 		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd);
 		return (NONE);
 	}
-	std::string name_target = current_cmd.get_arg()[0];
+	std::string name_target = current_cmd.get_arg()[0]; // ici faire boucle for sur les cibles
 	
 	bool only_operator = false;
 	if (target_is_chanelle(name_target))//is chanelle

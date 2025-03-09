@@ -6,11 +6,32 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/17 20:03:36 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 19:51:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
+
+
+/*
+   <target>     ::= <to> [ "," <target> ]
+   <to>         ::= <channel> | <user> '@' <servername> | <nick> | <mask>
+   <channel>    ::= ('#' | '&') <chstring>
+   <servername> ::= <host>
+   <host>       ::= see RFC 952 [DNS:4] for details on allowed hostnames
+   <nick>       ::= <letter> { <letter> | <number> | <special> }
+   <mask>       ::= ('#' | '$') <chstring>
+   <chstring>   ::= <any 8bit code except SPACE, BELL, NUL, CR, LF and <============== 
+                     comma (',')> <================
+
+   Other parameter syntaxes are:
+
+   <user>       ::= <nonwhite> { <nonwhite> }
+   <letter>     ::= 'a' ... 'z' | 'A' ... 'Z'
+   <number>     ::= '0' ... '9'
+   <special>    ::= '-' | '[' | ']' | '\' | '`' | '^' | '{' | '}'  <==============
+	
+ */
 
 Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
@@ -29,7 +50,7 @@ Reaction_Serv Irssi_serv::ft_nick(Cmd_irssi &current_cmd, UserHuman * current_us
 
 	std::string new_nick = list_dargument[0];  // Le premier argument de la commande NICK est le surnom
 
-	if (new_nick.empty() || new_nick.length() > 50 || new_nick == "*")
+	if (new_nick.empty() || new_nick.length() > 9 || new_nick == "*")
 		return (send_message(ERR_ERRONEUSNICKNAME(this->get_name(), new_nick), current_pollfd), (NONE));
 	else if (current_user == NULL)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), new_nick), current_pollfd), (NONE));

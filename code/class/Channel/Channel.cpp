@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/09 17:16:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:27:08 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,4 +206,14 @@ std::string Channel::time_creation_in_string(void) const
 	std::ostringstream oss;
 	oss << this->_creation_topic;
 	return oss.str();
+}
+
+bool		Channel::mode_in_channel(Mode m)
+{
+	for(size_t i=0; i<_mode.size(); i++)
+	{
+		if (_mode[i] == m)
+			return 1;
+	}
+	return 0;
 }

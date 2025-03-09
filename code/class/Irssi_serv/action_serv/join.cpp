@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 18:29:32 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 19:13:22 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			channel =_get_channel_by_name(chans[i]);
 		}else //cas channel existant
 		{
-			std::cout << "nbr_users=" << channel->get_nbr_of_user() << " | linit=" << channel->get_limit_user() << std::endl;
 			if (channel->get_nbr_of_user() == channel->get_limit_user())
 				return (send_message(ERR_CHANNELISFULL(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
 			channel->add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));

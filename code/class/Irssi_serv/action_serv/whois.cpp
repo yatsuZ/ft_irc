@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 00:53:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/08 12:33:28 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 19:51:45 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ Reaction_Serv	Irssi_serv::ft_whois(Cmd_irssi &current_cmd, UserHuman * current_u
 	//check si parametre [nick] renseigné
 	if (c_args.size() != 1)
 		return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd), (NONE));
-	// if (c_args.size() > 1)
-		//
+
 	//recherche l'utilisateur
 	while (i < _all_User.size())
 	{

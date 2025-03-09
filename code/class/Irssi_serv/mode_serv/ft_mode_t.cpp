@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 15:09:54 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/06 16:34:01 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 20:23:05 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ Mode	Irssi_serv::ft_mode_t(Cmd_irssi &current_cmd,  UserHuman *current_user, pol
 		return (send_message(RPL_MODE_T(current_user->get_nick(), current_user->get_hostname(), 
 			current_user->get_ip_to_string(), chan->get_name(), cmd_args[1]), current_pollfd), NO_MODE);
 	}
-	return (send_message(ERR_UNKNOWNMODE(this->get_name(), current_user->get_nick(), cmd_args[1]), current_pollfd), NO_MODE);
+	return (NO_MODE);
 }
