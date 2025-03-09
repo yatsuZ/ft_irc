@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/08 14:18:30 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:17:05 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ public:
 	void		set_key(std::string k) {_key = k;}
 	void		add_user(size_t idx_user);
 
-	bool		is_operator(size_t idx_user);
+	bool		is_operator(size_t idx_user) const;
 	bool		is_in_chan(size_t idx_user);
 	std::string	list_mode(void)const;
 	std::string	mode_to_str(const Mode & m)const;

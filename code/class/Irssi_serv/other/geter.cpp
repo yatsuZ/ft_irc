@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:24:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/04 19:13:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:22:30 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,9 @@ std::string Irssi_serv::get_all_user_nick_from_chan(const Channel & chan)
 		return list;
 	for (size_t i=0; i < list_of_index_all_user.size(); i++)
 	{
-		list += "@" + this->_all_User[list_of_index_all_user[i]].get_nick();
+		if (chan.is_operator(list_of_index_all_user[i]))
+			list += "@";
+		list += this->_all_User[list_of_index_all_user[i]].get_nick();
 		if (i + 1 < list_of_index_all_user.size())
 			list += " ";
 	}
@@ -123,9 +125,6 @@ ssize_t  Irssi_serv::_get_index_of_userhuman_by_nick(const std::string & nick)
 	}
 	return (-1);
 }
-
-
-//////////////
 
 Channel * Irssi_serv::_find_chan_in_user_by_name(UserHuman & emeteur, std::string & name_chan)
 {

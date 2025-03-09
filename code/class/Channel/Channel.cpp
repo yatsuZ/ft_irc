@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/08 14:19:33 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/09 17:16:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ std::string	Channel::list_mode()const
 	return list;
 }
 
-bool	Channel::is_operator(size_t	idx_user)
+bool	Channel::is_operator(size_t	idx_user) const
 {
 	for(size_t i=0; i<_index_operators.size(); i++)
 	{
