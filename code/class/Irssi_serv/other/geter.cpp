@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geter.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:24:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:21:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:22:30 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,9 @@ std::string Irssi_serv::get_all_user_nick_from_chan(const Channel & chan)
 		return list;
 	for (size_t i=0; i < list_of_index_all_user.size(); i++)
 	{
-		list += "@" + this->_all_User[list_of_index_all_user[i]].get_nick();
+		if (chan.is_operator(list_of_index_all_user[i]))
+			list += "@";
+		list += this->_all_User[list_of_index_all_user[i]].get_nick();
 		if (i + 1 < list_of_index_all_user.size())
 			list += " ";
 	}
@@ -124,9 +126,6 @@ ssize_t  Irssi_serv::_get_index_of_userhuman_by_nick(const std::string & nick)
 	return (-1);
 }
 
-
-//////////////
-
 Channel * Irssi_serv::_find_chan_in_user_by_name(UserHuman & emeteur, std::string & name_chan)
 {
 	std::vector<size_t> list_of_index_chan = emeteur.get_chans();
@@ -139,4 +138,20 @@ Channel * Irssi_serv::_find_chan_in_user_by_name(UserHuman & emeteur, std::strin
 	}
 	return (NULL);
 
+}
+
+///
+Mode	Irssi_serv::get_mode(std::string & arg)
+{
+	char name_mode[5] = {'i','t','k','o','l'};
+	if (arg.empty() || arg.size() > 2)
+		return (NO_MODE);
+	for (size_t i=0; i<5; i++)
+	{
+		if (arg.size() == 2 && arg[1] == name_mode[i])
+			return init_mode(name_mode[i]);	
+		if (arg.size() == 1 && arg[0] == name_mode[i])
+			return init_mode(name_mode[i]);
+	}
+	return (NO_MODE);
 }

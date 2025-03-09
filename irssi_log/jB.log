@@ -1,0 +1,113 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Checking Ident
+>> :lion.tx.us.dal.net NOTICE AUTH :*** Found your hostname
+>> :lion.tx.us.dal.net NOTICE AUTH :*** No Ident response
+>> :lion.tx.us.dal.net 433 * Kurps :Nickname is already in use.
+<< NICK Kurps_
+>> :lion.tx.us.dal.net 001 Kurps_ :Welcome to the DALnet IRC Network Kurps_!~smlamali@62.210.32.139
+<< MODE Kurps_ +i
+<< WHOIS Kurps
+>> :lion.tx.us.dal.net 002 Kurps_ :Your host is lion.tx.us.dal.net, running version bahamut-2.2.4
+>> :lion.tx.us.dal.net 003 Kurps_ :This server was created Sat Feb 22 2025 at 12:32:54 EST
+>> :lion.tx.us.dal.net 004 Kurps_ lion.tx.us.dal.net bahamut-2.2.4 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :lion.tx.us.dal.net 005 Kurps_ NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=50 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:50 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :lion.tx.us.dal.net 005 Kurps_ CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :lion.tx.us.dal.net 251 Kurps_ :There are 70 users and 6799 invisible on 37 servers
+>> :lion.tx.us.dal.net 252 Kurps_ 69 :IRC Operators online
+>> :lion.tx.us.dal.net 254 Kurps_ 3403 :channels formed
+>> :lion.tx.us.dal.net 255 Kurps_ :I have 747 clients and 1 servers
+>> :lion.tx.us.dal.net 265 Kurps_ :Current local users: 747 Max: 1812
+>> :lion.tx.us.dal.net 266 Kurps_ :Current global users: 6869 Max: 8222
+>> :lion.tx.us.dal.net NOTICE Kurps_ :*** Notice -- motd was last changed at 21/2/2024 4:48
+>> :lion.tx.us.dal.net 375 Kurps_ :- lion.tx.us.dal.net Message of the Day - 
+>> :lion.tx.us.dal.net 372 Kurps_ :-21/2/2024 4:48
+>> :lion.tx.us.dal.net 372 Kurps_ :-      Welcome to,
+>> :lion.tx.us.dal.net 372 Kurps_ :-       _ _
+>> :lion.tx.us.dal.net 372 Kurps_ :-      | (_)            
+>> :lion.tx.us.dal.net 372 Kurps_ :-      | |_  ___  _ __  
+>> :lion.tx.us.dal.net 372 Kurps_ :-      | | |/ _ \| '_ \ 
+>> :lion.tx.us.dal.net 372 Kurps_ :-      | | | (_) | | | |
+>> :lion.tx.us.dal.net 372 Kurps_ :-      |_|_|\___/|_| |_|.tx.us.dal.net 
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-       * Host..............: lion.dal.net | lion-v6.dal.net
+>> :lion.tx.us.dal.net 372 Kurps_ :-       * Ports.............: 6667 - 6669, 7000 | SSL - 6697
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    Welcome to DALnet, by connecting to this network you agree to 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    abide by its acceptable use policy, visit : http://www.dal.net/aup
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-      "This server has been sponsored by Psychz Networks"
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-            ---===[https://www.psychz.net/]===---
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    -------------------------------------------------------------------
+>> :lion.tx.us.dal.net 372 Kurps_ :-    [%] Server Policies  =-
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    a. No spamming or advertising allowed, if found you will be banned 
+>> :lion.tx.us.dal.net 372 Kurps_ :-       from this server/network.
+>> :lion.tx.us.dal.net 372 Kurps_ :-    b. No malicious bots, including flood and nick/channel chasers
+>> :lion.tx.us.dal.net 372 Kurps_ :-    c. No channel filler bots/clients/psybncs
+>> :lion.tx.us.dal.net 372 Kurps_ :-       #  A channel filler is a client, bnc, or bot which is connected
+>> :lion.tx.us.dal.net 372 Kurps_ :-          just to fill a channel and make it look bigger
+>> :lion.tx.us.dal.net 372 Kurps_ :-    d. Operator impersonation will not be tolerated and cause you to be
+>> :lion.tx.us.dal.net 372 Kurps_ :-       banned from this server/network.
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-            "REMEMBER IRC IS A PRIVILEGE, NOT A RIGHT"
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    --------------------------------------------------------------------
+>> :lion.tx.us.dal.net 372 Kurps_ :-    For IRC Operator assistance /join #Operhelp
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    For DALnet and General IRC related help, goto #Help
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    For multi-lingual documentation - [http://docs.dal.net]
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    If you have any questions/issues related to this server,           
+>> :lion.tx.us.dal.net 372 Kurps_ :-    contact us using: lion-staff@dal.net
+>> :lion.tx.us.dal.net 372 Kurps_ :- 
+>> :lion.tx.us.dal.net 372 Kurps_ :-    Thank you, hope you enjoy your stay!
+>> :lion.tx.us.dal.net 376 Kurps_ :End of /MOTD command.
+>> :Kurps_ MODE Kurps_ :+iH
+>> :lion.tx.us.dal.net 311 Kurps_ Kurps ~smlamali 4f75-9ba9-7065-62dd-c9f.210.62.ip * :Samira MLAMALI
+--> nickfind event whois
+>> :lion.tx.us.dal.net 312 Kurps_ Kurps bifrost.ca.us.dal.net :IRC is just multiplayer notepad
+--> event empty
+>> :lion.tx.us.dal.net 318 Kurps_ Kurps :End of /WHOIS list.
+--> event empty
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :Kurps_
+--> lag pong
+<< NICK sami
+>> :Kurps_!~smlamali@4f75-9ba9-7065-62dd-c9f.210.62.ip NICK :sami
+>> :NickServ!service@dal.net NOTICE sami :This nick is owned by someone else. Please choose another.
+>> :NickServ!service@dal.net NOTICE sami :If this is your nick, type: /msg NickServ@services.dal.net IDENTIFY <password>
+>> :NickServ!service@dal.net NOTICE sami :Your nick will be changed in 60 seconds if you do not comply.
+>> :NickServ!service@dal.net NOTICE sami :You now have 40 seconds to change your nick. The nick you are
+>> :NickServ!service@dal.net NOTICE sami :currently using is registered to another user.
+<< NICK kurosam
+>> :sami!~smlamali@4f75-9ba9-7065-62dd-c9f.210.62.ip NICK :kurosam
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :kurosam
+--> lag pong
+
+<< JOIN #lobbysam
+>> :kurosam!~smlamali@4f75-9ba9-7065-62dd-c9f.210.62.ip JOIN :#lobbysam
+>> :lion.tx.us.dal.net 353 kurosam = #lobbysam :kurosam @Kurps 
+>> :lion.tx.us.dal.net 366 kurosam #lobbysam :End of /NAMES list.
+<< MODE #lobbysam
+>> :lion.tx.us.dal.net 324 kurosam #lobbysam + 
+--> chanquery mode
+<< WHO #lobbysam
+>> :lion.tx.us.dal.net 329 kurosam #lobbysam 1741541006
+--> event 329
+>> :lion.tx.us.dal.net 352 kurosam #lobbysam ~smlamali 4f75-9ba9-7065-62dd-c9f.210.62.ip lion.tx.us.dal.net kurosam H :0 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 352 kurosam #lobbysam ~smlamali 4f75-9ba9-7065-62dd-c9f.210.62.ip bifrost.ca.us.dal.net Kurps H@ :5 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 315 kurosam #lobbysam :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbysam b
+>> :lion.tx.us.dal.net 368 kurosam #lobbysam :End of Channel Ban List
+--> chanquery ban end
+<< QUIT :leaving

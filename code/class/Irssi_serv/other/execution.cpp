@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/24 23:20:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/07 15:38:51 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
-	// std::cout << current_cmd << std::endl;
 	Action act = current_cmd.get_action();
 	current_user->get_msg_by_step(this->get_name(), current_pollfd);
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
@@ -23,18 +22,21 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 	return (res);
 }
 
-// void	Irssi_serv::do_mode(Channel *chan, UserHuman *user, std::vector<std::string> &args, pollfd & current_pollfd)
-// {
-// 	// std::cout << "---interpretation des modes ---" <<std::endl;
-// 	std::vector<std::string> cmd_args = current_cmd.get_arg();
-// 	if (cmd_args <= 2)
-// 		return ; 
-// 	//Mode m == arg[1].get_mode <=== +i devient i
-// 	//set un enum en accord avec le retour de cmd_args
-// 	//get msg du mode et l'output
-// 	//Mode mode = (this->*mode_table[m])(chan, user, args, current_pollfd); 
-	
-// }
+void	Irssi_serv::do_mode( Cmd_irssi &current_cmd, UserHuman *user, pollfd & current_pollfd, Channel *chan)
+{
+	// (void)user;
+	// (void)current_pollfd;
+	// (void)chan;
+	std::cout << PINK <<  "...interpretation des modes..." << NOCOLOR << std::endl;
+	std::vector<std::string> cmd_args = current_cmd.get_arg();
+	if (cmd_args.size() < 2)
+		return ; 
+	Mode m = get_mode(cmd_args[1]); // "+i" devient I
+	//get msg du mode et l'afficher
+	Mode mode = (this->*mode_table[m])(current_cmd, user, current_pollfd, chan); 
+	(void)mode;
+}
+
 /// @brief Methode qui est le coeur du programme
 void	Irssi_serv::exec(void)
 {

@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
 #    Updated: 2025/03/09 17:30:08 by yzaoui           ###   ########.fr        #
@@ -42,11 +42,20 @@ ACTION_SERV_FILES =	cap.cpp				\
 					part.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
+					who.cpp				\
+					whois.cpp			\
 					quit.cpp			\
 					shutdown.cpp		\
 					topic.cpp			\
 					user.cpp			\
 					whois.cpp
+
+MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_t.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_k.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_o.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_l.cpp		\
+			 ./class/Irssi_serv/mode_serv/ft_mode_none.cpp
 
 OTHER_FILE_FROM_IRSSI_SERV =	./class/Irssi_serv/other/execution.cpp		\
 								./class/Irssi_serv/other/other.cpp			\
@@ -57,6 +66,7 @@ CLASS_FILES =	./class/Server/Server.cpp				\
 				./class/Cmd_irssi/Cmd_irssi.cpp			\
 				./class/Irssi_serv/Irssi_serv.cpp		\
 				${OTHER_FILE_FROM_IRSSI_SERV}			\
+				${MODE_FILES}							\
 				./class/User/User.cpp					\
 				./class/Client/Client.cpp				\
 				./class/User/UserHuman/UserHuman.cpp	\

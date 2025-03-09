@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
 /*   Updated: 2025/03/09 17:46:34 by yzaoui           ###   ########.fr       */
@@ -43,6 +43,7 @@ private:
 	Reaction_Serv		ft_quit(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// QUIT
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
 	Reaction_Serv		ft_privmsg(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// PRIVMSG
+	Reaction_Serv		ft_who(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHO
 	Reaction_Serv		ft_kick(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// KICK
 	Reaction_Serv		ft_invite(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// INVITE
 	Reaction_Serv		ft_topic(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// TOPIC
@@ -52,7 +53,23 @@ private:
 
 	typedef Reaction_Serv (Irssi_serv::*MethodeActionIrc)(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd);
 	MethodeActionIrc action_table[IDK + 1];
+	
+	//MODE
 
+	typedef Mode (Irssi_serv::*MethodeModeIrc)(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, Channel *curent_chan);
+	MethodeModeIrc	mode_table[NO_MODE + 1];
+
+	Mode		init_mode(char & c);
+	Mode		get_mode(std::string & arg);
+
+	Mode		ft_mode_i(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	Mode		ft_mode_t(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	Mode		ft_mode_k(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	Mode		ft_mode_o(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	Mode		ft_mode_l(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+	Mode		ft_mode_none(Cmd_irssi &, UserHuman * , pollfd &, Channel *);
+
+	void		do_mode(Cmd_irssi &,  UserHuman *, pollfd &, Channel *);
 	// OTHER
 	void	connect(void);
 	bool	_nick_already_used(std::string nick) const;

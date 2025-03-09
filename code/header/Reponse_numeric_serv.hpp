@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
 /*   Updated: 2025/03/09 18:05:04 by yzaoui           ###   ########.fr       */
@@ -35,9 +35,11 @@
 //RPL_USER (custoisé par sam pour reponse de cmd user)
 #define RPL_USER(server_name, nick, username, realname) (":" + server_name + " 003 " + nick + " :you are now registered as " + username + ", " + realname + CRLF)
 //RPL_MODE
-// #define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
-//RPL_WHOISUSER
+#define RPL_MODE(server_name, nick, command, m) (":" + server_name + )
+// RPL_WHOISUSER
 #define RPL_WHOISUSER(server_name, nick, nickname, username, host, realname) (":" + server_name + " 311 " + nick + " " + nickname + " " + username + " " + host + " * :" + realname + CRLF)
+// RPL_ENDOFWHO
+#define RPL_ENDOFWHO(server_name, nick, target) (":" + server_name + " 315 " + nick + " " + target + " :End of /WHO list" + CRLF)
 // #RPL_ENDOFWHOIS
 #define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS" + CRLF)
 // #RPL_JOIN
@@ -48,6 +50,8 @@
 #define RPL_NOTOPIC(server_name, nickname, channelname) (":" + server_name + " 331 " + nickname + " " + channelname + " :No topic is set" + CRLF)
 // #RPL_TOPIC
 #define RPL_TOPIC(server_name, nick, channel_name, topic) (":" + server_name + " 332 " + nick + " " + channel_name + " :" + topic + CRLF)
+// #RPL_WHOREPLY
+#define RPL_WHOREPLY(server_name, nick, channel, hostname, ip, target_nick, realname) (":" + server_name + " 352 " + nick + " " + channel + " ~" + hostname + " " + ip + " " + server_name + " " + target_nick + " H :0 " + realname + CRLF)
 // RPL_TOPICWHOTIME
 #define RPL_TOPICWHOTIME(server_name, nickname, channelname, author, timestamp) (":" + server_name + " 333 " + nickname + " " + channelname + " " + author + " " + timestamp + CRLF)
 // RPL_INVITING
@@ -60,8 +64,23 @@
 #define RPL_CHANNELMODEIS(server_name, nick, channel_name, list_mode) (":" + server_name + " 324 " + nick + " " + channel_name + " +" + list_mode + CRLF)
 // RPL_UMODEIS
 # define RPL_UMODEIS(server_name, nick, list_mode) (":" + server_name + " 221 " + nick + " +" + list_mode + CRLF)
+// RPL_CHANONINVITE
+#define RPL_CHANONINVITE(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + arg + CRLF)
+// RPL_INVISIBLE
+#define RPL_INVISIBLE(nick, target, arg) (":" + nick + " MODE " + target + " :" + arg + CRLF)
+// RPL_MODE_T
+#define RPL_MODE_T(nick, hostname, ip, channel_name, arg) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + CRLF)
+// RPL_MODE_O
+#define RPL_MODE_O(nick, hostname, ip, channel_name, arg, target) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + " " + target + CRLF)
+// RPL_MODE_K
+#define RPL_MODE_K(nick, hostname, ip, channel_name, arg, key) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " +  arg + " " + key + CRLF)
+// RPL_MODE_L
+#define RPL_MODE_L(nick, hostname, ip, channel_name, mode, param) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + mode + " " + param + CRLF)
+// RPL_RMV_L
+#define RPL_RMV_L(nick, hostname, ip, channel_name, mode) (":" + nick + "!~" + hostname + "@" + ip + " MODE " + channel_name + " " + mode + CRLF)
 
-// ERR (Erreurs numériques)
+
+//######################ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
 #define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
 // ERR_NOSUCHCHANNEL
@@ -81,21 +100,36 @@
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_USERNOTINCHANNEL
-#define ERR_USERNOTINCHANNEL(server_name, nickname, channelname) (":" + server_name + " 441 " + nickname + " " + channelname + " :They aren't on that channel" + CRLF)
+#define ERR_USERNOTINCHANNEL(server_name, nick, target, channel_name) (":" + server_name + " 441 " + nick + " " + target + " " + channel_name + " :They aren't on that channel" + CRLF)
 // ERR_NOTONCHANNEL
-#define ERR_NOTONCHANNEL(server_name, channelname) (":" + server_name + " 442 " + channelname + " :You're not on that channe" + CRLF)
+#define ERR_NOTONCHANNEL(server_name, nick, channelname) (":" + server_name + " 442 " + nick + " " + channelname + " :You're not on that channe" + CRLF)
 // ERR_USERONCHANNEL
-#define ERR_USERONCHANNEL(server_name, target_nick, channelname) (":" + server_name + " 443 " + target_nick + " " + channelname + " :is already on channel" + CRLF)
+#define ERR_USERONCHANNEL(server_name, nick, target_nick, channelname) (":" + server_name + " 443 " + nick + " " + target_nick + " " + channelname + " :is already on channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
-//ERR_ALREADYREGISTERED
+// ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
-//ERR_BADCHANNELKEY
+// ERR_KEYSET
+#define ERR_KEYSET(server_name, nick, channel_name) (":" + server_name + " 467 " + nick + " " + channel_name + " :Channel key already set" + CRLF)
+// ERR_CHANNELISFULL
+#define ERR_CHANNELISFULL(server_name, nick, channel_name) (":" + server_name + " 471 " + nick + " " + channel_name + " :Cannot join channel (+l)" + CRLF)
+// ERR_UNKNOWNMODE 
+#define ERR_UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + " " + character + " :is unknown mode char to me" + CRLF)
+// ERR_INVITEONLYCHAN
+#define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " "  + channel_name + " :Cannot join channel (+i)" + CRLF)
+// ERR_BANNEDFROMCHAN
+#define ERR_BANNEDFROMCHAN(server_name, nick, channel_name) (":" + server_name + " 474 " + nick + " " + channel_name + " :cannot join channel (+b)" + CRLF)
+// ERR_BADCHANNELKEY
 #define ERR_BADCHANNELKEY(server_name, nick, channel_name) (":" + server_name + " 475 " + nick + " " + channel_name + " :Canot join channel (+k)" + CRLF)
 // ERR_BADCHANMASK
 #define ERR_BADCHANMASK(server_name, nickname, channelname) (":" + server_name + " 476 " + nickname + " " + channelname + " :Bad Channel Mask" + CRLF)
+// ERR_NOPRIVILEGES
+#define ERR_NOPRIVILEGE(server_name, nick, command) (":" + server_name + " 481 " + nick + " " + command + " :Permission Denied- You're not an IRC operator" + CRLF)
 // ERR_CHANOPRIVSNEEDED
-#define ERR_CHANOPRIVSNEEDED(server_name, nickname, channelname) (":" + server_name + " 482 " + nickname + " " + channelname + " :You're not channel operator" + CRLF)
+#define ERR_CHANOPRIVSNEEDED(server_name, nick, channel_name) (":" + server_name + " 482 " + nick + " " + channel_name + " :You're not channel operator" + CRLF)// ERR_USERDONTMATCH
+// ERR_USERDONTMATCH
+#define ERR_USERSDONTMATCH(server_name, nick) (":" + server_name + " 502 " + nick + " :Cant change/view mode for other users" + CRLF)
+
 //ERR_INVALIDMODEPARAM
 // #define ERR_INVALIDMODEPARM() j'arrive pas a voir comment il fonctionne
 ///////////////////////////////////////////////////////////////////// 
@@ -171,7 +205,5 @@
 #define ERR_TOOMANYTARGETS(nickname, target) (": 407 " + nickname + " " + target + " :Too many recipients" + CRLF)
 // ERR_UNAVAILRESOURCE
 #define ERR_UNAVAILRESOURCE(nickname, resource) (": 437 " + nickname + " " + resource + " :Nick/channel is temporarily unavailable" + CRLF)
-// ERR_UNKNOWNMODE
-#define ERR_UNKNOWNMODE(nickname, mode) (": 472 " + nickname + " " + mode + " :is unknown mode char to me" + CRLF)
 // ERR_WILDTOPLEVEL
 #define ERR_WILDTOPLEVEL(nickname, mask) (": 414 " + nickname + " " + mask + " :Wildcard in toplevel domain" + CRLF)

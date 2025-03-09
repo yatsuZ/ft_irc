@@ -1,0 +1,130 @@
+<< JOIN #lobby
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip JOIN :#lobby
+>> :punch.wa.us.dal.net 332 Kurps #lobby :11,1Welcome to #Lobby ;)
+>> :punch.wa.us.dal.net 333 Kurps #lobby ChattingKing!~Lone@876b-98a2-d29e-db4e-d485.77.178.ip 1734072739
+>> :punch.wa.us.dal.net 353 Kurps = #lobby :Kurps +LDa224 
+>> :punch.wa.us.dal.net 366 Kurps #lobby :End of /NAMES list.
+<< MODE #lobby
+>> :punch.wa.us.dal.net 324 Kurps #lobby +tn 
+--> chanquery mode
+<< WHO #lobby
+>> :punch.wa.us.dal.net 329 Kurps #lobby 1738091841
+--> event 329
+>> :punch.wa.us.dal.net 352 Kurps #lobby ~smlamali dd87-b33b-eb70-76be-57f1.210.62.ip punch.wa.us.dal.net Kurps H :0 Samira MLAMALI
+--> silent event who
+>> :punch.wa.us.dal.net 352 Kurps #lobby sid678542 db23-2969-a31a-9022-3e35.hampstead.irccloud.com atw.hu.eu.dal.net LDa224 G+ :6 NTA
+--> silent event who
+>> :punch.wa.us.dal.net 315 Kurps #lobby :End of /WHO list.
+--> chanquery who end
+<< MODE #lobby b
+>> :punch.wa.us.dal.net 368 Kurps #lobby :End of Channel Ban List
+--> chanquery ban end
+
+<< MODE #lobby +i
+>> :punch.wa.us.dal.net 482 Kurps #lobby :You're not channel operator
+<< PART #lobby
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip PART #lobby
+<< JOIN #LobbyA
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip JOIN :#LobbyA
+>> :punch.wa.us.dal.net 353 Kurps = #LobbyA :@Kurps 
+>> :punch.wa.us.dal.net 366 Kurps #LobbyA :End of /NAMES list.
+<< MODE #LobbyA
+>> :punch.wa.us.dal.net 324 Kurps #LobbyA + 
+--> chanquery mode
+<< WHO #LobbyA
+>> :punch.wa.us.dal.net 329 Kurps #LobbyA 1741183001
+--> event 329
+>> :punch.wa.us.dal.net 352 Kurps #LobbyA ~smlamali dd87-b33b-eb70-76be-57f1.210.62.ip punch.wa.us.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :punch.wa.us.dal.net 315 Kurps #LobbyA :End of /WHO list.
+--> chanquery who end
+<< MODE #LobbyA b
+>> :punch.wa.us.dal.net 368 Kurps #LobbyA :End of Channel Ban List
+--> chanquery ban 
+
+<< MODE #LobbyA +i
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip MODE #LobbyA +i 
+<< PING punch.wa.us.dal.net
+>> :punch.wa.us.dal.net PONG punch.wa.us.dal.net :Kurps
+
+
+<< JOIN #lobbyB
+>> :Kurps!~smlamali@641df9ea.abb706c6.df62afc3.IP4 JOIN #lobbyB
+>> :Prothid.NY.US.GameSurge.net 353 Kurps = #lobbyB :@Kurps
+>> :Prothid.NY.US.GameSurge.net 366 Kurps #lobbyB :End of /NAMES list.
+<< MODE #lobbyB
+>> :Prothid.NY.US.GameSurge.net 324 Kurps #lobbyB + 
+--> chanquery mode
+<< WHO #lobbyB
+>> :Prothid.NY.US.GameSurge.net 329 Kurps #lobbyB 1741183052
+--> event 329
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #lobbyB ~smlamali 641df9ea.abb706c6.df62afc3.IP4 *.GameSurge.net Kurps H@x :0 Samira MLAMALI
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 315 Kurps #lobbyB :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbyB b
+>> :Prothid.NY.US.GameSurge.net 368 Kurps #lobbyB :End of Channel Ban List
+--> chanquery ban end
+
+<< MODE #lobbyB +i
+>> :Kurps!~smlamali@641df9ea.abb706c6.df62afc3.IP4 MODE #lobbyB +i
+<< QUIT :leaving
+
+<< QUIT :leaving
+<< JOIN #lobby
+>> :Kurps!~smlamali@641df9ea.abb706c6.df62afc3.IP4 JOIN #Lobby
+>> :Prothid.NY.US.GameSurge.net 332 Kurps #Lobby :#Lobby General Gaming Chat and introductions.
+>> :Prothid.NY.US.GameSurge.net 333 Kurps #Lobby *.GameSurge.net 1697484286
+>> :Prothid.NY.US.GameSurge.net 353 Kurps @ #Lobby :Kurps Galien @Computer @ChanServ @enigma
+>> :Prothid.NY.US.GameSurge.net 366 Kurps #Lobby :End of /NAMES list.
+<< MODE #Lobby
+>> :Prothid.NY.US.GameSurge.net 324 Kurps #Lobby +stnz 
+--> chanquery mode
+<< WHO #Lobby
+>> :Prothid.NY.US.GameSurge.net 329 Kurps #Lobby 1697483134
+--> event 329
+>> :Computer!~Computer@ComputerCore.user.gamesurge MODE #Lobby +v Kurps
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #Lobby ~smlamali 641df9ea.abb706c6.df62afc3.IP4 *.GameSurge.net Kurps H+x :0 Samira MLAMALI
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #Lobby ~kusau gamesurge-f4a0fc32.enigma.ovh *.GameSurge.net Galien Hx :3 kusau
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #Lobby ~Computer ComputerCore.user.gamesurge *.GameSurge.net Computer H@x :3 Da Noodle
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #Lobby ChanServ Services.GameSurge.net *.GameSurge.net ChanServ H*@d :3 Channel Services
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 352 Kurps #Lobby ~enigma Enigma.trainer.support *.GameSurge.net enigma G@x :3 Enigma
+--> silent event who
+>> :Prothid.NY.US.GameSurge.net 315 Kurps #Lobby :End of /WHO list.
+--> chanquery who end
+<< MODE #Lobby b
+>> :Prothid.NY.US.GameSurge.net 368 Kurps #Lobby :End of Channel Ban List
+--> chanquery ban end
+
+<< JOIN #lobby
+<< MODE #lobby +i
+>> :punch.wa.us.dal.net 482 Kurps #lobby :You're not channel operator
+
+
+///////////////////////// MODE INVITE
+<< JOIN #saaam
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip JOIN :#saaam
+>> :punch.wa.us.dal.net 353 Kurps = #saaam :@Kurps 
+>> :punch.wa.us.dal.net 366 Kurps #saaam :End of /NAMES list.
+<< MODE #saaam
+>> :punch.wa.us.dal.net 324 Kurps #saaam + 
+--> chanquery mode
+<< WHO #saaam
+>> :punch.wa.us.dal.net 329 Kurps #saaam 1741190929
+--> event 329
+>> :punch.wa.us.dal.net 352 Kurps #saaam ~smlamali dd87-b33b-eb70-76be-57f1.210.62.ip punch.wa.us.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :punch.wa.us.dal.net 315 Kurps #saaam :End of /WHO list.
+--> chanquery who end
+<< MODE #saaam b
+>> :punch.wa.us.dal.net 368 Kurps #saaam :End of Channel Ban List
+--> chanquery ban end
+<< MODE #saaam +i
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip MODE #saaam +i 
+<< MODE #saaam -i
+>> :Kurps!~smlamali@dd87-b33b-eb70-76be-57f1.210.62.ip MODE #saaam -i 
+<< QUIT :leaving

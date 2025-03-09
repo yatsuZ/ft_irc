@@ -1,0 +1,58 @@
+(verifier que ueser est dans channel)
+
+<< MODE Kurps +k
+<< JOIN #lobbySam
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip JOIN :#lobbySam
+>> :bitcoin.uk.eu.dal.net 353 Kurps = #lobbySam :@Kurps 
+>> :bitcoin.uk.eu.dal.net 366 Kurps #lobbySam :End of /NAMES list.
+<< MODE #lobbySam
+>> :bitcoin.uk.eu.dal.net 324 Kurps #lobbySam + 
+--> chanquery mode
+<< WHO #lobbySam
+>> :bitcoin.uk.eu.dal.net 329 Kurps #lobbySam 1741364174
+--> FAILED mode user
+--> event 329
+>> :bitcoin.uk.eu.dal.net 352 Kurps #lobbySam ~smlamali dff3-4d8f-e40-3690-c6d4.210.62.ip bitcoin.uk.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :bitcoin.uk.eu.dal.net 315 Kurps #lobbySam :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbySam b
+>> :bitcoin.uk.eu.dal.net 368 Kurps #lobbySam :End of Channel Ban List
+--> chanquery ban end
+<< PING bitcoin.uk.eu.dal.net
+>> :bitcoin.uk.eu.dal.net PONG bitcoin.uk.eu.dal.net :Kurps
+--> lag pong
+
+<< MODE #lobbySam +k
+<< MODE #lobbySam -k
+
+<< MODE #lobbySam +k keyword
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbySam +k keyword
+
+<< MODE #lobbysam -k key
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -k key
+
+
+////<< JOIN #lobbysam
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip JOIN :#lobbysam
+>> :nibiru.ix.eu.dal.net 353 Kurps = #lobbysam :@Kurps 
+>> :nibiru.ix.eu.dal.net 366 Kurps #lobbysam :End of /NAMES list.
+<< MODE #lobbysam
+>> :nibiru.ix.eu.dal.net 324 Kurps #lobbysam + 
+--> chanquery mode
+<< WHO #lobbysam
+>> :nibiru.ix.eu.dal.net 329 Kurps #lobbysam 1741364916
+--> event 329
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobbysam ~smlamali dff3-4d8f-e40-3690-c6d4.210.62.ip nibiru.ix.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :nibiru.ix.eu.dal.net 315 Kurps #lobbysam :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbysam b
+>> :nibiru.ix.eu.dal.net 368 Kurps #lobbysam :End of Channel Ban List
+--> chanquery ban end
+
+<< MODE #lobbysam +k key
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam +k key
+<< MODE #lobbysam -k key
+>> :Kurps!~smlamali@dff3-4d8f-e40-3690-c6d4.210.62.ip MODE #lobbysam -k key
+/quit<< QUIT :leaving

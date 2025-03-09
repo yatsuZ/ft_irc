@@ -46,6 +46,7 @@ const char* action_tab[IDK + 1] =
 	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																				// QUIT
 	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",																						// JOIN
 	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",																	// PRIVMSG
+	"Renvoie une liste d'users ou des infos sur un user specifique",																							// WHO
 	"Permet d'expulser un utilisateur d'un canal spécifique. Seuls les opérateurs du canal (@) ont le droit d'utiliser cette commande.",						// KICK
 	"Pour inviter un utilisateur à rejoindre un canal privé (+i). Si le canal n'est pas en mode privé, l'utilisateur peut y entrer sans invitation.",			// INVITE
 	"Est utilisée pour afficher ou modifier le sujet (titre) d'un canal. Seuls les opérateurs du canal peuvent modifier le sujet si le mode +t est activé.",	// TOPIC

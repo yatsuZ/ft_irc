@@ -1,0 +1,12 @@
+<< MODE Kurps +i
+<< PING nibiru.ix.eu.dal.net
+>> :nibiru.ix.eu.dal.net PONG nibiru.ix.eu.dal.net :Kurps
+--> lag pong
+<< MODE Kurps -i
+>> :Kurps MODE Kurps :-i
+--> requested usermode change
+<< MODE Kurps +i
+>> :Kurps MODE Kurps :+i
+--> requested usermode change
+<< QUIT :leaving
+

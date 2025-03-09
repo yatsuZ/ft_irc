@@ -1,0 +1,36 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :YASACO 403 Kurps Kurps :No such channel
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #LobbyA
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#LobbyA
+>> :YASACO 353 Kurps = #LobbyA :@Kurps
+>> :YASACO 366 Kurps #LobbyA :End of /NAMES list
+<< MODE #LobbyA
+>> :YASACO 324 Kurps #LobbyA +
+--> chanquery mode
+<< WHO #LobbyA
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< PRIVMSG #LobbyA :hello
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #LobbyA
+--> lag pong
+>> :YASACO 421 WHO :Unknown command "WHO"
+>> :Kuro!~smlamali@smlamali PRIVMSG #LobbyA :hello
+>> :Kuro!~smlamali@smlamali PRIVMSG #LobbyA :hoe
+>> :Kuro!~smlamali@smlamali QUIT :Quit: leaving
+<< QUIT :leaving

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/02/27 16:50:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/06 14:38:56 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ public:
 	void		set_msg_leave(const std::string & new_msg) {this->_msg_leave = new_msg;}
 	void		set_Realname(const std::string &);
 	void		set_mode(Mode newmode);
-	// void		add_channel(const Channel *c);
 	void		add_chan(size_t idx_of_chan);
 
 	std::string				get_nick() 			const {return this->_nick;}
@@ -55,12 +54,13 @@ public:
 	bool					get_Set_User() 		const {return (_is_init == 2 || _is_init == -1);}
 	bool					get_Set_Nick()		const {return (_is_init == 1 || _is_init == -1);}
 	bool					get_is_init()		const {return (_is_init == -1);}
-
-	// std::vector<Channel>	get_channels()		const {return this->_channels;}
 	std::vector<size_t>		get_chans()			const {return this->_chans;}
 
+	std::string				list_mode()const;
+	std::string				mode_to_str(const Mode & m)const;
 
 	// erase
+	void	erase_mode(Mode newmode);
 	void	errase_chan(size_t index_chan);
 	void	update_index_of_chan(size_t index_chan);
 	void	update_and_errase_index_of_chan(size_t index_chan);

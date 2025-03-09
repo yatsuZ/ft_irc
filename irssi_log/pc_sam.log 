@@ -1,9 +1,0 @@
-//////Test de connexion au serv apres ajout des rpl sur join (aucune ligne de log n'a été supp...)
-
-<< CAP LS 302
-<< JOIN :
->> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
->> :YASACO 421 CAP :Unknown command "CAP"
->> :*!~@127.0.0.1 JOIN ::
->> :YASACO 353 * = : :@*
->> :YASACO 366 * : :End of /NAMES list 

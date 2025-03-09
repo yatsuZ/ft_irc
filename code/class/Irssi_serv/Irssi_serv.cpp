@@ -27,11 +27,21 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[JOIN] = &Irssi_serv::ft_join;
 	action_table[PRIVMSG] = &Irssi_serv::ft_privmsg;
+	action_table[WHO] = &Irssi_serv::ft_who;
 	action_table[KICK] = &Irssi_serv::ft_kick;
 	action_table[INVITE] = &Irssi_serv::ft_invite;
 	action_table[TOPIC] = &Irssi_serv::ft_topic;
 	action_table[PART] = &Irssi_serv::ft_part;
 	action_table[IDK] = &Irssi_serv::ft_idk;
+
+	/////
+	mode_table[I]		= 	&Irssi_serv::ft_mode_i;
+	mode_table[T]		= 	&Irssi_serv::ft_mode_t;
+	mode_table[K]		= 	&Irssi_serv::ft_mode_k;
+	mode_table[O]		= 	&Irssi_serv::ft_mode_o;
+	mode_table[L]		= 	&Irssi_serv::ft_mode_l;
+	mode_table[NO_MODE]	= 	&Irssi_serv::ft_mode_none;
+
 }
 
 Irssi_serv::~Irssi_serv()

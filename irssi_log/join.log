@@ -1,0 +1,24 @@
+
+<< JOIN #lobbysam
+>> :Kurps!~smlamali@4f75-9ba9-7065-62dd-c9f.210.62.ip JOIN :#lobbysam
+>> :lair.nl.eu.dal.net 353 Kurps = #lobbysam :@Kurps 
+>> :lair.nl.eu.dal.net 366 Kurps #lobbysam :End of /NAMES list.
+<< MODE #lobbysam
+>> :lair.nl.eu.dal.net 324 Kurps #lobbysam + 
+--> chanquery mode
+<< WHO #lobbysam
+>> :lair.nl.eu.dal.net 329 Kurps #lobbysam 1741540731
+--> event 329
+>> :lair.nl.eu.dal.net 352 Kurps #lobbysam ~smlamali 4f75-9ba9-7065-62dd-c9f.210.62.ip lair.nl.eu.dal.net Kurps H@ :0 Samira MLAMALI
+--> silent event who
+>> :lair.nl.eu.dal.net 315 Kurps #lobbysam :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbysam b
+>> :lair.nl.eu.dal.net 368 Kurps #lobbysam :End of Channel Ban List
+--> chanquery ban end
+<< PING lair.nl.eu.dal.net
+>> :lair.nl.eu.dal.net PONG lair.nl.eu.dal.net :Kurps
+--> lag pong
+////////////an user joined channel
+>> :samk!~smlamali@4f75-9ba9-7065-62dd-c9f.210.62.ip JOIN :#lobbysam
+<< QUIT :leaving

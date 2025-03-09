@@ -263,7 +263,7 @@ std::ostream & operator<<(std::ostream & o, const Channel & c)
 	  << YELLOW << "Index user: " << NOCOLOR << c.get_index_users() << " | "
 	  << YELLOW << "Index operators: " << NOCOLOR << c.get_index_operators() << " | "
 	  << YELLOW << "nbr of user: " << NOCOLOR << c.get_nbr_of_user() << " / " << c.get_limit_user() << " | "
-	  << YELLOW << "All mode: " << NOCOLOR << c.get_mode() << " | ";
+	  << YELLOW << "All mode: " << NOCOLOR << c.list_mode() << " | ";
 
 	return o;
 }

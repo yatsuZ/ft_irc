@@ -1,0 +1,31 @@
+<< MODE sam +i
+>> :lion.tx.us.dal.net 403 Kurps sam :No such channel
+<< MODE #lobby +i
+>> :lion.tx.us.dal.net 482 Kurps #lobby :You're not channel operator
+<< MODE lobby +i
+>> :lion.tx.us.dal.net 403 Kurps lobby :No such channel
+<< JOIN #lobby
+>> :Kurps!~smlamali@d084-cfe0-a0fe-4661-94cd.210.62.ip JOIN :#lobby
+>> :lion.tx.us.dal.net 332 Kurps #lobby :11,1Welcome to #Lobby ;)
+>> :lion.tx.us.dal.net 333 Kurps #lobby ChattingKing!~Lone@876b-98a2-d29e-db4e-d485.77.178.ip 1734072739
+>> :lion.tx.us.dal.net 353 Kurps = #lobby :Kurps +LDa224 
+>> :lion.tx.us.dal.net 366 Kurps #lobby :End of /NAMES list.
+<< MODE #lobby
+>> :lion.tx.us.dal.net 324 Kurps #lobby +tn 
+--> chanquery mode
+<< WHO #lobby
+>> :lion.tx.us.dal.net 329 Kurps #lobby 1738091841
+--> event 329
+>> :lion.tx.us.dal.net 352 Kurps #lobby ~smlamali d084-cfe0-a0fe-4661-94cd.210.62.ip lion.tx.us.dal.net Kurps H :0 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 352 Kurps #lobby sid678542 db23-2969-a31a-9022-3e35.hampstead.irccloud.com atw.hu.eu.dal.net LDa224 G+ :2 NTA
+--> silent event who
+>> :lion.tx.us.dal.net 315 Kurps #lobby :End of /WHO list.
+--> chanquery who end
+<< MODE #lobby b
+>> :lion.tx.us.dal.net 368 Kurps #lobby :End of Channel Ban List
+--> chanquery ban end
+<< MODE LDa224 +i
+>> :lion.tx.us.dal.net 502 Kurps :Can't change mode for other users
+
+<< QUIT :leaving

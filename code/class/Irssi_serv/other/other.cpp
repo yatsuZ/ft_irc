@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   other.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
 /*   Updated: 2025/03/03 00:25:22 by yzaoui           ###   ########.fr       */
@@ -87,6 +87,21 @@ void	Irssi_serv::_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::
 		this->_send_message_to_a_chanelle(emeteur, this->_all_Channel[*i], msg);
 	}
 	
+}
+
+Mode	Irssi_serv::init_mode(char & c)
+{
+	if (c == 'i')
+		return (I);
+	if (c == 't')
+		return (T);
+	if (c == 'k')
+		return (K);
+	if (c == 'o')
+		return (O);
+	if (c == 'l')
+		return (L);
+ 	return (NO_MODE);
 }
 
 /// @brief verifier qu'un user est un operateur dans un chanelle

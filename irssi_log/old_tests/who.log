@@ -1,0 +1,46 @@
+<< WHO #lobby
+>> :sakura.jp.as.dal.net 315 Kurps #lobby :End of /WHO list.
+
+<< WHO #libera
+>> :sakura.jp.as.dal.net 403 Kurps #libera :No such channel
+
+
+<< WHO Kurps
+>> :sakura.jp.as.dal.net 352 Kurps * ~smlamali 9e23-dba6-a5a0-76bd-d0c0.210.62.ip sakura.jp.as.dal.net Kurps H :0 Samira MLAMALI
+>> :sakura.jp.as.dal.net 315 Kurps Kurps :End of /WHO list.
+
+<< PING sakura.jp.as.dal.net
+>> :sakura.jp.as.dal.net PONG sakura.jp.as.dal.net :Kurps
+--> lag pong
+
+<< WHO ploup
+>> :sakura.jp.as.dal.net 315 Kurps ploup :End of /WHO list.
+<< WHO ploupipopdis
+>> :sakura.jp.as.dal.net 315 Kurps ploupipopdis :End of /WHO list.
+<< WHO lepopodeputortdsgd
+>> :sakura.jp.as.dal.net 315 Kurps lepopodeputortdsgd :End of /WHO list.
+<< WHO #lepopodeputortdsgd
+>> :sakura.jp.as.dal.net 403 Kurps #lepopodeputortdsgd :No such channel
+
+///////////////////
+///EFFnet
+<< WHO Kurpfdsfdgfe
+>> :irc.deft.com 315 Kurps Kurpfdsfdgfe :End of /WHO list.
+
+-------------- kurps +i
+<< WHO Kurps_
+>> :irc.deft.com 352 Kurps * ~smlamali 62.210.33.40 irc.choopa.net Kurps_ H :2 Samira MLAMALI
+>> :irc.deft.com 315 Kurps Kurps_ :End of /WHO list.
+
+-------------- kurps -i
+<< WHO Kurps_
+>> :irc.deft.com 352 Kurps * ~smlamali 62.210.33.40 irc.choopa.net Kurps_ H :2 Samira MLAMALI
+>> :irc.deft.com 315 Kurps Kurps_ :End of /WHO list.
+
+<< WHO Kurps
+>> :irc.deft.com 352 Kurps * ~smlamali 62.210.33.40 irc.deft.com Kurps H :0 Samira MLAMALI
+>> :irc.deft.com 315 Kurps Kurps :End of /WHO list.
+
+<< WHO kurps
+>> :irc.deft.com 352 Kurps * ~smlamali 62.210.33.40 irc.deft.com Kurps H :0 Samira MLAMALI
+>> :irc.deft.com 315 Kurps kurps :End of /WHO list.

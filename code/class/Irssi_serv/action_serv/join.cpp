@@ -57,6 +57,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		{
 			Channel new_chan(chans[i], "");
 			new_chan.add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+			new_chan.set_operator(_get_index_of_userhuman_by_nick(current_user->get_nick()));
 			current_user->add_chan(_all_Channel.size());
 			_all_Channel.push_back(new_chan);
 			send_message(RPL_JOIN(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i]), current_pollfd);
@@ -67,6 +68,9 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			channel =_get_channel_by_name(chans[i]);
 		}else //cas channel existant
 		{
+			std::cout << "nbr_users=" << channel->get_nbr_of_user() << " | linit=" << channel->get_limit_user() << std::endl;
+			if (channel->get_nbr_of_user() == channel->get_limit_user())
+				return (send_message(ERR_CHANNELISFULL(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
 			channel->add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
 			ssize_t index_channel = _get_index_channel_by_name(channel->get_name());
 			current_user->add_chan(index_channel);

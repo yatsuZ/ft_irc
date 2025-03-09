@@ -1,0 +1,29 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< JOIN #sammy
+>> :Kurps!~smlamali@127.0.0.1 JOIN :#sammy
+>> :YASACO 353 Kurps = #sammy :@Kurps
+>> :YASACO 366 Kurps #sammy :End of /NAMES list
+<< MODE #sammy
+>> :YASACO 324 Kurps #sammy +
+--> chanquery mode
+<< WHO #sammy
+>> :YASACO 421 WHO :Unknown command "WHO"
+<< MODE #sammy +l 1
+>> :Kurps!~smlamali@127.0.0.1 MODE #sammy +l 1
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+
+

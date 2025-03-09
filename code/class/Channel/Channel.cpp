@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/06 16:14:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:16:59 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,76 @@ void	Channel::update_and_errase_index_of_user(size_t index_user)
 	this->_nbr_user--;
 }
 
+std::string	Channel::mode_to_str(const Mode & m)const
+{
+	if (m == I)
+		return ("i");
+	if (m == T)
+		return ("t");
+	if (m == K)
+		return ("k");
+	if (m == O)
+		return ("o");
+	if (m == L)
+		return ("l");
+ 	return ("");
+}
+
+std::string	Channel::list_mode()const
+{
+	std::string	list = "";
+	if (_mode.empty())
+		return list;
+	for (size_t i=0; i<_mode.size(); i++)
+		list += mode_to_str(_mode[i]);
+	return list;
+}
+
+bool	Channel::is_operator(size_t	idx_user) const
+{
+	for(size_t i=0; i<_index_operators.size(); i++)
+	{
+		if (idx_user == _index_operators[i])
+			return 1;
+	}
+	return 0;
+}
+
+bool	Channel::is_in_chan(size_t idx_user)
+{
+	for(size_t i=0; i<_index_users.size(); i++)
+	{
+		if (_index_users[i] == idx_user)
+			return 1;
+	}
+	return 0;
+}
+void	Channel::set_mode(Mode m)
+{
+	for (size_t i=0; i<_mode.size(); i++)
+	{
+		if (_mode[i] == m)
+			return;
+	}	
+	_mode.push_back(m);
+}
+
+void	Channel::erase_mode(Mode m)
+{
+	for (size_t i=0; i<_mode.size(); i++)
+	{
+		if (_mode[i] == m)
+			_mode.erase(_mode.begin() + i);
+	}
+}
+
+void	Channel::set_limit(std::string l)
+{
+	std::stringstream sstream(l);
+	size_t	rslt;
+	sstream >> rslt;
+	_limit_user = rslt;
+}
 
 std::string Channel::time_creation_in_string(void) const
 {
