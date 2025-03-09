@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/02 17:26:38 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/09 17:30:08 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ ACTION_SERV_FILES =	cap.cpp				\
 					mode.cpp			\
 					nick.cpp			\
 					no_action.cpp		\
+					part.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
 					quit.cpp			\

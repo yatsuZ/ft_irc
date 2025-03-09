@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 17:24:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ const char* action_tab[IDK + 1] =
 	"Permet d'expulser un utilisateur d'un canal spécifique. Seuls les opérateurs du canal (@) ont le droit d'utiliser cette commande.",						// KICK
 	"Pour inviter un utilisateur à rejoindre un canal privé (+i). Si le canal n'est pas en mode privé, l'utilisateur peut y entrer sans invitation.",			// INVITE
 	"Est utilisée pour afficher ou modifier le sujet (titre) d'un canal. Seuls les opérateurs du canal peuvent modifier le sujet si le mode +t est activé.",	// TOPIC
-	"... Action non reconnus",																	// IDK
+	"Quite un chanelle.",																																		// PART
+	"... Action non reconnus",																																	// IDK
 };
 
 const char* getActionString(Action current_action)

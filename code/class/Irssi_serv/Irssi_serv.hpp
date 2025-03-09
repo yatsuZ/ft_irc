@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/04 23:30:43 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:29:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ private:
 	Reaction_Serv		ft_kick(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// KICK
 	Reaction_Serv		ft_invite(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// INVITE
 	Reaction_Serv		ft_topic(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// TOPIC
+	Reaction_Serv		ft_part(Cmd_irssi &, UserHuman * , pollfd &, size_t &);				// PART
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
 

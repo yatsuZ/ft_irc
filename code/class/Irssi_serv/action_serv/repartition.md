@@ -1,6 +1,7 @@
 TO DO
 
 YASSINE
+    - leave
     - verifier chaque cmd
     - Faire la diff entre irssi et nc
     - tester avec nc

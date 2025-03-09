@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 14:57:55 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:28:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ Action	Cmd_irssi::init_action(void) const
 		return (INVITE);
 	else if (this->get_cmd() == "TOPIC")
 		return (TOPIC);
+	else if (this->get_cmd() == "PART")
+		return (PART);
 	return (IDK);
 }
 

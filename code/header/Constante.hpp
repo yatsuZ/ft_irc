@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/02 17:24:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 17:27:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ enum Action {
 	KICK,
 	INVITE,
 	TOPIC,
+	PART,
 	IDK// derniere Action du tableau
 };
 
