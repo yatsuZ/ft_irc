@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:48:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:38:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 18:59:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Reaction_Serv	Irssi_serv::ft_kick(Cmd_irssi &current_cmd, UserHuman * current_us
 	if (res == -1)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()), current_pollfd), (NONE));
 	else if (res == -2)
-		return (send_message(ERR_USERNOTINCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	else if (res == -3)
 		return (send_message(ERR_CHANOPRIVSNEEDED(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// else if ()// VERIFIER QUIL EST PAS BANN // SAMIRA ici
@@ -59,7 +59,7 @@ Reaction_Serv Irssi_serv::multiple_kick(UserHuman * target_user, std::string & t
 	
 	int target_is_in_chan = _is_op_in_chan(*target_user, *current_chan);
 	if (target_is_in_chan == -2 || target_is_in_chan == -1)
-		return (send_message(ERR_USERNOTINCHANNEL(this->get_name(), target_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_USERNOTINCHANNEL(this->get_name(), current_user->get_nick(), target_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	
 	// ici faire suprimer la cible du chanelle et envoyer le message
 	ssize_t index_u = _get_index_of_userhuman_by_nick(target_user->get_nick());

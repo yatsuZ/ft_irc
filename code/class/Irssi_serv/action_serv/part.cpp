@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:28:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 18:11:57 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 19:00:22 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	
 	int target_is_in_chan = _is_op_in_chan(current_user, *chan_to_part);
 	if (target_is_in_chan == -2 || target_is_in_chan == -1)
-		return (send_message(ERR_NOTONCHANNEL(this->get_name(), chan_to_part->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user.get_nick(), chan_to_part->get_name()), current_pollfd), (NONE));
 	
 	// ici faire suprimer la cible du chanelle et envoyer le message
 	ssize_t index_u = _get_index_of_userhuman_by_nick(current_user.get_nick());
@@ -54,7 +54,7 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	
 	ssize_t index_c = _get_index_channel_by_name(chan_to_part->get_name());
 	if (index_c == -1)
-		return (send_message(ERR_NOTONCHANNEL(this->get_name(), chan_to_part->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user.get_nick(), chan_to_part->get_name()), current_pollfd), (NONE));
 
 	send_message(PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()), current_pollfd);
 	_send_message_to_a_chanelle(current_user, *chan_to_part, PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()));

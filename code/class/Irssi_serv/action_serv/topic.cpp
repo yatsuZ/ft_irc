@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:49:24 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 16:41:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 19:00:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Reaction_Serv	Irssi_serv::ft_topic(Cmd_irssi &current_cmd, UserHuman * current_u
 	if (res == -1)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()), current_pollfd), (NONE));
 	else if (res == -2)
-		return (send_message(ERR_USERNOTINCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// else if (res == -3) /* doit verifer que cest un opperator */
 	// 	return (send_message(ERR_CHANOPRIVSNEEDED(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 

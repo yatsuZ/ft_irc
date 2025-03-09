@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 18:05:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 18:56:51 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,14 +173,6 @@
 // #define ERR_ALREADYREGISTRED(command) (command + " :Unauthorized command (already registered)" + CRLF)
 // // ERR_BADCHANNELKEY
 // #define ERR_BADCHANNELKEY(nickname, channelname) (": 475 " + nickname + " " + channelname + " :Cannot join channel (+k)" + CRLF)
-// ERR_BANNEDFROMCHAN
-#define ERR_BANNEDFROMCHAN(nickname, channelname) (": 474 " + nickname + " " + channelname + " :You are banned from this channel" + CRLF)
-// ERR_CHANNELISFULL
-#define ERR_CHANNELISFULL(nickname, channelname) (": 471 " + nickname + " " + channelname + " :Cannot join channel (+l)" + CRLF)
-// ERR_INVITEONLYCHAN
-#define ERR_INVITEONLYCHAN(nickname, channelname) (": 473 " + nickname + " " + channelname + " :Cannot join channel (+i)" + CRLF)
-// ERR_KEYSET
-#define ERR_KEYSET(channelname) (": 467 " + channelname + " :Channel key already set" + CRLF)
 // ERR_NEEDMODEPARM
 #define ERR_NEEDMODEPARM(channelname, mode) (": 696 " + channelname + " * You must specify a parameter for the key mode " + mode + CRLF)
 // ERR_INVALIDMODEPARM

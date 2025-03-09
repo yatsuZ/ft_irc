@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:49:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/06 17:23:05 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/09 18:58:44 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Reaction_Serv	Irssi_serv::ft_invite(Cmd_irssi &current_cmd, UserHuman * current_
 	if (res == -1)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()), current_pollfd), (NONE));
 	else if (res == -2)
-		return (send_message(ERR_USERNOTINCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// else if (res == -3)// ici verifier que le chanelle est en mode +i ou non
 	// 	return (send_message(ERR_CHANOPRIVSNEEDED(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// else if ()// VERIFIER QUIL EST PAS BANN // SAMIRA ici
@@ -46,7 +46,7 @@ Reaction_Serv	Irssi_serv::ft_invite(Cmd_irssi &current_cmd, UserHuman * current_
 	std::cout << "------------------------------------" << std::endl;
 	std::cout << *target_user << std::endl << *current_chan << std::endl << this->_all_Channel << std::endl << this->_all_User << std::endl << "res = " << res << std::endl;
 	if (res != -2)
-		return (send_message(ERR_USERONCHANNEL(this->get_name(), target_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
+		return (send_message(ERR_USERONCHANNEL(this->get_name(), current_user->get_nick(), target_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	// si la target est ban on envoye rien
 
 	send_message(RPL_INVITING(this->get_name(), current_user->get_nick(), target_user->get_nick(), current_chan->get_name()), current_pollfd);

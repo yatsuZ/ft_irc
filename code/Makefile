@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
+#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/09 17:30:08 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/09 19:01:26 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,11 @@ ACTION_SERV_FILES =	cap.cpp				\
 					part.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
-					who.cpp				\
-					whois.cpp			\
 					quit.cpp			\
 					shutdown.cpp		\
 					topic.cpp			\
 					user.cpp			\
+					who.cpp				\
 					whois.cpp
 
 MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp		\
