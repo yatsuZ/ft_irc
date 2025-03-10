@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 18:56:51 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 18:30:19 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,11 @@
 // RPL_ENDOFWHO
 #define RPL_ENDOFWHO(server_name, nick, target) (":" + server_name + " 315 " + nick + " " + target + " :End of /WHO list" + CRLF)
 // #RPL_ENDOFWHOIS
-#define RPL_ENDOFWHOIS(server_name, nick) (":" + server_name + " 318 " + nick + " :End of /WHOIS" + CRLF)
+#define RPL_ENDOFWHOIS(server_name, nick, target) (":" + server_name + " 318 " + nick + " " + target + " :End of /WHOIS list" + CRLF)
+// RPL_WHOISACTUALLY
+#define RPL_WHOISACTUALLY(server_name, nick, target, hostname, ip) (":" + server_name + " 338 " + nick + " " + target + " :is actually ~" + hostname + "@" + ip + "[" + ip + "]" + CRLF)
+// RPL_WHOISSERVER
+#define RPL_WHOISSERVER(server_name, nick, target) (":" + server_name + " 312 " + nick + " " + target  + " " + server_name + " :" + server_name + " IRC server" + CRLF)
 // #RPL_JOIN
 #define RPL_JOIN(nick, hostname, ip, channel_name) (":" + nick + "!~" + hostname + "@" + ip + " JOIN :" + channel_name + CRLF)
 // #RPL_JOIN_K (avec clé)
@@ -82,11 +86,13 @@
 
 //######################ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
-#define ERR_NOSUCHNICK(server_name, nick) (":" + server_name + " 401 " + nick + ": No such nick" + CRLF)
+#define ERR_NOSUCHNICK(server_name, nick, target) (":" + server_name + " 401 " + nick + " " + target + " :No such nick" + CRLF)
 // ERR_NOSUCHCHANNEL
 #define ERR_NOSUCHCHANNEL(server_name, nick, target_chan) (":" + server_name + " 403 " + nick + " " + target_chan + " :No such channel" + CRLF)
 // ERR_CANNOTSENDTOCHAN
 #define ERR_CANNOTSENDTOCHAN(server_name, channelname) (":" + server_name + " 404 " + channelname + " :Cannot send to channel" + CRLF)
+//ERR_WASNOSUCHNICK
+#define ERR_WASNOSUCHNICK(server_name, nick, target) (":" + server_name + " 406 " + nick + " " + target + " :There was no such nickname" + CRLF)
 // ERR_NOORIGIN
 #define ERR_NOORIGIN(server_name, nickname) (":" + server_name + " 409 " + nickname + " :No origin specified" + CRLF)
 // ERR_INVALIDCAPCMD
@@ -96,7 +102,7 @@
 // ERR_NONICKNAMEGIVEN
 #define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNI CKNAME
-#define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + ":Erroneous nickname" + CRLF)
+#define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + " :Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE
 #define ERR_NICKNAMEINUSE(server_name, nickname, new_nickname) (":" + server_name + " 433 " + nickname + ": " + new_nickname + " Nickname is already in use" + CRLF)
 // ERR_USERNOTINCHANNEL

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 03:00:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 13:49:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ private:
 	// OTHER
 	void	connect(void);
 	bool	_nick_already_used(std::string nick) const;
+	bool	_err_nick(std::string & nick) const;
 	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 	int		_is_op_in_chan(UserHuman &user, Channel &chan);

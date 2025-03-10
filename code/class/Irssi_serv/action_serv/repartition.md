@@ -12,14 +12,18 @@ SAMIRA
 RESTE:
     - faire le mdp verifier (cmd pass a faire) <- ON 
 
-NICK
+NICK <============ FAIT (sam)
     - caracteres speciaux interdits <- SAM
+    ->modifications => nikc_user = cmd_arg[0] au lieu de asterix (asterix = char interdit)
+     fonction check err nick ajouté
 
 INVITE
     - tableau d'users invités dans channel <- YAYA
         + add l'user depuis invite
 
-WHOIS
- RPL_WHOISCHANNELS <- SAM
- (WHOREPLY) <- SAM
- IPv6 addresses such as "::1" are prefixed with a zero ('0', 0x30) to ensure this
+WHOIS <================ FAIT (sam)
+ RPL_WHOISCHANNELS 
+ (WHOREPLY) IPv6 addresses such as "::1" are prefixed with a zero ('0', 0x30) to ensure this 
+
+WHOWAS <= (SAM)
+en reponse a whois unknown nick, whowas est envoyer

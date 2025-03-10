@@ -1,0 +1,67 @@
+//////////////////////////////////// REF
+<< WHOIS Kurps
+>> :atw.hu.eu.dal.net 311 Kurps Kurps ~smlamali 44f6-509-a17-ad5f-d5b6.210.62.ip * :Samira MLAMALI
+--> whois event
+>> :atw.hu.eu.dal.net 338 Kurps Kurps :is actually ~smlamali@62.210.32.5 [62.210.32.5]
+--> whois default event
+>> :atw.hu.eu.dal.net 312 Kurps Kurps atw.hu.eu.dal.net :ATW.hu DALnet IRC server
+--> whois default event
+>> :atw.hu.eu.dal.net 317 Kurps Kurps 561 1741615532 :seconds idle, signon time
+--> whois default event
+>> :atw.hu.eu.dal.net 318 Kurps Kurps :End of /WHOIS list.
+--> whois end
+<< QUIT :leaving
+<< CAP LS
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ IRC
+<< WHOIS Kurps
+>> :YASACO 311 Kurps Kurps smlamali 127.0.0.1 * :Samira MLAMALI
+--> whois event
+>> :YASACO 338 Kurps Kurps ~smlamali@127.0.0.1[127.0.0.1]
+--> whois default event
+>> :YASACO 312 YASACO :YASACO IRC server
+--> whois default event
+>> :YASACO 318 Kurps :End of /WHOIS
+--> whois end
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< QUIT :leaving
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ IRC FIX<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< WHOIS Kurps
+>> :YASACO 311 Kurps Kurps smlamali 127.0.0.1 * :Samira MLAMALI
+--> whois event
+>> :YASACO 338 Kurps Kurps :is actually ~smlamali@127.0.0.1[127.0.0.1]
+--> whois default event
+>> :YASACO 312 Kurps Kurps YASACO :YASACO IRC server
+--> whois default event
+>> :YASACO 318 Kurps Kurps :End of /WHOIS list
+///////////////////////////////////////////////// DALNET TEST
+
+
+<< WHOIS fdjfhdjfds
+>> :serenity.fl.us.dal.net 401 Kurps fdjfhdjfds :No such nick/channel
+--> whois try whowas
+<< WHOWAS fdjfhdjfds 1
+>> :serenity.fl.us.dal.net 318 Kurps fdjfhdjfds :End of /WHOIS list.
+--> whois end
+>> :serenity.fl.us.dal.net 406 Kurps fdjfhdjfds :There was no such nickname
+--> event empty
+>> :serenity.fl.us.dal.net 369 Kurps fdjfhdjfds :End of WHOWAS
+--> whowas event end
+<< PING serenity.fl.us.dal.net
+>> :serenity.fl.us.dal.net PONG serenity.fl.us.dal.net :Kurps
+--> lag pong
+<< QUIT :leaving
