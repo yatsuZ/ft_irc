@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 19:51:20 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/10 02:59:32 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ enum Action {
 	INVITE,
 	TOPIC,
 	PART,
+	PASS,
 	IDK// derniere Action du tableau
 };
 
@@ -70,7 +71,7 @@ extern const char* action_tab[IDK + 1];
 // Comportement du serveur apres avoir executer une action
 enum Reaction_Serv {
 	NONE,
-	PASS,
+	PASS_SERV,
 	STOP
 };
 

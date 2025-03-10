@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 17:28:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 02:58:35 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ Action	Cmd_irssi::init_action(void) const
 		return (TOPIC);
 	else if (this->get_cmd() == "PART")
 		return (PART);
+	else if (this->get_cmd() == "PASS")
+		return (PASS);
 	return (IDK);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 17:27:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 02:57:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ const char* action_tab[IDK + 1] =
 	"Pour inviter un utilisateur à rejoindre un canal privé (+i). Si le canal n'est pas en mode privé, l'utilisateur peut y entrer sans invitation.",			// INVITE
 	"Est utilisée pour afficher ou modifier le sujet (titre) d'un canal. Seuls les opérateurs du canal peuvent modifier le sujet si le mode +t est activé.",	// TOPIC
 	"Quite un chanelle.",																																		// PART
+	"Permet de se connecter avec un mot de passe ??",																											// PASS
 	"... Action non reconnus",																																	// IDK
 };
 

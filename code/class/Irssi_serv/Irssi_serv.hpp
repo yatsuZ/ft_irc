@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 17:46:34 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 03:00:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ private:
 	Reaction_Serv		ft_invite(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// INVITE
 	Reaction_Serv		ft_topic(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// TOPIC
 	Reaction_Serv		ft_part(Cmd_irssi &, UserHuman * , pollfd &, size_t &);				// PART
+	Reaction_Serv		ft_pass(Cmd_irssi &, UserHuman * , pollfd &, size_t &);				// PASS
 	Reaction_Serv		ft_idk(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// IDK dernier
 
 
@@ -80,6 +81,7 @@ private:
 	// specefique cmd
 	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
 	Reaction_Serv multiple_part(pollfd &current_pollfd, UserHuman & current_user, std::string & chan_name, Cmd_irssi &current_cmd);
+	Reaction_Serv multiple_privmsg(std::string &name_target, UserHuman * current_user, Cmd_irssi & current_cmd, pollfd &current_pollfd);
 
 	// specefique get
 	UserHuman	* _get_userhuman_by_index_of_pollfd(ssize_t i);

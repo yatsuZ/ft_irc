@@ -10,7 +10,7 @@ SAMIRA
             no n-word D:
 
 RESTE:
-    - faire le mdp verifier <- ON 
+    - faire le mdp verifier (cmd pass a faire) <- ON 
 
 NICK
     - caracteres speciaux interdits <- SAM
@@ -23,8 +23,3 @@ WHOIS
  RPL_WHOISCHANNELS <- SAM
  (WHOREPLY) <- SAM
  IPv6 addresses such as "::1" are prefixed with a zero ('0', 0x30) to ensure this
-
-
-PRIVMSG:
-    - gerer cas plusieurs target <- YAYA
-

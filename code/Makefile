@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
+#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/09 19:41:48 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/10 03:01:56 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ ACTION_SERV_FILES =	cap.cpp				\
 					nick.cpp			\
 					no_action.cpp		\
 					part.cpp			\
+					pass.cpp			\
 					ping.cpp			\
 					privmsg.cpp			\
 					quit.cpp			\

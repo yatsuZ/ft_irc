@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/02 17:48:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/10 02:49:26 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 
 Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	std::string reply;
 	std::cout << YELLOW << "-------- PRIVMSG -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	// 1. verifier si le user existe ou est ban
@@ -29,8 +28,24 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd);
 		return (NONE);
 	}
-	std::string name_target = current_cmd.get_arg()[0]; // ici faire boucle for sur les cibles
-	
+	std::vector<std::string> list_name_target = ft_split(current_cmd.get_arg()[0], ","); // ici faire boucle for sur les cibles
+
+	for (size_t i = 0; i < list_name_target.size(); i++)
+	{
+		std::string name_target = list_name_target[i];
+		if (name_target != ",")
+		{
+			Reaction_Serv res_serv = multiple_privmsg(name_target, current_user, current_cmd, current_pollfd);
+			if (res_serv != NONE)
+				return (res_serv);
+		}
+	}
+	return (NONE);
+}
+
+Reaction_Serv	Irssi_serv::multiple_privmsg(std::string &name_target, UserHuman * current_user, Cmd_irssi & current_cmd, pollfd &current_pollfd)
+{
+	std::string reply;
 	bool only_operator = false;
 	if (target_is_chanelle(name_target))//is chanelle
 	{
@@ -42,7 +57,7 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 
 		Channel * target_chan = this->_find_chan_in_user_by_name(*current_user, name_target);
 		if (!target_chan)
-			return (send_message(ERR_CANNOTSENDTOCHAN(std::string(SERVER_NAME), current_cmd.get_arg()[0]), current_pollfd), (NONE));
+			return (send_message(ERR_CANNOTSENDTOCHAN(this->get_name(), current_cmd.get_arg()[0]), current_pollfd), (NONE));
 		reply = PRIVMSG_REP(
 			current_user->get_nick(), 
 			current_user->get_name(), 
@@ -68,6 +83,5 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 		);	
 		send_message(reply, this->_all_pollfd[target_user->get_index_pollfd()]);
 	}
-
 	return (NONE);
 }

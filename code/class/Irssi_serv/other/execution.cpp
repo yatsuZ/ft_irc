@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/07 15:38:51 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/10 02:59:50 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	Irssi_serv::exec(void)
 				{
 					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
 					Reaction_Serv reaction = do_action(iter_cmd_irssi, _get_userhuman_by_index_of_pollfd(i), current_pollfd, i);
-					if (reaction == PASS)
+					if (reaction == PASS_SERV)
 						break;
 					else if (reaction == STOP)
 						return;
