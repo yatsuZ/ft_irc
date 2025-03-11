@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 16:46:52 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/07 16:52:42 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:49:10 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Mode	Irssi_serv::ft_mode_o(Cmd_irssi &current_cmd,  UserHuman *current_user, pol
 
 	if (target_human == NULL)
 	{
-		send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()),current_pollfd);
+		send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), target_nick),current_pollfd);
 		send_message(ERR_USERNOTINCHANNEL(this->get_name(), current_user->get_nick(), target_nick, chan->get_name()), current_pollfd);
 		return NO_MODE;
 	}

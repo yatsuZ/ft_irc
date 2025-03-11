@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:28:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 20:15:18 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:57:01 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Reaction_Serv	Irssi_serv::ft_part(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::cout << YELLOW << "-------- PART -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (!current_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 
 	if (current_cmd.get_arg().size() < 1 || current_cmd.get_arg()[0][0] == ':')
 		return (send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd), (NONE));
@@ -50,7 +50,7 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	// ici faire suprimer la cible du chanelle et envoyer le message
 	ssize_t index_u = _get_index_of_userhuman_by_nick(current_user.get_nick());
 	if (index_u == -1)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user.get_nick()), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user.get_nick(), current_user.get_nick()), current_pollfd), (NONE));
 	
 	ssize_t index_c = _get_index_channel_by_name(chan_to_part->get_name());
 	if (index_c == -1)

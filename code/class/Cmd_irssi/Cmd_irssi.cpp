@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cmd_irssi.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:16:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 02:58:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 13:15:37 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ Action	Cmd_irssi::init_action(void) const
 		return (PING);
 	else if (this->get_cmd() == "WHOIS")
 		return (WHOIS);
+	else if (this->get_cmd() == "WHOWAS")
+		return (WHOWAS);
 	else if (this->get_cmd() == "QUIT")
 		return (QUIT);
 	else if (this->get_cmd() == "JOIN")

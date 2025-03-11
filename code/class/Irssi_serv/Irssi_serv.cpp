@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 13:13:33 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:14:40 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[MODE] = &Irssi_serv::ft_mode;
 	action_table[PING] = &Irssi_serv::ft_ping;
 	action_table[WHOIS] = &Irssi_serv::ft_whois;
+	action_table[WHOWAS] = &Irssi_serv::ft_whowas;
 	action_table[QUIT] = &Irssi_serv::ft_quit;
 	action_table[JOIN] = &Irssi_serv::ft_join;
 	action_table[PRIVMSG] = &Irssi_serv::ft_privmsg;

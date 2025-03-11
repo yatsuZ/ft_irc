@@ -3,22 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   pass.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:01:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 03:05:09 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 15:29:37 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../Irssi_serv.hpp"
 
-Reaction_Serv	Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
+Reaction_Serv   Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	(void)	current_user;
-	std::cout << YELLOW << "--------PASS -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
+    std::cout << YELLOW << "--------PASS -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
+    if(current_cmd.get_arg().empty())
+        return (send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->get_nick(), "PASS"), current_pollfd), NONE);
+    if (current_user != NULL)
+        return (send_message(ERR_ALREADYREGISTRED(this->get_name(), "PASS"), current_pollfd), NONE);
 
-	std::cout << current_cmd << std::endl;
-	return (send_message(ERR_UNKNOWNCOMMAND(this->get_name(), current_cmd.get_cmd()), current_pollfd), (NONE));
+    std::string pass = current_cmd.get_arg()[0];
+    (void)pass;
+    return (NONE);
 }
 
 /*

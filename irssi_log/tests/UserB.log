@@ -1,0 +1,61 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< NICK UserB
+>> :Kurps!~smlamali@YASACO NICK :UserB
+>> :YASACO : Hostname ->127.0.0.1
+<< JOIN #salon
+>> :UserB!~smlamali@127.0.0.1 JOIN :#salon
+>> :YASACO 332 UserB #salon :What A Great Day
+>> 
+>> :YASACO 353 UserB = #salon :@userA UserB
+>> :YASACO 366 UserB #salon :End of /NAMES list
+<< MODE #salon
+>> :YASACO 324 UserB #salon +
+--> chanquery mode
+<< WHO #salon
+>> :YASACO 352 UserB * ~smlamali 127.0.0.1 YASACO userA H :0 Samira MLAMALI
+>> :YASACO 315 UserB userA :End of /WHO list
+<< TOPIC #salon :huh
+>> :YASACO 482 UserB #salon :You're not channel operator
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #salon
+--> lag pong
+>> :YASACO 352 UserB * ~smlamali 127.0.0.1 YASACO userA H :0 Samira MLAMALI
+>> :YASACO 315 UserB userA :End of /WHO list
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #salon b
+--> lag pong
+>> :YASACO 482 UserB #salon :You're not channel operator
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PART #salon
+>> :UserB!~smlamali@smlamali PART #salon :
+<< PING YASACO
+>> PONG YASACO
+--> FAILED mode b: chanquery abort
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> lag pong

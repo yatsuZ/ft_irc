@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:49:24 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 20:20:27 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:58:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Reaction_Serv	Irssi_serv::ft_topic(Cmd_irssi &current_cmd, UserHuman * current_u
 	std::cout << "-------- TOPIC -----------" << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (!current_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 
 	if (current_cmd.get_arg().size() == 0 || current_cmd.get_arg()[0][0] == ':')
 		return (send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd), (NONE));
@@ -37,7 +37,7 @@ Reaction_Serv	Irssi_serv::ft_topic(Cmd_irssi &current_cmd, UserHuman * current_u
 
 	int res = _is_op_in_chan(*current_user, *current_chan);
 	if (res == -1)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), "*"), current_pollfd), (NONE));
 	else if (res == -2)
 		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	else if (res == -3 && !current_chan->mode_in_channel(T))

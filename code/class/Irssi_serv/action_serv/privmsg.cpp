@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   privmsg.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/10 02:49:26 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 13:57:32 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 
 	// 1. verifier si le user existe ou est ban
 	if (!current_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 
 	if (current_cmd.get_arg().size() < 1)
 	{
@@ -73,7 +73,7 @@ Reaction_Serv	Irssi_serv::multiple_privmsg(std::string &name_target, UserHuman *
 	{
 		UserHuman * target_user = this->_get_userhuman_by_nick(name_target);
 		if (!target_user)
-			return (send_message(ERR_NOSUCHNICK(this->get_name(), name_target), current_pollfd), (NONE));
+			return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), name_target), current_pollfd), (NONE));
 		reply = PRIVMSG_REP(
 			current_user->get_nick(), 
 			current_user->get_name(), 

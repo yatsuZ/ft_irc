@@ -26,3 +26,10 @@
 << WHOWAS kk 1
 >> :YASACO 421 WHOWAS :Unknown command "WHOWAS"
 << QUIT :leaving
+
+
+
+///////////////
+<< WHOWAS Kurps <======= WHOWAS devient WHOWAS Kurps
+>> :sakura.jp.as.dal.net 406 Kurps Kurps :There was no such nickname
+>> :sakura.jp.as.dal.net 369 Kurps Kurps :End of WHOWAS

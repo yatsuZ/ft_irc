@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 13:49:24 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:15:11 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ private:
 	Reaction_Serv		ft_mode(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// MODE
 	Reaction_Serv		ft_ping(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// PING
 	Reaction_Serv		ft_whois(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHOIS
+	Reaction_Serv		ft_whowas(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// WHOIS
 	Reaction_Serv		ft_quit(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// QUIT
 	Reaction_Serv		ft_join(Cmd_irssi &, UserHuman *, pollfd &, size_t &);				// JOIN
 	Reaction_Serv		ft_privmsg(Cmd_irssi &, UserHuman *, pollfd &, size_t &);			// PRIVMSG

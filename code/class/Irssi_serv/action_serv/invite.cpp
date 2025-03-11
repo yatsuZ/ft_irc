@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/02 16:49:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 20:15:17 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:52:17 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 // Ajouter dans channel un tableau d'users qui peuvent rejoindre  
 Reaction_Serv	Irssi_serv::ft_invite(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
-	(void)	current_user;
-
 	std::cout << "-------- INVITE -----------" << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (!current_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), "*"), current_pollfd), (NONE));
 
 	if (current_cmd.get_arg().size() < 2 || current_cmd.get_arg()[0][0] == ':' || current_cmd.get_arg()[1][0] == ':')
 		return (send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd), (NONE));
@@ -31,7 +29,7 @@ Reaction_Serv	Irssi_serv::ft_invite(Cmd_irssi &current_cmd, UserHuman * current_
 		return (send_message(ERR_NOSUCHCHANNEL(this->get_name(), current_user->get_nick(), current_cmd.get_arg()[0]), current_pollfd), NONE);
 	int res = _is_op_in_chan(*current_user, *current_chan);
 	if (res == -1)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick()), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), current_cmd.get_arg()[0]), current_pollfd), (NONE));
 	else if (res == -2)
 		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user->get_nick(), current_chan->get_name()), current_pollfd), (NONE));
 	else if (res == -3 && current_chan->mode_in_channel(I))// ici verifier que le chanelle est en mode +i ou non
@@ -39,7 +37,7 @@ Reaction_Serv	Irssi_serv::ft_invite(Cmd_irssi &current_cmd, UserHuman * current_
 	//TO DO: add invit tableau d'users autorisee a rejoindre le chan
 	UserHuman * target_user = _get_userhuman_by_nick(current_cmd.get_arg()[0]);
 	if (!target_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_cmd.get_arg()[0]), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), current_cmd.get_arg()[0]), current_pollfd), (NONE));
 	res = _is_op_in_chan(*target_user, *current_chan);
 	std::cout << "------------------------------------" << std::endl;
 	std::cout << *target_user << std::endl << *current_chan << std::endl << this->_all_Channel << std::endl << this->_all_User << std::endl << "res = " << res << std::endl;

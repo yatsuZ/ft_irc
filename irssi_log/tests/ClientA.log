@@ -1,0 +1,76 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+
+-------------------<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< NICK ClientA
+>> :Kurps!~smlamali@YASACO NICK :ClientA
+>> :YASACO : Hostname ->127.0.0.1
+<< JOIN #lobbyA
+>> :ClientA!~smlamali@127.0.0.1 JOIN :#lobbyA
+>> :YASACO 353 ClientA = #lobbyA :@ClientA
+>> :YASACO 366 ClientA #lobbyA :End of /NAMES list
+<< MODE #lobbyA
+>> :YASACO 324 ClientA #lobbyA +
+--> chanquery mode
+<< WHO #lobbyA
+>> :YASACO 352 ClientA * ~smlamali 127.0.0.1 YASACO ClientA H :0 Samira MLAMALI
+>> :YASACO 315 ClientA ClientA :End of /WHO list
+<< TOPIC #lobbyA :First channel
+>> :ClientA!~smlamali@smlamali TOPIC #lobbyA :First channel
+>> :ClientB!~smlamali@127.0.0.1 JOIN :#lobbyA
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< MODE #lobbyA +t
+>> :ClientA!~smlamali@127.0.0.1 MODE #lobbyA +t
+>> :ClientB!~smlamali@smlamali TOPIC #lobbyA :freedom
+>> :ClientB!~smlamali@smlamali PART #lobbyA :
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #lobbyA
+--> lag pong
+>> :YASACO 352 ClientA * ~smlamali 127.0.0.1 YASACO ClientA H :0 Samira MLAMALI
+>> :YASACO 315 ClientA ClientA :End of /WHO list
+<< PART #lobbyA
+>> :ClientA!~smlamali@smlamali PART #lobbyA :
+
+<< JOIN #lobbyA
+>> :ClientA!~smlamali@127.0.0.1 JOIN :#lobbyA
+>> :YASACO 332 ClientA #lobbyA :freedom
+>> 
+>> :YASACO 353 ClientA = #lobbyA :ClientA
+>> :YASACO 366 ClientA #lobbyA :End of /NAMES list
+<< MODE #lobbyA
+>> :YASACO 324 ClientA #lobbyA +t
+--> chanquery mode
+<< WHO #lobbyA
+>> :YASACO 352 ClientA * ~smlamali 127.0.0.1 YASACO ClientA H :0 Samira MLAMALI
+>> :YASACO 315 ClientA ClientA :End of /WHO list
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #lobbyA b
+--> lag pong
+>> :YASACO 482 ClientA #lobbyA :You're not channel operator
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #lobbyA b
+--> lag pong
+>> :YASACO 482 ClientA #lobbyA :You're not channel operator
+----------------------------------------------------
+

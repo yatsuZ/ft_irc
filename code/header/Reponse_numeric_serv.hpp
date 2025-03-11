@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 18:30:19 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:34:06 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@
 #define RPL_NAMEREPLY(server_name, nick, channel_name, list_user) (":" + server_name + " 353 " + nick + " = " + channel_name + " :" + list_user + CRLF)
 // #RPL_ENDOFNAMES
 #define RPL_ENDOFNAMES(server_name, nick, channel_name) (":" + server_name + " 366 " + nick + " " + channel_name + " :End of /NAMES list" + CRLF)
+// RPL_ENDOFWHOWAS
+#define RPL_ENDOFWHOWAS(server_name, nick, target) (":" + server_name + " 369 " + nick + " " + target + " :End of WHOWAS" + CRLF)
 // RPL_CHANNELMODEIS
 #define RPL_CHANNELMODEIS(server_name, nick, channel_name, list_mode) (":" + server_name + " 324 " + nick + " " + channel_name + " +" + list_mode + CRLF)
 // RPL_UMODEIS

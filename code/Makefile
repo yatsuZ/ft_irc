@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
+#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/10 03:01:56 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/11 13:47:15 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ ACTION_SERV_FILES =	cap.cpp				\
 					topic.cpp			\
 					user.cpp			\
 					who.cpp				\
-					whois.cpp
+					whois.cpp			\
+					whowas.cpp
 
 MODE_FILES = ./class/Irssi_serv/mode_serv/ft_mode_i.cpp		\
 			 ./class/Irssi_serv/mode_serv/ft_mode_t.cpp		\

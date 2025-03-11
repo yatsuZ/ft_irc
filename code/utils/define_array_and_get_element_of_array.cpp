@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 02:57:42 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 13:23:37 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ const char* action_tab[IDK + 1] =
 	"Definit comment est percu/definit user/channel",																											// MODE
 	"Demande si la connexion est toujour etablie",																												// PING
 	"Demande les infos de l'utilisateur spécifié",																												// WHOIS
-	"L\'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																				// QUIT
+	"Demande les infos d'un utilisateur qui n'existe plus",																												// WHOWAS
+	"L'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																				// QUIT
 	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",																						// JOIN
 	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",																	// PRIVMSG
 	"Renvoie une liste d'users ou des infos sur un user specifique",																							// WHO
@@ -67,11 +68,11 @@ const char* getActionString(Action current_action)
 const char* mode_tab[NO_MODE + 1] =
 {
 	"USER: modifie la visibilité des informations hors channel / CHAN: rend l'accés au channel sur invitation.", //I
-	"Restricion sur la commande topic (limite aux opérateurs ou non).", 				//t
-	"Ajoute/supprime une clé au channel",												//k
-	"USER: operateur réseau / CHAN: donne/supprime le titre operateur a un utilisateur",	//o
-	"Ajoute/supprime une limite d'utilisateur dans le channel",							//l
-	"Mode inconnu",																		//NO_MODE
+	"Restricion sur la commande topic (limite aux opérateurs ou non).", 										 //t
+	"Ajoute/supprime une clé au channel",																		 //k
+	"USER: operateur réseau / CHAN: donne/supprime le titre operateur a un utilisateur",						 //o
+	"Ajoute/supprime une limite d'utilisateur dans le channel",													 //l
+	"Mode inconnu",																								 //NO_MODE
 };
 
 const char * getmodeString(Mode current_mode)

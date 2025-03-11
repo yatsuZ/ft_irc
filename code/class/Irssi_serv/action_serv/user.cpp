@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 19:51:25 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:58:47 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::cout << PINK << "-------- USER -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (current_user == NULL)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 	else if (l_args.size() < 4)
 	{
 		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd);

@@ -25,5 +25,7 @@ WHOIS <================ FAIT (sam)
  RPL_WHOISCHANNELS 
  (WHOREPLY) IPv6 addresses such as "::1" are prefixed with a zero ('0', 0x30) to ensure this 
 
-WHOWAS <= (SAM)
-en reponse a whois unknown nick, whowas est envoyer
+WHOWAS <= FAIT (SAM)
+en reponse a whois unknown nick, whowas est envoyé
+ ->on ne stock pas d'historique de nick est whowas n'est pas mendatory
+    donc je renvoie juste endofwhowas

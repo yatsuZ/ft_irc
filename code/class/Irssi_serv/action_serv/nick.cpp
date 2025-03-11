@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 14:56:36 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 13:56:08 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ Reaction_Serv	Irssi_serv::ft_nick(Cmd_irssi &current_cmd, UserHuman * current_us
 	if (new_nick.empty() || new_nick.length() > 9 || new_nick == "*")
 		return (send_message(ERR_ERRONEUSNICKNAME(this->get_name(), new_nick), current_pollfd), (NONE));
 	else if (current_user == NULL)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), new_nick), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 	else if (_nick_already_used(new_nick))
 		return (send_message(ERR_NICKNAMEINUSE(this->get_name(), nick_user, new_nick), current_pollfd), (NONE));
 

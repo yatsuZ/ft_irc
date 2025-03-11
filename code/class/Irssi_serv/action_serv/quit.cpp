@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quit.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 12:53:49 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/01 01:19:04 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 13:57:45 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Reaction_Serv	Irssi_serv::ft_quit(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::cout << PINK <<  "-------- QUIT -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (!current_user)
-		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*"), current_pollfd), (NONE));
+		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 
 	std::string msg_of_leaving;
 	std::vector<std::string> list_arg = current_cmd.get_arg();
