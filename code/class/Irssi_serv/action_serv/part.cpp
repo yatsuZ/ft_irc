@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   part.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:28:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 13:57:01 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:19:14 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	Channel * chan_to_part = _get_channel_by_name(chan_name);
 	if (!chan_to_part)
 		return (send_message(ERR_NOSUCHCHANNEL(this->get_name(), current_user.get_nick(), chan_name), current_pollfd), (NONE));
-	
+
 	int target_is_in_chan = _is_op_in_chan(current_user, *chan_to_part);
 	if (target_is_in_chan == -2 || target_is_in_chan == -1)
 		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user.get_nick(), chan_to_part->get_name()), current_pollfd), (NONE));
@@ -58,7 +58,15 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 
 	send_message(PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()), current_pollfd);
 	_send_message_to_a_chanelle(current_user, *chan_to_part, PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()));
-	chan_to_part->errase_user(static_cast<size_t>(index_u));
-	current_user.errase_chan(static_cast<size_t>(index_c));
+	std::cout << current_user.get_nick() << " QUITE LE CHANELLE " << chan_to_part->get_name() << std::endl;
+	chan_to_part->update_and_errase_index_of_user(index_u);
+	current_user.errase_chan(_get_index_channel_by_name(chan_to_part->get_name()));
+	// Metre un message si on shouaite dire qun user est suprimer
+	std::cout << "les chanelle sont mis a jour" << std::endl;
+	this->_erase_empty_chanelle();
+	if (this->_all_Channel.empty() == false)
+		show_all_user_from_chanelle(this->_all_Channel[0]);
+	else
+		std::cout << BLUE + "AUCUN CHAN" + NOCOLOR << std::endl;
 	return (NONE);
 }

@@ -17,10 +17,6 @@ NICK <============ FAIT (sam)
     ->modifications => nikc_user = cmd_arg[0] au lieu de asterix (asterix = char interdit)
      fonction check err nick ajouté
 
-INVITE
-    - tableau d'users invités dans channel <- YAYA
-        + add l'user depuis invite
-
 WHOIS <================ FAIT (sam)
  RPL_WHOISCHANNELS 
  (WHOREPLY) IPv6 addresses such as "::1" are prefixed with a zero ('0', 0x30) to ensure this 

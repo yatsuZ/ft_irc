@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/11 16:36:48 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 23:42:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	time_t						get_creation_topic(void)const {return this->_creation_topic;}
 	std::vector<size_t>			get_index_users(void)const {return this->_index_users;}
 	std::vector<size_t>			get_index_operators(void)const {return this->_index_operators;}
+	std::vector<size_t>			get_user_invite(void)const {return this->_user_invite;}
 	size_t						get_nbr_of_user(void)const {return this->_nbr_user;}
 	size_t						get_limit_user(void)const {return this->_limit_user;}
 
@@ -42,10 +43,12 @@ public:
 	void		set_autor_topic(const std::string & at){_autor_topic = at;}
 	void		set_creation_topic(const time_t & ct){_creation_topic = ct;}
 	void		add_user(size_t idx_user);
+	void		add_invit(size_t idx_user);
 	std::string	time_creation_in_string(void) const;
 
 	bool		is_operator(size_t idx_user) const;
 	bool		is_in_chan(size_t idx_user);
+	bool		is_in_invitation(size_t idx_user);
 	bool		mode_in_channel(Mode m);
 	std::string	list_mode(void)const;
 	std::string	mode_to_str(const Mode & m)const;

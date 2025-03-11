@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/28 19:47:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/11 23:44:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,7 @@ std::ostream & operator<<(std::ostream & o, const Channel & c)
 	  << YELLOW << "Topic: " << NOCOLOR << c.get_topic() << " | "
 	  << YELLOW << "Index user: " << NOCOLOR << c.get_index_users() << " | "
 	  << YELLOW << "Index operators: " << NOCOLOR << c.get_index_operators() << " | "
+	  << YELLOW << "All invite: " << NOCOLOR << c.get_user_invite() << " | "
 	  << YELLOW << "nbr of user: " << NOCOLOR << c.get_nbr_of_user() << " / " << c.get_limit_user() << " | "
 	  << YELLOW << "All mode: " << NOCOLOR << c.list_mode() << " | ";
 

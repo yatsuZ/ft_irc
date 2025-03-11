@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 14:34:06 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 23:56:24 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@
 // ERR_UNKNOWNMODE 
 #define ERR_UNKNOWNMODE(server_name, nick, character) (":" + server_name + " 472 " + nick + " " + character + " :is unknown mode char to me" + CRLF)
 // ERR_INVITEONLYCHAN
-#define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " "  + channel_name + " :Cannot join channel (+i)" + CRLF)
+#define ERR_INVITEONLYCHAN(server_name, nick, channel_name) (":" + server_name + " 473 " + nick + " " + channel_name + " :Cannot join channel (+i)" + CRLF)
 // ERR_BANNEDFROMCHAN
 #define ERR_BANNEDFROMCHAN(server_name, nick, channel_name) (":" + server_name + " 474 " + nick + " " + channel_name + " :cannot join channel (+b)" + CRLF)
 // ERR_BADCHANNELKEY

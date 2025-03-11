@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geter.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:24:28 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 17:22:30 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:04:55 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,16 @@ std::string Irssi_serv::get_all_chan_name_from_user(const UserHuman & user)
 
 std::string Irssi_serv::get_all_nick_from_chan(const Channel & chan)
 {
-	std::vector<size_t> list_of_index_user = chan.get_index_users();
-	std::vector<size_t> list_of_index_operator = chan.get_index_operators();
-	std::vector<size_t> list_of_index_all_user;//list_of_index_user + list_of_index_operator
-
-	list_of_index_all_user.insert(list_of_index_all_user.end(), list_of_index_user.begin(), list_of_index_user.end());
-	list_of_index_all_user.insert(list_of_index_all_user.end(), list_of_index_operator.begin(), list_of_index_operator.end());
-
+	std::vector<size_t> list_of_index_all_user = chan.get_index_users();
 
 	std::string	list = "";
 	if (list_of_index_all_user.empty())
 		return list;
 	for (size_t i=0; i < list_of_index_all_user.size(); i++)
 	{
-		list += "@" + this->_all_User[list_of_index_all_user[i]].get_nick();
+		if (chan.is_operator(list_of_index_all_user[i]))
+			list += "@";
+		list += this->_all_User[list_of_index_all_user[i]].get_nick();
 		if (i + 1 < list_of_index_all_user.size())
 			list += " ";
 	}

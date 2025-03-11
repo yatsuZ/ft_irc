@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 19:13:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 23:56:31 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 
 	std::cout << "SIZE KEYS = " << keys.size() << std::endl;
 
-
+	size_t index_user = _get_index_of_userhuman_by_nick(current_user->get_nick());
 ///////////////////////////////////////////////
 
 	for (size_t i=0; i<chans.size(); i++)
@@ -56,8 +56,8 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		if (channel == NULL) //cas channel n'existe pas (on en crée un)
 		{
 			Channel new_chan(chans[i], "");
-			new_chan.add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
-			new_chan.set_operator(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+			new_chan.add_user(index_user);
+			new_chan.set_operator(index_user);
 			current_user->add_chan(_all_Channel.size());
 			_all_Channel.push_back(new_chan);
 			send_message(RPL_JOIN(current_user->get_nick(), current_user->get_hostname(), current_user->get_ip_to_string(), chans[i]), current_pollfd);
@@ -70,7 +70,10 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		{
 			if (channel->get_nbr_of_user() == channel->get_limit_user())
 				return (send_message(ERR_CHANNELISFULL(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
-			channel->add_user(_get_index_of_userhuman_by_nick(current_user->get_nick()));
+//			SI le chanelle est privée on ne peut pas le rejoindre SAUF si channel->is_in_invitation(index_user) alors envoyer msg derreur car privée
+			if (channel->mode_in_channel(I) && !channel->is_in_invitation(index_user))
+				return (send_message(ERR_INVITEONLYCHAN(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
+			channel->add_user(index_user);
 			ssize_t index_channel = _get_index_channel_by_name(channel->get_name());
 			current_user->add_chan(index_channel);
 			if (keys[i] != channel->get_key())

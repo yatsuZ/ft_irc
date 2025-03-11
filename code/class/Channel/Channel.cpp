@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/09 20:27:08 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/11 23:42:38 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,26 @@ _creation_topic(0)
 
 void	Channel::add_user(size_t idx_user)
 {
+	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
+	{
+		if (*i == idx_user)
+		{
+			this->_user_invite.erase(i);
+			break ;
+		}
+	}	
 	_nbr_user++;
 	_index_users.push_back(idx_user);
 }
 
+void	Channel::add_invit(size_t idx_user)
+{
+	_user_invite.push_back(idx_user);
+}
 
 void	Channel::errase_user(size_t index_user)
 {
+	this->_nbr_user--;
 	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
 	{
 		if (*i == index_user)
@@ -71,7 +84,15 @@ void	Channel::errase_user(size_t index_user)
 		if (*i == index_user)
 		{
 			this->_index_operators.erase(i);
-			return ;
+			break;
+		}
+	}
+	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
+	{
+		if (*i == index_user)
+		{
+			this->_user_invite.erase(i);
+			break;
 		}
 	}
 }
@@ -84,6 +105,11 @@ void	Channel::update_index_of_user(size_t index_user)
 			*i = *i - 1;
 	}
 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i > index_user)
+			*i = *i - 1;
+	}
+	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
 	{
 		if (*i > index_user)
 			*i = *i - 1;
@@ -127,6 +153,18 @@ void	Channel::update_and_errase_index_of_user(size_t index_user)
 	}
 	if (to_del != this->_index_operators.end())
 		this->_index_operators.erase(to_del);
+
+	to_del = this->_user_invite.end();
+	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
+	{
+		if (*i == index_user)
+			to_del = i;
+		if (*i > index_user)
+			*i = *i - 1;
+	}
+	if (to_del != this->_user_invite.end())
+		this->_user_invite.erase(to_del);
+	
 	this->_nbr_user--;
 }
 
@@ -174,6 +212,17 @@ bool	Channel::is_in_chan(size_t idx_user)
 	}
 	return 0;
 }
+
+bool	Channel::is_in_invitation(size_t idx_user)
+{
+	for(size_t i=0; i<_user_invite.size(); i++)
+	{
+		if (_user_invite[i] == idx_user)
+			return 1;
+	}
+	return 0;
+}
+
 void	Channel::set_mode(Mode m)
 {
 	for (size_t i=0; i<_mode.size(); i++)
