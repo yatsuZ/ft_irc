@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_array_and_get_element_of_array.cpp          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 23:09:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 13:23:37 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/12 00:45:15 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ const char* action_tab[IDK + 1] =
 	"Definit comment est percu/definit user/channel",																											// MODE
 	"Demande si la connexion est toujour etablie",																												// PING
 	"Demande les infos de l'utilisateur spécifié",																												// WHOIS
-	"Demande les infos d'un utilisateur qui n'existe plus",																												// WHOWAS
-	"L'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																				// QUIT
+	"Demande les infos d'un utilisateur qui n'existe plus",																										// WHOWAS
+	"L'utilisateur se déconnecte et envoie un message aux autre utilisateurs.",																					// QUIT
 	"Permet à un utilisateur de rejoindre ou cree un canal (chatroom).",																						// JOIN
 	"Permet d'envoyer un message privé à un utilisateur ou un message public dans un canal.",																	// PRIVMSG
 	"Renvoie une liste d'users ou des infos sur un user specifique",																							// WHO
