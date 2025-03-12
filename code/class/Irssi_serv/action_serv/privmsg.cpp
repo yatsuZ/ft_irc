@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/12 01:11:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/12 01:21:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,14 @@ Reaction_Serv	Irssi_serv::multiple_privmsg(std::string &name_target, UserHuman *
 			return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), name_target), current_pollfd), (NONE));
 		if (_is_DCC(current_cmd))
 			this->_ft_dcc();
-		else
-		{
-			reply = PRIVMSG_REP(
-				current_user->get_nick(), 
-				current_user->get_name(), 
-				current_user->get_hostname(), 
-				name_target, 
-				current_cmd.get_message()
-			);	
-			send_message(reply, this->_all_pollfd[target_user->get_index_pollfd()]);	
-		}
+		reply = PRIVMSG_REP(
+			current_user->get_nick(), 
+			current_user->get_name(), 
+			current_user->get_hostname(), 
+			name_target, 
+			current_cmd.get_message()
+		);	
+		send_message(reply, this->_all_pollfd[target_user->get_index_pollfd()]);	
 	}
 	return (NONE);
 }
