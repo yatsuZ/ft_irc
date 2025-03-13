@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 23:44:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/13 18:27:16 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,4 +322,32 @@ std::ostream & operator<<(std::ostream & o, std::vector<Channel> const & chanell
 	
 	*/
 	return o;
+}
+
+std::ostream & operator<<( std::ostream & o, std::vector<std::string> const & list_of_word)
+{
+	o << std::endl;
+	size_t j = 0;
+	for (std::vector<std::string>::const_iterator i = list_of_word.begin(); i != list_of_word.end(); i++)
+	{
+		o << "[" << j++ << "] = \"" << *i << "\"" << std::endl;
+	}
+	return (o);
+}
+
+std::ostream & operator<<( std::ostream & o, DCC_TOKEN const & dcc_token)
+{
+	if (dcc_token == SEND_DCC)
+		o << "SEND";
+	else if (dcc_token == GET_DCC)
+		o << "GET";
+	else if (dcc_token == IDK_DCC)
+		o << "IDK";
+	return (o);
+}
+
+std::ostream & operator<<( std::ostream & o, Dcc const & dcc)
+{
+	o << "dcc atribut = " << dcc.get_type() << " " << dcc.get_file_name() << " " << dcc.get_host() << " " << dcc.get_port() << " " << dcc.get_taille_du_fichier() << std::endl;
+	return (o);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/12 01:12:22 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/13 16:07:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ private:
 	void		show_all_user_from_chanelle(const Channel & chan){std::cout << GREEN + chan.get_name() + PINK << " all his user : " << BLUE + get_all_nick_from_chan(chan) << NOCOLOR << std::endl;}
 
 	// BONUS dcc transfer file
-	bool	_is_CTCP(Cmd_irssi & cmd);
-	bool	_is_DCC(Cmd_irssi & cmd);
-	void 	_ft_dcc(void);
+	bool		_is_CTCP(Cmd_irssi & cmd);
+	bool		_is_DCC(Cmd_irssi & cmd);
+	std::string _clean_dcc_cmd(Cmd_irssi & cmd);
+	void 		_ft_dcc(std::string param_dcc);
 	
 public:
 	Irssi_serv(std::string argv1, std::string argv2);

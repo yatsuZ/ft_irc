@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dcc.cpp                                            :+:      :+:    :+:   */
+/*   ft_dcc.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/12 01:17:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/13 18:40:37 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,45 @@ bool Irssi_serv::_is_DCC(Cmd_irssi & cmd)
 	return false;
 }
 
-void	Irssi_serv::_ft_dcc(void)
+/// @return retorune la commande cmd sans les /x01
+std::string Irssi_serv::_clean_dcc_cmd(Cmd_irssi & cmd)
+{
+	std::string msg = cmd.get_message();
+	if (msg.length() < 2)
+		return (msg);
+	return (msg = msg.substr(1, msg.length() - 2), msg);
+}
+
+static	std::vector<std::string>	rafinement_des_param_dcc(std::string & param_dcc)
+{
+	std::vector<std::string> separete_by_space_and_quote = ft_split(param_dcc, " \"\'");
+	std::vector<std::string> list_param_dcc;
+	std::string				to_add = "";
+	bool quote = false;
+	for (size_t i = 0; i < separete_by_space_and_quote.size(); i++)
+	{
+		if (separete_by_space_and_quote[i] == "\"")
+			quote = !quote;
+		else if (quote || (!quote && separete_by_space_and_quote[i] != " "))
+			to_add += separete_by_space_and_quote[i];
+		if (!quote && to_add.empty() == false)
+		{
+			list_param_dcc.push_back(to_add);
+			to_add = "";
+		}
+	}
+	if (to_add.empty() == false)
+		list_param_dcc.push_back(to_add);
+	return (list_param_dcc);
+}
+
+void	Irssi_serv::_ft_dcc(std::string param_dcc)
 {
 	std::cout << RED + "Doit faire le bonus dcc mais ne sait pas par ou commencer." + NOCOLOR << std::endl;
+	std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
+	
+	std::vector<std::string> list_param_dcc = rafinement_des_param_dcc(param_dcc);
+	std::cout << YELLOW + "RAFINEMENT = " << NOCOLOR << list_param_dcc << std::endl;
+
+	Dcc test(list_param_dcc);
 }

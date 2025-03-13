@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ft_irc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 13:19:24 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:58:01 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ std::ostream & operator<<( std::ostream & o, Color const & color);
 std::ostream & operator<<( std::ostream & o, std::vector<size_t> const & vec_of_size_t);
 std::ostream & operator<<( std::ostream & o, Mode const & mode);
 std::ostream & operator<<( std::ostream & o, std::vector<Mode> const & vec_of_mode);
+std::ostream & operator<<( std::ostream & o, std::vector<std::string> const & list_of_word);
 
 int		send_message(std::string message, pollfd &current_pollfd);
 

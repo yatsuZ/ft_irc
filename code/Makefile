@@ -6,7 +6,7 @@
 #    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/12 00:53:36 by yzaoui           ###   ########.fr        #
+#    Updated: 2025/03/13 15:51:18 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,12 @@ OTHER_FILE_FROM_IRSSI_SERV =	./class/Irssi_serv/other/execution.cpp		\
 								./class/Irssi_serv/other/other.cpp			\
 								./class/Irssi_serv/other/errase_element.cpp	\
 								./class/Irssi_serv/other/geter.cpp			\
-								./class/Irssi_serv/other/dcc.cpp
+								./class/Irssi_serv/other/ft_dcc.cpp
 
 CLASS_FILES =	./class/Server/Server.cpp				\
 				./class/Cmd_irssi/Cmd_irssi.cpp			\
 				./class/Irssi_serv/Irssi_serv.cpp		\
+				./class/Dcc/Dcc.cpp						\
 				${OTHER_FILE_FROM_IRSSI_SERV}			\
 				${MODE_FILES}							\
 				./class/User/User.cpp					\

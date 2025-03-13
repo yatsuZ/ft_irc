@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   User.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/06 14:38:56 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/13 15:54:27 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 #include "./../../header/Ft_irc.hpp"
 #include "./../Channel/Channel.hpp"
-class Channel;
+#include "./../Dcc/Dcc.hpp"
 
+class Channel;
 class User
 {
 protected:
