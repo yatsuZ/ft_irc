@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/13 15:54:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:13:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include "./../../header/Ft_irc.hpp"
 #include "./../Channel/Channel.hpp"
-#include "./../Dcc/Dcc.hpp"
 
 class Channel;
 class User

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/13 18:45:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:05:17 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ uint32_t	Dcc::_init_host(std::string arg3)
 		return (0);
 	// convertir un string en uint32_t
 	bool error = false;
-	long portl = ft_atol_limits(arg3, 1, 65535, &error);
-	
+	uint32_t portl = ft_atol_limits(arg3, 0x00000000, 0xFFFFFFFF, &error);
+
 	if (error)
 		return (this->_valide_dcc = false, 0);
 	
@@ -73,7 +73,7 @@ size_t		Dcc::_init_taille_du_fichier(std::string arg5)
 	if (_valide_dcc == false)
 		return (0);
 	bool error = false;
-	long file_size = ft_atol_limits(arg5, 1, 65535, &error);
+	long file_size = ft_atol_limits(arg5, 1, 4294967295, &error);
 		
 	if (error)
 		return (this->_valide_dcc = false, 0);
@@ -84,13 +84,15 @@ size_t		Dcc::_init_taille_du_fichier(std::string arg5)
 /////////
 
 
-Dcc::Dcc(std::vector<std::string> split_param):
-_valide_dcc(								(split_param.size() < 6 )? (std::cout << "oui" << std::endl, true): (false)),
+Dcc::Dcc(std::vector<std::string> split_param, UserHuman * emeteur, UserHuman * recepteur):
+_valide_dcc(								(split_param.size() == 6) ? (true): (false)),
 _type(				_init_type				(_valide_dcc ? (split_param[1]) : (""))),
 _file_name(			_init_file_name			(_valide_dcc ? (split_param[2]) : (""))), 
 _host(				_init_host				(_valide_dcc ? (split_param[3]) : (""))), 
 _port(				_init_port				(_valide_dcc ? (split_param[4]) : (""))), 
-_taille_du_fichier(	_init_taille_du_fichier	(_valide_dcc ? (split_param[5]) : ("")))
+_taille_du_fichier(	_init_taille_du_fichier	(_valide_dcc ? (split_param[5]) : (""))), 
+_emeteur(emeteur), 
+_recepteur(recepteur)
 {
 	std::cout << GREEN << "Constructeur parametric dcc" << NOCOLOR << std::endl;
 	std::cout << *this << std::endl;

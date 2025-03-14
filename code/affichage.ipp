@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:29:19 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/13 18:27:16 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:08:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -348,6 +348,7 @@ std::ostream & operator<<( std::ostream & o, DCC_TOKEN const & dcc_token)
 
 std::ostream & operator<<( std::ostream & o, Dcc const & dcc)
 {
-	o << "dcc atribut = " << dcc.get_type() << " " << dcc.get_file_name() << " " << dcc.get_host() << " " << dcc.get_port() << " " << dcc.get_taille_du_fichier() << std::endl;
+	o << "dcc atribut = " << dcc.get_type() << " " << dcc.get_file_name() << " " << dcc.get_host() << " " << dcc.get_port() << " " << dcc.get_taille_du_fichier() 
+	<< " " << ((dcc.get_emeteur())? dcc.get_emeteur()->get_nick() : "(NONE emeteur)") << " " << ((dcc.get_recepteur())? dcc.get_recepteur()->get_nick() : "(NONE recepteur)") << std::endl;
 	return (o);
 }

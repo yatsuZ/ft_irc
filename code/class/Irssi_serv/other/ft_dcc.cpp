@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/13 18:40:37 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/14 01:10:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static	std::vector<std::string>	rafinement_des_param_dcc(std::string & param_dcc
 	return (list_param_dcc);
 }
 
-void	Irssi_serv::_ft_dcc(std::string param_dcc)
+void	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman * emeteur, UserHuman * recepteur)
 {
 	std::cout << RED + "Doit faire le bonus dcc mais ne sait pas par ou commencer." + NOCOLOR << std::endl;
 	std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
@@ -80,5 +80,5 @@ void	Irssi_serv::_ft_dcc(std::string param_dcc)
 	std::vector<std::string> list_param_dcc = rafinement_des_param_dcc(param_dcc);
 	std::cout << YELLOW + "RAFINEMENT = " << NOCOLOR << list_param_dcc << std::endl;
 
-	Dcc test(list_param_dcc);
+	Dcc test(list_param_dcc, emeteur, recepteur);
 }
