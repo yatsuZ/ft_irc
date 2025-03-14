@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   UserHuman.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/20 15:24:59 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:10:08 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,10 @@ void	UserHuman::get_msg_by_step(const std::string & server_name, pollfd &pollfd)
 		send_message(NOTICE(server_name, get_nick(), "We verify your nickname and user and the password ..."), pollfd);
 		_step_of_link++;
 	}
+}
+
+void	UserHuman::add_request_send_file(Dcc new_request_send)
+{
+	// verifier qu'il n'y a pas plusieur fois la meme requette
+	this->_all_request_to_send_files.push_back(new_request_send);
 }

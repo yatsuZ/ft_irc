@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/14 01:05:17 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/14 15:03:47 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,17 @@ size_t		Dcc::_init_taille_du_fichier(std::string arg5)
 /////////
 
 
-Dcc::Dcc(std::vector<std::string> split_param, UserHuman * emeteur, UserHuman * recepteur):
+Dcc::Dcc(std::vector<std::string> split_param, ssize_t i_emeteur, ssize_t i_recpeteur):
 _valide_dcc(								(split_param.size() == 6) ? (true): (false)),
 _type(				_init_type				(_valide_dcc ? (split_param[1]) : (""))),
 _file_name(			_init_file_name			(_valide_dcc ? (split_param[2]) : (""))), 
 _host(				_init_host				(_valide_dcc ? (split_param[3]) : (""))), 
 _port(				_init_port				(_valide_dcc ? (split_param[4]) : (""))), 
 _taille_du_fichier(	_init_taille_du_fichier	(_valide_dcc ? (split_param[5]) : (""))), 
-_emeteur(emeteur), 
-_recepteur(recepteur)
+_index_emeteur(_valide_dcc == false || i_emeteur < 0 ? (-1) : (i_emeteur)), 
+_index_recepteur(_valide_dcc == false || i_recpeteur < 0 ? (-1) : (i_recpeteur))
 {
-	std::cout << GREEN << "Constructeur parametric dcc" << NOCOLOR << std::endl;
+	
+	std::cout << GREEN << "Constructeur parametric dcc " << i_emeteur << " " << i_recpeteur << NOCOLOR << std::endl;
 	std::cout << *this << std::endl;
 }
