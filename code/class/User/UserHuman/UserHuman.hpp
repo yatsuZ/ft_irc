@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:41 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 21:56:18 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 22:43:18 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ public:
 	void	get_welcolm(const std::string & server_name, Action from_this_action, pollfd &pollfd);
 	bool	add_request_send_file(Dcc new_request_send);
 	void	update_index_dcc(ssize_t index_to_del);
+	Dcc		pop_request_dcc(Dcc & get_request);
 };
 
 std::ostream & operator<<( std::ostream & o, UserHuman const & userhuman);

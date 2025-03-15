@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 22:10:52 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/16 00:20:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static	std::vector<std::string>	rafinement_des_param_dcc(std::string & param_dcc
 	return (list_param_dcc);
 }
 
-bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur, pollfd & emeteur_pollfd)
+bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur, pollfd & emeteur_pollfd, UserHuman & recepteur)
 {
 	std::cout << RED + "DCC REQUEST." + NOCOLOR << std::endl;
 	// std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
@@ -87,12 +87,31 @@ bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t in
 	{
 		if (emeteur.add_request_send_file(test) == false)
 			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "DCC request already in progress, for the file \"" + test.get_file_name() + "\"."), emeteur_pollfd), false);
+		/*TCP CONNEXION*/
 	}
-	else if (test.get_type() == GET_DCC)
+	else if (test.get_type() == GET_DCC)// JE ne pass pas par ici car je n'arive pas a recuoere DCC get
 	{// chercher dans le tableaux des requette // faire la transmission de fichier et suprimer du tableau
+		Dcc send_request = recepteur.pop_request_dcc(test);
+		if (send_request.get_valide_dcc() == false)
+			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "No DCC request issued by " + recepteur.get_nick() + " for the file \"" + test.get_file_name() + "\""), emeteur_pollfd), false);
+		if (_transfer_file(send_request, test, recepteur, emeteur) == false)
+			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "Faillure transfer files"), emeteur_pollfd), false);
 
 	}
 	else /*type de dcc comande inreconnue*/
 		return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "unrecognized dcc request."), emeteur_pollfd), false);
+	return (true);
+}
+
+bool	Irssi_serv::_transfer_file(Dcc & send, Dcc & get, UserHuman & author_send, UserHuman & author_get)
+{
+	(void) send;
+	(void) get;
+	(void) author_send;
+	(void) author_get;
+
+	/*ICI FAIRE LE TRANSFERT DE FICHIET PUIS SUPRIMER ??*/
+	std::cout << "Faire le transfert de fichier." << std::endl;
+
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 21:21:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 22:43:33 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ private:
 	ssize_t		_index_emeteur;
 	ssize_t		_index_recepteur;
 	std::string	_msg_err;
-	Dcc();
 	
 	DCC_TOKEN 	_init_type(std::string);
 	std::string _init_file_name(std::string);
@@ -44,7 +43,9 @@ private:
 	size_t		_init_taille_du_fichier(std::string);
 
 public:
+	Dcc();
 	Dcc(std::vector<std::string>, ssize_t , ssize_t);
+	Dcc	&operator=(Dcc const & rf);
 	~Dcc();
 
 	bool 		get_valide_dcc()		const {return _valide_dcc;}
@@ -59,6 +60,7 @@ public:
 	bool		operator==(const Dcc & src) const;
 
 	void		update_index(ssize_t);
+	bool		is_my_send_request(const Dcc & src) const;
 };
 
 std::ostream & operator<<( std::ostream & o, Dcc const & dcc);

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 21:56:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 22:49:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,20 @@ void	UserHuman::update_index_dcc(ssize_t index_to_del)
 	{
 		this->_all_request_to_send_files[i].update_index(index_to_del);
 	}
+}
 
+Dcc UserHuman::pop_request_dcc(Dcc & get_request)
+{
+	Dcc res;
+	for (std::vector<Dcc>::iterator i_r_dcc = this->_all_request_to_send_files.begin(); i_r_dcc != this->_all_request_to_send_files.end(); i_r_dcc++)
+	{
+		if (get_request.is_my_send_request(*i_r_dcc))
+		{
+			res = *i_r_dcc;
+			_all_request_to_send_files.erase(i_r_dcc);
+			std::cout << "Supression d'un request send" << std::endl;
+			return (res);
+		}
+	}
+	return (res);
 }

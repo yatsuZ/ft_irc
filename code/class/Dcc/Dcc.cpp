@@ -6,13 +6,22 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 21:41:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 23:49:53 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Dcc.hpp"
 
-Dcc::Dcc()
+Dcc::Dcc():
+_valide_dcc(false),
+_type(IDK_DCC),
+_file_name(""), 
+_host(0), 
+_port(0), 
+_taille_du_fichier(0), 
+_index_emeteur(-1), 
+_index_recepteur(-1)
+
 {
 	// std::cout << GREEN << "default constructeur dcc" << NOCOLOR << std::endl;
 }
@@ -29,7 +38,10 @@ DCC_TOKEN 	Dcc::_init_type(std::string arg1)
 	if (arg1 == "SEND")
 		return (SEND_DCC);
 	if (arg1 == "GET")
+	{
+		std::cout << RED << "GET DCC CMD " << NOCOLOR << std::endl;
 		return (GET_DCC);
+	}
 	return (IDK_DCC);
 }
 
@@ -125,4 +137,32 @@ void Dcc::update_index(ssize_t i)
 		--_index_emeteur;
 	if (i < _index_recepteur)
 		--_index_recepteur;
+}
+
+Dcc	& Dcc::operator=(Dcc const & rf)
+{
+	if (this != &rf)
+	{
+		_valide_dcc = rf.get_valide_dcc();
+		_type = rf.get_type();
+		_file_name = rf.get_file_name();
+		_host = rf.get_host();
+		_port = rf.get_port();
+		_taille_du_fichier = rf.get_taille_du_fichier();
+		_index_emeteur = rf.get_index_emeteur();
+		_index_recepteur = rf.get_index_recepteur();
+	}
+	return (*this);
+
+}
+
+bool Dcc::is_my_send_request(const Dcc & src) const
+{
+	return (
+		get_type() == GET_DCC && 
+		src.get_type() == SEND_DCC &&
+		get_file_name() == src.get_file_name() &&
+		get_index_emeteur() == src.get_index_recepteur() &&
+		get_index_recepteur() == src.get_index_emeteur()
+	);
 }
