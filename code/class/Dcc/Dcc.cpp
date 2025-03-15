@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/14 15:03:47 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 21:41:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 Dcc::Dcc()
 {
-	std::cout << GREEN << "default constructeur dcc" << NOCOLOR << std::endl;
+	// std::cout << GREEN << "default constructeur dcc" << NOCOLOR << std::endl;
 }
 
 Dcc::~Dcc()
 {
-	std::cout << RED << "destructon dcc" << NOCOLOR << std::endl;
+	// std::cout << RED << "destructon dcc" << NOCOLOR << std::endl;
 }
 
 DCC_TOKEN 	Dcc::_init_type(std::string arg1)
@@ -28,6 +28,8 @@ DCC_TOKEN 	Dcc::_init_type(std::string arg1)
 		return (IDK_DCC);
 	if (arg1 == "SEND")
 		return (SEND_DCC);
+	if (arg1 == "GET")
+		return (GET_DCC);
 	return (IDK_DCC);
 }
 
@@ -95,6 +97,32 @@ _index_emeteur(_valide_dcc == false || i_emeteur < 0 ? (-1) : (i_emeteur)),
 _index_recepteur(_valide_dcc == false || i_recpeteur < 0 ? (-1) : (i_recpeteur))
 {
 	
-	std::cout << GREEN << "Constructeur parametric dcc " << i_emeteur << " " << i_recpeteur << NOCOLOR << std::endl;
-	std::cout << *this << std::endl;
+	// std::cout << GREEN << "Constructeur parametric dcc " << i_emeteur << " " << i_recpeteur << NOCOLOR << std::endl;
+	// std::cout << *this << std::endl;
+}
+
+/// @brief Si il a le meme information Alors return vrai
+/// @param src le dcc qui est comparer avec l'actuel
+/// @return bah si c'est vrai ou faux un bool quoi
+bool Dcc::operator==(const Dcc & src) const
+{
+	return (
+		get_type() == src.get_type() && 
+		get_file_name() == src.get_file_name() && 
+		// get_host() == src.get_host() && 
+		// get_port() == src.get_port() && 
+		get_taille_du_fichier() == src.get_taille_du_fichier() && 
+		get_index_emeteur() == src.get_index_emeteur() && 
+		get_index_recepteur() == src.get_index_recepteur()
+	);
+}
+
+void Dcc::update_index(ssize_t i)
+{
+	if (i < 0)
+		return ;
+	if (i < _index_emeteur)
+		--_index_emeteur;
+	if (i < _index_recepteur)
+		--_index_recepteur;
 }

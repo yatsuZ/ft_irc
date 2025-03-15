@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/14 15:10:27 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 22:10:52 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,27 @@ static	std::vector<std::string>	rafinement_des_param_dcc(std::string & param_dcc
 	return (list_param_dcc);
 }
 
-void	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur)
+bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur, pollfd & emeteur_pollfd)
 {
-	std::cout << RED + "Doit faire le bonus dcc mais ne sait pas par ou commencer." + NOCOLOR << std::endl;
-	std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
+	std::cout << RED + "DCC REQUEST." + NOCOLOR << std::endl;
+	// std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
 	
 	std::vector<std::string> list_param_dcc = rafinement_des_param_dcc(param_dcc);
-	std::cout << YELLOW + "RAFINEMENT = " << NOCOLOR << list_param_dcc << std::endl;
+	// std::cout << YELLOW + "RAFINEMENT = " << NOCOLOR << list_param_dcc << std::endl;
 
 	Dcc test(list_param_dcc, index_emeteur, index_recepteur);
 	if (test.get_valide_dcc() == false)
+		return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "Error in creation of dcc request."), emeteur_pollfd), false);
+	else if (test.get_type() == SEND_DCC)
 	{
-		// send_message(test.get_msg_err(), this->_all_pollfd[emeteur->get_index_pollfd()]);
-		return ;
+		if (emeteur.add_request_send_file(test) == false)
+			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "DCC request already in progress, for the file \"" + test.get_file_name() + "\"."), emeteur_pollfd), false);
 	}
-	if (test.get_type() == SEND_DCC)
-		emeteur.add_request_send_file(test);
 	else if (test.get_type() == GET_DCC)
 	{// chercher dans le tableaux des requette // faire la transmission de fichier et suprimer du tableau
 
 	}
-	/*type de dcc comande inreconnue*/
+	else /*type de dcc comande inreconnue*/
+		return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "unrecognized dcc request."), emeteur_pollfd), false);
+	return (true);
 }

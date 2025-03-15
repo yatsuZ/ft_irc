@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/14 15:11:23 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 21:21:02 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ public:
 	ssize_t		get_index_emeteur()		const {return _index_emeteur;}
 	ssize_t		get_index_recepteur()	const {return _index_recepteur;}
 	std::string	get_msg_err()			const {return _msg_err;}
+	bool		operator==(const Dcc & src) const;
+
+	void		update_index(ssize_t);
 };
 
 std::ostream & operator<<( std::ostream & o, Dcc const & dcc);

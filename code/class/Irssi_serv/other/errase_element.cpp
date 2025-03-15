@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errase_element.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 23:23:51 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/09 20:02:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/15 21:34:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,16 @@ void	Irssi_serv::_errase_user_from_tab(pollfd &current_pollfd)
 
 	bool find_user_associate_by_pollfd = false;
 	size_t index_of_user = 0;
-	for (std::vector<UserHuman>::iterator iteration_user = this->_all_User.begin();
-	iteration_user != this->_all_User.end(); iteration_user++)
+	ssize_t index_to_del = -1;
+	for (std::vector<UserHuman>::iterator iteration_user = this->_all_User.begin(); iteration_user != this->_all_User.end(); iteration_user++)
 	{
 		index_of_user++;
 		ssize_t index_pollfd = iteration_user->get_index_pollfd();
 		if (index_pollfd != -1 && current_pollfd.fd == this->_all_pollfd[index_pollfd].fd)
 		{
+			index_to_del = index_of_user - 1;
 			std::cout << RED << "Client to erase :\t  " << NOCOLOR << static_cast<Client>(*iteration_user) << std::endl;//modifier laffichage
-			_errase_user_by_index_from_tab(index_of_user - 1);
+			_errase_user_by_index_from_tab(index_to_del);
 			iteration_user = this->_all_User.erase(iteration_user);
 			if (this->_all_Channel.empty() == false)
 				show_all_user_from_chanelle(this->_all_Channel[0]);
@@ -36,6 +37,11 @@ void	Irssi_serv::_errase_user_from_tab(pollfd &current_pollfd)
 		}
 		if (find_user_associate_by_pollfd)
 			iteration_user->set_index_pollfd(iteration_user->get_index_pollfd() - 1);
+	for (std::vector<UserHuman>::iterator iteration_user = this->_all_User.begin(); iteration_user != this->_all_User.end(); iteration_user++)
+	{
+		(*iteration_user).update_index_dcc(index_to_del);
+	}
+		
 		std::cout << "\t\t\t- " << static_cast<Client>(*iteration_user) << std::endl;
 	}
 }

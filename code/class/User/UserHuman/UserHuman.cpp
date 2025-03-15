@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 23:37:45 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/14 15:10:08 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/15 21:56:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,28 @@ void	UserHuman::get_msg_by_step(const std::string & server_name, pollfd &pollfd)
 	}
 }
 
-void	UserHuman::add_request_send_file(Dcc new_request_send)
+bool	UserHuman::add_request_send_file(Dcc new_request_send)
 {
 	// verifier qu'il n'y a pas plusieur fois la meme requette
+	for (size_t i = 0; i < this->_all_request_to_send_files.size(); i++)
+	{
+		if (new_request_send == this->_all_request_to_send_files[i])
+		{
+			std::cout << "IL y a deja la meme requete" << std::endl;
+			return (false);
+		}
+	}
+	std::cout << "Nouvelle requete" << std::endl;
 	this->_all_request_to_send_files.push_back(new_request_send);
+	return (true);
+}
+
+void	UserHuman::update_index_dcc(ssize_t index_to_del)
+{
+	std::cout << "Je mets a jour les index de mes requette dcc" << std::endl;
+	for (size_t i = 0; i < this->_all_request_to_send_files.size(); i++)
+	{
+		this->_all_request_to_send_files[i].update_index(index_to_del);
+	}
+
 }
