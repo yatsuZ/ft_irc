@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 22:47:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/16 18:15:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ private:
 	bool		_is_DCC(Cmd_irssi & cmd);
 	std::string _clean_dcc_cmd(Cmd_irssi & cmd);
 	bool 		_ft_dcc(std::string param_dcc, UserHuman &, ssize_t, ssize_t, pollfd &, UserHuman &);
-	bool		_transfer_file(Dcc & send, Dcc & get, UserHuman & sender, UserHuman & geter);
-	
+	bool		_transfer_file(Dcc & send, UserHuman & author_send, pollfd & author_send_pollfd);
+	bool		_tcp_conexion(Dcc & send, UserHuman & author_send, pollfd & emeteur_pollfd);
+
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);

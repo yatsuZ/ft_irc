@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:21 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 22:43:33 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/16 18:18:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ private:
 	ssize_t		_index_emeteur;
 	ssize_t		_index_recepteur;
 	std::string	_msg_err;
-	
+	int			_listen_fd;
+
 	DCC_TOKEN 	_init_type(std::string);
 	std::string _init_file_name(std::string);
 	uint32_t	_init_host(std::string);
@@ -48,6 +49,8 @@ public:
 	Dcc	&operator=(Dcc const & rf);
 	~Dcc();
 
+	void		set_listen_fd(int fd) { _listen_fd = fd; }
+
 	bool 		get_valide_dcc()		const {return _valide_dcc;}
 	DCC_TOKEN 	get_type()				const {return _type;}
 	std::string get_file_name()			const {return _file_name;}
@@ -57,8 +60,10 @@ public:
 	ssize_t		get_index_emeteur()		const {return _index_emeteur;}
 	ssize_t		get_index_recepteur()	const {return _index_recepteur;}
 	std::string	get_msg_err()			const {return _msg_err;}
+	int			get_listen_fd() const { return _listen_fd; }
+	
 	bool		operator==(const Dcc & src) const;
-
+	
 	void		update_index(ssize_t);
 	bool		is_my_send_request(const Dcc & src) const;
 };

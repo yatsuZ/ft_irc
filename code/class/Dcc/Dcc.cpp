@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:43:13 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/15 23:49:53 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/16 18:19:03 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ _host(0),
 _port(0), 
 _taille_du_fichier(0), 
 _index_emeteur(-1), 
-_index_recepteur(-1)
-
+_index_recepteur(-1), 
+_listen_fd(-1)
 {
 	// std::cout << GREEN << "default constructeur dcc" << NOCOLOR << std::endl;
 }
@@ -106,7 +106,8 @@ _host(				_init_host				(_valide_dcc ? (split_param[3]) : (""))),
 _port(				_init_port				(_valide_dcc ? (split_param[4]) : (""))), 
 _taille_du_fichier(	_init_taille_du_fichier	(_valide_dcc ? (split_param[5]) : (""))), 
 _index_emeteur(_valide_dcc == false || i_emeteur < 0 ? (-1) : (i_emeteur)), 
-_index_recepteur(_valide_dcc == false || i_recpeteur < 0 ? (-1) : (i_recpeteur))
+_index_recepteur(_valide_dcc == false || i_recpeteur < 0 ? (-1) : (i_recpeteur)), 
+_listen_fd(-1)
 {
 	
 	// std::cout << GREEN << "Constructeur parametric dcc " << i_emeteur << " " << i_recpeteur << NOCOLOR << std::endl;

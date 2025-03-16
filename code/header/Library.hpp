@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Library.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 13:19:24 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:23:59 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,4 @@
 #include <iostream>
 #include <typeinfo>
 #include <ctime>
+#include <fstream>
