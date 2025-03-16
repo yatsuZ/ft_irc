@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/16 22:33:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 00:44:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t in
 	else if (test.get_type() == SEND_DCC)
 	{
 		if (emeteur.add_request_send_file(test) == false)
-		return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "DCC request already in progress, for the file \"" + test.get_file_name() + "\"."), emeteur_pollfd), false);
+			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "DCC request already in progress, for the file \"" + test.get_file_name() + "\"."), emeteur_pollfd), false);
 		/*TCP CONNEXION*/
 		_tcp_conexion(test, emeteur, emeteur_pollfd);
 	}
@@ -110,20 +110,38 @@ bool	Irssi_serv::_tcp_conexion(Dcc & send_request, UserHuman & author_send, poll
 
 	// 1. Créer un socket
 	int listen_fd = socket(AF_INET, SOCK_STREAM, 0);
-	if (listen_fd < 0) {
+	if (listen_fd < 0)
+	{
+		std::cout << RED << "ERREUR 1" << NOCOLOR << std::endl;
 		perror("socket");
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de la création du socket pour DCC."), emeteur_pollfd);
+		return false;
+	}
+
+	// Option pour réutiliser l'adresse et le port même en état TIME_WAIT
+	int reuse = 1;
+	if (setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse)) < 0) {
+		perror("setsockopt (SO_REUSEADDR) failed");
+		close(listen_fd);
+		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de la configuration des options de socket pour DCC."), emeteur_pollfd);
 		return false;
 	}
 
 	// 2. Préparer la structure d'adresse du serveur
 	sockaddr_in serv_addr;
 	serv_addr.sin_family = AF_INET;
-	serv_addr.sin_addr.s_addr = send_request.get_host();
 	serv_addr.sin_port = htons(send_request.get_port()); // Utiliser le port de l'objet DCC
+	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); // Écouter sur toutes les interfaces
+
+	// Log pour le débogage (comme on l'a fait avant)
+	std::cout << YELLOW << "Tentative de liaison à l'IP : " << ntohl(send_request.get_host()) << NOCOLOR << std::endl;
+	std::cout << YELLOW << "HOST PORT par dcc send      : " << send_request.get_host() << NOCOLOR << std::endl;
+	std::cout << YELLOW << "Tentative de liaison au port : " << ntohs(send_request.get_port()) << NOCOLOR << std::endl;
 
 	// 3. Lier le socket à l'adresse et au port spécifiés
-	if (bind(listen_fd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+	if (bind(listen_fd, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
+	{
+		std::cout << RED << "ERREUR 2" << NOCOLOR << std::endl;
 		perror("bind");
 		close(listen_fd);
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de la liaison du socket pour DCC."), emeteur_pollfd);
@@ -131,7 +149,9 @@ bool	Irssi_serv::_tcp_conexion(Dcc & send_request, UserHuman & author_send, poll
 	}
 
 	// 4. Écouter les connexions entrantes
-	if (listen(listen_fd, 1) < 0) { // Autoriser une seule connexion entrante pour ce transfert
+	if (listen(listen_fd, 1) < 0) // Autoriser une seule connexion entrante pour ce transfert
+	{
+		std::cout << RED << "ERREUR 3" << NOCOLOR << std::endl;
 		perror("listen");
 		close(listen_fd);
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de l'écoute sur le socket pour DCC."), emeteur_pollfd);
@@ -174,7 +194,9 @@ bool	Irssi_serv::_transfer_file(Dcc & send_request, UserHuman & author_send, pol
 	int temp_listen_fd = -1; // Vous devrez stocker et récupérer cela correctement.
 	listen_fd = temp_listen_fd;
 
-	if (listen_fd == -1) {
+	if (listen_fd == -1)
+	{
+		std::cout << RED << "ERREUR 4" << NOCOLOR << std::endl;
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur : Socket d'écoute introuvable pour DCC."), author_send_pollfd);
 		return false;
 	}
@@ -183,7 +205,9 @@ bool	Irssi_serv::_transfer_file(Dcc & send_request, UserHuman & author_send, pol
 	sockaddr_in client_addr;
 	socklen_t client_len = sizeof(client_addr);
 	int client_fd = accept(listen_fd, (struct sockaddr *)&client_addr, &client_len);
-	if (client_fd < 0) {
+	if (client_fd < 0)
+	{
+		std::cout << RED << "ERREUR 5" << NOCOLOR << std::endl;
 		perror("accept");
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de l'acceptation de la connexion DCC."), author_send_pollfd);
 		close(listen_fd); // Fermer le socket d'écoute
@@ -195,7 +219,9 @@ bool	Irssi_serv::_transfer_file(Dcc & send_request, UserHuman & author_send, pol
 
 	// 3. Ouvrir le fichier à envoyer
 	std::ifstream file(send_request.get_file_name().c_str(), std::ios::binary | std::ios::ate);    // std::ifstream file(send_request.get_file_name().c_str(), std::ios::binary);
-	if (!file.is_open()) {
+	if (!file.is_open())
+	{
+		std::cout << RED << "ERREUR 6" << NOCOLOR << std::endl;
 		std::cerr << "Erreur lors de l'ouverture du fichier : " << send_request.get_file_name() << std::endl;
 		send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de l'ouverture du fichier \"" + send_request.get_file_name() + "\" pour DCC."), author_send_pollfd);
 		close(client_fd);
@@ -205,9 +231,12 @@ bool	Irssi_serv::_transfer_file(Dcc & send_request, UserHuman & author_send, pol
 	// 4. Envoyer les données du fichier
 	char buffer[4096]; // Choisir une taille de tampon appropriée
 	// size_t bytes_read;
-	while (file.read(buffer, sizeof(buffer))) {
+	while (file.read(buffer, sizeof(buffer)))
+	{
 		ssize_t bytes_sent = send(client_fd, buffer, file.gcount(), 0);
-		if (bytes_sent < 0) {
+		if (bytes_sent < 0)
+		{
+			std::cout << RED << "ERREUR 7" << NOCOLOR << std::endl;
 			perror("send");
 			send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de l'envoi des données du fichier pour DCC."), author_send_pollfd);
 			file.close();
@@ -217,9 +246,12 @@ bool	Irssi_serv::_transfer_file(Dcc & send_request, UserHuman & author_send, pol
 	}
 
 	// Gérer les données restantes
-	if (file.gcount() > 0) {
+	if (file.gcount() > 0)
+	{
 		ssize_t bytes_sent = send(client_fd, buffer, file.gcount(), 0);
-		if (bytes_sent < 0) {
+		if (bytes_sent < 0)
+		{
+			std::cout << RED << "ERREUR 8" << NOCOLOR << std::endl;
 			perror("send");
 			send_message(NOTICE(this->get_name(), author_send.get_nick(), "Erreur lors de l'envoi des données de fichier restantes pour DCC."), author_send_pollfd);
 			file.close();
