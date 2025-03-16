@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/16 18:35:19 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/16 22:33:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ bool	Irssi_serv::_tcp_conexion(Dcc & send_request, UserHuman & author_send, poll
 	// 2. Préparer la structure d'adresse du serveur
 	sockaddr_in serv_addr;
 	serv_addr.sin_family = AF_INET;
-	serv_addr.sin_addr.s_addr = INADDR_ANY; // Écouter sur toutes les interfaces disponibles
+	serv_addr.sin_addr.s_addr = send_request.get_host();
 	serv_addr.sin_port = htons(send_request.get_port()); // Utiliser le port de l'objet DCC
 
 	// 3. Lier le socket à l'adresse et au port spécifiés
