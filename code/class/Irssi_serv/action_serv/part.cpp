@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   part.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:28:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/12 00:19:14 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 18:18:06 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 
 	int target_is_in_chan = _is_op_in_chan(current_user, *chan_to_part);
 	if (target_is_in_chan == -2 || target_is_in_chan == -1)
+	{
+		std::cout << "-------------CAS " << target_is_in_chan << " ??? -----------------" << std::endl;
 		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user.get_nick(), chan_to_part->get_name()), current_pollfd), (NONE));
+	}
 	
 	// ici faire suprimer la cible du chanelle et envoyer le message
 	ssize_t index_u = _get_index_of_userhuman_by_nick(current_user.get_nick());
@@ -54,9 +57,12 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	
 	ssize_t index_c = _get_index_channel_by_name(chan_to_part->get_name());
 	if (index_c == -1)
+	{
+		std::cout << "-------------CAS index pas dans channel -----------------" << std::endl;
 		return (send_message(ERR_NOTONCHANNEL(this->get_name(), current_user.get_nick(), chan_to_part->get_name()), current_pollfd), (NONE));
+	}
 
-	send_message(PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()), current_pollfd);
+	send_message(PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_ip_to_string(), chan_to_part->get_name(), current_cmd.get_message()), current_pollfd);
 	_send_message_to_a_chanelle(current_user, *chan_to_part, PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()));
 	std::cout << current_user.get_nick() << " QUITE LE CHANELLE " << chan_to_part->get_name() << std::endl;
 	chan_to_part->update_and_errase_index_of_user(index_u);

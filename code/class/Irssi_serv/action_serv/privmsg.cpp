@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   privmsg.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/12 01:21:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 16:06:31 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,20 @@ Reaction_Serv	Irssi_serv::ft_privmsg(Cmd_irssi &current_cmd, UserHuman * current
 	// 1. verifier si le user existe ou est ban
 	if (!current_user)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
-
+	
 	if (current_cmd.get_arg().size() < 1)
 	{
 		send_message(ERR_NEEDMOREPARAMS(current_cmd.get_cmd(), current_user->get_nick(), current_cmd.get_cmd()), current_pollfd);
 		return (NONE);
 	}
+	std::vector<std::string> args = current_cmd.get_arg();
+	
+	//AFFICHE CE QUI SUIT APRES CMD /PRIVMSG
+	std::cout << "PRIVMGS ";
+	for (size_t i=0; i< args.size(); i++)
+		std::cout << args[i] << " ";
+	std::cout << std::endl;
+	
 	std::vector<std::string> list_name_target = ft_split(current_cmd.get_arg()[0], ","); // ici faire boucle for sur les cibles
 
 	for (size_t i = 0; i < list_name_target.size(); i++)

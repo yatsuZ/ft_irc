@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/17 15:23:46 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:48:29 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 #define KICK_MSG_OTHER(nick, username, hostname, chan_name, target_name, msg) (":" + nick + "!~" + username + "@" + hostname + " KICK "+ chan_name + " " + target_name + " :" + msg + CRLF)
 #define INVIT_MSG_TARGET(nick, username, hostname, target, chan_name) (":" + nick + "!~" + username + "@" + hostname + " INVITE " + target + " " + chan_name + CRLF)
 #define NEW_TOPIC(nick, username, hostname, chan_name, msg) (":" + nick + "!~" + username + "@" + hostname + " TOPIC " + chan_name + " :" + msg + CRLF)
-#define PART_MSG(nick, username, hostname, chan_name, msg) (":" + nick + "!~" + username + "@" + hostname + " PART "+ chan_name + " :" + msg + CRLF)
+#define PART_MSG(nick, username, ip, chan_name, msg) (":" + nick + "!~" + username + "@" + ip + " PART "+ chan_name + " " + msg + CRLF)
 
 // RPL (Réponses numériques)
 

@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/17 15:25:03 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:53:53 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,35 @@ void	Channel::update_index_of_user(size_t index_user)
 	{
 		if (*i > index_user)
 			*i = *i - 1;
+	}
+}
+
+void	Channel::erase_operator(size_t index_user)
+{
+	this->_nbr_user--;
+	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i == index_user)
+		{
+			this->_index_operators.erase(i);
+			break ;
+		}
+	}
+	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+	{
+		if (*i == index_user)
+		{
+			this->_index_operators.erase(i);
+			break;
+		}
+	}
+	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
+	{
+		if (*i == index_user)
+		{
+			this->_user_invite.erase(i);
+			break;
+		}
 	}
 }
 

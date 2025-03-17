@@ -1,0 +1,65 @@
+<< CAP LS
+<< PASS mdp
+<< NICK Kurps
+<< USER smlamali smlamali localhost :Samira MLAMALI
+>> :YASACO 421 CAP :Unknown command "CAP"
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< NICK A
+>> :Kurps!~smlamali@YASACO NICK :A
+>> :YASACO : Hostname ->127.0.0.1
+<< JOIN #lobby
+>> :A!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 A = #lobby :@A
+>> :YASACO 366 A #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 A #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 352 A * ~smlamali 127.0.0.1 YASACO A H :0 Samira MLAMALI
+>> :YASACO 315 A A :End of /WHO list
+>> :B!~smlamali@127.0.0.1 JOIN :#lobby
+<< MODE #lobby +o B
+>> :A!~smlamali@127.0.0.1 MODE #lobby +o B
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+>> :C!~smlamali@127.0.0.1 JOIN :#lobby
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #lobby
+--> lag pong
+>> :YASACO 352 A * ~smlamali 127.0.0.1 YASACO A H :0 Samira MLAMALI
+>> :YASACO 315 A A :End of /WHO list
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< MODE #lobby b
+--> lag pong
+>> :YASACO 472 A b :is unknown mode char to me
+<< MODE #lobby +o B
+>> :A!~smlamali@127.0.0.1 MODE #lobby +o B
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< PING YASACO
+>> PONG YASACO
+--> FAILED mode b: chanquery abort
+<< MODE #lobby b
+--> lag pong
+>> :YASACO 472 A b :is unknown mode char to me
+>> :B!~smlamali@smlamali QUIT :Quit: leaving
+>> :C!~smlamali@smlamali PRIVMSG #lobby :w/quit
+>> :C!~smlamali@smlamali QUIT :Quit: leaving
+<< QUIT :leaving

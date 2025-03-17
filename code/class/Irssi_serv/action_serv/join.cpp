@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/17 15:35:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:52:03 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,12 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 				std::cout << "user["<< i << "] =" << _all_User[list_user[i]].get_nick() << std::endl;  
 			}
 		}
-		// std::cout << GREEN + "---- CHANELLE ----" + NOCOLOR << std::endl << *channel << std::endl;
+		// std::cout << GREEN + "---- CHANNEL ----" + NOCOLOR << std::endl << *channel << std::endl;
 		// std::cout << BLUE + "---- USER ----" + NOCOLOR << std::endl << static_cast<User>(*current_user) << std::endl;
 		// show_all_chan_from_user(*current_user);
-		// show_all_user_from_chanelle(*channel);
+		show_all_user_from_chanelle(*channel);
+
+		std::cout << YELLOW << "LIST USER: " << get_all_nick_from_chan(*channel) << NOCOLOR <<  std::endl;
 	}
 
 	// afficher tout les utilsature du chanelle et tout les chanelle de lutilisateur pour debeug
