@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:58:28 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/06 14:38:26 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:28:12 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 User::User(void):
  _nick("*"), _name("guest"), _hostname(""), _real_name("Guest"),
-  _servername(SERVER_NAME), _msg_leave(""), _mode(NO_MODE), _is_init(0)
+  _servername(SERVER_NAME), _msg_leave(""), _mode(NO_MODE), _is_init(0), _is_connect(0)
 {
 	// std::cout << "A Default User is joining" << std::endl;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 23:56:24 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 15:23:46 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@
 
 //######################ERR (Erreurs numériques)
 // ERR_NOSUCHNICK
-#define ERR_NOSUCHNICK(server_name, nick, target) (":" + server_name + " 401 " + nick + " " + target + " :No such nick" + CRLF)
+#define ERR_NOSUCHNICK(server_name, nick, target) (":" + server_name + " 401 " + nick + " " + target + " :No such nick/channel" + CRLF)
 // ERR_NOSUCHCHANNEL
 #define ERR_NOSUCHCHANNEL(server_name, nick, target_chan) (":" + server_name + " 403 " + nick + " " + target_chan + " :No such channel" + CRLF)
 // ERR_CANNOTSENDTOCHAN
@@ -110,13 +110,15 @@
 // ERR_USERNOTINCHANNEL
 #define ERR_USERNOTINCHANNEL(server_name, nick, target, channel_name) (":" + server_name + " 441 " + nick + " " + target + " " + channel_name + " :They aren't on that channel" + CRLF)
 // ERR_NOTONCHANNEL
-#define ERR_NOTONCHANNEL(server_name, nick, channelname) (":" + server_name + " 442 " + nick + " " + channelname + " :You're not on that channe" + CRLF)
+#define ERR_NOTONCHANNEL(server_name, nick, channelname) (":" + server_name + " 442 " + nick + " " + channelname + " :You're not on that channel" + CRLF)
 // ERR_USERONCHANNEL
 #define ERR_USERONCHANNEL(server_name, nick, target_nick, channelname) (":" + server_name + " 443 " + nick + " " + target_nick + " " + channelname + " :is already on channel" + CRLF)
 // ERR_NEEDMOREPARAMS
 #define ERR_NEEDMOREPARAMS(server_name, nickname, command) (":"+ server_name + " 461 " + nickname + " " + command + " :Not enough parameters" + CRLF)
 // ERR_ALREADYREGISTERED
 #define ERR_ALREADYREGISTRED(server_name, command) (":" + server_name + " 462 " + command + " :Unauthorized command (already registered)" + CRLF)
+// ERR_PASSWDMISMATCH
+#define ERR_PASSWDMISMATCH(server_name, nick) (":" + server_name + " 464 " + nick + " :Password Incorrect")
 // ERR_KEYSET
 #define ERR_KEYSET(server_name, nick, channel_name) (":" + server_name + " 467 " + nick + " " + channel_name + " :Channel key already set" + CRLF)
 // ERR_CHANNELISFULL
@@ -195,8 +197,6 @@
 #define ERR_NORECIPIENT(command) (": 411 :No recipient given (" + command + ")" + CRLF)
 // ERR_NOTEXTTOSEND
 #define ERR_NOTEXTTOSEND (std::string(": 412 :No text to send")) + CRLF
-// ERR_PASSWDMISMATCH
-#define ERR_PASSWDMISMATCH (std::string(":464 :Password incorrect") + CRLF)
 // ERR_RESTRICTED
 #define ERR_RESTRICTED(nickname) (": 484 " + nickname + " :Your connection is restricted!" + CRLF)
 // ERR_TOOMANYCHANNELS
