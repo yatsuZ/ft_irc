@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:20:33 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/15 22:57:07 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 00:57:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,21 @@ Reaction_Serv	Irssi_serv::multiple_privmsg(std::string &name_target, UserHuman *
 			return (send_message(ERR_NOSUCHNICK(this->get_name(), current_user->get_nick(), name_target), current_pollfd), (NONE));
 		if (_is_DCC(current_cmd))
 		{
-			bool valide_dcc_request = this->_ft_dcc(_clean_dcc_cmd(current_cmd), *current_user, _get_index_of_userhuman_by_nick(current_user->get_nick()), _get_index_of_userhuman_by_nick(name_target), current_pollfd, *target_user);
+			bool valide_dcc_request = this->_ft_dcc(_clean_dcc_cmd(current_cmd), *current_user, _get_index_of_userhuman_by_nick(current_user->get_nick()), _get_index_of_userhuman_by_nick(name_target), current_pollfd, *target_user, current_cmd);
 			if (valide_dcc_request == false)
 				return (NONE);
 		}
-		reply = PRIVMSG_REP(
-			current_user->get_nick(), 
-			current_user->get_name(), 
-			current_user->get_hostname(), 
-			name_target, 
-			current_cmd.get_message()
-		);	
-		send_message(reply, this->_all_pollfd[target_user->get_index_pollfd()]);
+		else
+		{
+			reply = PRIVMSG_REP(
+				current_user->get_nick(), 
+				current_user->get_name(), 
+				current_user->get_hostname(), 
+				name_target, 
+				current_cmd.get_message()
+			);	
+			send_message(reply, this->_all_pollfd[target_user->get_index_pollfd()]);
+		}
 	}
 	return (NONE);
 }

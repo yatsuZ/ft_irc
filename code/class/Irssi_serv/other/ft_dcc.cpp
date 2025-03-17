@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 00:48:54 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/17 00:44:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 00:57:10 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static	std::vector<std::string>	rafinement_des_param_dcc(std::string & param_dcc
 	return (list_param_dcc);
 }
 
-bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur, pollfd & emeteur_pollfd, UserHuman & recepteur)
+bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t index_emeteur, ssize_t index_recepteur, pollfd & emeteur_pollfd, UserHuman & recepteur, Cmd_irssi & current_cmd)
 {
 	std::cout << RED + "DCC REQUEST." + NOCOLOR << std::endl;
 	// std::cout << RED + "MSG = \"" << PINK << param_dcc << "\"" << NOCOLOR << std::endl;
@@ -85,6 +85,14 @@ bool	Irssi_serv::_ft_dcc(std::string param_dcc, UserHuman & emeteur , ssize_t in
 		return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "Error in creation of dcc request."), emeteur_pollfd), false);
 	else if (test.get_type() == SEND_DCC)
 	{
+		std::string reply = PRIVMSG_REP(
+			emeteur.get_nick(), 
+			emeteur.get_name(), 
+			emeteur.get_hostname(), 
+			recepteur.get_nick(), 
+			current_cmd.get_message()
+		);	
+		send_message(reply, this->_all_pollfd[recepteur.get_index_pollfd()]);
 		if (emeteur.add_request_send_file(test) == false)
 			return (send_message(NOTICE(this->get_name(), emeteur.get_nick(), "DCC request already in progress, for the file \"" + test.get_file_name() + "\"."), emeteur_pollfd), false);
 		/*TCP CONNEXION*/
