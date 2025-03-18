@@ -1,0 +1,72 @@
+<< CAP LS
+<< NICK Kurps
+<< USER smlamali smlamali irc.dal.net :Samira MLAMALI
+>> :nibiru.ix.eu.dal.net NOTICE AUTH :*** Looking up your hostname...
+>> :nibiru.ix.eu.dal.net NOTICE AUTH :*** Checking Ident
+>> :nibiru.ix.eu.dal.net NOTICE AUTH :*** Found your hostname
+>> :nibiru.ix.eu.dal.net NOTICE AUTH :*** No Ident response
+>> :nibiru.ix.eu.dal.net 001 Kurps :Welcome to the DALnet IRC Network Kurps!~smlamali@62.210.32.122
+<< MODE Kurps +i
+>> :nibiru.ix.eu.dal.net 002 Kurps :Your host is nibiru.ix.eu.dal.net, running version bahamut-2.2.4
+>> :nibiru.ix.eu.dal.net 003 Kurps :This server was created Sun Nov 3 2024 at 02:05:33 AM CET
+>> :nibiru.ix.eu.dal.net 004 Kurps nibiru.ix.eu.dal.net bahamut-2.2.4 aAbcCdefFghHiIjkKmnoOPrRsSwxXy AbceiIjklLmMnoOpPrRsStv beIjklov
+>> :nibiru.ix.eu.dal.net 005 Kurps NETWORK=DALnet SAFELIST MAXBANS=200 MAXCHANNELS=30 CHANNELLEN=32 KICKLEN=307 NICKLEN=30 TOPICLEN=307 MODES=6 CHANTYPES=# CHANLIMIT=#:30 PREFIX=(ohv)@%+ STATUSMSG=@%+ :are available on this server
+>> :nibiru.ix.eu.dal.net 005 Kurps CASEMAPPING=ascii WATCH=128 SILENCE=10 ELIST=cmntu EXCEPTS INVEX CHANMODES=beI,k,jl,ciPAmMnOprRsSt MAXLIST=b:200,e:100,I:100 TARGMAX=DCCALLOW:,JOIN:,KICK:4,KILL:20,NOTICE:20,PART:,PRIVMSG:20,WHOIS:,WHOWAS: :are available on this server
+>> :nibiru.ix.eu.dal.net 251 Kurps :There are 71 users and 6639 invisible on 39 servers
+>> :nibiru.ix.eu.dal.net 252 Kurps 80 :IRC Operators online
+>> :nibiru.ix.eu.dal.net 254 Kurps 3462 :channels formed
+>> :nibiru.ix.eu.dal.net 255 Kurps :I have 124 clients and 1 servers
+>> :nibiru.ix.eu.dal.net 265 Kurps :Current local users: 124 Max: 293
+>> :nibiru.ix.eu.dal.net 266 Kurps :Current global users: 6710 Max: 7617
+>> :nibiru.ix.eu.dal.net NOTICE Kurps :*** Notice -- motd was last changed at 27/6/2024 16:15
+>> :nibiru.ix.eu.dal.net NOTICE Kurps :*** Notice -- Please read the motd if you haven't read it
+>> :nibiru.ix.eu.dal.net 375 Kurps :- nibiru.ix.eu.dal.net Message of the Day - 
+>> :nibiru.ix.eu.dal.net 372 Kurps :- Usage is governed by the DALnet AUP at <http://www.dal.net/aup/>
+>> :nibiru.ix.eu.dal.net 376 Kurps :End of /MOTD command.
+>> :Kurps MODE Kurps :+iH
+<< PING nibiru.ix.eu.dal.net
+>> :nibiru.ix.eu.dal.net PONG nibiru.ix.eu.dal.net :Kurps
+--> lag pong
+<< JOIN #lobby
+>> :Kurps!~smlamali@8d87-8dc6-b5a0-fe33-2af.210.62.ip JOIN :#lobby
+>> :nibiru.ix.eu.dal.net 332 Kurps #lobby :11,1Welcome to #Lobby ;)
+>> :nibiru.ix.eu.dal.net 333 Kurps #lobby ChattingKing!~Lone@876b-98a2-d29e-db4e-d485.77.178.ip 1734072739
+>> :nibiru.ix.eu.dal.net 353 Kurps = #lobby :Kurps @Sin @SmartMan @TheFiftiethshade Whoever @kazu +LDa224 
+>> :nibiru.ix.eu.dal.net 366 Kurps #lobby :End of /NAMES list.
+<< MODE #lobby
+>> :nibiru.ix.eu.dal.net 324 Kurps #lobby +tn 
+--> chanquery mode
+<< WHO #lobby
+>> :nibiru.ix.eu.dal.net 329 Kurps #lobby 1738091841
+--> event 329
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~smlamali 8d87-8dc6-b5a0-fe33-2af.210.62.ip nibiru.ix.eu.dal.net Kurps H :0 Samira MLAMALI
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~SteveJ bf1a-bfcf-1c4-f33f-1a59.112.97.ip halcyon.il.us.dal.net Sin H@ :4 ...
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~Harbinger 61ec-61d0-ebaf-7e5f-c259.33.41.ip choopa.nj.us.dal.net SmartMan H@ :4 SmartMan
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby uid628226 8c9f-2464-188f-8315-92ee.tinside.irccloud.com lion.tx.us.dal.net TheFiftiethshade H@ :3 Rapia
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby Lone 4658-621e-6eb8-994-6851.2000.4cc0.2a0a.ip lair.nl.eu.dal.net Whoever H :3 (Lone)
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby bisiklet 9ffd-b62f-477d-df8b-343a.happysrv.de lair.nl.eu.dal.net kazu H@ :3 *
+--> silent event who
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby sid678542 db23-2969-a31a-9022-3e35.hampstead.irccloud.com atw.hu.eu.dal.net LDa224 G+ :3 NTA
+--> silent event who
+>> :nibiru.ix.eu.dal.net 315 Kurps #lobby :End of /WHO list.
+--> chanquery who end
+<< MODE #lobby b
+>> :nibiru.ix.eu.dal.net 368 Kurps #lobby :End of Channel Ban List
+--> chanquery ban end
+<< WHO #lobby
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~smlamali 8d87-8dc6-b5a0-fe33-2af.210.62.ip nibiru.ix.eu.dal.net Kurps H :0 Samira MLAMALI
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~SteveJ bf1a-bfcf-1c4-f33f-1a59.112.97.ip halcyon.il.us.dal.net Sin H@ :4 ...
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby ~Harbinger 61ec-61d0-ebaf-7e5f-c259.33.41.ip choopa.nj.us.dal.net SmartMan H@ :4 SmartMan
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby uid628226 8c9f-2464-188f-8315-92ee.tinside.irccloud.com lion.tx.us.dal.net TheFiftiethshade H@ :3 Rapia
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby Lone 4658-621e-6eb8-994-6851.2000.4cc0.2a0a.ip lair.nl.eu.dal.net Whoever H :3 (Lone)
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby bisiklet 9ffd-b62f-477d-df8b-343a.happysrv.de lair.nl.eu.dal.net kazu H@ :3 *
+>> :nibiru.ix.eu.dal.net 352 Kurps #lobby sid678542 db23-2969-a31a-9022-3e35.hampstead.irccloud.com atw.hu.eu.dal.net LDa224 G+ :3 NTA
+>> :nibiru.ix.eu.dal.net 315 Kurps #lobby :End of /WHO list.
+<< PART #lobby
+>> :Kurps!~smlamali@8d87-8dc6-b5a0-fe33-2af.210.62.ip PART #lobby
+<< QUIT :leaving

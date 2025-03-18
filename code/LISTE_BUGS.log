@@ -1,20 +1,23 @@
-Liste des bugs:
-
-PRINCIPAL 
+BUG 
 	-> Quand l'operateur d'un channel quitte un chan:
 		1. l'operateur est considéré comme présent dans le chan par le serv
 		mais pas par IRSSI
 		2. les users présent dans le channel ne sont plus considéré comme présent par le serveur, ils peuvent envoyer des messages dans le channel mais pas le quitter
 		3. Un user "*" est considéré comme présent par le serveur dans
 		 le channel, mais pas présent sur IRSSI
+	-> EXIT segfault
+	-> Signaux ?
+	-> shutdown ?
+	-> Crash apres plusieurs ping (test: spam leave sur un user normal, quand un operateur quitte un channel a cause de BUG 1)
 
 
 
-
-FIX AJOUTÉS
+CORRECTIONS FAITES
 	- mode o (operateur)
-		ajout/suppression de l'user dans l'index_operateurs de channel
+		ajout/suppression de l'user dans le tableau index_operateurs de channel
 	- ajout de pass
 	- fix message PART => pas besoin d'ajouter manuellement ":" a la fin avant le message
 		il s'ajoute automatiquement
 	- dcc semble fonctionner 
+	-> Gérer MSG <=== Géré par PRIVMSG
+	-> WHO segfault avec NC + fix quelques "erreures" who 

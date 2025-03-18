@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:03 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/17 18:47:28 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:13:34 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ public:
 	void	erase_mode(Mode m);
 	void	errase_user(size_t index_user);
 	void	erase_operator(size_t idx_user);
-	void	update_index_of_user(size_t index_user);
-	void	update_and_errase_index_of_user(size_t index_user);
+	// void	update_index_of_user(size_t index_user);
+	void	update_and_errase_index_of_user(size_t idx);
 
 private:
 // cree un variable static le nombre dutilisateur actuelle

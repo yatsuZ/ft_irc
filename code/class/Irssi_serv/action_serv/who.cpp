@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/01 16:58:11 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/09 17:24:50 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:45:08 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ Reaction_Serv	Irssi_serv::ft_who(Cmd_irssi &current_cmd, UserHuman *current_user
  	std::vector<std::string> cmd_args = current_cmd.get_arg();
 
  	UserHuman	chan_user;
+
+ 	if (cmd_args.size() == 0 && current_user->get_chans().empty())
+		return (NONE);
+
+	// if (cmd_args.size() == 0 && !current_user->get_chan.empty()) <- who sur le dernier chan  		
+ 	
  	UserHuman	*user = _get_userhuman_by_nick(cmd_args[0]);
 	Channel		*chan = _get_channel_by_name(cmd_args[0]);
 
@@ -56,20 +62,24 @@ Reaction_Serv	Irssi_serv::ft_who(Cmd_irssi &current_cmd, UserHuman *current_user
 	if (chan != NULL)
 	{
 		std::cout << YELLOW << "WHO " << chan->get_name() << NOCOLOR << std::endl;
-		//TO_DO : cas "WHO #lobby" verifier si user est dans lobby
+		// cas "WHO #lobby"si user est pas dans lobby
+		if (!chan->is_in_chan(_get_index_of_userhuman_by_nick(current_user->get_nick())))
+			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), chan_user.get_nick()), current_pollfd), NONE);
+
 		list_user = chan->get_index_users();
-		std::cout << YELLOW << "nbrs of users in chan = " << list_user.size() << std::endl;
+		std::cout << YELLOW << "numbers of users in chan = " << list_user.size() << std::endl;
 		if (list_user.empty())
 			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), chan_user.get_nick()), current_pollfd), NONE);
 		for (size_t i=0; i<list_user.size(); i++)
 		{
 			chan_user = this->_all_User[list_user[i]];
-			std::cout << "user who => " << chan_user.get_nick() << std::endl;
+			std::cout << "WHO user= " << chan_user.get_nick() << std::endl;
 			send_message(RPL_WHOREPLY(this->get_name(), current_user->get_nick(), 
 			"*", chan_user.get_hostname(), chan_user.get_ip_to_string(), chan_user.get_nick(), 
 			chan_user.get_realname()), current_pollfd);
-			return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), chan_user.get_nick()), current_pollfd), NONE);
 		}
+		return (send_message(RPL_ENDOFWHO(this->get_name(), current_user->get_nick(), chan_user.get_name()), current_pollfd), NONE);
+
 	}
 
 	send_message(ERR_NOSUCHCHANNEL(this->get_name(), current_user->get_name(), cmd_args[0]), current_pollfd);
