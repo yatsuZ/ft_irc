@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Library.hpp                                        :+:      :+:    :+:   */
+/*   Bonus.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 06:28:01 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/19 13:48:05 by smlamali         ###   ########.fr       */
+/*   Created: 2025/03/19 12:01:39 by smlamali          #+#    #+#             */
+/*   Updated: 2025/03/19 20:18:47 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Constante.hpp"
-
-#include <string>
 #include <iostream>
-#include <cstring>
+#include <unistd.h>
+#include <string>
 #include <sys/socket.h>
+#include <sys/types.h>
 #include <netinet/in.h>
-#include <unistd.h>
-#include <string>
-#include <unistd.h>
-#include <stdexcept>
-#include <sstream>
-#include <cctype>
-#include <arpa/inet.h>
-#include <fcntl.h>
-#include <poll.h>
-#include <errno.h>
-#include <cstdio>
-#include <vector>
+#include <netdb.h>
+#include <exception>
 #include <cstdlib>
-#include <iomanip>
-#include <iostream>
-#include <typeinfo>
-#include <ctime>
+#include <arpa/inet.h>
+
+#define ADRESSE "127.0.0.1"
