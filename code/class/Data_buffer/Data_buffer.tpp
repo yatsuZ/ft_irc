@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/01/26 21:46:20 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/20 15:40:11 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 
 		this->_data.resize(this->_data.capacity() + BUFFER_SIZE + 1);// ou reserve
 	}
-	
+
 	if (bytes_received < 0)
 	{
 		// this->_total_bytes_received = 0;
