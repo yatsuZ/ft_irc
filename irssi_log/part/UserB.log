@@ -1,0 +1,16 @@
+////USER B/////
+<< PRIVMSG #lobbyTest :hello
+
+>> :UserA!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PRIVMSG #LobbyTest :Salu UsersB_C
+>> :UserC!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip JOIN :#lobbyTest
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :UserB
+--> lag pong
+>> :UserA!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PART #LobbyTest
+>> :UserC!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PRIVMSG #lobbyTest :huh
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :UserB
+--> lag pong
+<< PART #lobbyTest :justecommeac
+>> :UserB!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PART #lobbyTest :justecommeac
+<< QUIT :leaving

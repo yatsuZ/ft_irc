@@ -1,0 +1,95 @@
+<< CAP LS
+<< PASS ploup
+<< NICK Kurps
+<< USER smlamali smlamali 127.0.0.1 :Samira MLAMALI
+>> :YASACO :ERROR Closing Link localhost (Bad Password)
+>> :YASACO 433 *: Kurps Nickname is already in use
+<< NICK Kurps_
+>> :YASACO NOTICE * :*** We verify your nickname and user and the password ...
+>> :YASACO 003 * :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps_ :Welcome to the Internet Relay Network Kurps_!smlamali@127.0.0.1
+<< MODE Kurps_ +i
+<< WHOIS Kurps
+>> :YASACO 002 Kurps_ :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps_ MODE Kurps_ :+i
+>> :YASACO 311 Kurps_ Kurps smlamali 127.0.0.1 * :Samira MLAMALI
+--> nickfind event whois
+>> :YASACO 338 Kurps_ Kurps :is actually ~smlamali@127.0.0.1[127.0.0.1]
+--> event empty
+>> :YASACO 312 Kurps_ Kurps YASACO :YASACO IRC server
+--> event empty
+>> :YASACO 318 Kurps_ Kurps :End of /WHOIS list
+--> event empty
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< NICK userB
+>> :Kurps_!~smlamali@YASACO NICK :userB
+>> :YASACO : Hostname ->127.0.0.1
+<< JOIN #lobby
+>> :userB!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 userB = #lobby :@userA userB
+>> :YASACO 366 userB #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 userB #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 352 userB * ~smlamali 127.0.0.1 YASACO userA H :0 Samira MLAMALI
+>> :YASACO 315 userB userA :End of /WHO list
+>> :userA!~smlamali@smlamali PRIVMSG #lobby :hello
+<< PRIVMSG #lobby :yo
+<< PRIVMSG #lobby :hhigfdgd
+>> :userA!~smlamali@smlamali PRIVMSG #lobby :huh
+>> :userA!~smlamali@smlamali PART #lobby :
+<< PART #lobby
+>> :YASACO 442 userB #lobby :You're not on that channe
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< QUIT :leaving
+////////////////////////////////////
+<< CAP LS
+<< PASS mdp
+<< NICK Kurps
+<< USER smlamali smlamali localhost :Samira MLAMALI
+>> :YASACO :ERROR Closing Link localhost (Bad Password)
+>> :YASACO NOTICE Kurps :*** We verify your nickname and user and the password ...
+>> :YASACO 003 Kurps :you are now registered as smlamali, Samira MLAMALI
+>> :YASACO 001 Kurps :Welcome to the Internet Relay Network Kurps!smlamali@127.0.0.1
+<< MODE Kurps +i
+>> :YASACO 002 Kurps :Your host is YASACO, running version <[36mYassine [38;5;213mSamira [33mCôme[0m> 0.1
+>> :Kurps MODE Kurps :+i
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< NICK UserB
+>> :Kurps!~smlamali@YASACO NICK :UserB
+>> :YASACO : Hostname ->127.0.0.1
+<< JOIN #lobby
+>> :UserB!~smlamali@127.0.0.1 JOIN :#lobby
+>> :YASACO 353 UserB = #lobby :@userA UserB
+>> :YASACO 366 UserB #lobby :End of /NAMES list
+<< MODE #lobby
+>> :YASACO 324 UserB #lobby +
+--> chanquery mode
+<< WHO #lobby
+>> :YASACO 352 UserB * ~smlamali 127.0.0.1 YASACO userA H :0 Samira MLAMALI
+>> :YASACO 315 UserB userA :End of /WHO list
+<< PING YASACO
+>> PONG YASACO
+--> lag pong
+<< WHO #lobby
+>> :YASACO 352 UserB * ~smlamali 127.0.0.1 YASACO userA H :0 Samira MLAMALI
+>> :YASACO 315 UserB userA :End of /WHO list  <------------ wrong target et manque un user
+>> :userA!~smlamali@smlamali PART #lobby :  <----------- ":" a la fin?
+<< PRIVMSG #lobby :hello
+<< PART #lobby
+>> :YASACO 442 UserB #lobby :You're not on that channe 
+<< PING YASACO
+>> PONG YASACO
+--> FAILED who: chanquery abort
+<< WHO #lobby
+--> lag pong
+>> :YASACO 352 UserB * ~smlamali 127.0.0.1 YASACO * H :0 Samira MLAMALI
+>> :YASACO 315 UserB * :End of /WHO list
+<< QUIT :leaving

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bot.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 16:36:17 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/11 16:41:39 by smlamali         ###   ########.fr       */
+/*   Created: 2025/03/19 12:00:46 by smlamali          #+#    #+#             */
+/*   Updated: 2025/03/19 12:01:19 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once 
+#include "bonus.hpp"
 
-#include "./../../header/Ft_irc.hpp"
-#include "./User/User.hpp"
-
-class	Bot
+int	main(void)
 {
-private:
-	std::string	_name;
-
-public:
-	Bot(std::string & n);
-	~Bot();
-
-	std::string	get_name(void)const{return  _name;}
-
-	void		set_name(const std::string & n){ _name = n;}
-
-	void		bad_words()
-};
+	std::cout << "ploup" << std::endl;
+}

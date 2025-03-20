@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/12 00:45:49 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/18 13:30:14 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ enum Action {
 	NICK,
 	USER,
 	MODE,
+	MSG,
 	PING,
 	WHOIS,
 	WHOWAS,

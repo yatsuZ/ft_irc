@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 00:00:12 by kuro              #+#    #+#             */
-/*   Updated: 2025/03/06 14:38:56 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:28:13 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ class Channel;
 class User
 {
 protected:
-	std::string		_nick;
-	std::string		_name;
-	std::string 	_hostname;
-	std::string		_real_name;
-	std::string		_servername;
-	std::string		_msg_leave;
-	Mode			_mode;
-	int				_is_init;
-
-	// std::vector<Channel>	_channels; //modifier en ptr de chan
+	std::string				_nick;
+	std::string				_name;
+	std::string 			_hostname;
+	std::string				_real_name;
+	std::string				_servername;
+	std::string				_msg_leave;
+	Mode					_mode;
+	int						_is_init;
+	bool					_is_connect;
 	std::vector<size_t>		_chans;	//tableau d'index de channels
 public:
 	User();
@@ -42,6 +41,7 @@ public:
 	void		set_msg_leave(const std::string & new_msg) {this->_msg_leave = new_msg;}
 	void		set_Realname(const std::string &);
 	void		set_mode(Mode newmode);
+	void		set_is_connect(void){_is_connect = !_is_connect;}
 	void		add_chan(size_t idx_of_chan);
 
 	std::string				get_nick() 			const {return this->_nick;}
@@ -54,6 +54,7 @@ public:
 	bool					get_Set_User() 		const {return (_is_init == 2 || _is_init == -1);}
 	bool					get_Set_Nick()		const {return (_is_init == 1 || _is_init == -1);}
 	bool					get_is_init()		const {return (_is_init == -1);}
+	bool					_get_is_connect()	const {return _is_connect;}
 	std::vector<size_t>		get_chans()			const {return this->_chans;}
 
 	std::string				list_mode()const;

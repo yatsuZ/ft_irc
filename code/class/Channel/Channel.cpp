@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Channel.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:55:10 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/11 23:42:38 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/18 18:27:58 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,30 +97,31 @@ void	Channel::errase_user(size_t index_user)
 	}
 }
 
-void	Channel::update_index_of_user(size_t index_user)
+
+void	Channel::erase_operator(size_t index_user)
 {
-	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
-	{
-		if (*i > index_user)
-			*i = *i - 1;
-	}
+	this->_nbr_user--;
 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
 	{
-		if (*i > index_user)
-			*i = *i - 1;
-	}
-	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
-	{
-		if (*i > index_user)
-			*i = *i - 1;
+		if (*i == index_user)
+		{
+			this->_index_operators.erase(i);
+			break ;
+		}
 	}
 }
+
+
+// void	Channel::erase_update_user(size_t idx)
+// {
+
+// }
 
 /// @brief mets a jour lindex des user / operateur superieur aux user QUE JE DOIS SUPRIMER et suprimer si je trouve son index dans la liste de mon chanelle
 /// @param index_user index du user dans irssi_serv->_all_User
 void	Channel::update_and_errase_index_of_user(size_t index_user)
 {
-	// std::cout << "L'index de lutilisateur a suprimer dans Irssi_serv::_all_User : " << index_user << std::endl;
+	std::cout << "L'index de lutilisateur a suprimer dans Irssi_serv::_all_User : " << index_user << std::endl;
 
 	std::vector<size_t>::iterator to_del = this->_index_users.end();
 	// std::cout << this->_index_users << std::endl;
@@ -266,3 +267,69 @@ bool		Channel::mode_in_channel(Mode m)
 	}
 	return 0;
 }
+
+// void	Channel::update_index_of_user(size_t index_user)
+// {
+// 	for (std::vector<size_t>::iterator i = this->_index_users.begin(); i != this->_index_users.end(); i++)
+// 	{
+// 		if (*i > index_user)
+// 			*i = *i - 1;
+// 	}
+// 	for (std::vector<size_t>::iterator i = this->_index_operators.begin(); i != this->_index_operators.end(); i++)
+// 	{
+// 		if (*i > index_user)
+// 			*i = *i - 1;
+// 	}
+// 	for (std::vector<size_t>::iterator i = this->_user_invite.begin(); i != this->_user_invite.end(); i++)
+// 	{
+// 		if (*i > index_user)
+// 			*i = *i - 1;
+// 	}
+// }
+
+// bool found = false;
+	// std::vector<size_t>::iterator to_del = this->_index_users.end();
+	// for (std::vector<size_t>::iterator i = _index_users.end(); i != _index_users.end(); i++)
+	// {
+	// 	if (*i == idx)
+	// 	{
+	// 		to_del = i;
+	// 		found = true;
+	// 		_index_users.erase(to_del);
+	// 	}
+	// 	else if (*i > idx)
+	// 		*i = *i - 1;
+	// }
+	// if (!found)
+	// {
+	// 	std::cout << "###User not found####" << std::endl;
+	// 	return ;
+	// }
+
+	// to_del = this->_index_operators.end();
+	// for (std::vector<size_t>::iterator i = _index_operators.end(); i != _index_operators.end(); i++)
+	// {
+	// 	if (*i == idx)
+	// 	{
+	// 		to_del = i;
+	// 		found = true;
+	// 	}
+	// 	else if (*i > idx)
+	// 		*i = *i - 1;
+	// }
+	// if (found)
+	// 	_index_operators.erase(to_del);
+
+	// to_del = this->_user_invite.end();
+	// for (std::vector<size_t>::iterator i = _user_invite.end(); i != _user_invite.end(); i++)
+	// {
+	// 	if (*i == idx)
+	// 	{
+	// 		to_del = i;
+	// 		found = true;
+	// 	}
+	// 	else if (*i > idx)
+	// 		*i = *i - 1;
+	// }
+	// if (found)
+	// 	_user_invite.erase(to_del);

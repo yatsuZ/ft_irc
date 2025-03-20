@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/10 02:59:50 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/17 15:37:22 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,22 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 {
 	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
 	Action act = current_cmd.get_action();
-	current_user->get_msg_by_step(this->get_name(), current_pollfd);
+	if (current_cmd.get_action() == CAP)
+		return (ft_cap(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
+	if (current_user && !current_user->_get_is_connect() && current_cmd.get_action() != PASS ) //&& current_cmd.get_action() == CAP
+	{
+		std::cout << "AAAAAAAAAAAAAAAAAAH" << std::endl;
+		send_message(":" + this->get_name() + " :ERROR Closing Link localhost (Bad Password)" + CRLF, current_pollfd);
+		return (PASS_SERV);
+	}
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
+	current_user->get_msg_by_step(this->get_name(), current_pollfd);
 	// std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;
 	return (res);
 }
 
 void	Irssi_serv::do_mode( Cmd_irssi &current_cmd, UserHuman *user, pollfd & current_pollfd, Channel *chan)
 {
-	// (void)user;
-	// (void)current_pollfd;
-	// (void)chan;
 	std::cout << PINK <<  "...interpretation des modes..." << NOCOLOR << std::endl;
 	std::vector<std::string> cmd_args = current_cmd.get_arg();
 	if (cmd_args.size() < 2)

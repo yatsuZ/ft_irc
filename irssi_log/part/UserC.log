@@ -1,0 +1,32 @@
+///USERC /////<< JOIN #lobbyTest
+>> :UserC!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip JOIN :#lobbyTest
+>> :lion.tx.us.dal.net 353 UserC = #LobbyTest :UserC UserB @UserA 
+>> :lion.tx.us.dal.net 366 UserC #lobbyTest :End of /NAMES list.
+<< MODE #lobbyTest
+>> :lion.tx.us.dal.net 324 UserC #LobbyTest + 
+--> chanquery mode
+<< WHO #lobbyTest
+>> :lion.tx.us.dal.net 329 UserC #LobbyTest 1742229802
+--> event 329
+>> :lion.tx.us.dal.net 352 UserC #LobbyTest ~smlamali c567-8950-8024-74e0-e64f.210.62.ip lion.tx.us.dal.net UserC H :0 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 352 UserC #LobbyTest ~smlamali c567-8950-8024-74e0-e64f.210.62.ip lion.tx.us.dal.net UserB H :0 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 352 UserC #LobbyTest ~smlamali c567-8950-8024-74e0-e64f.210.62.ip bifrost.ca.us.dal.net UserA H@ :5 Samira MLAMALI
+--> silent event who
+>> :lion.tx.us.dal.net 315 UserC #LobbyTest :End of /WHO list.
+--> chanquery who end
+<< MODE #lobbyTest b
+>> :lion.tx.us.dal.net 368 UserC #LobbyTest :End of Channel Ban List
+--> chanquery ban end
+
+//////////////<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :UserC
+--> lag pong
+>> :UserA!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PART #LobbyTest
+<< PRIVMSG #lobbyTest :huh
+<< PING lion.tx.us.dal.net
+>> :lion.tx.us.dal.net PONG lion.tx.us.dal.net :UserC
+--> lag pong
+>> :UserB!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PART #lobbyTest :justecommeac
+<< QUIT :leaving

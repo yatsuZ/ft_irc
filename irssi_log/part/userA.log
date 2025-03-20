@@ -1,0 +1,11 @@
+/// USERA ////
+>> :UserB!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PRIVMSG #lobbyTest :hello
+<< PRIVMSG #LobbyTest :Salu UsersB_C
+<< PING bifrost.ca.us.dal.net
+>> :bifrost.ca.us.dal.net PONG bifrost.ca.us.dal.net :UserA
+--> lag pong
+>> :UserC!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip JOIN :#lobbyTest
+<< PART #LobbyTest
+>> :UserA!~smlamali@c567-8950-8024-74e0-e64f.210.62.ip PART #LobbyTest
+=
+<< QUIT :leaving
