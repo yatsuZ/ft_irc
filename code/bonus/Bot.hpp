@@ -1,5 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
+
 /*                                                        :::      ::::::::   */
 /*   Bot.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
@@ -17,35 +16,47 @@
 class Bot
 {
 private:
-	std::string			_nick;
-	std::string			_username;
-	std::string			_realname;
-	std::string			_ip;
-	uint16_t 			_port;				// Port d'écoute du serveur
-	int			_socketfd;			// Le descripteur de la socket
-	sockaddr_in			_sock_addr;	// Adresse de la socket du serveur
-	std::string			_password;
+	std::string							_ip;
+	uint16_t 							_port; 		// Port d'écoute du serveur
+	std::string							_password;
+	std::string							_nick;
+	std::string							_username;
+	std::string							_hostname;
+	std::string							_realname;
+	std::string							_channel;	//liste channels a join "chan1,chan2,..."
+	int									_socketfd;	// Le descripteur de la socket
+	sockaddr_in							_sock_addr;	// Adresse de la socket du serveur
+
+	std::map<std::string, std::string>	_infos;		//parse des infos de config dedans
 	
 	//connexion et communication avec le serveur
-	// void	_send_message();
+	void	send_message(const std::string & message);
 
 	// actions
 	// void	_time();
 	// void	_kick();
 	// void	_welcome();
+	// void
+
+	//connexion/deconnexion
+	void	init();
+	void	_connexion();	//envoi des infos du bot au serv
 	void	_disconnect();
 
 	//check
-	void	_valid_port();
+	void		_parse(char *);
+	void		_map_info(std::string);
+	void		_set_infos();
+	uint16_t	_valid_port(std::string);
 
 	//err
 	void	_throw_msg(const std::string &);
 
 public:
-	Bot();                                               
+	Bot();
+	Bot(int argc, char **argv);                                               
 	~Bot();
 
-	void	init();
 
 };
 

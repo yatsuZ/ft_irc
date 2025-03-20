@@ -43,3 +43,6 @@ Cas action_censure_msg
 	 permettre au bot de l'envoyer lui meme.
 
 
+TO DO::
+Reception et envoi des données
+Implementation des actions
