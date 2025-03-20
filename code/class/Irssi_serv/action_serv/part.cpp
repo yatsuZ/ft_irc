@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 17:28:23 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/18 17:50:26 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:36:46 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ Reaction_Serv Irssi_serv::multiple_part(pollfd &current_pollfd, UserHuman & curr
 	_send_message_to_a_chanelle(current_user, *chan_to_part, PART_MSG(current_user.get_nick(), current_user.get_name(), current_user.get_hostname(), chan_to_part->get_name(), current_cmd.get_message()));
 	std::cout << current_user.get_nick() << " QUITE LE CHANELLE " << chan_to_part->get_name() << std::endl;
 	
-	chan_to_part->update_and_errase_index_of_user(index_u);
+	chan_to_part->errase_user(index_u);
 	current_user.errase_chan(_get_index_channel_by_name(chan_to_part->get_name()));
 
 	std::cout << "les chanelle sont mis a jour" << std::endl;

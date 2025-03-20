@@ -1,26 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bonus.hpp                                          :+:      :+:    :+:   */
+/*   Actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 12:01:39 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/20 15:35:03 by smlamali         ###   ########.fr       */
+/*   Created: 2025/03/20 15:38:52 by smlamali          #+#    #+#             */
+/*   Updated: 2025/03/20 15:39:02 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-#include <iostream>
-#include <unistd.h>
-#include <string>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <exception>
-#include <cstdlib>
-#include <arpa/inet.h>
-
-#define ADRESSE "127.0.0.1"
+#include "Bot.hpp"

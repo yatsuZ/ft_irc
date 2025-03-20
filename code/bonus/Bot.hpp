@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:01:26 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/19 20:00:51 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:35:19 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ private:
 	std::string			_password;
 	
 	//connexion et communication avec le serveur
-	void	_init();
 	// void	_send_message();
 
 	// actions
@@ -41,9 +40,12 @@ private:
 
 	//err
 	void	_throw_msg(const std::string &);
+
 public:
 	Bot();                                               
 	~Bot();
+
+	void	init();
 
 };
 

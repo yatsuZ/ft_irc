@@ -6,11 +6,11 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 20:20:53 by smlamali          #+#    #+#              #
-#    Updated: 2025/03/19 20:30:28 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/20 15:39:14 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = Bot.cpp main.cpp
+SRCS = Bot.cpp main.cpp Actions.cpp
 
 CC = c++
 
