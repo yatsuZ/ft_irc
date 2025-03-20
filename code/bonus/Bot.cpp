@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/19 20:44:36 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:45:09 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ _realname("Bobby Shmurda"),
 _ip(ADRESSE)
 {
 	std::cout << "### Initialisation du bot " << _nick << std::endl;
-
-	_init();
+	
 	_valid_port();
+	_init();
 }
 
 Bot::~Bot()
@@ -40,6 +40,10 @@ void	Bot::_init()
 	_sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	_sock_addr.sin_family = AF_INET;
 	_sock_addr.sin_port = htons(_port);
+	
+	//connexion au serveur
+	if (connect(_socketfd, sock_addr_ptr, sizeof(sock_addr_ptr)) == -1)
+		throw InitException("====Error: can't connect to the server");
 
 // 	// l'option empeche de bin s'il y a deja une ecoute sur la socket lié a l'adresse
 // 	if (setsockopt(_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) < 0)
@@ -53,9 +57,7 @@ void	Bot::_init()
 	// if (bind(_socketfd, sock_addr_ptr, sizeof(_sock_addr)) < 0)
 	// 	throw InitException("==== Error: Bind failed.");
 
-	//connexion au serveur
-	// if (connect(_socketfd, server_addr, ))
-	// 	throw InitException("====Error: can't connect to the server");	
+	
 	std::cout << "### Bot connected succesfully !" << std::endl;
 }
 

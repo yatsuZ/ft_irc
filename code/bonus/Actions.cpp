@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/19 12:00:46 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/20 14:27:05 by smlamali         ###   ########.fr       */
+/*   Created: 2025/03/20 14:04:57 by smlamali          #+#    #+#             */
+/*   Updated: 2025/03/20 14:24:42 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "Bonus.hpp"
 #include "Bot.hpp"
 
-int	main(void)
+void	Bot::_time()
 {
-	std::cout << "ploup" << std::endl;
+	return;
+}
 
-	Bot	bobby;
+void	Bot::_kick()
+{ return ;}
 
-	bobby.get_nick();
+void	_welcome()
+{return ;}
+
+void	_send_message(std::string & msg)
+{
+	send(":");
 }

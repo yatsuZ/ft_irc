@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 20:20:53 by smlamali          #+#    #+#              #
-#    Updated: 2025/03/19 20:30:28 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/20 14:00:49 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
-NAME = bot
+NAME = bonus
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -6,23 +6,30 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:01:26 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/19 20:00:51 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:05:14 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Bonus.hpp"
+#include "./Bonus.hpp"
 
 class Bot
 {
+public:
+	Bot();
+
+	~Bot();
+
+	std::string	get_nick()const{return _nick;}
+
 private:
 	std::string			_nick;
 	std::string			_username;
 	std::string			_realname;
 	std::string			_ip;
-	uint16_t 			_port;				// Port d'écoute du serveur
-	int			_socketfd;			// Le descripteur de la socket
+	uint16_t 			_port;		// Port d'écoute du serveur
+	int					_socketfd;	// Le descripteur de la socket
 	sockaddr_in			_sock_addr;	// Adresse de la socket du serveur
 	std::string			_password;
 	
@@ -41,13 +48,9 @@ private:
 
 	//err
 	void	_throw_msg(const std::string &);
-public:
-	Bot();                                               
-	~Bot();
 
 };
 
-//
 class	InitException : public std::exception
 {
 private:
