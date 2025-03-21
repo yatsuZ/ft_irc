@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/20 15:40:03 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/20 23:57:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 	Action act = current_cmd.get_action();
 	if (current_cmd.get_action() == CAP)
 		return (ft_cap(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
-	if (current_user && !current_user->_get_is_connect() && current_cmd.get_action() != PASS ) //&& current_cmd.get_action() == CAP
+	else if (current_cmd.get_action() == DISCONNECT)
+		return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
+	else if (current_user && !current_user->_get_is_connect() && current_cmd.get_action() != PASS ) //&& current_cmd.get_action() == CAP
 	{
 		send_message(":" + this->get_name() + " :ERROR Closing Link localhost (Bad Password)" + CRLF, current_pollfd);
 		return (PASS_SERV);
