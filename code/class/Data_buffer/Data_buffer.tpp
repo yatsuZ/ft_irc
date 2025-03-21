@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/21 01:26:36 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/21 01:27:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,6 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 	while (true)
 	{
 		bytes_received = recv(client_fd, this->_data.data() + this->_total_bytes_received, BUFFER_SIZE, 0);
-		// Affichage sécurisé des données reçues
-		std::cout << "INPUT READ BUFF : \"" << MAGENTA;
-		for (ssize_t i = 0; i < _total_bytes_received; ++i)
-		{
-			std::cout << _data[i];
-		}
-		std::cout << NOCOLOR << "\"" << std::endl;
 		this->_total_bytes_received += bytes_received;
 		
 		if (bytes_received <= 0)
@@ -41,14 +34,12 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 	
 	if (bytes_received < 0)
 	{
-		// this->_total_bytes_received = 0;
-		// this->_data.clear();
 		*to_do = ERROR_RECV_DATA;
 		perror("Reception failed : ");
 	}
 	
 	if (_total_bytes_received == 0 || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))// verifier si il sagit dune deconxion ou une fin de lecture ??
-	*to_do = DISCONNECT;
+		*to_do = DISCONNECT;
 }
 
 
