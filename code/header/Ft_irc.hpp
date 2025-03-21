@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/11 13:19:24 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:27:38 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ std::string operator+(Color const& color, std::string const& str);
 std::string operator+(std::string const& str, Color const& color);
 std::string operator+(Color const& color, const char * str);
 std::string operator+(const char * str, Color const& color);
+
+// signal
+bool 		loopChecker(bool flag);
 
 /////////////////////////////////////// A SUPRIMER
 

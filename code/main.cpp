@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/02/16 12:59:35 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/20 16:33:40 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./affichage.ipp"
+
+bool loopChecker(bool flag)
+{
+    static bool loopstop = false;
+    if (flag == true)
+        loopstop = true;
+    return (loopstop);
+}
+
+void handleSignal(int signal)
+{
+    if (signal == SIGINT)
+        loopChecker(true);
+}
 
 int	main(int argc, char **argv)
 {
@@ -20,6 +34,7 @@ int	main(int argc, char **argv)
 	// Message_a_sam();
 	// Message_de_sam();
 	// Message_de_yaya();
+	signal(SIGINT, handleSignal);
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{
@@ -44,7 +59,7 @@ valgrind --tool=memcheck \
 		--show-leak-kinds=all \
 		--track-origins=yes \
 		--log-file=valgrind.log \
-		--track-fds=yes \
+		--track-fds=yes	 \
 		--read-var-info=yes \
 		./ircserv 8080 mdp
 

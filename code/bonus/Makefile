@@ -6,7 +6,7 @@
 #    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 20:20:53 by smlamali          #+#    #+#              #
-#    Updated: 2025/03/20 15:39:14 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/20 21:05:20 by smlamali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = Bot.cpp main.cpp Actions.cpp
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = bot
 
