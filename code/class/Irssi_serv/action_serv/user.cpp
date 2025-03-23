@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:24:06 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 16:29:19 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 20:10:29 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::vector<std::string>	l_args = current_cmd.get_arg();
 
 	std::cout << PINK << "-------- USER -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
-	for (size_t i=0; i < l_args.size(); i++)
-		std::cout << "[" << l_args[i] << "]" << std::endl;
 	if (current_user == NULL)
 		return (send_message(ERR_NOSUCHNICK(this->get_name(), "*", "*"), current_pollfd), (NONE));
 
