@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:01:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/16 17:58:22 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 16:14:57 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Reaction_Serv   Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_
         return (send_message(ERR_ALREADYREGISTRED(this->get_name(), "PASS"), current_pollfd), PASS_SERV);
     
     std::string pass = current_cmd.get_arg()[0];
-    std::cout << "MDP == " << this->get_mdp() << " | PASS " << pass << std::endl; 
+
     if (pass != this->get_mdp())
     {
         send_message(ERR_PASSWDMISMATCH(this->get_name(), current_user->get_nick()), current_pollfd);
