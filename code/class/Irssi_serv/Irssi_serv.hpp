@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:56 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/18 14:09:45 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:01:42 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ private:
 	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 	int		_is_op_in_chan(UserHuman &user, Channel &chan);
+	
 
 	// specefique cmd
 	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
@@ -118,6 +119,7 @@ private:
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);
+	void	good_bye_everyone(void);
 
 	~Irssi_serv();
 };

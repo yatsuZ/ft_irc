@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ft_irc.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 12:45:46 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/20 16:27:38 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:11:36 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@ std::string operator+(Color const& color, const char * str);
 std::string operator+(const char * str, Color const& color);
 
 // signal
-bool 		loopChecker(bool flag);
-
+void handleSignal(int signal);
 /////////////////////////////////////// A SUPRIMER
 
 void	Message_a_sam(void);

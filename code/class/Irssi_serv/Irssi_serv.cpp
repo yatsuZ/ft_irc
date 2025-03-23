@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Irssi_serv.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 00:05:44 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/18 16:24:04 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 18:58:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ Irssi_serv::Irssi_serv(std::string argv1, std::string argv2): Server(argv1, argv
 	action_table[NICK] = &Irssi_serv::ft_nick;
 	action_table[USER] = &Irssi_serv::ft_user;
 	action_table[MODE] = &Irssi_serv::ft_mode;
-	// action_table[MSG] = &Irssi_serv::ft_msg;
 	action_table[PING] = &Irssi_serv::ft_ping;
 	action_table[WHOIS] = &Irssi_serv::ft_whois;
 	action_table[WHOWAS] = &Irssi_serv::ft_whowas;

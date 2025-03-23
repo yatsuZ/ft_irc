@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 22:14:20 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 17:28:17 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 19:28:29 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,3 +136,4 @@ int		Irssi_serv::_is_op_in_chan(UserHuman &user, Channel &chan)
 	}
 	return (is_inside?(0):(-3));
 }
+

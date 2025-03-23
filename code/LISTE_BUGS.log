@@ -10,6 +10,5 @@ CORRECTIONS FAITES
 	- fix message PART => pas besoin d'ajouter manuellement ":" a la fin avant le message
 		il s'ajoute automatiquement
 	- dcc semble fonctionner 
-	-> Gérer MSG <=== Géré par PRIVMSG
 	-> WHO segfault avec NC + fix quelques "erreures" who 
 	->leave fix
