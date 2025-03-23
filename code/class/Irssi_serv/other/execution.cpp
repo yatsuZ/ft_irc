@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/20 21:00:00 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:27:27 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 	Action act = current_cmd.get_action();
 	if (current_cmd.get_action() == CAP)
 		return (ft_cap(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
+	else if (current_cmd.get_action() == DISCONNECT)
+        return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	if (current_user && !current_user->_get_is_connect() && current_cmd.get_action() != PASS ) //&& current_cmd.get_action() == CAP
 	{
 		std::cout << "is user already connected ?=> " << current_user->_get_is_connect() << std::endl;

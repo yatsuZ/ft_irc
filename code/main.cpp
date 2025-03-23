@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 17:27:32 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/20 16:33:40 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 17:30:14 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ bool loopChecker(bool flag)
     static bool loopstop = false;
     if (flag == true)
         loopstop = true;
+    // if (loopstop)
+    // {
+    // 	envoyer un message de deconexion a tout les poll fd
+    // }
     return (loopstop);
 }
 
@@ -35,6 +39,8 @@ int	main(int argc, char **argv)
 	// Message_de_sam();
 	// Message_de_yaya();
 	signal(SIGINT, handleSignal);
+	signal(SIGPIPE, SIG_IGN);
+	signal(SIGQUIT, handleSignal);
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{
