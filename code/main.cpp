@@ -12,35 +12,19 @@
 
 #include "./affichage.ipp"
 
-bool loopChecker(bool flag)
-{
-    static bool loopstop = false;
-    if (flag == true)
-        loopstop = true;
-    // if (loopstop)
-    // {
-    // 	envoyer un message de deconexion a tout les poll fd
-    // }
-    return (loopstop);
-}
-
-void handleSignal(int signal)
-{
-    if (signal == SIGINT)
-        loopChecker(true);
-}
 
 int	main(int argc, char **argv)
 {
+	signal(SIGINT, handleSignal);
+	signal(SIGQUIT, handleSignal);
+	signal(SIGPIPE, SIG_IGN);
+
 	// (void)	argc;
 	// (void)	argv;
 	// TO_DO();
 	// Message_a_sam();
 	// Message_de_sam();
 	// Message_de_yaya();
-	signal(SIGINT, handleSignal);
-	signal(SIGPIPE, SIG_IGN);
-	signal(SIGQUIT, handleSignal);
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{

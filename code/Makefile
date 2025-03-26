@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+         #
+#    By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/30 17:23:40 by yzaoui            #+#    #+#              #
-#    Updated: 2025/03/19 20:28:58 by smlamali         ###   ########.fr        #
+#    Updated: 2025/03/23 18:02:56 by yzaoui           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,8 +119,6 @@ fclean: clean
 
 re: fclean all
 
-test: all
+vg: re
 	${VAL_CMD} ./${PROGRAM_NAME} ${PORT} ${MDP}
 
-val: all
-	valgrind ./${PROGRAM_NAME}

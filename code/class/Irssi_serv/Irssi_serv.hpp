@@ -79,6 +79,7 @@ private:
 	void	_send_message_to_a_chanelle(UserHuman &emeteur, Channel &chan, const std::string msg, bool only_op = false);
 	void	_send_message_to_a_all_chanelle(UserHuman &emeteur, const std::string msg);
 	int		_is_op_in_chan(UserHuman &user, Channel &chan);
+	
 
 	// specefique cmd
 	Reaction_Serv multiple_kick(UserHuman *, std::string &, pollfd &, UserHuman *,Channel *, Cmd_irssi & );
@@ -117,6 +118,7 @@ private:
 public:
 	Irssi_serv(std::string argv1, std::string argv2);
 	void exec(void);
+	void	good_bye_everyone(void);
 
 	~Irssi_serv();
 };

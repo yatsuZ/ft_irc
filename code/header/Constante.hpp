@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Constante.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:19:43 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/18 13:30:14 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 19:32:58 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // #define BUFFER_SIZE 2
 #define BUFFER_SIZE 1024
 #define MAX_EVENTS 10
-
+#define MSG_END_OF_SERV "SERVER SHUTDOWN"
 // Définition de l'énumération
 enum Color {
 	NOCOLOR,
@@ -51,7 +51,6 @@ enum Action {
 	NICK,
 	USER,
 	MODE,
-	MSG,
 	PING,
 	WHOIS,
 	WHOWAS,

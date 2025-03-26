@@ -12,6 +12,15 @@
 
 #include "./../Irssi_serv.hpp"
 
+volatile bool shutDownRequest = false;
+
+void handleSignal(int signal)
+{
+	if (signal == SIGINT)
+		shutDownRequest = true;
+}
+
+
 Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_user, pollfd &current_pollfd, size_t &index_of_current_pollfd)
 {
 	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
@@ -52,46 +61,50 @@ void	Irssi_serv::exec(void)
 	std::cout << YELLOW << "Execution du Serveur ..." << NOCOLOR << std::endl;
 
 	// Boucle principale
-	while (!loopChecker(false))
-    {
-        // Poll pour attendre un événement
-        int ret = poll(this->_all_pollfd.data(), this->_all_pollfd.size(), 5); // Attente pour des événements +  Utilise _all_pollfd.data() pour obtenir un pointeur sur le tableau interne
-        if (ret < 0 && !loopChecker(false))
-            this->_throw_except("Erreur de la fonction poll()");
-        if (this->_all_pollfd[0].revents & POLLIN)
-            this->connect();// Nouvelle connexion
-        for (size_t i = 1; i < this->_all_pollfd.size(); i++)
-        {
-            current_pollfd = this->_all_pollfd[i];
+	while (true)
+	{
+		// Poll pour attendre un événement
+		int ret = poll(this->_all_pollfd.data(), this->_all_pollfd.size(), 5); // Attente pour des événements +  Utilise _all_pollfd.data() pour obtenir un pointeur sur le tableau interne
+		if (ret < 0)
+			this->_throw_except("Erreur de la fonction poll()");
+		if (this->_all_pollfd[0].revents & POLLIN)
+			this->connect();// Nouvelle connexion
+		if (shutDownRequest)
+			return;
+		for (size_t i = 1; i < this->_all_pollfd.size(); i++)
+		{
+			current_pollfd = this->_all_pollfd[i];
+			if (shutDownRequest)
+				break;
+			else if (current_pollfd.revents & POLLIN)
+			{
+				list_cmd = this->link(current_pollfd);
 
-            if (current_pollfd.revents & POLLIN)
-            {
-                list_cmd = this->link(current_pollfd);
-
-                for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
-                {
-                    Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
-                    Reaction_Serv reaction = do_action(iter_cmd_irssi, _get_userhuman_by_index_of_pollfd(i), current_pollfd, i);
-                    if (reaction == PASS_SERV)
-                        break;
-                    else if (reaction == STOP)
-                        return;
-                }
-                list_cmd.clear();
-                std::cout << std::endl;
-            }
-        }
-    }
+				for (size_t index_cmd = 0; index_cmd < list_cmd.size(); ++index_cmd)
+				{
+					Cmd_irssi iter_cmd_irssi(list_cmd[index_cmd]);
+					Reaction_Serv reaction = do_action(iter_cmd_irssi, _get_userhuman_by_index_of_pollfd(i), current_pollfd, i);
+					if (reaction == PASS_SERV)
+						break;
+					else if (reaction == STOP)
+						return;
+				}
+				list_cmd.clear();
+				std::cout << std::endl;
+			}
+		}
+	}
 }
 
 /*
 static void	show_message_recu(Data_buffer<char> buff)
 {
 	std::cout << BLUE << "V-✉-✉-✉-✉-✉-✉ Message recu ✉-✉-✉-✉-✉-✉-V" << NOCOLOR << std::endl;
-
+	
 	std::cout << RED << "\"" << NOCOLOR << buff.get_data_in_string() << RED << "\"" << NOCOLOR << std::endl;
 }
 */
+
 
 /// @brief Quand pc transmet des info et communique et retorune une liste de commande irssi
 std::vector<Cmd_irssi>	Irssi_serv::link(pollfd &current_pollfd)
