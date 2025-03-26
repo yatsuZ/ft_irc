@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   Data_buffer.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
 /*   Updated: 2025/03/23 18:59:40 by yzaoui           ###   ########.fr       */

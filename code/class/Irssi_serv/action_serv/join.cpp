@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/09 13:15:59 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/17 15:52:03 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:13:24 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 		{
 			if (channel->get_nbr_of_user() == channel->get_limit_user())
 				return (send_message(ERR_CHANNELISFULL(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
-//			SI le chanelle est privée on ne peut pas le rejoindre SAUF si channel->is_in_invitation(index_user) alors envoyer msg derreur car privée
+			//SI le chanelle est privée on ne peut pas le rejoindre SAUF si channel->is_in_invitation(index_user) alors envoyer msg derreur car privée
 			if (channel->mode_in_channel(I) && !channel->is_in_invitation(index_user))
 				return (send_message(ERR_INVITEONLYCHAN(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd), NONE);
 			ssize_t index_channel = _get_index_channel_by_name(channel->get_name());
@@ -87,10 +87,6 @@ Reaction_Serv	Irssi_serv::ft_join(Cmd_irssi &current_cmd, UserHuman * current_us
 			send_message(RPL_NAMEREPLY(this->get_name(), current_user->get_nick(), channel->get_name(), get_all_user_nick_from_chan(*channel)), current_pollfd);
 			send_message(RPL_ENDOFNAMES(this->get_name(), current_user->get_nick(), channel->get_name()), current_pollfd);
 			std::vector<size_t> list_user = channel->get_index_users(); 
-			for (size_t i=0; i<list_user.size(); i++)
-			{
-				std::cout << "user["<< i << "] =" << _all_User[list_user[i]].get_nick() << std::endl;  
-			}
 		}
 		// std::cout << GREEN + "---- CHANNEL ----" + NOCOLOR << std::endl << *channel << std::endl;
 		// std::cout << BLUE + "---- USER ----" + NOCOLOR << std::endl << static_cast<User>(*current_user) << std::endl;

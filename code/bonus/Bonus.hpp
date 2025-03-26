@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bonus.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:01:39 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/20 20:50:10 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/26 03:24:24 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@
 #include <arpa/inet.h>
 #include <fstream>
 #include <map>
+#include <csignal>
+#include <vector>
 
 #define ADRESSE "127.0.0.1"
 #define CRLF "\r\n"
+#define BUFFERSIZE 1024
 
 //Regular bold text
 #define BRED "\e[1;31m"

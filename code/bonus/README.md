@@ -44,5 +44,6 @@ Cas action_censure_msg
 
 
 TO DO::
-Reception et envoi des données
+Envoi des données
+SIGNAUX
 Implementation des actions
