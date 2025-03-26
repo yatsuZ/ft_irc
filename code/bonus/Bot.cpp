@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Bot.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/23 21:39:21 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/26 05:09:43 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bot.hpp"
 
-Bot::Bot(int argc, char **argv)
+Bot::Bot(int argc, char **argv) : _is_logged(false)
 {
 	std::cout << BPNK << "### Création du bot..." << RST << std::endl;
 	if (argc != 2)
@@ -46,7 +46,7 @@ void	Bot::_init()
 		_throw_msg("====Error: can't connect to the server");
 
 	_connexion();
-	std::cout << BCYN << "### Bot connected succesfully !" << RST << std::endl;
+
 }
 
 //send toutes les infos de connexion en tant qu'userBot au serveur
@@ -56,6 +56,8 @@ void	Bot::_connexion()
 	send_message("PASS " + _password + CRLF);
 	send_message("NICK " + _nick + CRLF);
 	send_message("USER " + _username + " " + _hostname + " " + _ip + " :" + _realname +  CRLF);
+	std::cout << BCYN << "### Bot connected succesfully !" << RST << std::endl;
+	_is_logged = true;
 }
 
 std::string	Bot::recv_msg()
@@ -74,26 +76,27 @@ std::string	Bot::recv_msg()
 
 }
 
-void	Bot::_execution()
+void	Bot::execution()
 {
 	send_message(std::string("JOIN #lobby") + std::string(CRLF));
 
 	std::string	msg;
 	
-	while (1)
+	while (_is_logged)
 	{
 		msg = recv_msg();
 
-		std::cout << "Message read:\"" << msg << "\"" << std::endl;
+		std::cout << "Message read:" << std::endl;
+		std::cout << "[" << msg << "]" << std::endl;
 		if (msg.empty())
 			break;
-		// _manage_actions(msg);
+		_manage_actions(msg);
 	}
 
-	_disconnect();
+	disconnect();
 }
 
-void	Bot::_disconnect()
+void	Bot::disconnect()
 {	
 	send_message(std::string("I will now disconnect... goodbye :') "));
 	close(_socketfd);

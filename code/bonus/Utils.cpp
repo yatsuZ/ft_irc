@@ -1,12 +1,12 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Utils.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 16:43:51 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/23 21:35:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/26 04:37:06 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,15 @@ void	Bot::_map_info(std::string line)
 	cmd = line.substr(0, sep);
 	arg = line.substr(sep + 1);
 
+	// std::cout << "cmd = " << cmd << std::endl;
+	// std::cout << "arg = " << arg << std::endl;
+
 	_infos.insert(std::pair<std::string, std::string>(cmd, arg));
 }
 
 void	Bot::_set_infos()
 {
+	std::string	tmp = "";
 	std::cout  << BPNK << "### Initialisation des infos..." << RST << std::endl;
 
 	_ip = _infos["ip"];
@@ -63,10 +67,13 @@ void	Bot::_set_infos()
 	_hostname = _infos["hostname"];
 	_realname = _infos["realname"];
 	_channels = _infos["channels"];
-	_banned_words = _infos["banned_words"];
+
+	tmp = _infos["banned_words"];
+	_banned_words = ft_split(tmp, " ");
+
 
 	if (_ip.empty() || _password.empty() || _nick.empty() || _nick.empty() ||
-		_username.empty() || _hostname.empty() || _realname.empty())
+		_username.empty() || _hostname.empty() || _realname.empty() || _channels.empty() || _banned_words.empty())
 		throw InitException("==== Error: Invalid input in config file.");
 }
 
@@ -98,7 +105,67 @@ std::string	Bot::get_sender(std::string msg)
 	if (msg.find("PRIVMGS"))
 	{
 		size_t sep = msg.find("!");
-		return (std::string(msg.substr(0, sep)));
+		return (std::string(msg.substr(1, sep - 1)));
 	}	
 	return ("");
 }
+
+std::string	Bot::get_lobby(std::string msg)
+{
+	size_t	pos = msg.find("#");
+
+	if (pos != std::string::npos)
+	{
+		std::string	chan = msg.substr(pos);
+
+		size_t	end_chan = chan.find_first_of(" \t\t\n");
+		
+		if (end_chan != std::string::npos)
+			return chan.substr(0, end_chan);
+		return (chan);
+	}
+
+	return ("");
+}
+
+
+//renvoie l'index du separateur dans &sep, - 1 si il trouve pas
+ssize_t	Bot::is_sep(char c, std::string sep) 
+{
+	for(size_t i = 0; i< sep.size(); i++)
+	{
+		if (sep[i] == c)
+			return i;
+	}
+	return -1;
+}
+
+std::vector<std::string> Bot::ft_split(const std::string & str, const std::string & sep)
+{
+	size_t						i;
+	std::string					word;
+	std::vector<std::string>	split;
+
+	if (str.empty())
+		return split;
+
+	i=0;
+	while (i < str.size())
+	{
+		if (is_sep(str[i], sep) != -1)
+		{
+			split.push_back(word);
+			word.clear();
+		}
+		else
+			word.push_back(str[i]);
+		i++;
+	}
+	if (word.size() != 0)
+	{
+		split.push_back(word);
+		word.clear();
+	}
+	return (split);
+}
+

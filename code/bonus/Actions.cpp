@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:00:09 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/23 21:37:42 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:29:17 by kuro             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,48 +18,62 @@
 void	Bot::_manage_actions(std::string m)
 {
 	//to do set message selon lobby
-	if (m.find("JOIN"))
+	if (m.find("JOIN :#") != std::string::npos)
 		_welcome(m);
-	if (m.find("!!help"))
+	if (m.find("PART #") != std::string::npos)
+		_welcome(m);
+	if (m.find("!!help") != std::string::npos)
 		_help(m);
-	if (m.find("!!time"))
-		_time(m);
-	if (m.find("!!ask"))
-		_ask(m);
-	if (m.find(_banned_words))
+	if (_find_bword(m))
 		_kick(m);
-	if(m.find("!!quit"))
-		_disconnect();
+	if(m.find("!!quit") != std::string::npos)
+		disconnect();
 }
+
 // greet new user in chan
 void	Bot::_welcome(std::string m)
 {
-	send_message(std::string("PRIVMSG #lobby :Everybody welcome our fellow newcomer.. ") + get_sender(m) + " !!!" + CRLF);
+	send_message(std::string("PRIVMSG " + get_lobby(m) + " :Everybody welcome our fellow newcomer.. " + get_sender(m)) + CRLF);
 }
 
-void	Bot::_time(std::string m)
+void	Bot::_goodbye(std::string m)
 {
-	(void)m;
-	std::cout << "Not setted yet" << std::endl;
-	send_message(std::string("PRIVMSG #lobby :Time not setted yet") + CRLF);
-	//RPL_TIME 391
-	//set TS
+	send_message(std::string("PRIVMSG " + get_lobby(m) + " :Everybody say goodbye to " + get_sender(m)) + CRLF);
+
 }
 
-void	Bot::_ask(std::string m)
+bool	Bot::_find_bword(std::string m)
 {
-	//randomize  numerous answers
-	send_message(std::string("PRIVMSG #lobby :Ask your mother ") + get_sender(m) + CRLF);
+	for (size_t i=0; i<_banned_words.size(); i++)
+	{
+		if (m.find(_banned_words[i]) != std::string::npos)
+			return 1;
+	}
+	return 0;
 }
 
 void	Bot::_kick(std::string m)
 {
-	send_message(std::string("PRIVMSG #lobby :Not good " + get_sender(m) + " you'll get punished ..." + CRLF));
-	//send KICK cmd
+	std::cout << "=" << m << "=" << std::endl;
+	send_message(std::string("PRIVMSG  " + get_lobby(m) + " :Not good " + get_sender(m) + " you'll get punished ...") + CRLF);
+	send_message(std::string("KICK " + get_lobby(m)  +  get_sender(m) + " :You got kicked for bad conduct x_x plz behave next time ^^") + CRLF);
+	send_message(std::string("PRIVMSG " + get_sender(m) + " :You got kicked for bad conduct x_x plz behave next time ^^") + CRLF);
+
 }
 
 void	Bot::_help(std::string m)
 {
-	(void)m;
-	send_message(std::string("PRIVMSG #lobby :help not set yet") + CRLF);
+	std::string message;
+	message.append("PRIVMSG ");
+	message.append(get_lobby(m));
+	message.append(" :list of cmd availables:time"); 
+	send_message(message + CRLF);
 }
+
+
+
+// void	Bot::_ask(std::string m)
+// {
+// 	//randomize  numerous answers
+// 	send_message(std::string("PRIVMSG #lobby :Ask your mother ") + get_sender(m) + CRLF);
+// }

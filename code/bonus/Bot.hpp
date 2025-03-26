@@ -26,8 +26,9 @@ private:
 	std::string							_channels;		//liste chan to join join "chan1,chan2,..."
 	int									_socketfd;	// Le descripteur de la socket
 	sockaddr_in							_sock_addr;	// Adresse de la socket du serveur
+	bool								_is_logged;
 
-	std::string							_banned_words;
+	std::vector<std::string>			_banned_words;
 	std::map<std::string, std::string>	_infos;		//parse des infos de config dedans
 	
 	//connexion et communication avec le serveur
@@ -39,34 +40,43 @@ private:
 	// actions
 	void _manage_actions(std::string m);
 	void	_time(std::string);
-	void	_ask(std::string);
+	// void	_ask(std::string);
 	void	_help(std::string);
 	void	_kick(std::string);
 	//auto 
 	void	_welcome(std::string);
-	void	_leave();
+	void	_goodbye(std::string m);
+	// void	_leave();
 
 	//connexion/deconnexion
 	void		_init();
 	void		_connexion();	//envoi des infos du bot au serv
-	void		_disconnect();
 
 	//check
 	void		_parse(char *);
 	void		_map_info(std::string);
 	void		_set_infos();
 	uint16_t	_valid_port(std::string);
-
+	bool		_find_bword(std::string)
+;
 	//err
 	void	_throw_msg(const std::string &);
+
+
+	//utils
+	ssize_t	is_sep(char, std::string);
+	std::vector<std::string> ft_split(const std::string &, const std::string &);
 
 public:
 	Bot();
 	Bot(int argc, char **argv);                                               
 	~Bot();
-	void		_execution();
 
+	void		execution();
+	void		disconnect();
 
+	bool		get_log();
+	bool		set_log();
 };
 
 //
