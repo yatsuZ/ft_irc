@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/27 17:04:00 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 17:04:48 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ void	Bot::_init()
 	_sock_addr.sin_port = htons(_port);
 
 
-	// Configure la socket en mode non-bloquant
-	// if (fcntl(this->_socketfd, F_SETFL, O_NONBLOCK) < 0)
-	// 	_throw_msg("Erreur lors de la mise en mode non-bloquant de la socket.");
 	my_poll_fd.fd = _socketfd;
 	my_poll_fd.events = POLL_IN;
 	my_poll_fd.revents = 0;
