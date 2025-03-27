@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 19:26:17 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:57:13 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void Server::_bind_and_listen()
 	// Configure la socket en mode non-bloquant
 	if (fcntl(this->_socketfd, F_SETFL, O_NONBLOCK) < 0)
 		_throw_except("Erreur lors de la mise en mode non-bloquant de la socket.");
-
 
 	// Associe la socket fd a la structure de sockaddr_in
 	if (bind(this->_socketfd, sock_addr_serv_in_ptr, sizeof(this->_sock_addr_serv_in)) < 0)

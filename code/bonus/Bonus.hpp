@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bonus.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:01:39 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/27 13:57:49 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:30:19 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,5 @@
 #define GRN "\e[0;37m"
 //Reset 
 #define RST "\e[0m"
+
+bool ft_shutdown(bool fool);

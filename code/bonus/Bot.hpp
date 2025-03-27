@@ -29,6 +29,8 @@ private:
 	sockaddr_in							_sock_addr;	// Adresse de la socket du serveur
 	bool								_is_logged;
 
+	struct pollfd my_poll_fd;
+	
 	std::vector<std::string>			_banned_words;
 	std::map<std::string, std::string>	_infos;		//parse des infos de config dedans
 	

@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:23:39 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 18:32:43 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:13:09 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ Reaction_Serv	Irssi_serv::ft_nick(Cmd_irssi &current_cmd, UserHuman * current_us
 	std::cout << PINK << "-------- NICK -----------" << NOCOLOR << YELLOW << "INDEX_FD : " << BLUE << index_of_current_pollfd << NOCOLOR << std::endl;
 
 	if (list_dargument.empty())
-		return (send_message(ERR_NONICKNAMEGIVEN(this->get_name()), current_pollfd), (NONE));
+		return (send_message(":" + get_name() + " 431 " + current_user->get_nick() + " :No nickname given" + CRLF, current_pollfd), NONE);
+		// return (send_message(ERR_NONICKNAMEGIVEN(current_user->get_nick()), current_pollfd), (NONE));
 
 	if (current_user == NULL)
 		nick_user= list_dargument[0];

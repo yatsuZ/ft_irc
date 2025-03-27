@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Reponse_numeric_serv.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 12:17:09 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 21:13:51 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:20:34 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@
 // ERR_UNKNOWNCOMMAND
 #define ERR_UNKNOWNCOMMAND(server_name, command) (":" + server_name + " 421 " + command + " :Unknown command \"" + command + "\"" + CRLF)
 // ERR_NONICKNAMEGIVEN
-#define ERR_NONICKNAMEGIVEN(server_name) (":" + server_name + " 431 :No nickname given" + CRLF)
+#define ERR_NONICKNAMEGIVEN(nick) (":" + nick + " 431 :No nickname given" + CRLF)
 // ERR_ERRONEUSNI CKNAME
 #define ERR_ERRONEUSNICKNAME(server_name, nickname) (":" + server_name + " 432 " + nickname + " :Erroneous nickname" + CRLF)
 // ERR_NICKNAMEINUSE

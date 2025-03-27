@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bot.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/27 14:58:07 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:54:46 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,17 @@ void	Bot::_init()
 	if (_socketfd == -1)
 		_throw_msg("==== Error: socket creation failed... -1");
 	
-	_sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	_sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");// ici
 	_sock_addr.sin_family = AF_INET;
 	_sock_addr.sin_port = htons(_port);
+
+
+	// Configure la socket en mode non-bloquant
+	// if (fcntl(this->_socketfd, F_SETFL, O_NONBLOCK) < 0)
+	// 	_throw_msg("Erreur lors de la mise en mode non-bloquant de la socket.");
+	my_poll_fd.fd = _socketfd;
+	my_poll_fd.events = POLL_IN;
+	my_poll_fd.revents = 0;
 
 	if (connect(_socketfd, sock_addr_ptr, sizeof(*sock_addr_ptr)) == -1)
 		_throw_msg("====Error: can't connect to the server");
@@ -57,7 +65,7 @@ void	Bot::_connexion()
 	send_message("NICK " + _nick + CRLF);
 	send_message("USER " + _username + " " + _hostname + " " + _ip + " :" + _realname +  CRLF);
 	std::cout << BCYN << "### Bot connected succesfully !" << RST << std::endl;
-	_is_logged = true;
+	// _is_logged = true;
 }
 
 std::string	Bot::recv_msg()
@@ -81,14 +89,22 @@ void	Bot::execution()
 
 	std::string	msg;
 	
-	while (_is_logged)
+	while (1)
 	{
-		msg = recv_msg();
+		// Poll pour attendre un événement
+		int ret = poll(&my_poll_fd, 1, 5); // Attente pour des événements +  Utilise _all_pollfd.data() pour obtenir un pointeur sur le tableau interne
+		if (ret < 0)
+			_throw_msg("Erreur de la fonction poll()");
+		if (my_poll_fd.revents & POLLIN)
+		{
+			msg = recv_msg();
+			if (msg.empty() || ft_shutdown(false))
+				break;
+
+			_manage_actions(msg);
+		}
 		
-		if (msg.empty())
-			break;
 		
-		_manage_actions(msg);
 	}
 
 	disconnect();
