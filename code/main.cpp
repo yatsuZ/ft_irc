@@ -19,12 +19,6 @@ int	main(int argc, char **argv)
 	signal(SIGQUIT, handleSignal);
 	signal(SIGPIPE, SIG_IGN);
 
-	// (void)	argc;
-	// (void)	argv;
-	// TO_DO();
-	// Message_a_sam();
-	// Message_de_sam();
-	// Message_de_yaya();
 	std::cout << "---------------------------" << std::endl << std::endl;
 	try
 	{
