@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/27 15:44:06 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 15:46:41 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 		*to_do = DISCONNECT;
 		return ;
 	}
-	
+	verif_no_char_strange(to_do);
 }
 
 
@@ -95,7 +95,7 @@ bool Data_buffer<T>::is_end(ssize_t taille, char c)
 template <typename T>
 void Data_buffer<T>::verif_no_char_strange(Action *to_do)
 {
-	for (size_t i = 0; i < _total_bytes_received; i++)
+	for (ssize_t i = 0; i < _total_bytes_received; i++)
 	{
 		if (_data[i] < ' ' && _data[i] != '\r' && _data[i] != '\n' && _data[i] != '\t' && _data[i] != '\0')
 		{
