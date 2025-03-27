@@ -18,7 +18,6 @@ bool ft_shutdown(bool fool)
 	static bool flag = false;
 	if (fool)
 		flag = true;
-	std::cout << " FLAG =" << flag << std::endl;
 	return (flag);
 }
 
@@ -33,7 +32,6 @@ int	main(int argc, char **argv)
 
 	signal(SIGINT, handleSignal);
 
-	std::cout << "ploup" << std::endl;
 	try
 	{
 		Bot	bot(argc, argv);

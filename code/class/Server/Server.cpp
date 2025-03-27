@@ -36,6 +36,9 @@ uint16_t  Server::_is_a_legit_port(std::string & argv1)
 /// @param argv2 Le 2iem argument qui est sensé etre le mot de passe
 /// @return le mot de passe
 std::string Server::_is_a_legit_mdp(std::string & argv2) {
+	if (argv2.empty())
+		throw Init_serv_error("Le Deuxième argument : \"" + argv2 + "\" n'est pas un mot de passe valide (doit être composé uniquement de caractères alphanumériques).");
+
 	for (size_t i = 0; i < argv2.size(); ++i) {
 		if (!std::isalnum(argv2[i]))
 			throw Init_serv_error("Le Deuxième argument : \"" + argv2 + "\" n'est pas un mot de passe valide (doit être composé uniquement de caractères alphanumériques).");

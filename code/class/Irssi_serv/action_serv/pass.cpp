@@ -26,6 +26,8 @@ Reaction_Serv   Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_
     
     std::string pass = current_cmd.get_arg()[0];
 
+    
+
     if (pass != this->get_mdp())
     {
         std::cout << "------ HERE -----------" << std::endl;
