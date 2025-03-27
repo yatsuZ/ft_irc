@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/27 16:54:46 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 17:04:00 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	Bot::_init()
 	if (_socketfd == -1)
 		_throw_msg("==== Error: socket creation failed... -1");
 	
-	_sock_addr.sin_addr.s_addr = inet_addr("127.0.0.1");// ici
+	_sock_addr.sin_addr.s_addr = inet_addr(_ip.c_str());
 	_sock_addr.sin_family = AF_INET;
 	_sock_addr.sin_port = htons(_port);
 

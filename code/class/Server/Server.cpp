@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 06:23:05 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/27 16:57:13 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 17:03:21 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ uint16_t  Server::_is_a_legit_port(std::string & argv1)
 	// Vérifie si la conversion a échoué ou si le port n'est pas dans la plage 1-65535
 	if (error)
 		throw Init_serv_error("Le premier argument : \"" + argv1 + "\" n'est pas un port valide (doit être entre 1 et 65535).");
-
 	// Cast du long vers uint16_t après avoir vérifié que la valeur est dans la plage
 	port = static_cast<uint16_t>(portl);
 
