@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 03:01:08 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 16:14:57 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:46:28 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Reaction_Serv   Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_
         send_message(ERR_NEEDMOREPARAMS(this->get_name(), current_user->get_nick(), "PASS"), current_pollfd);
         return (this->ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
     }
+    
     if (current_user->_get_is_connect())
         return (send_message(ERR_ALREADYREGISTRED(this->get_name(), "PASS"), current_pollfd), PASS_SERV);
     
@@ -27,6 +28,7 @@ Reaction_Serv   Irssi_serv::ft_pass(Cmd_irssi &current_cmd, UserHuman * current_
 
     if (pass != this->get_mdp())
     {
+        std::cout << "------ HERE -----------" << std::endl;
         send_message(ERR_PASSWDMISMATCH(this->get_name(), current_user->get_nick()), current_pollfd);
         send_message(":" + this->get_name() + " ERROR :Closing Link: localhost (Bad Password)", current_pollfd);
         return (this->ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));

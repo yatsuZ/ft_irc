@@ -110,6 +110,8 @@ std::string	Bot::get_sender(std::string msg)
 	return ("");
 }
 
+//fonctionne avec "{:Zero!~zyscb@127.0.0.1 JOIN :#lobby
+//}"....update casse parfois ????????
 std::string	Bot::get_lobby(std::string msg)
 {
 	size_t	pos = msg.find("#");
@@ -118,7 +120,7 @@ std::string	Bot::get_lobby(std::string msg)
 	{
 		std::string	chan = msg.substr(pos);
 
-		size_t	end_chan = chan.find_first_of(" \t\t\n");
+		size_t	end_chan = chan.find_first_of(" \r\t\n\0");
 		
 		if (end_chan != std::string::npos)
 			return chan.substr(0, end_chan);

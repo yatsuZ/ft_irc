@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bonus.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:01:39 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/26 03:24:24 by kuro             ###   ########.fr       */
+/*   Updated: 2025/03/27 13:57:49 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 #define BGRN "\e[1;37m"
 
 //Regular text
-#define RED "\e[0;31m"
+// #define RED "\e[0;31m"
 #define PNK "\e[0;32m"
 #define CYN "\e[0;36m"
 #define GRN "\e[0;37m"

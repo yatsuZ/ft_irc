@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/25 16:33:42 by kuro             ###   ########.fr       */
+/*   Updated: 2025/03/27 15:41:23 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 		return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	else if (current_user && !current_user->_get_is_connect() && current_cmd.get_action() != PASS ) //&& current_cmd.get_action() == CAP
 	{
+
 		send_message(":" + this->get_name() + " :ERROR Closing Link localhost (Bad Password)" + CRLF, current_pollfd);
-		return (PASS_SERV);
+		return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	}
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
 	current_user->get_msg_by_step(this->get_name(), current_pollfd);

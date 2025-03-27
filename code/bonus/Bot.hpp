@@ -12,6 +12,7 @@
 #pragma once
 
 #include "Bonus.hpp"
+#include "../class/Data_buffer/Data_buffer.hpp"
 
 class Bot
 {
@@ -23,7 +24,7 @@ private:
 	std::string							_username;
 	std::string							_hostname;
 	std::string							_realname;
-	std::string							_channels;		//liste chan to join join "chan1,chan2,..."
+	std::string							_channels;	//liste chan to join join "chan1,chan2,..."
 	int									_socketfd;	// Le descripteur de la socket
 	sockaddr_in							_sock_addr;	// Adresse de la socket du serveur
 	bool								_is_logged;
@@ -38,15 +39,13 @@ private:
 	std::string		get_lobby(std::string);
 
 	// actions
-	void _manage_actions(std::string m);
-	void	_time(std::string);
-	// void	_ask(std::string);
+	void 	_manage_actions(std::string m);
 	void	_help(std::string);
-	void	_kick(std::string);
 	//auto 
 	void	_welcome(std::string);
 	void	_goodbye(std::string m);
-	// void	_leave();
+	void	_kick(std::string);
+	void	_pong(std::string m);
 
 	//connexion/deconnexion
 	void		_init();

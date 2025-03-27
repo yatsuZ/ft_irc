@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bot.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kuro <kuro@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 12:35:23 by smlamali          #+#    #+#             */
-/*   Updated: 2025/03/26 05:09:43 by kuro             ###   ########.fr       */
+/*   Updated: 2025/03/27 14:58:07 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ std::string	Bot::recv_msg()
 	char	buffer[BUFFERSIZE];
 	ssize_t	bytes_recv = 0;
 	
-	bytes_recv = recv(_socketfd, buffer, BUFFERSIZE, 0);
+	bytes_recv = recv(_socketfd, buffer, BUFFERSIZE - 1, 0);
 
 	if (bytes_recv <= 0)
 		return "";
@@ -73,7 +73,6 @@ std::string	Bot::recv_msg()
 	buffer[bytes_recv] = '\0';
 
 	return std::string(buffer);
-
 }
 
 void	Bot::execution()
@@ -85,11 +84,10 @@ void	Bot::execution()
 	while (_is_logged)
 	{
 		msg = recv_msg();
-
-		std::cout << "Message read:" << std::endl;
-		std::cout << "[" << msg << "]" << std::endl;
+		
 		if (msg.empty())
 			break;
+		
 		_manage_actions(msg);
 	}
 

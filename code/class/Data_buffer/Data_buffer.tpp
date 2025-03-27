@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 18:59:40 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 14:57:52 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,3 +86,8 @@ bool Data_buffer<T>::is_end(ssize_t taille, char c)
 		return (true);
 	return (false);
 }
+
+// void	Data_buffer<T>::erase_char_sus(ssize_t s, char c)
+// {
+	
+// }
