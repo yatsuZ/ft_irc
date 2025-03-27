@@ -25,9 +25,10 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 {
 	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
 	Action act = current_cmd.get_action();
+
 	if (current_cmd.get_action() == ERROR_RECV_DATA)
 		return (ft_error_recv_data(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
-	if (current_cmd.get_action() == CAP)
+	else if (current_cmd.get_action() == CAP)
 		return (ft_cap(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	else if (current_cmd.get_action() == DISCONNECT)
 		return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
@@ -36,6 +37,16 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 		send_message(":" + this->get_name() + " :ERROR Closing Link localhost (Bad Password)" + CRLF, current_pollfd);
 		return (ft_disconnect(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	}
+	else if (current_user && current_user->get_is_init() == false && current_cmd.get_action() != PASS && current_cmd.get_action() != NICK && current_cmd.get_action() != USER)
+	{
+		send_message(":" + this->get_name() + " : " + RED + "command not accepted... ." + NOCOLOR + CRLF, current_pollfd);
+		if (current_user->get_Set_User() == false)
+			send_message(":" + this->get_name() + " : " + YELLOW + "YOU need to use commande \"USER\"" + NOCOLOR + CRLF, current_pollfd);
+		if (current_user->get_Set_Nick() == false)
+			send_message(":" + this->get_name() + " : " + YELLOW + "YOU need to use commande \"NICK\"" + NOCOLOR + CRLF, current_pollfd);
+		return (PASS_SERV);
+	}
+
 	Reaction_Serv res = (this->*action_table[act])(current_cmd, current_user, current_pollfd, index_of_current_pollfd);
 	current_user->get_msg_by_step(this->get_name(), current_pollfd);
 	// std::cout << "↑↑↑ -------- END OF INTERPRETION CMD ----------- ↑↑↑" << std::endl;

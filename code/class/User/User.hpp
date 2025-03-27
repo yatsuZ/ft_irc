@@ -43,6 +43,7 @@ public:
 	void		set_mode(Mode newmode);
 	void		set_is_connect(void){_is_connect = !_is_connect;}
 	void		add_chan(size_t idx_of_chan);
+	void		set_is_init(int nbr);//2 == USER et 1 == NICK et 3 == les 2
 
 	std::string				get_nick() 			const {return this->_nick;}
 	std::string				get_name() 			const {return this->_name;}

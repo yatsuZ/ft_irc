@@ -94,6 +94,6 @@ Reaction_Serv	Irssi_serv::ft_nick(Cmd_irssi &current_cmd, UserHuman * current_us
 		send_message(":" + nick_user + "!~" + current_user->get_name() + "@" + this->get_name() + " NICK :" + current_user->get_nick() + CRLF, current_pollfd);
 		send_message(":" + get_name() + " : Hostname ->" + current_user->get_ip_to_string() + CRLF, current_pollfd);
 	}
-	
+	current_user->set_is_init(1);
 	return (NONE);
 }

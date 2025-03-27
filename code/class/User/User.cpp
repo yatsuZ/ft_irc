@@ -126,3 +126,17 @@ std::string	User::list_mode()const
 	std::string 	mode = mode_to_str(_mode);
 	return mode;
 }
+
+//2 == USER et 1 == NICK et 3 == les 2
+void	User::set_is_init(int nbr)
+{
+	std::cout << "_is_init == " << _is_init  << " et nbr == " << nbr << std::endl;
+	if ((nbr != 1 && nbr != 2) || _is_init == -1)
+		return;
+	if ((_is_init == 1 && nbr == 1) ||(_is_init == 2 && nbr == 2))
+		return ;
+	_is_init += nbr;
+	if (_is_init == 3)
+		_is_init = -1;
+
+}

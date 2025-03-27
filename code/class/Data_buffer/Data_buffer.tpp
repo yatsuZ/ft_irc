@@ -97,7 +97,7 @@ void Data_buffer<T>::verif_no_char_strange(Action *to_do)
 {
 	for (ssize_t i = 0; i < _total_bytes_received; i++)
 	{
-		if (_data[i] < ' ' && _data[i] != '\r' && _data[i] != '\n' && _data[i] != '\t' && _data[i] != '\0')
+		if (_data[i] < ' ' && _data[i] != '\r' && _data[i] != '\n' && _data[i] != '\t' && _data[i] != '\0' && _data[i] != '\x01')
 		{
 			*to_do = ERROR_RECV_DATA;
 			return ;

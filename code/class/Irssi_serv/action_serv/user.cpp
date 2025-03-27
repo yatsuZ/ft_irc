@@ -50,6 +50,7 @@ Reaction_Serv	Irssi_serv::ft_user(Cmd_irssi &current_cmd, UserHuman * current_us
 
 	send_message(RPL_USER(get_name(), current_user->get_nick(), current_user->get_name(), current_user->get_realname()), current_pollfd);
 	current_user->get_welcolm(get_name(), current_cmd.get_action() ,current_pollfd);
+	current_user->set_is_init(2);
 
 
 	return (NONE);

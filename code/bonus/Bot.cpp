@@ -82,7 +82,7 @@ std::string	Bot::recv_msg()
 
 void	Bot::execution()
 {
-	send_message(std::string("JOIN #lobby") + std::string(CRLF));
+	send_message(std::string("JOIN " + _channels) + std::string(CRLF));
 
 	std::string	msg;
 	
