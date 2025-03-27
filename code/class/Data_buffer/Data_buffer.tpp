@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/27 14:57:52 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:58:44 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@ Data_buffer<T>::Data_buffer(int client_fd, Action *to_do): _data(), _total_bytes
 	{
 		*to_do = ERROR_RECV_DATA;
 		perror("Reception failed : ");
+		return ;
 	}
 	
-	if (_total_bytes_received == 0 || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))// verifier si il sagit dune deconxion ou une fin de lecture ??
+	if (_total_bytes_received == 0 || !(is_end(_total_bytes_received, this->_data[_total_bytes_received - 1])))
+	{
 		*to_do = DISCONNECT;
+		return ;
+	}
+	verif_no_char_strange(to_do);
 }
 
 
@@ -87,7 +92,15 @@ bool Data_buffer<T>::is_end(ssize_t taille, char c)
 	return (false);
 }
 
-// void	Data_buffer<T>::erase_char_sus(ssize_t s, char c)
-// {
-	
-// }
+template <typename T>
+void Data_buffer<T>::verif_no_char_strange(Action *to_do)
+{
+	for (ssize_t i = 0; i < _total_bytes_received; i++)
+	{
+		if (_data[i] < ' ' && _data[i] != '\r' && _data[i] != '\n' && _data[i] != '\t' && _data[i] != '\0')
+		{
+			*to_do = ERROR_RECV_DATA;
+			return ;
+		}
+	}
+}

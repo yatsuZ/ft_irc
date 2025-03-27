@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data_buffer.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:12:33 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/23 18:34:48 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:31:56 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ private:
 	ssize_t										_total_bytes_received;
 	void debug_is_end(ssize_t taille, char c){std::cout <<"c = " << int(c) << " | taille = " << taille << std::endl;}
 	bool is_end(ssize_t taille, char c);
-
+	void verif_no_char_strange(Action *to_do);
 public:
 	Data_buffer(int client_fd, Action *to_do);
 	~Data_buffer();

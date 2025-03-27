@@ -6,7 +6,7 @@
 /*   By: smlamali <smlamali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:16:18 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/27 15:52:17 by smlamali         ###   ########.fr       */
+/*   Updated: 2025/03/27 16:00:11 by smlamali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ Reaction_Serv	Irssi_serv::do_action(Cmd_irssi &current_cmd, UserHuman * current_
 {
 	// std::cout << GREEN << "↓↓↓ -------- START OF INTERPRETION CMD ----------- ↓↓↓" << NOCOLOR << std::endl;
 	Action act = current_cmd.get_action();
+	if (current_cmd.get_action() == ERROR_RECV_DATA)
+		return (ft_error_recv_data(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	if (current_cmd.get_action() == CAP)
 		return (ft_cap(current_cmd, current_user, current_pollfd, index_of_current_pollfd));
 	else if (current_cmd.get_action() == DISCONNECT)
