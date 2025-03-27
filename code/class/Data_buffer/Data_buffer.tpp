@@ -6,7 +6,7 @@
 /*   By: yzaoui <yzaoui@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 13:19:53 by yzaoui            #+#    #+#             */
-/*   Updated: 2025/03/27 15:43:02 by yzaoui           ###   ########.fr       */
+/*   Updated: 2025/03/27 15:44:06 by yzaoui           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void Data_buffer<T>::verif_no_char_strange(Action *to_do)
 	{
 		if (_data[i] < ' ' && _data[i] != '\r' && _data[i] != '\n' && _data[i] != '\t' && _data[i] != '\0')
 		{
-			*to_do = = ERROR_RECV_DATA;
+			*to_do = ERROR_RECV_DATA;
 			return ;
 		}
 	}
